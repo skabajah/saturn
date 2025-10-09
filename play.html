@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>IPTV Channel Redirect</title>
+  <title>Channel Redirect</title>
   <script>
     async function loadChannels() {
       const res = await fetch("channels.csv");
@@ -16,29 +16,28 @@
       return map;
     }
 
-    async function redirectChannel() {
+    async function main() {
       const channels = await loadChannels();
 
-      // Get channel from query parameter ?c=CHANNEL
+      // Get channel from query string ?c=CHANNEL
       const params = new URLSearchParams(window.location.search);
       const channel = params.get("c");
 
       if(channel && channels[channel]) {
-        // Redirect to the .m3u8 URL
+        // Redirect to the selected channel
         window.location.href = channels[channel];
       } else {
-        // Show list of channels dynamically
-        document.write("<h3>Available Channels:</h3>");
+        // Show list of channels if invalid or missing
+        document.write("<h3>Channel not found or not selected. Available channels:</h3>");
         document.write("<ul>");
-        for(let c in channels) {
-          // Each link includes ?c=CHANNEL
-          document.write(`<li><a href="play.html?c=${c}">${c}</a></li>`);
+        for(let key in channels) {
+          document.write(`<li><a href="?c=${key}">${key}</a></li>`);
         }
         document.write("</ul>");
       }
     }
 
-    redirectChannel();
+    main();
   </script>
 </head>
 <body></body>
