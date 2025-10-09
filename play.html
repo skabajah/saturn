@@ -2,11 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Channel Redirect</title>
+  <title>IPTV Channel Redirect</title>
   <script>
-    // Helper to load CSV
-    async function loadCSV(url) {
-      const res = await fetch(url);
+    async function loadChannels() {
+      const res = await fetch("channels.csv");
       const text = await res.text();
       const lines = text.split("\n").filter(l => l.trim() !== "");
       const map = {};
@@ -18,17 +17,22 @@
     }
 
     async function redirectChannel() {
-      const pathParts = window.location.pathname.split("/").filter(p => p !== "" && p !== "iptv");
-      const channelName = pathParts[0];  // e.g., CBS9
-      const channels = await loadCSV("channels.csv");
+      const channels = await loadChannels();
 
-      if(channelName && channels[channelName]) {
-        window.location.href = channels[channelName];
+      // Get channel from query parameter ?c=CHANNEL
+      const params = new URLSearchParams(window.location.search);
+      const channel = params.get("c");
+
+      if(channel && channels[channel]) {
+        // Redirect to the .m3u8 URL
+        window.location.href = channels[channel];
       } else {
-        // Show a simple list if not found
-        document.write("<h3>Channel not found. Available channels:</h3><ul>");
-        for(let c in channels){
-          document.write(`<li><a href="/iptv/${c}">${c}</a></li>`);
+        // Show list of channels dynamically
+        document.write("<h3>Available Channels:</h3>");
+        document.write("<ul>");
+        for(let c in channels) {
+          // Each link includes ?c=CHANNEL
+          document.write(`<li><a href="play.html?c=${c}">${c}</a></li>`);
         }
         document.write("</ul>");
       }
