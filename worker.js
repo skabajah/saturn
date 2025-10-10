@@ -4,7 +4,7 @@ export default {
     const channel = url.pathname.replace("/", "");  
 
     // Fetch the CSV from GitHub
-    const res = await fetch("https://skabajah.github.io/iptv/channels.csv");
+    const res = await fetch("https://skabajah.github.io/iptv/1_channels.csv");
     const text = await res.text();
 
     // Parse CSV into a dictionary

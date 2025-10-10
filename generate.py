@@ -1,6 +1,6 @@
 import csv
 
-input_file = "channels_full.tsv"  # TSV with Status, GROUP, ch_num, NAME
+input_file = "2_channels_full.tsv"  # TSV with Status, GROUP, ch_num, NAME
 output_file = "saturn.m3u"
 
 with open(input_file, newline="", encoding="utf-8") as tsvfile:
