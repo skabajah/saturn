@@ -77,8 +77,8 @@ https://saturn.shadi-kabajah.workers.dev/Panorama_FM
 https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
 https://saturn.shadi-kabajah.workers.dev/Cooks_Country
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBS_9.jpg" group-title="ENG",921) CBS 9
-https://saturn.shadi-kabajah.workers.dev/CBS_9
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/WUSA9.jpg" group-title="ENG",921) WUSA9
+https://saturn.shadi-kabajah.workers.dev/WUSA9
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBSN.jpg" group-title="ENG",931) CBSN
 https://saturn.shadi-kabajah.workers.dev/CBSN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",932) Bloomberg
