@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>M3U Player</title>
+</head>
+<body style="background:#000; color:#fff; font-family:sans-serif;">
+  <h2>M3U Player</h2>
+  <select id="channelList" onchange="playChannel()"></select>
+  <video id="videoPlayer" controls autoplay width="100%"></video>
+
+  <script>
+    async function loadM3U() {
+      const response = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
+      const text = await response.text();
+      const lines = text.split('\n');
+      const select = document.getElementById('channelList');
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith('#EXTINF')) {
+          const name = lines[i].split(',')[1];
+          const url = lines[i + 1];
+          const option = document.createElement('option');
+          option.value = url;
+          option.textContent = name;
+          select.appendChild(option);
+        }
+      }
+    }
+
+    function playChannel() {
+      const player = document.getElementById('videoPlayer');
+      player.src = document.getElementById('channelList').value;
+      player.play();
+    }
+
+    loadM3U();
+  </script>
+</body>
+</html>
