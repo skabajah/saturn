@@ -2,7 +2,7 @@
 import csv
 
 input_file = "channels_full.tsv"
-output_file = "channels.m3u"
+output_file = "saturn.m3u"
 
 with open(input_file, newline="", encoding="utf-8") as tsvfile:
     reader = csv.DictReader(tsvfile, delimiter="\t")
