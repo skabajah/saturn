@@ -1,7 +1,6 @@
-# generate_m3u_full.py
 import csv
 
-input_file = "channels_full.tsv"
+input_file = "channels_full.tsv"  # TSV with Status, GROUP, ch_num, NAME
 output_file = "saturn.m3u"
 
 with open(input_file, newline="", encoding="utf-8") as tsvfile:
@@ -11,20 +10,24 @@ with open(input_file, newline="", encoding="utf-8") as tsvfile:
     
     for row in reader:
         status = row.get("Status", "").strip().upper()
-        if status != "KEEP":  # keep only rows marked KEEP
+        if status != "KEEP":
             continue
         
         ch_num = row.get("ch_num", "").strip()
         name = row.get("NAME", "").strip()
         group = row.get("GROUP", "").strip()
-        stream = row.get("STREAM", "").strip()
-        logo = row.get("LOGO", "").strip()
         
-        if not ch_num or not name or not stream:
+        if not ch_num or not name:
             continue
         
-        display_name = f"{ch_num}) {name}"
+        # Generate ch_id from name
+        ch_id = name.replace(" ", "_")
         
+        # Generate URLs
+        stream = f"https://redirector.shadi-kabajah.workers.dev/{ch_id}"
+        logo = f"https://skabajah.github.io/saturn/logo/{ch_id}.jpg"
+        
+        display_name = f"{ch_num}) {name}"
         extinf = f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group}",{display_name}'
         lines.append(extinf)
         lines.append(stream)

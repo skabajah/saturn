@@ -1,69 +1,69 @@
-Status	GROUP	ch_num	NAME	Service	STREAM	LOGO
-KEEP	NEWS	141	Al Jazeera	redirector	https://redirector.shadi-kabajah.workers.dev/Al_Jazeera	https://skabajah.github.io/iptv/logo/Al_Jazeera.jpg
-KEEP	NEWS	142	Al Araby	redirector	https://redirector.shadi-kabajah.workers.dev/Al_Araby	https://skabajah.github.io/iptv/logo/Al_Araby.jpg
-KEEP	NEWS	161	Al Arabiya	redirector	https://redirector.shadi-kabajah.workers.dev/Al_Arabiya	https://skabajah.github.io/iptv/logo/Al_Arabiya.jpg
-KEEP	NEWS	111	SkyNews Arabia	redirector	https://redirector.shadi-kabajah.workers.dev/SkyNews_Arabia	https://skabajah.github.io/iptv/logo/SkyNews_Arabia.jpg
-KEEP	NEWS	112	Al Sharq	redirector	https://redirector.shadi-kabajah.workers.dev/Al_Sharq	https://skabajah.github.io/iptv/logo/Al_Sharq.jpg
-KEEP	NEWS	191	TRT	redirector	https://redirector.shadi-kabajah.workers.dev/TRT	https://skabajah.github.io/iptv/logo/TRT.jpg
-						
-KEEP	LEVANT	201	PSC	redirector	https://redirector.shadi-kabajah.workers.dev/PSC	https://skabajah.github.io/iptv/logo/PSC.jpg
-KEEP	LEVANT	211	MTV	redirector	https://redirector.shadi-kabajah.workers.dev/MTV	https://skabajah.github.io/iptv/logo/MTV.jpg
-KEEP	LEVANT	212	Voice of Lebanon	redirector	https://redirector.shadi-kabajah.workers.dev/Voice_of_Lebanon	https://skabajah.github.io/iptv/logo/Voice_of_Lebanon.jpg
-KEEP	LEVANT	221	Amman	redirector	https://redirector.shadi-kabajah.workers.dev/Amman	https://skabajah.github.io/iptv/logo/Amman.jpg
-KEEP	LEVANT	222	Jordan	redirector	https://redirector.shadi-kabajah.workers.dev/Jordan	https://skabajah.github.io/iptv/logo/Jordan.jpg
-SKIP	LEVANT	223	Mamlaka	redirector	https://redirector.shadi-kabajah.workers.dev/Mamlaka	https://skabajah.github.io/iptv/logo/Mamlaka.jpg
-KEEP	LEVANT	224	Roya	redirector	https://redirector.shadi-kabajah.workers.dev/Roya	https://skabajah.github.io/iptv/logo/Roya.jpg
-KEEP	LEVANT	231	Lana	redirector	https://redirector.shadi-kabajah.workers.dev/Lana	https://skabajah.github.io/iptv/logo/Lana.jpg
-KEEP	LEVANT	232	Syria	redirector	https://redirector.shadi-kabajah.workers.dev/Syria	https://skabajah.github.io/iptv/logo/Syria.jpg
-KEEP	LEVANT	233	Syria 2	redirector	https://redirector.shadi-kabajah.workers.dev/Syria_2	https://skabajah.github.io/iptv/logo/Syria_2.jpg
-KEEP	LEVANT	261	Makan	redirector	https://redirector.shadi-kabajah.workers.dev/Makan	https://skabajah.github.io/iptv/logo/Makan.jpg
-						
-KEEP	GULF	361	MBC 1	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_1	https://skabajah.github.io/iptv/logo/MBC_1.jpg
-SKIP	GULF	362	MBC 2	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_2	https://skabajah.github.io/iptv/logo/MBC_2.jpg
-KEEP	GULF	364	MBC 4	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_4	https://skabajah.github.io/iptv/logo/MBC_4.jpg
-KEEP	GULF	365	MBC 5	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_5	https://skabajah.github.io/iptv/logo/MBC_5.jpg
-KEEP	GULF	366	SBC	redirector	https://redirector.shadi-kabajah.workers.dev/SBC	https://skabajah.github.io/iptv/logo/SBC.jpg
-KEEP	GULF	367	Thaqafeyah	redirector	https://redirector.shadi-kabajah.workers.dev/Thaqafeyah	https://skabajah.github.io/iptv/logo/Thaqafeyah.jpg
-KEEP	GULF	341	AlAraby 2	redirector	https://redirector.shadi-kabajah.workers.dev/AlAraby_2	https://skabajah.github.io/iptv/logo/AlAraby_2.jpg
-KEEP	GULF	311	Abu Dhabi	redirector	https://redirector.shadi-kabajah.workers.dev/Abu_Dhabi	https://skabajah.github.io/iptv/logo/Abu_Dhabi.jpg
-KEEP	GULF	312	Dubai	redirector	https://redirector.shadi-kabajah.workers.dev/Dubai	https://skabajah.github.io/iptv/logo/Dubai.jpg
-SKIP	GULF	313	Dubai One	redirector	https://redirector.shadi-kabajah.workers.dev/Dubai_One	https://skabajah.github.io/iptv/logo/Dubai_One.jpg
-SKIP	GULF	314	Mashhad	replit	https://yt.shadi-kabajah.workers.dev/?url=https://www.youtube.com/watch?v=iUXX-QQkR74	https://skabajah.github.io/iptv/logo/Mashhad.jpg
-						
-SKIP	EGYPT	401	CBC	redirector	https://redirector.shadi-kabajah.workers.dev/CBC	https://skabajah.github.io/iptv/logo/CBC.jpg
-SKIP	EGYPT	402	DMC	redirector	https://redirector.shadi-kabajah.workers.dev/DMC	https://skabajah.github.io/iptv/logo/DMC.jpg
-KEEP	EGYPT	403	Hayat	redirector	https://redirector.shadi-kabajah.workers.dev/Hayat	https://skabajah.github.io/iptv/logo/Hayat.jpg
-SKIP	EGYPT	404	Mehwar	redirector	https://redirector.shadi-kabajah.workers.dev/Mehwar	https://skabajah.github.io/iptv/logo/Mehwar.jpg
-SKIP	EGYPT	405	Nahar	redirector	https://redirector.shadi-kabajah.workers.dev/Nahar	https://skabajah.github.io/iptv/logo/Nahar.jpg
-SKIP	EGYPT	406	ON E	redirector	https://redirector.shadi-kabajah.workers.dev/ON_E	https://skabajah.github.io/iptv/logo/ON_E.jpg
-KEEP	EGYPT	407	Sada	redirector	https://redirector.shadi-kabajah.workers.dev/Sada	https://skabajah.github.io/iptv/logo/Sada.jpg
-KEEP	EGYPT	461	MBC Masr	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_Masr	https://skabajah.github.io/iptv/logo/MBC_Masr.jpg
-KEEP	EGYPT	462	MBC Masr 2	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_Masr_2	https://skabajah.github.io/iptv/logo/MBC_Masr_2.jpg
-						
-SKIP	DRAMA	501	CBC Drama	redirector	https://redirector.shadi-kabajah.workers.dev/CBC_Drama	https://skabajah.github.io/iptv/logo/CBC_Drama.jpg
-SKIP	DRAMA	502	DMC Drama	redirector	https://redirector.shadi-kabajah.workers.dev/DMC_Drama	https://skabajah.github.io/iptv/logo/DMC_Drama.jpg
-SKIP	DRAMA	506	ON Drama	redirector	https://redirector.shadi-kabajah.workers.dev/ON_Drama	https://skabajah.github.io/iptv/logo/ON_Drama.jpg
-KEEP	DRAMA	521	Roya Drama	redirector	https://redirector.shadi-kabajah.workers.dev/Roya_Drama	https://skabajah.github.io/iptv/logo/Roya_Drama.jpg
-KEEP	DRAMA	561	MBC Drama	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_Drama	https://skabajah.github.io/iptv/logo/MBC_Drama.jpg
-KEEP	DRAMA	562	MBC Drama Egypt	redirector	https://redirector.shadi-kabajah.workers.dev/MBC_Drama_Egypt	https://skabajah.github.io/iptv/logo/MBC_Drama_Egypt.jpg
-						
-KEEP	MOVIES	661	Aflam	redirector	https://redirector.shadi-kabajah.workers.dev/Aflam	https://skabajah.github.io/iptv/logo/Aflam.jpg
-KEEP	MOVIES	662	Rotana Aflam	redirector	https://redirector.shadi-kabajah.workers.dev/Rotana_Aflam	https://skabajah.github.io/iptv/logo/Rotana_Aflam.jpg
-SKIP	MOVIES	663	Rotana Cinema	redirector	https://redirector.shadi-kabajah.workers.dev/Rotana_Cinema	https://skabajah.github.io/iptv/logo/Rotana_Cinema.jpg
-						
-KEEP	MUSIC	711	Aghani	redirector	https://redirector.shadi-kabajah.workers.dev/Aghani	https://skabajah.github.io/iptv/logo/Aghani.jpg
-KEEP	MUSIC	712	Arabica	redirector	https://redirector.shadi-kabajah.workers.dev/Arabica	https://skabajah.github.io/iptv/logo/Arabica.jpg
-SKIP	MUSIC	721	Nogoum	redirector	https://redirector.shadi-kabajah.workers.dev/Nogoum	https://skabajah.github.io/iptv/logo/Nogoum.jpg
-KEEP	MUSIC	713	MTV One	redirector	https://redirector.shadi-kabajah.workers.dev/MTV_One	https://skabajah.github.io/iptv/logo/MTV_One.jpg
-KEEP	MUSIC	761	M+	redirector	https://redirector.shadi-kabajah.workers.dev/M+	https://skabajah.github.io/iptv/logo/M+.jpg
-KEEP	MUSIC	762	Panorama FM	redirector	https://redirector.shadi-kabajah.workers.dev/Panorama_FM	https://skabajah.github.io/iptv/logo/Panorama_FM.jpg
-SKIP	MUSIC	763	Rotana Clip	redirector	https://redirector.shadi-kabajah.workers.dev/Rotana_Clip	https://skabajah.github.io/iptv/logo/Rotana_Clip.jpg
-						
-KEEP	ENG	801	Test Kitchen	redirector	https://redirector.shadi-kabajah.workers.dev/Test_Kitchen	https://skabajah.github.io/iptv/logo/Test_Kitchen.jpg
-KEEP	ENG	802	Cooks Country	redirector	https://redirector.shadi-kabajah.workers.dev/Cooks_Country	https://skabajah.github.io/iptv/logo/Cooks_Country.jpg
-KEEP	ENG	921	CBS 9	redirector	https://redirector.shadi-kabajah.workers.dev/CBS_9	https://skabajah.github.io/iptv/logo/CBS_9.jpg
-KEEP	ENG	931	CBSN	redirector	https://redirector.shadi-kabajah.workers.dev/CBSN	https://skabajah.github.io/iptv/logo/CBSN.jpg
-KEEP	ENG	932	Bloomberg	redirector	https://redirector.shadi-kabajah.workers.dev/Bloomberg	https://skabajah.github.io/iptv/logo/Bloomberg.jpg
-KEEP	ENG	933	CNN	redirector	https://redirector.shadi-kabajah.workers.dev/CNN	https://skabajah.github.io/iptv/logo/CNN.jpg
-KEEP	ENG	934	NBC Now	redirector	https://redirector.shadi-kabajah.workers.dev/NBC_Now	https://skabajah.github.io/iptv/logo/NBC_Now.jpg
-KEEP	ENG	941	Al Jazeera EN	redirector	https://redirector.shadi-kabajah.workers.dev/Al_Jazeera_EN	https://skabajah.github.io/iptv/logo/Al_Jazeera_EN.jpg
+Status	GROUP	ch_num	NAME
+KEEP	NEWS	141	Al Jazeera
+KEEP	NEWS	142	Al Araby
+KEEP	NEWS	161	Al Arabiya
+KEEP	NEWS	111	SkyNews Arabia
+KEEP	NEWS	112	Al Sharq
+KEEP	NEWS	191	TRT
+			
+KEEP	LEVANT	201	PSC
+KEEP	LEVANT	211	MTV
+KEEP	LEVANT	212	Voice of Lebanon
+KEEP	LEVANT	221	Amman
+KEEP	LEVANT	222	Jordan
+SKIP	LEVANT	223	Mamlaka
+KEEP	LEVANT	224	Roya
+KEEP	LEVANT	231	Lana
+KEEP	LEVANT	232	Syria
+KEEP	LEVANT	233	Syria 2
+KEEP	LEVANT	261	Makan
+			
+KEEP	GULF	361	MBC 1
+SKIP	GULF	362	MBC 2
+KEEP	GULF	364	MBC 4
+KEEP	GULF	365	MBC 5
+KEEP	GULF	366	SBC
+KEEP	GULF	367	Thaqafeyah
+KEEP	GULF	341	AlAraby 2
+KEEP	GULF	311	Abu Dhabi
+KEEP	GULF	312	Dubai
+SKIP	GULF	313	Dubai One
+SKIP	GULF	314	Mashhad
+			
+SKIP	EGYPT	401	CBC
+SKIP	EGYPT	402	DMC
+KEEP	EGYPT	403	Hayat
+SKIP	EGYPT	404	Mehwar
+SKIP	EGYPT	405	Nahar
+SKIP	EGYPT	406	ON E
+KEEP	EGYPT	407	Sada
+KEEP	EGYPT	461	MBC Masr
+KEEP	EGYPT	462	MBC Masr 2
+			
+SKIP	DRAMA	501	CBC Drama
+SKIP	DRAMA	502	DMC Drama
+SKIP	DRAMA	506	ON Drama
+KEEP	DRAMA	521	Roya Drama
+KEEP	DRAMA	561	MBC Drama
+KEEP	DRAMA	562	MBC Drama Egypt
+			
+KEEP	MOVIES	661	Aflam
+KEEP	MOVIES	662	Rotana Aflam
+SKIP	MOVIES	663	Rotana Cinema
+			
+KEEP	MUSIC	711	Aghani
+KEEP	MUSIC	712	Arabica
+SKIP	MUSIC	721	Nogoum
+KEEP	MUSIC	713	MTV One
+KEEP	MUSIC	761	M+
+KEEP	MUSIC	762	Panorama FM
+SKIP	MUSIC	763	Rotana Clip
+			
+KEEP	ENG	801	Test Kitchen
+KEEP	ENG	802	Cooks Country
+KEEP	ENG	921	CBS 9
+KEEP	ENG	931	CBSN
+KEEP	ENG	932	Bloomberg
+KEEP	ENG	933	CNN
+KEEP	ENG	934	NBC Now
+KEEP	ENG	941	Al Jazeera EN
