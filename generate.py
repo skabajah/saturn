@@ -24,7 +24,7 @@ with open(input_file, newline="", encoding="utf-8") as tsvfile:
         ch_id = name.replace(" ", "_")
         
         # Generate URLs
-        stream = f"https://redirector.shadi-kabajah.workers.dev/{ch_id}"
+        stream = f"https://saturn.shadi-kabajah.workers.dev/{ch_id}"
         logo = f"https://skabajah.github.io/saturn/logo/{ch_id}.jpg"
         
         display_name = f"{ch_num}) {name}"
