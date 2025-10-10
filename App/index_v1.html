@@ -6,16 +6,6 @@
     body { background:#000; color:#fff; font-family:sans-serif; margin:0; }
     #videoContainer { position: relative; width: 100%; max-width: 1280px; margin: auto; }
     #videoPlayer { width: 100%; }
-
-    /* Overlays with transition */
-    #logo, #channelName, #groupName, #backChevron, #nextChevron {
-      transition: opacity 0.5s ease;
-      opacity: 1; /* visible initially */
-    }
-
-    .hidden { opacity: 0; }
-
-    /* Overlay positions */
     #logo { position: absolute; top:10px; left:10px; width:100px; height:auto; }
     #channelName { position: absolute; top:10px; left:50%; transform:translateX(-50%);
                    color:white; font-size:24px; background:rgba(0,0,0,0.5); padding:5px 10px; border-radius:5px; }
@@ -27,8 +17,6 @@
     }
     #backChevron { left:10px; }
     #nextChevron { right:10px; }
-
-    #channelList { display:none; }
   </style>
 </head>
 <body>
@@ -41,12 +29,11 @@
     <div id="nextChevron">&#9654;</div>
   </div>
 
-  <select id="channelList"></select>
+  <select id="channelList" style="display:none;"></select>
 
   <script>
     let currentIndex = 0;
     let channels = [];
-    let overlayTimeout;
 
     async function loadM3U() {
       const response = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
@@ -56,6 +43,7 @@
 
       for (let i = 0; i < lines.length; i++) {
         if (lines[i].startsWith('#EXTINF')) {
+          // Extract logo, group, name
           const logoMatch = lines[i].match(/tvg-logo="([^"]+)"/);
           const groupMatch = lines[i].match(/group-title="([^"]+)"/);
           const nameMatch = lines[i].split(',')[1];
@@ -71,7 +59,7 @@
           channels.push(channel);
 
           const option = document.createElement('option');
-          option.value = channels.length - 1;
+          option.value = channels.length - 1; // store index
           option.textContent = channel.name;
           select.appendChild(option);
         }
@@ -96,21 +84,6 @@
       document.getElementById('groupName').textContent = channel.group;
     }
 
-    function showOverlays() {
-      const elements = ['logo','channelName','groupName','backChevron','nextChevron'];
-
-      // Make overlays visible
-      elements.forEach(id => document.getElementById(id).classList.remove('hidden'));
-
-      // Reset previous timeout
-      if (overlayTimeout) clearTimeout(overlayTimeout);
-
-      // Fade out after 3 seconds
-      overlayTimeout = setTimeout(() => {
-        elements.forEach(id => document.getElementById(id).classList.add('hidden'));
-      }, 3000);
-    }
-
     function playChannelAt(index) {
       if (channels.length === 0) return;
 
@@ -120,14 +93,10 @@
       currentIndex = index;
       const channel = channels[index];
 
-      const player = document.getElementById('videoPlayer');
-      player.src = channel.url;
-      player.play();
-      player.focus(); // ensure WebView key events register
-
+      document.getElementById('videoPlayer').src = channel.url;
+      document.getElementById('videoPlayer').play();
       document.getElementById('channelList').selectedIndex = index;
       updateOverlay(channel);
-      showOverlays();
     }
 
     loadM3U();
