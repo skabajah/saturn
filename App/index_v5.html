@@ -2,12 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
-<!-- Versioning and authorship -->
-  <meta name="version" content="v7">
-  <meta name="author" content="Shadi Kabajah">
-  <meta name="date" content="2025-10-11">
-
   <title>Saturn TV</title>
   <style>
     body {
@@ -30,7 +24,6 @@
       top: 20px;
       left: 20px;
       display: flex;
-      flex-direction: row; /* logo on left, texts on right */
       align-items: center;
       gap: 10px;
       background: rgba(0,0,0,0.6);
@@ -48,22 +41,6 @@
       width: 60px;
       height: 60px;
       object-fit: contain;
-    }
-
-    #overlay .text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    #overlay .group {
-      font-size: 0.8em;
-      color: #ccc;
-      font-weight: bold;
-    }
-
-    #overlay .name {
-      font-size: 1em;
     }
 
     #sidebar {
@@ -113,15 +90,10 @@
 </head>
 <body>
   <video id="videoPlayer" autoplay playsinline></video>
-
   <div id="overlay">
     <img id="channelLogo" src="" alt="logo">
-    <div class="text">
-      <div class="group" id="channelGroup"></div>
-      <div class="name" id="channelName"></div>
-    </div>
+    <div id="channelName"></div>
   </div>
-
   <div id="sidebar"></div>
 
   <script>
@@ -132,9 +104,6 @@
     const player = document.getElementById('videoPlayer');
     const overlay = document.getElementById('overlay');
     const sidebar = document.getElementById('sidebar');
-    const channelLogo = document.getElementById('channelLogo');
-    const channelName = document.getElementById('channelName');
-    const channelGroup = document.getElementById('channelGroup');
 
     async function loadM3U() {
       const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
@@ -161,6 +130,7 @@
       sidebar.innerHTML = '';
       let lastGroup = '';
       channels.forEach((ch, i) => {
+        // Add group header if it changed
         if (ch.group !== lastGroup && ch.group) {
           const groupDiv = document.createElement('div');
           groupDiv.textContent = ch.group;
@@ -172,13 +142,17 @@
         const div = document.createElement('div');
         div.className = 'channel';
 
+        // Extract channel number from name
         let chNum = '';
         const match = ch.name.match(/^(\d+)\)\s*/);
         if (match) chNum = match[1] + ')';
         const displayName = ch.name.replace(/^(\d+\)\s*)/, '');
 
         div.innerHTML = `<span class="ch-num">${chNum}</span> <span>${displayName}</span>`;
-        div.onclick = () => hideSidebar();
+        div.onclick = () => {
+          playChannel(i, false);
+          hideSidebar();
+        };
         sidebar.appendChild(div);
       });
     }
@@ -188,31 +162,17 @@
       const ch = channels[index];
       player.src = ch.url;
       player.play();
-      if (showOverlay) showOverlayBar(ch);
+      if (showOverlay) showOverlayBar(ch.name, ch.logo);
       highlightChannel();
     }
- 
-    function showOverlayBar(ch) {
-      channelLogo.src = ch.logo;
 
-      // Extract channel number and display name
-      const match = ch.name.match(/^(\d+\))\s*(.*)/);
-      let chNum = '', chDisplay = '';
-      if (match) {
-        chNum = match[1];       // e.g., "141)"
-        chDisplay = match[2];   // e.g., "Al Jazeera"
-      } else {
-        chDisplay = ch.name;
-      }
-
-      channelGroup.textContent = ch.group;              // e.g., "NEWS"
-      channelName.textContent = chNum + ' ' + chDisplay; // e.g., "141) Al Jazeera"
-
+    function showOverlayBar(name, logo) {
+      document.getElementById('channelName').textContent = name;
+      document.getElementById('channelLogo').src = logo;
       overlay.classList.add('visible');
       clearTimeout(overlayTimer);
       overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
     }
-
 
     function togglePlay() {
       if (player.paused) player.play();
@@ -239,36 +199,51 @@
     document.addEventListener('keydown', (e) => {
       const sidebarVisible = sidebar.classList.contains('visible');
 
-      switch (e.key) {
-        case 'ArrowUp':
-          currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-          playChannel(currentIndex);
-          break;
-        case 'ArrowDown':
-          currentIndex = (currentIndex + 1) % channels.length;
-          playChannel(currentIndex);
-          break;
-        case 'ArrowRight':
-        case 'ArrowLeft':
-          if (sidebarVisible) hideSidebar();
-          else showSidebar();
-          break;
-        case ' ':
-        case 'Enter':
-          togglePlay();
-          break;
-        case 'Escape': // Fire TV Back
-        case 'Backspace':
-          if (sidebarVisible) hideSidebar();
-          break;
+      if (sidebarVisible) {
+        switch (e.key) {
+          case 'ArrowUp':
+            currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+            playChannel(currentIndex, false);
+            showSidebar();
+            break;
+          case 'ArrowDown':
+            currentIndex = (currentIndex + 1) % channels.length;
+            playChannel(currentIndex, false);
+            showSidebar();
+            break;
+          case 'ArrowLeft':
+          case 'Escape': // Fire TV Back
+          case 'Backspace':
+            hideSidebar();
+            e.preventDefault();
+            break;
+          case 'Enter':
+            hideSidebar();
+            break;
+        }
+      } else {
+        switch (e.key) {
+          case ' ':
+          case 'Enter':
+            togglePlay();
+            break;
+          case 'ArrowLeft':
+            currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+            playChannel(currentIndex);
+            break;
+          case 'ArrowRight':
+            currentIndex = (currentIndex + 1) % channels.length;
+            playChannel(currentIndex);
+            break;
+          case 'ArrowUp':
+          case 'ArrowDown':
+            showSidebar();
+            break;
+        }
       }
     });
 
-    player.addEventListener('click', () => {
-      if (sidebar.classList.contains('visible')) hideSidebar();
-      else togglePlay();
-    });
-
+    player.addEventListener('click', togglePlay);
     loadM3U();
   </script>
 </body>

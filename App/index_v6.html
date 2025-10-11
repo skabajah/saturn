@@ -2,12 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
-<!-- Versioning and authorship -->
-  <meta name="version" content="v7">
-  <meta name="author" content="Shadi Kabajah">
-  <meta name="date" content="2025-10-11">
-
   <title>Saturn TV</title>
   <style>
     body {
@@ -30,9 +24,9 @@
       top: 20px;
       left: 20px;
       display: flex;
-      flex-direction: row; /* logo on left, texts on right */
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
       background: rgba(0,0,0,0.6);
       padding: 8px 14px;
       border-radius: 6px;
@@ -48,12 +42,6 @@
       width: 60px;
       height: 60px;
       object-fit: contain;
-    }
-
-    #overlay .text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     #overlay .group {
@@ -116,10 +104,8 @@
 
   <div id="overlay">
     <img id="channelLogo" src="" alt="logo">
-    <div class="text">
-      <div class="group" id="channelGroup"></div>
-      <div class="name" id="channelName"></div>
-    </div>
+    <div class="group" id="channelGroup"></div>
+    <div class="name" id="channelName"></div>
   </div>
 
   <div id="sidebar"></div>
@@ -172,6 +158,7 @@
         const div = document.createElement('div');
         div.className = 'channel';
 
+        // Extract channel number
         let chNum = '';
         const match = ch.name.match(/^(\d+)\)\s*/);
         if (match) chNum = match[1] + ')';
@@ -191,28 +178,15 @@
       if (showOverlay) showOverlayBar(ch);
       highlightChannel();
     }
- 
+
     function showOverlayBar(ch) {
       channelLogo.src = ch.logo;
-
-      // Extract channel number and display name
-      const match = ch.name.match(/^(\d+\))\s*(.*)/);
-      let chNum = '', chDisplay = '';
-      if (match) {
-        chNum = match[1];       // e.g., "141)"
-        chDisplay = match[2];   // e.g., "Al Jazeera"
-      } else {
-        chDisplay = ch.name;
-      }
-
-      channelGroup.textContent = ch.group;              // e.g., "NEWS"
-      channelName.textContent = chNum + ' ' + chDisplay; // e.g., "141) Al Jazeera"
-
+      channelName.textContent = ch.name.replace(/^(\d+\)\s*)/, '');
+      channelGroup.textContent = ch.group;
       overlay.classList.add('visible');
       clearTimeout(overlayTimer);
       overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
     }
-
 
     function togglePlay() {
       if (player.paused) player.play();
@@ -249,9 +223,14 @@
           playChannel(currentIndex);
           break;
         case 'ArrowRight':
+          showSidebar();
+          break;
         case 'ArrowLeft':
           if (sidebarVisible) hideSidebar();
-          else showSidebar();
+          else {
+            currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+            playChannel(currentIndex);
+          }
           break;
         case ' ':
         case 'Enter':
