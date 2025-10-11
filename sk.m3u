@@ -73,3 +73,19 @@ https://saturn.shadi-kabajah.workers.dev/MTV_One
 https://saturn.shadi-kabajah.workers.dev/M+
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",762) Panorama FM
 https://saturn.shadi-kabajah.workers.dev/Panorama_FM
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
+https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
+https://saturn.shadi-kabajah.workers.dev/Cooks_Country
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/WUSA9.jpg" group-title="ENG",921) WUSA9
+https://saturn.shadi-kabajah.workers.dev/WUSA9
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBSN.jpg" group-title="ENG",931) CBSN
+https://saturn.shadi-kabajah.workers.dev/CBSN
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",932) Bloomberg
+https://saturn.shadi-kabajah.workers.dev/Bloomberg
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNN.jpg" group-title="ENG",933) CNN
+https://saturn.shadi-kabajah.workers.dev/CNN
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC_Now.jpg" group-title="ENG",934) NBC Now
+https://saturn.shadi-kabajah.workers.dev/NBC_Now
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Jazeera_EN.jpg" group-title="ENG",941) Al Jazeera EN
+https://saturn.shadi-kabajah.workers.dev/Al_Jazeera_EN
