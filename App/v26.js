@@ -139,7 +139,7 @@ document.addEventListener('keydown', function(e) {
       break;
     case 'Escape':
     case 'Backspace':
-      stopAllChannels();
+      // stopAllChannels();
       setSidebarVisibility(false);
       break;
     case 'f':
