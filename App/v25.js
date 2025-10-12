@@ -134,14 +134,20 @@ function highlightChannelByDelta(delta) {
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', function(e) {
   // prevent default browser movement for handled keys
-  const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F'];
+  const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F',
+    33, // Channel Up
+    34, // Channel Down
+    179 // Play/Pause
+    ];
   if (keysHandled.includes(e.key) === true) e.preventDefault();
 
   switch(e.key) {
     case 'ArrowUp':
+    case 33: // Channel Up
       changeChannel(-1);
       break;
     case 'ArrowDown':
+    case 34: // Channel Down
       changeChannel(1);
       break;
     case 'ArrowLeft':
@@ -152,6 +158,7 @@ document.addEventListener('keydown', function(e) {
       break;
     case 'Enter':
     case ' ':
+    case 179: // Play/Pause
       if (isSidebarVisible === true) playCurrentChannel();
       else setPlayState(!isPlaying);
       break;
