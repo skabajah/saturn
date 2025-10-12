@@ -31,21 +31,37 @@ function isDesktop() {
 
 // --- Core functions ---
 function changeChannel(delta) {
-  if (isSidebarVisible) {
-    highlightChannelByDelta(delta); // only highlight when sidebar visible
+  if (isSidebarVisible === true) {
+    // Sidebar is open → just highlight channels, don't autoplay
+    highlightChannelByDelta(delta);
   } else {
-    currentIndex = (currentIndex + delta + channels.length) % channels.length;
-    playCurrentChannel();
+    // Sidebar hidden → switch channel immediately
+    const nextIndex = (currentIndex + delta + channels.length) % channels.length;
+
+    // Preload next video in a hidden video element
+    const nextCh = channels[nextIndex];
+    const preloader = document.createElement('video');
+    preloader.src = nextCh.url;
+    preloader.preload = 'auto';
+    preloader.muted = true; // avoid accidental audio
+    preloader.play().catch(() => {}); // force browser to preload
+
+    // Switch current index and play
+    currentIndex = nextIndex;
+    playCurrentChannel(true); // pass "skipOverlay" flag
   }
 }
 
-function playCurrentChannel() {
+function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
-  if (!ch) return;
   player.src = ch.url;
-  player.play();
+  player.play().catch(() => {}); // ensure playback starts immediately
+
+  // Highlight sidebar if visible
   highlightChannel();
-  showChannelOverlay(ch);
+
+  // Only show overlay if not skipping
+  if (!skipOverlay) showChannelOverlay(ch);
 }
 
 function setSidebarVisibility(visible) {
