@@ -2,9 +2,8 @@
 // Project Saturn
 // skabajah
 // 2025-10-12
-// v26.js
+// v27.js
 // -------------------------
-
 
 // --- State variables ---
 let channels = [];
@@ -19,6 +18,7 @@ const channelLogo = document.getElementById('channelLogo');
 const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
+const spinner = document.getElementById('spinner'); // ensure you add this div in HTML
 
 // --- Platform check ---
 function isDesktop() {
@@ -31,36 +31,27 @@ function isDesktop() {
 
 // --- Core functions ---
 function changeChannel(delta) {
-  if (isSidebarVisible === true) {
-    // Sidebar is open → just highlight channels, don't autoplay
+  if (isSidebarVisible) {
     highlightChannelByDelta(delta);
   } else {
-    // Sidebar hidden → switch channel immediately
     currentIndex = (currentIndex + delta + channels.length) % channels.length;
-    playCurrentChannel(true); // skip overlay if desired
+    playCurrentChannel(true); // skip overlay
+    showChannelOverlay(channels[currentIndex]);
   }
 }
 
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
+  if (!ch) return;
 
-  // Show spinner while loading
-  const spinner = document.getElementById('spinner');
   spinner.style.display = 'block';
-
   player.src = ch.url;
-  player.play().then(() => {
-    spinner.style.display = 'none'; // hide spinner once playback starts
-  }).catch(() => {
-    spinner.style.display = 'block'; // keep spinner if still loading
-  });
 
-  player.addEventListener('canplay', () => spinner.style.display = 'none');
+  // Play and hide spinner when ready
+  player.play().catch(() => {});
+  player.oncanplay = () => spinner.style.display = 'none';
 
-  // Highlight sidebar if visible
   highlightChannel();
-
-  // Only show overlay if not skipping
   if (!skipOverlay) showChannelOverlay(ch);
 }
 
@@ -124,44 +115,28 @@ function highlightChannelByDelta(delta) {
 }
 
 function stopAllChannels() {
-  const videos = document.querySelectorAll('video, audio');
-  videos.forEach(v => {
-    v.pause();
-    v.currentTime = 0;
-  });
+  player.pause();
+  player.currentTime = 0;
 }
 
 // --- Keyboard / Remote ---
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', e => {
   const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F'];
   if (keysHandled.includes(e.key) || keysHandled.includes(e.keyCode)) e.preventDefault();
 
   switch(e.key) {
-    // Arrow navigation
-    case 'ArrowUp':
-      changeChannel(-1);
-      break;
-    case 'ArrowDown':
-      changeChannel(1);
-      break;
+    case 'ArrowUp': changeChannel(-1); break;
+    case 'ArrowDown': changeChannel(1); break;
     case 'ArrowLeft':
-    case 'ArrowRight':
-      setSidebarVisibility(!isSidebarVisible); // toggle
-      break;
-    // Select highlighted channel only when sidebar visible
+    case 'ArrowRight': setSidebarVisibility(!isSidebarVisible); break;
     case 'Enter':
     case ' ':
       if (isSidebarVisible) playCurrentChannel();
       break;
     case 'Escape':
-    case 'Backspace':
-      // stopAllChannels();
-      setSidebarVisibility(false);
-      break;
+    case 'Backspace': setSidebarVisibility(false); break;
     case 'f':
-    case 'F':
-      if (isDesktop()) toggleFullscreen();
-      break;
+    case 'F': if (isDesktop()) toggleFullscreen(); break;
   }
 });
 
@@ -178,10 +153,8 @@ document.addEventListener('click', e => {
   }
 });
 
-// --- Swipe / Touch (phone) ---
-let touchStartX = 0;
-let touchStartY = 0;
-
+// --- Swipe / Touch ---
+let touchStartX = 0, touchStartY = 0;
 document.addEventListener('touchstart', e => {
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
@@ -192,13 +165,11 @@ document.addEventListener('touchend', e => {
   const dy = e.changedTouches[0].clientY - touchStartY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    // horizontal swipe
-    if (dx > 50) setSidebarVisibility(true);   // swipe right → show
-    else if (dx < -50) setSidebarVisibility(false); // swipe left → hide
+    if (dx > 50) setSidebarVisibility(true);
+    else if (dx < -50) setSidebarVisibility(false);
   } else {
-    // vertical swipe
-    if (dy < -50) changeChannel(1);   // swipe up → next
-    else if (dy > 50) changeChannel(-1); // swipe down → previous
+    if (dy < -50) changeChannel(1);
+    else if (dy > 50) changeChannel(-1);
   }
 }, { passive: false });
 

@@ -5,194 +5,164 @@
 
     <!-- VERSION CONTROL -->
     <script>
-        // Define the version, which controls the redirect target and the display text
-        const APP_VERSION = 'v26';
-        const APP_VERSION_2 = '19'
-        const NEXT_PAGE_FILE = APP_VERSION + '.html'; // Dynamically creates 'v26.html'
-        // Define other components of the version footer text
+        const APP_VERSION = 'v27';
+        const APP_VERSION_2 = '251012.1940';
+        const NEXT_PAGE_FILE = APP_VERSION + '.html';
         const AUTHOR_NAME = 'Shadi Kabajah';
         const DATE_STAMP = 'Oct 12 2025';
     </script>
-    <!-- -------------------------------- -->
 
-    <!-- ID added here: JavaScript will now target this element and update its 'content' attribute. -->
-    <meta name="version" content="v26" id="app-version-meta">
+    <meta name="version" content="v27" id="app-version-meta">
     <meta name="author" content="Shadi Kabajah">
     <meta name="date" content="2025-10-12">
 
     <title>Project Saturn</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fustat:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
-<style>
-    /* *** ORIGINAL CSS IS PRESERVED BELOW ***
-    */
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        color: #fff;
-        text-align: center;
-        background: url('1920x1080.png') no-repeat center center fixed;
-        background-size: contain;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: black;
-    }
-
-    .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 90%;
-        max-width: 1200px;
-        background-color: rgba(0,0,0,0.5);
-        padding: 40px 20px;
-        border-radius: 20px;
-    }
-
-    .column {
-        flex: 1;
-        padding: 20px;
-    }
-
-    /* English styling */
-    .english {
-        text-align: left;
-        direction: ltr;
-        font-family: 'Audiowide', monospace;
-    }
-    .english h1 {
-        font-weight: 800;
-        font-size: 2em;
-        margin: 0 0 10px 0;
-    }
-    .english p {
-        font-family: 'Space Grotesk', monospace;
-        font-weight: 200;
-        font-size: 1.1em;
-        margin: 0 0 10px 0;
-    }
-
-    /* Arabic styling */
-    .arabic {
-        text-align: right;
-        direction: rtl;
-        font-family: 'Fustat', serif;
-    }
-    .arabic h1 {
-        font-weight: 800;
-        font-size: 3em;
-        margin: 0 0 10px 0;
-    }
-    .arabic p {
-        font-weight: 200;
-        font-size: 1.5em;
-        margin: 0 0 10px 0;
-    }
-
-    /* Click / tap instruction row */
-    .instruction-row {
-        margin-top: 30px;
-        text-align: center;
-        background: rgba(0,0,0,0.5);
-        padding: 20px;
-    }
-    .instruction-row .arabic-instruction {
-        font-family: 'Fustat', serif;
-        font-weight: 200;
-        font-size: 1.3em;
-        margin: 0 0 5px 0;
-    }
-    .instruction-row .english-instruction {
-        font-family: 'Space Grotesk', monospace;
-        font-weight: 200;
-        font-size: 0.9em;
-        margin: 0;
-    }
-    .version {
-        position: fixed;
-        bottom: 1em;
-        color: gray;
-        font-family: monospace;
-        font-size: .5em;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-        .container {
-            flex-direction: column;
-            background-color: rgba(0,0,0,0.6);
-        }
-        .english, .arabic {
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            color: #fff;
             text-align: center;
+            background: url('1920x1080.png') no-repeat center center fixed;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
         }
-    }
-</style>
 
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 1200px;
+            background-color: rgba(0,0,0,0.5);
+            padding: 40px 20px;
+            border-radius: 20px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .english {
+            text-align: left;
+            direction: ltr;
+            font-family: 'Audiowide', monospace;
+        }
+        .english h1 { font-weight: 800; font-size: 2em; margin: 0 0 10px 0; }
+        .english p { font-family: 'Space Grotesk', monospace; font-weight: 200; font-size: 1.1em; margin: 0 0 10px 0; }
+
+        .arabic {
+            text-align: right;
+            direction: rtl;
+            font-family: 'Fustat', serif;
+        }
+        .arabic h1 { font-weight: 800; font-size: 3em; margin: 0 0 10px 0; }
+        .arabic p { font-weight: 200; font-size: 1.5em; margin: 0 0 10px 0; }
+
+        .instruction-row {
+            margin-top: 30px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+        }
+        .instruction-row .arabic-instruction { font-family: 'Fustat', serif; font-weight: 200; font-size: 1.3em; margin: 0 0 5px 0; }
+        .instruction-row .english-instruction { font-family: 'Space Grotesk', monospace; font-weight: 200; font-size: 0.9em; margin: 0; }
+
+        .version {
+            position: fixed;
+            bottom: 1em;
+            color: gray;
+            font-family: monospace;
+            font-size: .5em;
+        }
+
+        @media (max-width: 900px) {
+            body { font-size: 80%; }
+        }
+
+        /* Rotate warning overlay */
+        #rotate-warning {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            font-family: monospace;
+            font-size: 1.5em;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            display: flex;
+        }
+
+        #rotate-warning img {
+            width: 20vw;
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: invert(1); /* makes black icon white */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- English Column -->
         <div class="column english">
             <h1>Project Saturn</h1>
             <p>Free Arabic channels that are publicly accessible.</p>
         </div>
 
-        <!-- Placeholder for future icon -->
         <div class="column icon">
-            <!-- <img src="" alt="Saturn Icon" style="width:200px;height:200px;border-radius:50%;"> -->
+            <!-- Placeholder for future icon -->
         </div>
 
-        <!-- Arabic Column -->
         <div class="column arabic">
             <h1>مشروع زحل</h1>
             <p>قنوات عربية مجانية يمكن الوصول إليها علنًا.</p>
         </div>
     </div>
 
-    <!-- Instruction row below the columns -->
     <div class="instruction-row">
         <p class="arabic-instruction">اضغط أي مفتاح للبدء بالمشاهدة</p>
         <p class="english-instruction">Press any key to start watching</p>
     </div>
 
-    <!-- The content is now empty. JavaScript will inject the text based on the variables. -->
-    <p class="version" id="version-display">
-    </p>
+    <p class="version" id="version-display"></p>
+
+    <!-- Rotate warning overlay -->
+    <div id="rotate-warning">
+        <img src="rotate.png" alt="Rotate your device">
+        <p>Please rotate your device to landscape</p>
+    </div>
 
     <script>
-        // Use the constants defined in the <head> section (APP_VERSION, NEXT_PAGE_FILE, etc.)
-        
-        // 0. Update the meta tag in the head section
+        // Update meta and version display
         const metaElement = document.getElementById('app-version-meta');
-        if (metaElement) {
-            metaElement.content = APP_VERSION;
-        }
+        if (metaElement) metaElement.content = APP_VERSION;
 
-        // 1. Update the visible version text on the page
         const versionElement = document.getElementById('version-display');
-        if (versionElement) {
-            versionElement.textContent = `${AUTHOR_NAME} - ${APP_VERSION}.${APP_VERSION_2} - ${DATE_STAMP}`;
-        }
+        if (versionElement) versionElement.textContent = `${AUTHOR_NAME} - ${APP_VERSION}.${APP_VERSION_2} - ${DATE_STAMP}`;
 
-        // 2. Set up the dynamic redirect URL
-        // The URL now uses the variable defined at the top (e.g., 'v26.html')
+        // Dynamic redirect
         const targetUrl = NEXT_PAGE_FILE;
         function redirectToTarget() { window.location.href = targetUrl; }
 
-        // --- Redirect to TV app on any activity ---
-        
-        // Any key press
+        // Key, click, swipe detection
         document.addEventListener('keydown', redirectToTarget);
-
-        // Any click/tap
         document.body.addEventListener('click', redirectToTarget);
 
-        // Swipe detection
         let touchStartX = 0, touchStartY = 0;
         document.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
@@ -203,6 +173,22 @@
             let diffY = e.changedTouches[0].clientY - touchStartY;
             if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
         }, {passive: true});
+
+        // Portrait / landscape detection
+        function checkOrientation() {
+            const warning = document.getElementById('rotate-warning');
+            if (window.innerHeight > window.innerWidth) {
+                // Portrait → show overlay
+                warning.style.display = 'flex';
+            } else {
+                // Landscape → hide overlay
+                warning.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('load', checkOrientation);
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('orientationchange', checkOrientation);
     </script>
 </body>
 </html>
