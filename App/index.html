@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 
   <!-- Versioning and authorship -->
-  <meta name="version" content="v11">
+  <meta name="version" content="v20">
   <meta name="author" content="Shadi Kabajah">
   <meta name="date" content="2025-10-11">
 
@@ -21,23 +21,25 @@
     video {
       width: 100vw;
       height: 100vh;
-      object-fit: cover; /* fills screen without distortion */
+      object-fit: cover;
       background: #000;
     }
 
     #overlay {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 4em;
+      right: 4em;
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 10px;
       background: rgba(0,0,0,0.6);
-      padding: 8px 14px;
-      border-radius: 6px;
+      padding: 1em;
+      border-radius: 10px;
       transition: opacity 0.5s ease;
       opacity: 0;
+      z-index: 100;
+      font-size: 1.5em;
     }
 
     #overlay.visible {
@@ -45,9 +47,11 @@
     }
 
     #overlay img {
-      width: 60px;
-      height: 60px;
+      width: 3em;
+      height: 3em;
       object-fit: contain;
+      border: solid #808080 1px;
+      border-radius: 15px;
     }
 
     #overlay .text {
@@ -70,13 +74,14 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 16em;
+      width: fit-content;
       height: 100%;
       background: rgba(0,0,0,0.8);
       overflow-y: auto;
       transform: translateX(-100%);
       transition: transform 0.4s ease;
-      padding: 10px;
+      padding: 2em;
+      z-index: 50;
     }
 
     #sidebar.visible {
@@ -84,24 +89,27 @@
     }
 
     .channel {
-      padding: 6px 8px;
+      padding: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
+      font-size: 1.5em;
+      font-weight: bold;
     }
 
     .channel img {
-      width: 40px;
-      height: 40px;
+      width: 2em;
+      height: 2em;
       object-fit: contain;
       flex-shrink: 0;
+      border-radius: 10px;
     }
 
     .channel .ch-num {
       font-weight: bold;
-      width: 40px;
       flex-shrink: 0;
+      padding: 0 0.5em; 
     }
 
     .channel.active {
@@ -112,14 +120,47 @@
     .group-header {
       font-weight: bold;
       font-size: 0.9em;
-      padding: 16px 8px 2px 8px;
+      padding: 1em;
       background: #464646;
-      border-radius: 4px;
       margin-top: 8px;
+      border-bottom: solid 4px gray;
     }
 
     #sidebar::-webkit-scrollbar {
       display: none;
+    }
+
+    /* Pause overlay */
+    #pauseOverlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #pauseOverlay.visible {
+      opacity: 1;
+    }
+
+    #pauseOverlay::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 24px solid #fff;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      transform: translateX(3px);
     }
   </style>
 </head>
@@ -135,20 +176,20 @@
   </div>
 
   <div id="sidebar"></div>
+  <div id="pauseOverlay"></div>
 
   <script>
     let channels = [];
     let currentIndex = 0;
     let overlayTimer;
-    let sidebarTimer;
     const player = document.getElementById('videoPlayer');
     const overlay = document.getElementById('overlay');
     const sidebar = document.getElementById('sidebar');
     const channelLogo = document.getElementById('channelLogo');
     const channelName = document.getElementById('channelName');
     const channelGroup = document.getElementById('channelGroup');
+    const pauseOverlay = document.getElementById('pauseOverlay');
 
-    // Detect desktop vs TV
     function isDesktop() {
       const ua = navigator.userAgent.toLowerCase();
       if (ua.includes('android') && ua.includes('firetv')) return false;
@@ -157,7 +198,6 @@
       return true;
     }
 
-    // Fullscreen only on desktop
     function toggleFullscreen() {
       if (!isDesktop()) return;
       if (!document.fullscreenElement) {
@@ -169,13 +209,6 @@
         else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         else if (document.msExitFullscreen) document.msExitFullscreen();
       }
-    }
-
-    // Select / play channel
-    function selectChannel() {
-      if (!channels[currentIndex]) return;
-      playChannel(currentIndex);
-      hideSidebar();
     }
 
     async function loadM3U() {
@@ -190,9 +223,7 @@
           const logo = logoMatch ? logoMatch[1] : '';
           const group = groupMatch ? groupMatch[1] : '';
           const url = lines[i + 1]?.trim();
-          if (url && url.startsWith('http')) {
-            channels.push({ name, logo, url, group });
-          }
+          if (url && url.startsWith('http')) channels.push({ name, logo, url, group });
         }
       }
       buildSidebar();
@@ -228,30 +259,30 @@
           <span>${displayName}</span>
         `;
 
-        div.onclick = selectChannel;
+        div.onclick = () => playChannel(i);
         sidebar.appendChild(div);
       });
     }
 
-    function playChannel(index, showOverlay = true) {
+    function playChannel(index) {
       currentIndex = index;
       const ch = channels[index];
       player.src = ch.url;
       player.play();
-      if (showOverlay) showOverlayBar(ch);
+      showChannelOverlay(ch);
       highlightChannel();
+      hidePauseOverlay();
     }
 
-    function showOverlayBar(ch) {
+    function showChannelOverlay(ch) {
       channelLogo.src = ch.logo;
       const match = ch.name.match(/^(\d+\))\s*(.*)/);
       let chNum = '', chDisplay = '';
       if (match) {
         chNum = match[1];
         chDisplay = match[2];
-      } else {
-        chDisplay = ch.name;
-      }
+      } else chDisplay = ch.name;
+
       channelGroup.textContent = ch.group;
       channelName.textContent = (chNum ? chNum + ' ' : '') + chDisplay;
 
@@ -261,14 +292,19 @@
     }
 
     function togglePlay() {
-      if (player.paused) player.play();
-      else player.pause();
+      if (player.paused) {
+        player.play();
+        hidePauseOverlay();
+        showChannelOverlay(channels[currentIndex]);
+      } else {
+        player.pause();
+        showPauseOverlay();
+        showChannelOverlay(channels[currentIndex]);
+      }
     }
 
     function showSidebar() {
       sidebar.classList.add('visible');
-      clearTimeout(sidebarTimer);
-      sidebarTimer = setTimeout(() => hideSidebar(), 6000);
     }
 
     function hideSidebar() {
@@ -282,33 +318,35 @@
       if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 
-    // Keyboard input
+    function showPauseOverlay() { pauseOverlay.classList.add('visible'); }
+    function hidePauseOverlay() { pauseOverlay.classList.remove('visible'); }
+
+    // Keyboard / remote
     document.addEventListener('keydown', (e) => {
       const sidebarVisible = sidebar.classList.contains('visible');
-
-      switch (e.key) {
+      switch(e.key){
         case 'ArrowUp':
           currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-          playChannel(currentIndex, false);
-          showSidebar();
+          if(sidebarVisible) highlightChannel();
+          else playChannel(currentIndex);
           break;
         case 'ArrowDown':
           currentIndex = (currentIndex + 1) % channels.length;
-          playChannel(currentIndex, false);
-          showSidebar();
+          if(sidebarVisible) highlightChannel();
+          else playChannel(currentIndex);
           break;
-        case 'ArrowRight':
         case 'ArrowLeft':
-          if (sidebarVisible) hideSidebar();
-          else showSidebar();
+        case 'ArrowRight':
+          sidebarVisible ? hideSidebar() : showSidebar();
           break;
         case 'Enter':
         case ' ':
-          selectChannel();
+          if(sidebarVisible) playChannel(currentIndex);
+          else togglePlay();
           break;
         case 'Escape':
         case 'Backspace':
-          if (sidebarVisible) hideSidebar();
+          if(sidebarVisible) hideSidebar();
           break;
         case 'f':
         case 'F':
@@ -318,17 +356,17 @@
     });
 
     // Mouse / tap
-    player.addEventListener('click', selectChannel);
-    player.addEventListener('dblclick', toggleFullscreen);
-
-    // Touch swipe for sidebar
-    let touchStartX = 0;
-    document.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
+    player.addEventListener('click', () => {
+      if(sidebar.classList.contains('visible')) playChannel(currentIndex);
+      else togglePlay();
     });
-    document.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      if (touchEndX - touchStartX > 50) showSidebar();
+
+    // Swipe for sidebar
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e)=>{ touchStartX=e.touches[0].clientX; });
+    document.addEventListener('touchend', (e)=>{
+      const touchEndX=e.changedTouches[0].clientX;
+      if(touchEndX-touchStartX>50) sidebar.classList.contains('visible') ? hideSidebar() : showSidebar();
     });
 
     loadM3U();
