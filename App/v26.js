@@ -32,25 +32,33 @@ function isDesktop() {
 // --- Core functions ---
 function changeChannel(delta) {
   if (isSidebarVisible === true) {
-    // Sidebar is open → just highlight channels, don't autoplay
     highlightChannelByDelta(delta);
   } else {
-    // Sidebar hidden → switch channel immediately
     const nextIndex = (currentIndex + delta + channels.length) % channels.length;
 
-    // Preload next video in a hidden video element
+    // Preload the next channel
     const nextCh = channels[nextIndex];
-    const preloader = document.createElement('video');
-    preloader.src = nextCh.url;
-    preloader.preload = 'auto';
-    preloader.muted = true; // avoid accidental audio
-    preloader.play().catch(() => {}); // force browser to preload
+    const nextPreloader = document.createElement('video');
+    nextPreloader.src = nextCh.url;
+    nextPreloader.preload = 'auto';
+    nextPreloader.muted = true;
+    nextPreloader.play().catch(() => {});
 
-    // Switch current index and play
+    // Preload the previous channel
+    const prevIndex = (currentIndex - 1 + channels.length) % channels.length;
+    const prevCh = channels[prevIndex];
+    const prevPreloader = document.createElement('video');
+    prevPreloader.src = prevCh.url;
+    prevPreloader.preload = 'auto';
+    prevPreloader.muted = true;
+    prevPreloader.play().catch(() => {});
+
+    // Switch to the selected channel
     currentIndex = nextIndex;
-    playCurrentChannel(true); // pass "skipOverlay" flag
+    playCurrentChannel(true); // skip overlay
   }
 }
+
 
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
