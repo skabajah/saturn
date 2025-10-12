@@ -12,4 +12,4 @@ We value your privacy and want to be clear about how we handle your information:
 
 By using SaturnTV, you acknowledge that your privacy is respected and no personal data is used.  
 
-For any questions, please contact us at: [your email here]
+For any questions, please contact us at: shadi.kabajah@gmail.com
