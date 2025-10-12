@@ -1,9 +1,16 @@
+// -------------------------
+// Project Saturn
+// skabajah
+// 2025-10-12
+// v26.js
+// -------------------------
+
+
 // --- State variables ---
 let channels = [];
 let currentIndex = 0;
-let isPlaying = true;              // play/pause state
-let isSidebarVisible = false;      // sidebar visibility state
-let overlayTimer;                  // overlay timeout
+let isSidebarVisible = false;
+let overlayTimer;
 
 const player = document.getElementById('videoPlayer');
 const overlay = document.getElementById('overlay');
@@ -12,7 +19,6 @@ const channelLogo = document.getElementById('channelLogo');
 const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
-const pauseOverlay = document.getElementById('pauseOverlay');
 
 // --- Platform check ---
 function isDesktop() {
@@ -24,23 +30,9 @@ function isDesktop() {
 }
 
 // --- Core functions ---
-// Action 1: Play/Pause
-function setPlayState(playing) {
-  isPlaying = playing;
-  if (isPlaying === true) {
-    player.play();
-    hidePauseOverlay();
-  } else {
-    player.pause();
-    showPauseOverlay();
-  }
-  showChannelOverlay(channels[currentIndex]);
-}
-
-// Action 2: Change channel
 function changeChannel(delta) {
-  if (isSidebarVisible === true) {
-    highlightChannelByDelta(delta); // just highlight
+  if (isSidebarVisible) {
+    highlightChannelByDelta(delta); // only highlight when sidebar visible
   } else {
     currentIndex = (currentIndex + delta + channels.length) % channels.length;
     playCurrentChannel();
@@ -49,19 +41,16 @@ function changeChannel(delta) {
 
 function playCurrentChannel() {
   const ch = channels[currentIndex];
+  if (!ch) return;
   player.src = ch.url;
-  setPlayState(true);
+  player.play();
   highlightChannel();
+  showChannelOverlay(ch);
 }
 
-// Action 3: Show/Hide Sidebar
 function setSidebarVisibility(visible) {
   isSidebarVisible = visible;
-  if (isSidebarVisible === true) {
-    sidebar.classList.add('visible');
-  } else {
-    sidebar.classList.remove('visible');
-  }
+  sidebar.classList.toggle('visible', visible);
   highlightChannel();
 }
 
@@ -85,26 +74,14 @@ function showChannelOverlay(ch) {
 
   overlay.classList.add('visible');
   clearTimeout(overlayTimer);
-  overlayTimer = setTimeout(function() {
-    overlay.classList.remove('visible');
-  }, 4000);
-}
-
-function showPauseOverlay() {
-  pauseOverlay.classList.add('visible');
-}
-function hidePauseOverlay() {
-  pauseOverlay.classList.remove('visible');
+  overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
 }
 
 function highlightChannel() {
   const items = sidebar.querySelectorAll('.channel');
-  for (let i = 0; i < items.length; i++) {
-    if (i === currentIndex) items[i].classList.add('active');
-    else items[i].classList.remove('active');
-  }
+  items.forEach((item, i) => item.classList.toggle('active', i === currentIndex));
 
-  if (isSidebarVisible === false) return;
+  if (!isSidebarVisible) return;
 
   const active = items[currentIndex];
   if (!active) return;
@@ -119,7 +96,6 @@ function highlightChannel() {
 }
 
 function highlightChannelByDelta(delta) {
-  let items = sidebar.querySelectorAll('.channel');
   let nextIndex = currentIndex;
   let safety = 0;
   do {
@@ -131,81 +107,82 @@ function highlightChannelByDelta(delta) {
   highlightChannel();
 }
 
+function stopAllChannels() {
+  const videos = document.querySelectorAll('video, audio');
+  videos.forEach(v => {
+    v.pause();
+    v.currentTime = 0;
+  });
+}
+
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', function(e) {
-  // prevent default browser movement for handled keys
-  const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F',
-    33, // Channel Up
-    34, // Channel Down
-    179 // Play/Pause
-    ];
-  if (keysHandled.includes(e.key) === true) e.preventDefault();
+  const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F'];
+  if (keysHandled.includes(e.key) || keysHandled.includes(e.keyCode)) e.preventDefault();
 
   switch(e.key) {
+    // Arrow navigation
     case 'ArrowUp':
-    case 33: // Channel Up
       changeChannel(-1);
       break;
     case 'ArrowDown':
-    case 34: // Channel Down
       changeChannel(1);
       break;
     case 'ArrowLeft':
     case 'ArrowRight':
-      // intentionally interchangeable
-      if (isSidebarVisible === true) setSidebarVisibility(false);
-      else setSidebarVisibility(true);
+      setSidebarVisibility(!isSidebarVisible); // toggle
       break;
+    // Select highlighted channel only when sidebar visible
     case 'Enter':
     case ' ':
-    case 179: // Play/Pause
-      if (isSidebarVisible === true) playCurrentChannel();
-      else setPlayState(!isPlaying);
+      if (isSidebarVisible) playCurrentChannel();
       break;
     case 'Escape':
     case 'Backspace':
+      stopAllChannels();
       setSidebarVisibility(false);
       break;
     case 'f':
     case 'F':
-      if (isDesktop() === true) toggleFullscreen();
+      if (isDesktop()) toggleFullscreen();
       break;
   }
 });
 
-// --- Mouse / Tap ---
-player.addEventListener('click', function() {
-  if (isSidebarVisible === false) setPlayState(!isPlaying);
-  // do nothing if sidebar visible
+// --- Click / Tap ---
+document.addEventListener('click', e => {
+  const targetChannel = e.target.closest('.channel');
+  if (targetChannel) {
+    const items = Array.from(sidebar.querySelectorAll('.channel'));
+    const i = items.indexOf(targetChannel);
+    if (i >= 0) {
+      currentIndex = i;
+      playCurrentChannel();
+    }
+  }
 });
 
-// --- Swipe ---
+// --- Swipe / Touch (phone) ---
 let touchStartX = 0;
 let touchStartY = 0;
-document.addEventListener('touchstart', function(e) {
-  e.preventDefault();
+
+document.addEventListener('touchstart', e => {
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
 }, { passive: false });
 
-document.addEventListener('touchend', function(e) {
-  e.preventDefault();
+document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
     // horizontal swipe
-    if (dx > 50) {
-      if (isSidebarVisible === true) setSidebarVisibility(false);
-      else setSidebarVisibility(true);
-    } else if (dx < -50) {
-      if (isSidebarVisible === true) setSidebarVisibility(false);
-      else setSidebarVisibility(true);
-    }
+    if (dx > 50) setSidebarVisibility(true);   // swipe right → show
+    else if (dx < -50) setSidebarVisibility(false); // swipe left → hide
   } else {
     // vertical swipe
-    if (dy > 50) changeChannel(-1);
-    else if (dy < -50) changeChannel(1);
+    if (dy < -50) changeChannel(1);   // swipe up → next
+    else if (dy > 50) changeChannel(-1); // swipe down → previous
   }
 }, { passive: false });
 
@@ -253,17 +230,21 @@ function buildSidebar() {
       displayName = ch.name.replace(/^(\d+\)\s*)/, '');
     }
     div.innerHTML = `<img src="${ch.logo}" alt="logo"><span class="ch-num">${chNum}</span><span>${displayName}</span>`;
-    div.onclick = function() { currentIndex = i; playCurrentChannel(); };
+    div.onclick = () => { currentIndex = i; playCurrentChannel(); };
     sidebar.appendChild(div);
   }
 }
 
 // --- Fullscreen ---
 function toggleFullscreen() {
-  if (isDesktop() === false) return;
+  if (!isDesktop()) return;
   if (!document.fullscreenElement) player.requestFullscreen?.();
   else document.exitFullscreen?.();
 }
+
+// --- Stop playback on exit / visibility change ---
+document.addEventListener('visibilitychange', () => { if (document.hidden) stopAllChannels(); });
+window.addEventListener('beforeunload', stopAllChannels);
 
 // --- Init ---
 loadM3U();

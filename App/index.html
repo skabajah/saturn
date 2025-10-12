@@ -2,7 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="version" content="v25">
+
+    <!-- VERSION CONTROL -->
+    <script>
+        // Define the version, which controls the redirect target and the display text
+        const APP_VERSION = 'v26';
+        const NEXT_PAGE_FILE = APP_VERSION + '.html'; // Dynamically creates 'v26.html'
+        // Define other components of the version footer text
+        const AUTHOR_NAME = 'Shadi Kabajah';
+        const DATE_STAMP = 'Oct 12 2025';
+    </script>
+    <!-- -------------------------------- -->
+
+    <!-- ID added here: JavaScript will now target this element and update its 'content' attribute. -->
+    <meta name="version" content="v26" id="app-version-meta">
     <meta name="author" content="Shadi Kabajah">
     <meta name="date" content="2025-10-12">
 
@@ -11,6 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fustat:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
+    /* *** ORIGINAL CSS IS PRESERVED BELOW ***
+    */
     html, body {
         height: 100%;
         margin: 0;
@@ -144,13 +159,32 @@
         <p class="english-instruction">Press any key to start watching</p>
     </div>
 
-        <p class="version">Shadi Kabajah - v25 - Oct 12 2025</p>
+    <!-- The content is now empty. JavaScript will inject the text based on the variables. -->
+    <p class="version" id="version-display">
+    </p>
 
     <script>
-        // --- Redirect to TV app (v25.html) on any activity ---
-        const targetUrl = 'v25.html';
+        // Use the constants defined in the <head> section (APP_VERSION, NEXT_PAGE_FILE, etc.)
+        
+        // 0. Update the meta tag in the head section
+        const metaElement = document.getElementById('app-version-meta');
+        if (metaElement) {
+            metaElement.content = APP_VERSION;
+        }
+
+        // 1. Update the visible version text on the page
+        const versionElement = document.getElementById('version-display');
+        if (versionElement) {
+            versionElement.textContent = `${AUTHOR_NAME} - ${APP_VERSION} - ${DATE_STAMP}`;
+        }
+
+        // 2. Set up the dynamic redirect URL
+        // The URL now uses the variable defined at the top (e.g., 'v26.html')
+        const targetUrl = NEXT_PAGE_FILE;
         function redirectToTarget() { window.location.href = targetUrl; }
 
+        // --- Redirect to TV app on any activity ---
+        
         // Any key press
         document.addEventListener('keydown', redirectToTarget);
 
