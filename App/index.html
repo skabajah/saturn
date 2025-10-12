@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 
   <!-- Versioning and authorship -->
-  <meta name="version" content="v20">
+  <meta name="version" content="v21">
   <meta name="author" content="Shadi Kabajah">
   <meta name="date" content="2025-10-11">
 
@@ -21,18 +21,18 @@
     video {
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
-      background: #000;
+      object-fit: contain;
+      background: #000000;
+      border: solid 1px black;
     }
 
+    /* Overlay */
     #overlay {
       position: absolute;
-      top: 4em;
-      right: 4em;
+      top: 4vh;
+      right: 4vh;
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
       background: rgba(0,0,0,0.6);
       padding: 1em;
       border-radius: 10px;
@@ -46,6 +46,18 @@
       opacity: 1;
     }
 
+    #overlay .text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2em;
+    }
+
+    #overlay .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     #overlay img {
       width: 3em;
       height: 3em;
@@ -54,15 +66,13 @@
       border-radius: 15px;
     }
 
-    #overlay .text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
     #overlay .group {
       font-size: 0.8em;
       color: #ccc;
+      font-weight: bold;
+    }
+
+    #overlay .ch-num {
       font-weight: bold;
     }
 
@@ -70,19 +80,26 @@
       font-size: 1em;
     }
 
+    /* Sidebar */
     #sidebar {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 4vh;                 /* float down a bit from top */
+      bottom: 4vh;              /* float up a bit from bottom */
+      left: 4vh;
       width: fit-content;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
+      height: auto;             /* let top/bottom define it */
+      background: rgba(0,0,0,0.6);
       overflow-y: auto;
-      transform: translateX(-100%);
-      transition: transform 0.4s ease;
-      padding: 2em;
+      transform: translateX(-200%);
+      transition: transform 0.5s ease;
+      padding: 1em;
+      border-radius: 10px;      /* subtle rounding makes it “float” */
+      border:  solid 1px rgba(0,0,0,0.6);
       z-index: 50;
+      -webkit-overflow-scrolling: touch;
     }
+
+
 
     #sidebar.visible {
       transform: translateX(0);
@@ -94,7 +111,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1.5em;
+      font-size: 1em;
       font-weight: bold;
     }
 
@@ -113,17 +130,19 @@
     }
 
     .channel.active {
-      background: teal;
-      color: #fff;
+      background: rgba(255, 255, 255, 0.75);
+      color: #000;
+      border-radius: 15px;
     }
 
     .group-header {
       font-weight: bold;
       font-size: 0.9em;
-      padding: 1em;
-      background: #464646;
-      margin-top: 8px;
-      border-bottom: solid 4px gray;
+      padding: 4px 12px;
+      background: rgba(70, 70, 70, 0.6);
+      margin-top: 14px;
+      border-left: solid 4px gray;
+      border-radius:  5px;
     }
 
     #sidebar::-webkit-scrollbar {
@@ -131,22 +150,25 @@
     }
 
     /* Pause overlay */
+
     #pauseOverlay {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
+      width: 20vh;
+      height: 20vh;
       border-radius: 50%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 200;
       opacity: 0;
       transition: opacity 0.3s ease;
-    }
+      border: rgba(255, 255, 255, 0.6) solid 15px;
+
+      } 
 
     #pauseOverlay.visible {
       opacity: 1;
@@ -157,20 +179,24 @@
       display: block;
       width: 0;
       height: 0;
-      border-left: 24px solid #fff;
-      border-top: 14px solid transparent;
-      border-bottom: 14px solid transparent;
-      transform: translateX(3px);
-    }
+      border-left: 50px solid rgba(255, 255, 255, 0.6);
+      border-top: 35px solid transparent;
+      border-bottom: 35px solid transparent;
+      transform: translateX(8px);
+    } 
+
   </style>
 </head>
 <body>
   <video id="videoPlayer" autoplay playsinline></video>
 
   <div id="overlay">
-    <img id="channelLogo" src="" alt="logo">
     <div class="text">
-      <div class="group" id="channelGroup"></div>
+      <div class="top-row">
+        <div class="group" id="channelGroup"></div>
+        <img id="channelLogo" src="" alt="logo">
+      </div>
+      <div class="ch-num" id="channelChNum"></div>
       <div class="name" id="channelName"></div>
     </div>
   </div>
@@ -188,6 +214,7 @@
     const channelLogo = document.getElementById('channelLogo');
     const channelName = document.getElementById('channelName');
     const channelGroup = document.getElementById('channelGroup');
+    const channelChNum = document.getElementById('channelChNum');
     const pauseOverlay = document.getElementById('pauseOverlay');
 
     function isDesktop() {
@@ -249,7 +276,7 @@
         let displayName = ch.name;
         const match = ch.name.match(/^(\d+)\)\s*/);
         if (match) {
-          chNum = match[1] + ')';
+          chNum = match[1] ;
           displayName = ch.name.replace(/^(\d+\)\s*)/, '');
         }
 
@@ -276,7 +303,7 @@
 
     function showChannelOverlay(ch) {
       channelLogo.src = ch.logo;
-      const match = ch.name.match(/^(\d+\))\s*(.*)/);
+      const match = ch.name.match(/^(\d+)\)\s*(.*)/);
       let chNum = '', chDisplay = '';
       if (match) {
         chNum = match[1];
@@ -284,7 +311,8 @@
       } else chDisplay = ch.name;
 
       channelGroup.textContent = ch.group;
-      channelName.textContent = (chNum ? chNum + ' ' : '') + chDisplay;
+      channelChNum.textContent = chNum;
+      channelName.textContent = chDisplay;
 
       overlay.classList.add('visible');
       clearTimeout(overlayTimer);
@@ -303,20 +331,34 @@
       }
     }
 
-    function showSidebar() {
-      sidebar.classList.add('visible');
-    }
-
-    function hideSidebar() {
-      sidebar.classList.remove('visible');
-    }
+    function showSidebar() { sidebar.classList.add('visible'); }
+    function hideSidebar() { sidebar.classList.remove('visible'); }
 
     function highlightChannel() {
       const items = sidebar.querySelectorAll('.channel');
       items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
+
       const active = items[currentIndex];
-      if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      if (!active) return;
+
+      const sidebarPaddingTop = parseFloat(getComputedStyle(sidebar).paddingTop);
+      const sidebarPaddingBottom = parseFloat(getComputedStyle(sidebar).paddingBottom);
+      const sidebarHeight = sidebar.clientHeight;
+
+      // desired center position (soft center)
+      const center = sidebarHeight / 2 - active.offsetHeight / 2;
+
+      // calculate ideal scrollTop
+      let targetScroll = active.offsetTop - center;
+
+      // clamp scrollTop to respect top/bottom padding so first/last items stay in bounds
+      const maxScroll = sidebar.scrollHeight - sidebarHeight + sidebarPaddingBottom;
+      targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+      sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
     }
+
+
 
     function showPauseOverlay() { pauseOverlay.classList.add('visible'); }
     function hidePauseOverlay() { pauseOverlay.classList.remove('visible'); }
