@@ -1,413 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Project Saturn Landing</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fustat:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
-  <!-- Versioning and authorship -->
-  <meta name="version" content="v22">
-  <meta name="author" content="Shadi Kabajah">
-  <meta name="date" content="2025-10-12">
-
-  <title>Saturn TV</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: sans-serif;
-      overflow: hidden;
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: url('1920x1080.png') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      background: #000;
-      border: solid 1px black;
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        max-width: 1200px;
+        background-color: rgba(0,0,0,0.5);
+        padding: 40px 20px;
+        border-radius: 20px;
     }
 
-    /* Overlay */
-    #overlay {
-      position: absolute;
-      top: 4vh;
-      right: 4vh;
-      display: flex;
-      flex-direction: row; /* two columns */
-      align-items: center; /* vertical center of logo with text */
-      background: rgba(0,0,0,0.6);
-      padding: 0.5em 1em;
-      border-radius: 10px;
-      transition: opacity 0.5s ease;
-      opacity: 0;
-      z-index: 100;
-      font-size: 1.5em;
-      gap: 1em; /* space between text and logo */
-      border: solid 1px rgba(0,0,0,0.2);
+    .column {
+        flex: 1;
+        padding: 20px;
     }
 
-    #overlay.visible {
-      opacity: 1;
+    /* English styling */
+    .english {
+        text-align: left;
+        direction: ltr;
+        font-family: 'Audiowide', monospace;
+    }
+    .english h1 {
+        font-weight: 800;
+        font-size: 2em;
+        margin: 0 0 10px 0;
+    }
+    .english p {
+        font-family: 'Space Grotesk', monospace;
+        font-weight: 200;
+        font-size: 1.1em;
+        margin: 0 0 10px 0;
     }
 
-    #overlay .text {
-      display: flex;
-      flex-direction: column;
-      /*gap: 0.2em;*/
-      text-align: right; /* lean text toward logo */
+    /* Arabic styling */
+    .arabic {
+        text-align: right;
+        direction: rtl;
+        font-family: 'Fustat', serif;
+    }
+    .arabic h1 {
+        font-weight: 800;
+        font-size: 3em;
+        margin: 0 0 10px 0;
+    }
+    .arabic p {
+        font-weight: 200;
+        font-size: 1.5em;
+        margin: 0 0 10px 0;
     }
 
-    #overlay .top-row {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 0.5em;
+    /* Click / tap instruction row */
+    .instruction-row {
+        margin-top: 30px;
+        text-align: center;
+        background: rgba(0,0,0,0.5);
+        padding: 20px;
+    }
+    .instruction-row .arabic-instruction {
+        font-family: 'Fustat', serif;
+        font-weight: 200;
+        font-size: 1.3em;
+        margin: 0 0 5px 0;
+    }
+    .instruction-row .english-instruction {
+        font-family: 'Space Grotesk', monospace;
+        font-weight: 200;
+        font-size: 0.9em;
+        margin: 0;
     }
 
-    #overlay img {
-      width: 3em;
-      height: 3em;
-      object-fit: contain;
-      border: solid 1px rgba(210, 210, 210, 0.25); 
-      border-radius: 15px;
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .container {
+            flex-direction: column;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .english, .arabic {
+            text-align: center;
+        }
     }
+</style>
 
-    #overlay .group {
-      font-size: 0.8em;
-      color: #ccc;
-      font-weight: bold;
-    }
-
-    #overlay .ch-num {
-      font-weight: bold;
-    }
-
-    #overlay .name {
-      font-size: 0.8em;
-    }
-
-    /* Sidebar */
-    #sidebar {
-      position: absolute;
-      top: 4vh;
-      bottom: 4vh;
-      left: 4vh;
-      width: fit-content;
-      height: auto;
-      background: rgba(0,0,0,0.6);
-      overflow-y: auto;
-      transform: translateX(-200%);
-      transition: transform 0.5s ease;
-      padding: 1em;
-      border-radius: 10px;
-      border:  solid 1px rgba(0,0,0,0.2);
-      z-index: 50;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    #sidebar.visible {
-      transform: translateX(0);
-    }
-
-    .channel {
-      padding: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1em;
-      font-weight: bold;
-    }
-
-    .channel img {
-      width: 2em;
-      height: 2em;
-      object-fit: contain;
-      flex-shrink: 0;
-      border-radius: 10px;
-      border: solid 1px rgba(210, 210, 210, 0.25);
-    }
-
-    .channel .ch-num {
-      font-weight: bold;
-      flex-shrink: 0;
-      padding: 0 0.5em; 
-    }
-
-    .channel.active {
-      background: rgba(255, 255, 255, 0.75);
-      color: #000;
-      border-radius: 15px;
-    }
-
-    .group-header {
-      font-weight: bold;
-      font-size: 0.9em;
-      padding: 4px 12px;
-      background: rgba(70, 70, 70, 0.6);
-      margin-top: 14px;
-      border-left: solid 4px gray;
-      border-radius:  5px;
-    }
-
-    #sidebar::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Pause overlay */
-    #pauseOverlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20vh;
-      height: 20vh;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      border: rgba(255, 255, 255, 0.6) solid 15px;
-    } 
-
-    #pauseOverlay.visible {
-      opacity: 1;
-    }
-
-    #pauseOverlay::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-left: 50px solid rgba(255, 255, 255, 0.6);
-      border-top: 35px solid transparent;
-      border-bottom: 35px solid transparent;
-      transform: translateX(8px);
-    } 
-  </style>
 </head>
 <body>
-  <video id="videoPlayer" autoplay playsinline></video>
+    <div class="container">
+        <!-- English Column -->
+        <div class="column english">
+            <h1>Project Saturn</h1>
+            <p>Free Arabic channels that are publicly accessible.</p>
+        </div>
 
-  <div id="overlay">
-    <div class="text">
-      <div class="top-row">
-        <div class="group" id="channelGroup"></div>
-      </div>
-      <div class="ch-num" id="channelChNum"></div>
-      <div class="name" id="channelName"></div>
+        <!-- Placeholder for future icon -->
+        <div class="column icon">
+            <!-- <img src="" alt="Saturn Icon" style="width:200px;height:200px;border-radius:50%;"> -->
+        </div>
+
+        <!-- Arabic Column -->
+        <div class="column arabic">
+            <h1>مشروع زحل</h1>
+            <p>قنوات عربية مجانية يمكن الوصول إليها علنًا.</p>
+        </div>
     </div>
-    <img id="channelLogo" src="" alt="logo">
-  </div>
 
-  <div id="sidebar"></div>
-  <div id="pauseOverlay"></div>
+    <!-- Instruction row below the columns -->
+    <div class="instruction-row">
+        <p class="arabic-instruction">اضغط أي مفتاح للبدء بالمشاهدة</p>
+        <p class="english-instruction">Press any key to start watching</p>
+    </div>
 
-  <script>
-    let channels = [];
-    let currentIndex = 0;
-    let overlayTimer;
-    const player = document.getElementById('videoPlayer');
-    const overlay = document.getElementById('overlay');
-    const sidebar = document.getElementById('sidebar');
-    const channelLogo = document.getElementById('channelLogo');
-    const channelName = document.getElementById('channelName');
-    const channelGroup = document.getElementById('channelGroup');
-    const channelChNum = document.getElementById('channelChNum');
-    const pauseOverlay = document.getElementById('pauseOverlay');
+    <script>
+        // --- Redirect to TV app (v25.html) on any activity ---
+        const targetUrl = 'v24.html';
+        function redirectToTarget() { window.location.href = targetUrl; }
 
-    function isDesktop() {
-      const ua = navigator.userAgent.toLowerCase();
-      if (ua.includes('android') && ua.includes('firetv')) return false;
-      if (ua.includes('smarttv') || ua.includes('tv')) return false;
-      if (ua.includes('android') && !ua.includes('mobile')) return false;
-      return true;
-    }
+        // Any key press
+        document.addEventListener('keydown', redirectToTarget);
 
-    function toggleFullscreen() {
-      if (!isDesktop()) return;
-      if (!document.fullscreenElement) {
-        if (player.requestFullscreen) player.requestFullscreen();
-        else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
-        else if (player.msRequestFullscreen) player.msRequestFullscreen();
-      } else {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) document.msExitFullscreen();
-      }
-    }
+        // Any click/tap
+        document.body.addEventListener('click', redirectToTarget);
 
-    async function loadM3U() {
-      const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
-      const text = await res.text();
-      const lines = text.split('\n');
-      for (let i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith('#EXTINF')) {
-          const logoMatch = lines[i].match(/tvg-logo="([^"]+)"/);
-          const groupMatch = lines[i].match(/group-title="([^"]+)"/);
-          const name = lines[i].split(',')[1]?.trim() || 'Unknown';
-          const logo = logoMatch ? logoMatch[1] : '';
-          const group = groupMatch ? groupMatch[1] : '';
-          const url = lines[i + 1]?.trim();
-          if (url && url.startsWith('http')) channels.push({ name, logo, url, group });
-        }
-      }
-      buildSidebar();
-      playChannel(0);
-    }
-
-    function buildSidebar() {
-      sidebar.innerHTML = '';
-      let lastGroup = '';
-      channels.forEach((ch, i) => {
-        if (ch.group !== lastGroup && ch.group) {
-          const groupDiv = document.createElement('div');
-          groupDiv.textContent = ch.group;
-          groupDiv.className = 'group-header';
-          sidebar.appendChild(groupDiv);
-          lastGroup = ch.group;
-        }
-
-        const div = document.createElement('div');
-        div.className = 'channel';
-
-        let chNum = '';
-        let displayName = ch.name;
-        const match = ch.name.match(/^(\d+)\)\s*/);
-        if (match) {
-          chNum = match[1];
-          displayName = ch.name.replace(/^(\d+\)\s*)/, '');
-        }
-
-        div.innerHTML = `
-          <img src="${ch.logo}" alt="logo">
-          <span class="ch-num">${chNum}</span>
-          <span>${displayName}</span>
-        `;
-
-        div.onclick = () => playChannel(i);
-        sidebar.appendChild(div);
-      });
-    }
-
-    function playChannel(index) {
-      currentIndex = index;
-      const ch = channels[index];
-      player.src = ch.url;
-      player.play();
-      showChannelOverlay(ch);
-      highlightChannel();
-      hidePauseOverlay();
-    }
-
-    function showChannelOverlay(ch) {
-      channelLogo.src = ch.logo;
-      const match = ch.name.match(/^(\d+)\)\s*(.*)/);
-      let chNum = '', chDisplay = '';
-      if (match) {
-        chNum = match[1];
-        chDisplay = match[2];
-      } else chDisplay = ch.name;
-
-      channelGroup.textContent = ch.group;
-      channelChNum.textContent = chNum;
-      channelName.textContent = chDisplay;
-
-      overlay.classList.add('visible');
-      clearTimeout(overlayTimer);
-      overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
-    }
-
-    function togglePlay() {
-      if (player.paused) {
-        player.play();
-        hidePauseOverlay();
-        showChannelOverlay(channels[currentIndex]);
-      } else {
-        player.pause();
-        showPauseOverlay();
-        showChannelOverlay(channels[currentIndex]);
-      }
-    }
-
-    function showSidebar() { sidebar.classList.add('visible'); }
-    function hideSidebar() { sidebar.classList.remove('visible'); }
-
-    function highlightChannel() {
-      const items = sidebar.querySelectorAll('.channel');
-      items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
-
-      const active = items[currentIndex];
-      if (!active) return;
-
-      const sidebarPaddingTop = parseFloat(getComputedStyle(sidebar).paddingTop);
-      const sidebarPaddingBottom = parseFloat(getComputedStyle(sidebar).paddingBottom);
-      const sidebarHeight = sidebar.clientHeight;
-
-      const center = sidebarHeight / 2 - active.offsetHeight / 2;
-
-      let targetScroll = active.offsetTop - center;
-
-      const maxScroll = sidebar.scrollHeight - sidebarHeight + sidebarPaddingBottom;
-      targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-      sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
-    }
-
-    function showPauseOverlay() { pauseOverlay.classList.add('visible'); }
-    function hidePauseOverlay() { pauseOverlay.classList.remove('visible'); }
-
-    // Keyboard / remote
-    document.addEventListener('keydown', (e) => {
-      const sidebarVisible = sidebar.classList.contains('visible');
-      switch(e.key){
-        case 'ArrowUp':
-          currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-          if(sidebarVisible) highlightChannel();
-          else playChannel(currentIndex);
-          break;
-        case 'ArrowDown':
-          currentIndex = (currentIndex + 1) % channels.length;
-          if(sidebarVisible) highlightChannel();
-          else playChannel(currentIndex);
-          break;
-        case 'ArrowLeft':
-        case 'ArrowRight':
-          sidebarVisible ? hideSidebar() : showSidebar();
-          break;
-        case 'Enter':
-        case ' ':
-          if(sidebarVisible) playChannel(currentIndex);
-          else togglePlay();
-          break;
-        case 'Escape':
-        case 'Backspace':
-          if(sidebarVisible) hideSidebar();
-          break;
-        case 'f':
-        case 'F':
-          toggleFullscreen();
-          break;
-      }
-    });
-
-    // Mouse / tap
-    player.addEventListener('click', () => {
-      if(sidebar.classList.contains('visible')) playChannel(currentIndex);
-      else togglePlay();
-    });
-
-    // Swipe for sidebar
-    let touchStartX = 0;
-    document.addEventListener('touchstart', (e)=>{ touchStartX=e.touches[0].clientX; });
-    document.addEventListener('touchend', (e)=>{
-      const touchEndX=e.changedTouches[0].clientX;
-      if(touchEndX-touchStartX>50) sidebar.classList.contains('visible') ? hideSidebar() : showSidebar();
-    });
-
-    loadM3U();
-  </script>
+        // Swipe detection
+        let touchStartX = 0, touchStartY = 0;
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, {passive: true});
+        document.addEventListener('touchend', e => {
+            let diffX = e.changedTouches[0].clientX - touchStartX;
+            let diffY = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
+        }, {passive: true});
+    </script>
 </body>
 </html>
