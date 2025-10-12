@@ -32,38 +32,30 @@ function isDesktop() {
 // --- Core functions ---
 function changeChannel(delta) {
   if (isSidebarVisible === true) {
+    // Sidebar is open → just highlight channels, don't autoplay
     highlightChannelByDelta(delta);
   } else {
-    const nextIndex = (currentIndex + delta + channels.length) % channels.length;
-
-    // Preload the next channel
-    const nextCh = channels[nextIndex];
-    const nextPreloader = document.createElement('video');
-    nextPreloader.src = nextCh.url;
-    nextPreloader.preload = 'auto';
-    nextPreloader.muted = true;
-    nextPreloader.play().catch(() => {});
-
-    // Preload the previous channel
-    const prevIndex = (currentIndex - 1 + channels.length) % channels.length;
-    const prevCh = channels[prevIndex];
-    const prevPreloader = document.createElement('video');
-    prevPreloader.src = prevCh.url;
-    prevPreloader.preload = 'auto';
-    prevPreloader.muted = true;
-    prevPreloader.play().catch(() => {});
-
-    // Switch to the selected channel
-    currentIndex = nextIndex;
-    playCurrentChannel(true); // skip overlay
+    // Sidebar hidden → switch channel immediately
+    currentIndex = (currentIndex + delta + channels.length) % channels.length;
+    playCurrentChannel(true); // skip overlay if desired
   }
 }
 
-
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
+
+  // Show spinner while loading
+  const spinner = document.getElementById('spinner');
+  spinner.style.display = 'block';
+
   player.src = ch.url;
-  player.play().catch(() => {}); // ensure playback starts immediately
+  player.play().then(() => {
+    spinner.style.display = 'none'; // hide spinner once playback starts
+  }).catch(() => {
+    spinner.style.display = 'block'; // keep spinner if still loading
+  });
+
+  player.addEventListener('canplay', () => spinner.style.display = 'none');
 
   // Highlight sidebar if visible
   highlightChannel();

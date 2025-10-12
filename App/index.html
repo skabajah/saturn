@@ -7,6 +7,7 @@
     <script>
         // Define the version, which controls the redirect target and the display text
         const APP_VERSION = 'v26';
+        const APP_VERSION_2 = '19'
         const NEXT_PAGE_FILE = APP_VERSION + '.html'; // Dynamically creates 'v26.html'
         // Define other components of the version footer text
         const AUTHOR_NAME = 'Shadi Kabajah';
@@ -175,7 +176,7 @@
         // 1. Update the visible version text on the page
         const versionElement = document.getElementById('version-display');
         if (versionElement) {
-            versionElement.textContent = `${AUTHOR_NAME} - ${APP_VERSION} - ${DATE_STAMP}`;
+            versionElement.textContent = `${AUTHOR_NAME} - ${APP_VERSION}.${APP_VERSION_2} - ${DATE_STAMP}`;
         }
 
         // 2. Set up the dynamic redirect URL
