@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
 
-<!-- Versioning and authorship -->
-  <meta name="version" content="v7">
+  <!-- Versioning and authorship -->
+  <meta name="version" content="v11">
   <meta name="author" content="Shadi Kabajah">
   <meta name="date" content="2025-10-11">
 
@@ -21,7 +21,7 @@
     video {
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: cover; /* fills screen without distortion */
       background: #000;
     }
 
@@ -30,7 +30,7 @@
       top: 20px;
       left: 20px;
       display: flex;
-      flex-direction: row; /* logo on left, texts on right */
+      flex-direction: row;
       align-items: center;
       gap: 10px;
       background: rgba(0,0,0,0.6);
@@ -70,7 +70,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 25%;
+      width: 16em;
       height: 100%;
       background: rgba(0,0,0,0.8);
       overflow-y: auto;
@@ -84,26 +84,38 @@
     }
 
     .channel {
-      padding: 8px;
+      padding: 6px 8px;
       cursor: pointer;
       display: flex;
-      gap: 6px;
       align-items: center;
+      gap: 8px;
+    }
+
+    .channel img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .channel .ch-num {
-      width: 40px;
       font-weight: bold;
+      width: 40px;
+      flex-shrink: 0;
     }
 
     .channel.active {
-      background: rgba(255,255,255,0.2);
+      background: teal;
+      color: #fff;
     }
 
     .group-header {
       font-weight: bold;
       font-size: 0.9em;
-      padding: 6px 8px 2px 8px;
+      padding: 16px 8px 2px 8px;
+      background: #464646;
+      border-radius: 4px;
+      margin-top: 8px;
     }
 
     #sidebar::-webkit-scrollbar {
@@ -135,6 +147,36 @@
     const channelLogo = document.getElementById('channelLogo');
     const channelName = document.getElementById('channelName');
     const channelGroup = document.getElementById('channelGroup');
+
+    // Detect desktop vs TV
+    function isDesktop() {
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.includes('android') && ua.includes('firetv')) return false;
+      if (ua.includes('smarttv') || ua.includes('tv')) return false;
+      if (ua.includes('android') && !ua.includes('mobile')) return false;
+      return true;
+    }
+
+    // Fullscreen only on desktop
+    function toggleFullscreen() {
+      if (!isDesktop()) return;
+      if (!document.fullscreenElement) {
+        if (player.requestFullscreen) player.requestFullscreen();
+        else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
+        else if (player.msRequestFullscreen) player.msRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      }
+    }
+
+    // Select / play channel
+    function selectChannel() {
+      if (!channels[currentIndex]) return;
+      playChannel(currentIndex);
+      hideSidebar();
+    }
 
     async function loadM3U() {
       const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
@@ -173,12 +215,20 @@
         div.className = 'channel';
 
         let chNum = '';
+        let displayName = ch.name;
         const match = ch.name.match(/^(\d+)\)\s*/);
-        if (match) chNum = match[1] + ')';
-        const displayName = ch.name.replace(/^(\d+\)\s*)/, '');
+        if (match) {
+          chNum = match[1] + ')';
+          displayName = ch.name.replace(/^(\d+\)\s*)/, '');
+        }
 
-        div.innerHTML = `<span class="ch-num">${chNum}</span> <span>${displayName}</span>`;
-        div.onclick = () => hideSidebar();
+        div.innerHTML = `
+          <img src="${ch.logo}" alt="logo">
+          <span class="ch-num">${chNum}</span>
+          <span>${displayName}</span>
+        `;
+
+        div.onclick = selectChannel;
         sidebar.appendChild(div);
       });
     }
@@ -191,28 +241,24 @@
       if (showOverlay) showOverlayBar(ch);
       highlightChannel();
     }
- 
+
     function showOverlayBar(ch) {
       channelLogo.src = ch.logo;
-
-      // Extract channel number and display name
       const match = ch.name.match(/^(\d+\))\s*(.*)/);
       let chNum = '', chDisplay = '';
       if (match) {
-        chNum = match[1];       // e.g., "141)"
-        chDisplay = match[2];   // e.g., "Al Jazeera"
+        chNum = match[1];
+        chDisplay = match[2];
       } else {
         chDisplay = ch.name;
       }
-
-      channelGroup.textContent = ch.group;              // e.g., "NEWS"
-      channelName.textContent = chNum + ' ' + chDisplay; // e.g., "141) Al Jazeera"
+      channelGroup.textContent = ch.group;
+      channelName.textContent = (chNum ? chNum + ' ' : '') + chDisplay;
 
       overlay.classList.add('visible');
       clearTimeout(overlayTimer);
       overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
     }
-
 
     function togglePlay() {
       if (player.paused) player.play();
@@ -231,42 +277,58 @@
 
     function highlightChannel() {
       const items = sidebar.querySelectorAll('.channel');
-      items.forEach((el, i) => {
-        el.classList.toggle('active', i === currentIndex);
-      });
+      items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
+      const active = items[currentIndex];
+      if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 
+    // Keyboard input
     document.addEventListener('keydown', (e) => {
       const sidebarVisible = sidebar.classList.contains('visible');
 
       switch (e.key) {
         case 'ArrowUp':
           currentIndex = (currentIndex - 1 + channels.length) % channels.length;
-          playChannel(currentIndex);
+          playChannel(currentIndex, false);
+          showSidebar();
           break;
         case 'ArrowDown':
           currentIndex = (currentIndex + 1) % channels.length;
-          playChannel(currentIndex);
+          playChannel(currentIndex, false);
+          showSidebar();
           break;
         case 'ArrowRight':
         case 'ArrowLeft':
           if (sidebarVisible) hideSidebar();
           else showSidebar();
           break;
-        case ' ':
         case 'Enter':
-          togglePlay();
+        case ' ':
+          selectChannel();
           break;
-        case 'Escape': // Fire TV Back
+        case 'Escape':
         case 'Backspace':
           if (sidebarVisible) hideSidebar();
+          break;
+        case 'f':
+        case 'F':
+          toggleFullscreen();
           break;
       }
     });
 
-    player.addEventListener('click', () => {
-      if (sidebar.classList.contains('visible')) hideSidebar();
-      else togglePlay();
+    // Mouse / tap
+    player.addEventListener('click', selectChannel);
+    player.addEventListener('dblclick', toggleFullscreen);
+
+    // Touch swipe for sidebar
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      if (touchEndX - touchStartX > 50) showSidebar();
     });
 
     loadM3U();
