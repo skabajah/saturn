@@ -47,11 +47,6 @@ function playCurrentChannel(skipOverlay = false) {
   spinner.style.display = 'block';
   player.src = ch.url;
 
-  // Notify Android to play the same stream via VLC
-  if (window.Android && Android.playStream) {
-      Android.playStream(ch.url);
-  }
-  
   // Play and hide spinner when ready
   player.play().catch(() => {});
   player.oncanplay = () => spinner.style.display = 'none';
