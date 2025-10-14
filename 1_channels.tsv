@@ -7,7 +7,10 @@ Al_Sharq	https://bcovlive-a.akamaihd.net/0b75ef0a49e24704a4ca023d3a82c2df/ap-sou
 TRT	https://tv-trtarabi.medya.trt.com.tr/master_720.m3u8
 	
 PSC	https://pbc.furrera.ps/palestinehd/tracks-v2a1/mono.m3u8
+Jadeed	https://games1.elahmad.xyz/tv757_www.elahmad.com_aljadeed/index.m3u8?token=160411e74eb50ebd96b110442ece88ecd57fbef3-1290cbd9a0488ff10f51d9ed983a95a4-1760411136-1760400336
+LBC	https://games1.elahmad.xyz/tv757_www.elahmad.com_lbc/index.m3u8?token=d63dff59ee164c00d89b1d310a97d1eec59eec81-d891d93ec4255601b9cbb98425fc4bec-1760411106-1760400306
 MTV	https://media.mtv.com.lb/v1/broadcast/mtv/playlist.m3u8
+OTV	https://games1.elahmad.xyz/tv757_www.elahmad.com_otv_lebanon/index.m3u8?token=b2b4ad1df3b01ff5478b99116efad2ca814b3640-c83a3e1dd7461301344bbf65b1d4ec7a-1760411121-1760400321
 Voice_of_Lebanon	https://svs.itworkscdn.net/vdltvlive/vdltv.smil/playlist.m3u8
 Amman	https://ammantv-live.ercdn.net/ammantvhd/ammantvhd_720p.m3u8
 Jordan	https://jrtv-live.ercdn.net/jordanhd/jordanhd_720p.m3u8
@@ -28,15 +31,15 @@ AlAraby_2	https://live.kwikmotion.com/alaraby2live/alaraby2.smil/playlist.m3u8
 Abu_Dhabi	https://vo-live-media.cdb.cdn.orange.com/Content/Channel/AbuDhabiChannel/HLS/index.m3u8
 Dubai	https://dmieigthvllta.cdn.mgmlcdn.com/dubaitvht/smil:dubaitv.stream.smil/chunklist_b1500000.m3u8
 Dubai_One	https://dminnvllta.cdn.mgmlcdn.com/dubaione/smil:dubaione.stream.smil/chunklist_b1800000.m3u8
-Mashhad	https://www.youtube.com/watch?v=iUXX-QQkR74
+Mashhad	https://fastly.live.brightcove.com/6378439181112/ap-south-1/6313884884001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiaWR2d3RnLmVncmVzcy5qYXYzemwiLCJhY2NvdW50X2lkIjoiNjMxMzg4NDg4NDAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MzEzODg0ODg0MDAxIl0sImp0aSI6IjYzNzg0MzkxODExMTIifQ.EdlNOMQrd1QZ3Y_9mU1f4eKS3spc8eU5sIlXnWLbgmY/playlist-hls.m3u8
 	
-CBC	https://edge66.magictvbox.com/liveApple/CBC/tracks-v1a1/mono.m3u8
-DMC	https://bcovlive-a.akamaihd.net/ba3169004d40484b9ff29e194964c9e8/eu-west-1/6057955906001/playlist.m3u8
-Hayat	https://uvotv-aniview.global.ssl.fastly.net/10010/dvr/hls/alhayathd/playlist.m3u8
-Mehwar	https://edge66.magictvbox.com/liveApple/el_mehwar/tracks-v1a1/mono.m3u8
-Nahar	https://edge66.magictvbox.com/liveApple/AlNaharOne/tracks-v1a1/mono.m3u8
-ON_E	https://bcovlive-a.akamaihd.net/3dc60bab470f4c9fbf00408ecb7c3d7a/eu-west-1/6057955906001/profile_0/chunklist.m3u8
-Sada	https://uvotv-aniview.global.ssl.fastly.net/10010/dvr/hls/sadaalbalad/playlist.m3u8
+CBC	https://games2.elahmad.xyz/tv757_www.elahmad.com_cbc_tv/index.m3u8?token=e0243365072c88e352d986eced5aca1a7448c002-e4ddc7f9ea81eb8687ce01f035a3e4b4-1760410974-1760400174
+DMC	https://games1.elahmad.xyz/tv757_www.elahmad.com_dmc/index.m3u8?token=6327565ad861c09847e9b17b4bfd0a40f0298634-0953b8f0b8e2fefc97c039e34351bf93-1760411032-1760400232
+Hayat	https://games2.elahmad.xyz/tv757_www.elahmad.com_alhayat_eg/index.m3u8?token=46bcefe6b253f75df5fde8ecb180c35fee7e43aa-123ac96be579ad2c3d8a773bd3748a15-1760411061-1760400261
+Mehwar	https://games1.elahmad.xyz/tv757_www.elahmad.com_elmehwar/index.m3u8?token=100149858907a3db915a6dbba3853222d15f3535-aa9c8f252b760f6918261078f06ec310-1760411076-1760400276
+Nahar	https://games2.elahmad.xyz/tv757_www.elahmad.com_nahar_tv/index.m3u8?token=30443e4a2034de8ef1910ba2a6fe0b728ccd53dc-9572280617364f5d6408cdb6cd1a8d22-1760410988-1760400188
+ON_E	https://games1.elahmad.xyz/tv757_www.elahmad.com_ontv/index.m3u8?token=7775e2a6b98f67a90917a5f31e3267333b64ed4d-74868ab7af1b1709855598e1acc9c2e2-1760411046-1760400246
+Sada	https://games2.elahmad.xyz/tv757_www.elahmad.com_elbaladtv/index.m3u8?token=804219b15424bdb68785b7f8a1403ed65bd685d5-dcbeb66dd58bf6340c61a3ad4d552a19-1760411018-1760400218
 MBC_Masr	https://mbc1-enc.edgenextcdn.net/out/v1/d5036cabf11e45bf9d0db410ca135c18/index.m3u8
 MBC_Masr_2	https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8
 	
