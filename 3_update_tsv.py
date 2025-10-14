@@ -58,5 +58,8 @@ mask = df_tsv2["NAME"].isin(df_m3u["NAME"])
 flip_count = mask.sum()
 
 df_tsv2.loc[mask, "Status"] = df_tsv2.loc[mask, "Status"].str.strip().str.upper().replace({"KEEP":"SKIP", "SKIP":"KEEP"})
+
+df_tsv2["ch_num"] = df_tsv2["ch_num"].astype("Int64")
+
 df_tsv2.to_csv(tsv2_file, sep="\t", index=False)
 print(f"Success: TSV 2 ({tsv2_file}) updated. {flip_count} channels flipped SKIP/KEEP.")
