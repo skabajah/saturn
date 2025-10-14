@@ -1,4 +1,4 @@
-import csv
+import pandas as pd
 
 # Paths
 m3u_file = "/Users/skabajah/Downloads/extract/4_m3u.m3u"
@@ -20,59 +20,43 @@ h_to_name = {
     "aljadeed1": "Jadeed"
 }
 
-# Step 1: Parse M3U file
-m3u_streams = {}
-with open(m3u_file, "r", encoding="utf-8") as f:
-    lines = [line.strip() for line in f if line.strip()]
-    i = 0
-    while i < len(lines):
-        if lines[i].startswith("#EXTINF:"):
-            h_id = lines[i].split(",")[-1].strip()
-            if i + 1 < len(lines) and h_id in h_to_name:
-                tsv_name = h_to_name[h_id]
-                stream = lines[i + 1].strip()
-                m3u_streams[tsv_name] = stream
-            i += 2
-        else:
-            i += 1
+# Step 1: Build DataFrame from M3U
+m3u_lines = [line.strip() for line in open(m3u_file, "r", encoding="utf-8") if line.strip()]
+data = []
 
-# Step 2: Update 1_channels.tsv with streams
-updated_rows_1 = []
-with open(tsv1_file, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f, delimiter="\t")
-    fieldnames_1 = reader.fieldnames
-    for row in reader:
-        ch_id = row["ch_id"].strip()
-        if ch_id in m3u_streams:
-            row["source_stream"] = m3u_streams[ch_id]
-        updated_rows_1.append(row)
+i = 0
+while i < len(m3u_lines):
+    if m3u_lines[i].startswith("#EXTINF:"):
+        h_id = m3u_lines[i].split(",")[-1].strip()
+        if i + 1 < len(m3u_lines):
+            stream = m3u_lines[i + 1].strip()
+            if h_id in h_to_name:
+                data.append({
+                    "NAME": h_to_name[h_id],        # TSV 2 name
+                    "ch_id": h_to_name[h_id],       # use NAME as ch_id in TSV 1
+                    "source_stream": stream
+                })
+        i += 2
+    else:
+        i += 1
 
-with open(tsv1_file, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames_1, delimiter="\t")
-    writer.writeheader()
-    writer.writerows(updated_rows_1)
+df_m3u = pd.DataFrame(data)
+print(f"Mapped M3U channels: {len(df_m3u)}")
 
-print(f"Success: TSV 1 ({tsv1_file}) updated.")
+# Step 2: Update TSV 1 using ch_id
+df_tsv1 = pd.read_csv(tsv1_file, sep="\t")
+df_tsv1_updated = df_tsv1.merge(df_m3u[["ch_id", "source_stream"]], on="ch_id", how="left", suffixes=("", "_new"))
+df_tsv1_updated["source_stream"] = df_tsv1_updated["source_stream_new"].combine_first(df_tsv1_updated["source_stream"])
+df_tsv1_updated = df_tsv1_updated.drop(columns=["source_stream_new"])
 
-# Step 3: Flip SKIP/KEEP in TSV 2 only for mapped channels
-mapped_names = set(h_to_name.values())
-flipped_rows_2 = []
-with open(tsv2_file, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f, delimiter="\t")
-    fieldnames_2 = reader.fieldnames
-    for row in reader:
-        name = row["NAME"].strip()
-        if name in mapped_names:
-            status = row["Status"].strip().upper()
-            if status == "KEEP":
-                row["Status"] = "SKIP"
-            elif status == "SKIP":
-                row["Status"] = "KEEP"
-        flipped_rows_2.append(row)
+df_tsv1_updated.to_csv(tsv1_file, sep="\t", index=False)
+print(f"Success: TSV 1 ({tsv1_file}) updated. {df_m3u.shape[0]} channels updated.")
 
-with open(tsv2_file, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames_2, delimiter="\t")
-    writer.writeheader()
-    writer.writerows(flipped_rows_2)
+# Step 3: Update TSV 2 (flip SKIP/KEEP)
+df_tsv2 = pd.read_csv(tsv2_file, sep="\t")
+mask = df_tsv2["NAME"].isin(df_m3u["NAME"])
+flip_count = mask.sum()
 
-print(f"Success: TSV 2 ({tsv2_file}) updated.")
+df_tsv2.loc[mask, "Status"] = df_tsv2.loc[mask, "Status"].str.strip().str.upper().replace({"KEEP":"SKIP", "SKIP":"KEEP"})
+df_tsv2.to_csv(tsv2_file, sep="\t", index=False)
+print(f"Success: TSV 2 ({tsv2_file}) updated. {flip_count} channels flipped SKIP/KEEP.")
