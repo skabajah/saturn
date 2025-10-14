@@ -34,8 +34,8 @@ h_to_name = {
     "skynews_ar1": "SkyNews_Arabia",
     "palestine1": "PSC",  
     "makan": "Makan",
-    "abudhabi_tv":"Abu_Dhabi"
-}
+    "abudhabi_tv": "Abu_Dhabi"
+    }
 
 
 
@@ -69,7 +69,7 @@ df_tsv1_updated["source_stream"] = df_tsv1_updated["source_stream_new"].combine_
 df_tsv1_updated = df_tsv1_updated.drop(columns=["source_stream_new"])
 
 df_tsv1_updated.to_csv(tsv1_file, sep="\t", index=False)
-print(f"Success: TSV 1 ({tsv1_file}) updated. {df_m3u.shape[0]} channels updated.")
+print(f"Success: TSV 1 updated. {df_m3u.shape[0]} channels updated.")
 
 # Step 3: Update TSV 2 (flip SKIP/KEEP)
 df_tsv2 = pd.read_csv(tsv2_file, sep="\t")
@@ -83,4 +83,4 @@ df_tsv2.loc[mask, "Status"] = "KEEP"
 df_tsv2["ch_num"] = df_tsv2["ch_num"].astype("Int64")
 
 df_tsv2.to_csv(tsv2_file, sep="\t", index=False)
-print(f"Success: TSV 2 ({tsv2_file}) updated. {flip_count} channels flipped SKIP/KEEP.")
+print(f"Success: TSV 2 updated. {flip_count} channels flipped SKIP/KEEP.")
