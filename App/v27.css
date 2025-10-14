@@ -15,12 +15,14 @@ body {
 
 video {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  /*top: 50%;*/
+  /*left: 50%;*/
   width: 102%;
   height: 102%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
+  /*object-fit: cover;*/
+  object-fit: fill;
+
+  /*transform: translate(-50%, -50%);*/
 }
 
 
