@@ -33,7 +33,8 @@ h_to_name = {
     "alarabiya1": "Al_Arabiya",
     "skynews_ar1": "SkyNews_Arabia",
     "palestine1": "PSC",  
-    "makan": "Makan"
+    "makan": "Makan",
+    "abudhabi_tv":"Abu_Dhabi"
 }
 
 
