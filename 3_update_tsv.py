@@ -17,8 +17,26 @@ h_to_name = {
     "almashhad": "Mashhad",
     "lbc_1": "LBC",
     "otv_lb1": "OTV",
-    "aljadeed1": "Jadeed"
+    "aljadeed1": "Jadeed",
+    "asharq_tv": "Al_Sharq",
+    "saudi_thaqafiya": "Thaqafeyah",
+    "sbc_tv": "SBC",
+    "mbc1_tv_1": "MBC_1",
+    "mbc2_tv_1": "MBC_2",
+    "mbc4_tv_1": "MBC_4",
+    "mbc5_tv_1": "MBC_5",
+    "mbcmasr_tv_1": "MBC_Masr",
+    "mbcmasr2_tv_1": "MBC_Masr_2",
+    "mbcdrama_tv_1": "MBC_Drama",
+    "mbc_masr_drama": "MBC_Drama_Egypt",
+    "rotana_aflam": "Rotana_Aflam",
+    "alarabiya1": "Al_Arabiya",
+    "skynews_ar1": "SkyNews_Arabia",
+    "palestine1": "PSC",  
+    "makan": "Makan"
 }
+
+
 
 # Step 1: Build DataFrame from M3U
 m3u_lines = [line.strip() for line in open(m3u_file, "r", encoding="utf-8") if line.strip()]
