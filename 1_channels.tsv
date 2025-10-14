@@ -6,7 +6,7 @@ SkyNews_Arabia	https://stream.skynewsarabia.com/hls/sna.m3u8
 Al_Sharq	https://svs.itworkscdn.net/bloomberarlive/bloomberg.smil/bloomberarpublish/bloomberg_480p/chunks_dvr.m3u8
 TRT	https://tv-trtarabi.medya.trt.com.tr/master_720.m3u8
 	
-PSC	https://pbc.furrera.ps/palestinehd/index.m3u8?v=45899b1e
+PSC	https://pbc.furrera.ps/palestinehd/tracks-v3a1/mono.m3u8
 Jadeed	https://games1.elahmad.xyz/tv757_www.elahmad.com_aljadeed/index.m3u8?token=b81cea56508b0dceb3635f0b404bc24dca71b20f-5932aadc95f0b5ca4c28316e6d166969-1760457803-1760447003
 LBC	https://games1.elahmad.xyz/tv757_www.elahmad.com_lbc/index.m3u8?token=47643f9f95d8f18cd8c5690ac92ad8dae034f5be-20598cbf3ea852332fd49637685051ec-1760457776-1760446976
 MTV	https://media.mtv.com.lb/v1/broadcast/mtv/playlist.m3u8
@@ -22,7 +22,7 @@ Syria_2	https://live.kwikmotion.com/syriatv02live/syriatv02.smil/syriatv02publis
 Makan	https://makan.media.kan.org.il/hls/live/2024680/2024680/master.m3u8?v=45899b1e
 	
 MBC_1	https://mbc1-enc.edgenextcdn.net/out/v1/0965e4d7deae49179172426cbfb3bc5e/index.m3u8
-MBC_2	https://tgn.bozztv.com/eshgtv-trn09/ga-mchannel2/index.m3u8
+MBC_2	https://tgn.bozztv.com/eshgtv-trn09/ga-mchannel2/tracks-v1a1/mono.m3u8?nimblesessionid=1259702534
 MBC_4	https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/manifest/audio1/192kbps/audio.m3u8
 MBC_5	https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8
 SBC	https://shd-gcp-live.edgenextcdn.net/live/bitmovin-sbc/90e09c0c28db26435799b4a14892a167/index.m3u8
@@ -31,7 +31,7 @@ AlAraby_2	https://live.kwikmotion.com/alaraby2live/alaraby2.smil/playlist.m3u8
 Abu_Dhabi	https://vo-live-media.cdb.cdn.orange.com/Content/Channel/AbuDhabiChannel/HLS/index.m3u8
 Dubai	https://dmieigthvllta.cdn.mgmlcdn.com/dubaitvht/smil:dubaitv.stream.smil/chunklist_b1500000.m3u8
 Dubai_One	https://dminnvllta.cdn.mgmlcdn.com/dubaione/smil:dubaione.stream.smil/chunklist_b1800000.m3u8
-Mashhad	https://fastly.live.brightcove.com/6378439181112/ap-south-1/6313884884001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiaWR2d3RnLmVncmVzcy5qYXYzemwiLCJhY2NvdW50X2lkIjoiNjMxMzg4NDg4NDAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MzEzODg0ODg0MDAxIl0sImp0aSI6IjYzNzg0MzkxODExMTIifQ.EdlNOMQrd1QZ3Y_9mU1f4eKS3spc8eU5sIlXnWLbgmY/playlist-hls.m3u8
+Mashhad	https://fastly.live.brightcove.com/6378439181112/ap-south-1/6313884884001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiaWR2d3RnLmVncmVzcy5qYXYzemwiLCJhY2NvdW50X2lkIjoiNjMxMzg4NDg4NDAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MzEzODg0ODg0MDAxIl0sImp0aSI6IjYzNzg0MzkxODExMTIifQ.EdlNOMQrd1QZ3Y_9mU1f4eKS3spc8eU5sIlXnWLbgmY/chunklist__0.m3u8
 	
 CBC	https://games2.elahmad.xyz/tv757_www.elahmad.com_cbc_tv/index.m3u8?token=1ae229b872016085cb3cbc0f2acf869ceeab91cb-3a5bb3fe9b7e7f46b4172d4c74d70db0-1760457658-1760446858
 DMC	https://games1.elahmad.xyz/tv757_www.elahmad.com_dmc/index.m3u8?token=10b00d1defdcd15a77b676e378183778b4571ed7-b61fa738883d8f955d89b8e93245b399-1760457703-1760446903
