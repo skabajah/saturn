@@ -28,17 +28,19 @@
     */
     html, body {
         height: 100%;
-        margin: 0;
+        margin: 10% 5%;
         padding: 0;
         color: #fff;
         text-align: center;
         background: url('1920x1080.jpg') no-repeat center center fixed;
         background-size: contain;
-        display: flex;
+        /*display: flex;*/
         flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: black;
+        position: fixed;
+            border:  solid red 1px;
     }
 
     .container {
@@ -46,11 +48,13 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 90%;
-        max-width: 1200px;
+        /*width: 90%;*/
+        /*max-width: 1200px;*/
         background-color: rgba(0,0,0,0.5);
         padding: 40px 20px;
         border-radius: 20px;
+                border:  solid blue 1px;
+
     }
 
     .column {
@@ -118,6 +122,7 @@
         color: gray;
         font-family: monospace;
         font-size: .5em;
+        display: contents;
     }
 
     /* Responsive adjustments */

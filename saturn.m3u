@@ -71,6 +71,8 @@ https://saturn.shadi-kabajah.workers.dev/Nahar
 https://saturn.shadi-kabajah.workers.dev/ON_E
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",407) Sada
 https://saturn.shadi-kabajah.workers.dev/Sada
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",408) TEN
+https://saturn.shadi-kabajah.workers.dev/TEN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",461) MBC Masr
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr_2.jpg" group-title="EGYPT",462) MBC Masr 2
