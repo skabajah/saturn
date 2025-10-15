@@ -10,7 +10,7 @@
         const NEXT_PAGE_FILE = APP_VERSION + '.html'; // Dynamically creates 'v26.html'
         // Define other components of the version footer text
         const AUTHOR_NAME = 'Shadi Kabajah';
-        const DATE_STAMP = 'Oct 12 2025';
+        const DATE_STAMP = 'Oct 14 2025';
     </script>
     <!-- -------------------------------- -->
 
@@ -26,34 +26,33 @@
 <style>
     /* *** ORIGINAL CSS IS PRESERVED BELOW ***
     */
-    html, body {
+    /*html, */
+    body {
         height: 100%;
-        margin: 10% 5%;
-        padding: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0 ;
+        display: flex;
+
         color: #fff;
         text-align: center;
         background: url('1920x1080.jpg') no-repeat center center fixed;
         background-size: contain;
-        /*display: flex;*/
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         background-color: black;
         position: fixed;
-            border:  solid red 1px;
     }
 
     .container {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        /*width: 90%;*/
-        /*max-width: 1200px;*/
+        justify-content: center; 
         background-color: rgba(0,0,0,0.5);
-        padding: 40px 20px;
-        border-radius: 20px;
-                border:  solid blue 1px;
+        padding: 5%;
+        border-radius: 20px; 
 
     }
 
@@ -117,12 +116,14 @@
         margin: 0;
     }
     .version {
-        position: fixed;
-        bottom: 1em;
+        /*position: fixed;*/
+        /*bottom: 1em;*/
         color: gray;
         font-family: monospace;
         font-size: .5em;
-        display: contents;
+        /*display: contents;*/
+        padding-top:  10%;
+
     }
 
     /* Responsive adjustments */
