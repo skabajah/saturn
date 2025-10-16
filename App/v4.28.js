@@ -2,7 +2,7 @@
 // Project Saturn
 // skabajah
 // 2025-10-12
-// v27.js (VLC bridge version)
+// v4.28.js (VLC bridge version)
 // -------------------------
 
 // --- State variables ---
@@ -45,6 +45,7 @@ function playCurrentChannel(skipOverlay = false) {
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
 }
+
 
 function setSidebarVisibility(visible) {
   isSidebarVisible = visible;

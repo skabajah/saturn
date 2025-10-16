@@ -2,28 +2,31 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="version" content="v27">
+  <meta name="version" content="v28">
   <meta name="author" content="Shadi Kabajah">
   <meta name="date" content="2025-10-16">
-  <title>Saturn TV</title>
+  <title>Saturn TV v4.28</title>
 
   <!-- Link external CSS -->
   <link rel="stylesheet" href="v27.css">
-
 
   <!-- Theme Colors -->
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-
+  <style>
+    /* Hide native HTML video since VLC will render */
+    #videoPlayer {
+      display: none !important;
+    }
+  </style>
 </head>
+
 <body>
   <div id="videoWrapper">
-
     <video id="videoPlayer" autoplay playsinline></video>
-        <div id="spinner" class="spinner"></div>
-
+    <div id="spinner" class="spinner"></div>
   </div>
 
   <div id="overlay">
@@ -38,8 +41,8 @@
   </div>
 
   <div id="sidebar"></div>
- 
-  <!-- Link external JS -->
-  <script src="v4.27.js"></script>
+
+  <!-- Link VLC bridge JS -->
+  <script src="v4.28.js"></script>
 </body>
 </html>
