@@ -38,7 +38,7 @@
 
         color: #fff;
         text-align: center;
-        background: url('landing.svg') no-repeat center center fixed;
+        background: url('1920x1080.jpg') no-repeat center center fixed;
         background-size: contain;
         flex-direction: column;
         justify-content: center;
@@ -47,8 +47,93 @@
         position: fixed;
     }
 
- 
-   
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; 
+        background-color: rgba(0,0,0,0.5);
+        padding: 5%;
+        border-radius: 20px; 
+
+    }
+
+    .column {
+        flex: 1;
+        height: 10rem;
+    }
+
+   .column h1 {
+        height: 4rem;
+        align-items: anchor-center;
+        display: flex;
+        margin: 0 ;
+        font-weight: 800;
+        white-space: nowrap;
+
+
+    }
+
+    .column p {
+        border-top: solid #a49f999e 6px; 
+        height: 5rem;
+        padding-top: 12px;
+        margin: 0; 
+        font-weight: 200;
+
+    }
+
+    /* English styling */
+    .english {
+        text-align: left;
+        direction: ltr;
+        /*font-family: 'Audiowide', monospace;*/
+    }
+    .english h1 {
+        font-size: 2rem;
+        font-family: 'Audiowide', monospace;
+
+    }
+    .english p {
+        font-family: 'Space Grotesk', monospace;
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+
+    /* Arabic styling */
+    .arabic {
+        text-align: right;
+        direction: rtl;
+        font-family: 'Fustat', serif;
+    }
+    .arabic h1 {
+        font-size: 3rem;
+    }
+    .arabic p {
+        font-size: 1.5rem;
+        line-height: 1.1;
+
+    }
+
+    /* Click / tap instruction row */
+    .instruction-row {
+        margin-top: 30px;
+        text-align: center;
+        background: rgba(0,0,0,0.5);
+        padding: 20px;
+    }
+    .instruction-row .arabic-instruction {
+        font-family: 'Fustat', serif;
+        font-weight: 200;
+        font-size: 1.3rem;
+        margin: 0 0 5px 0;
+    }
+    .instruction-row .english-instruction {
+        font-family: 'Space Grotesk', monospace;
+        font-weight: 200;
+        font-size: 0.9rem;
+        margin: 0;
+    }
     .version {
         /*position: fixed;*/
         /*bottom: 1em;*/
@@ -60,13 +145,48 @@
 
     }
 
-    
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .container {
+            flex-direction: column;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .english, .arabic {
+            text-align: center;
+        }
+    }
 </style>
 
 </head>
 <body>
-    
-    <p class="version" id="version-display"></p>
+    <div class="container">
+        <!-- English Column -->
+        <div class="column english">
+            <h1>Project Saturn</h1>
+            <p>Free Arabic channels that are publicly accessible.</p>
+        </div>
+
+        <!-- Placeholder for future icon -->
+        <div class="column icon">
+            <!-- <img src="" alt="Saturn Icon" style="width:200px;height:200px;border-radius:50%;"> -->
+        </div>
+
+        <!-- Arabic Column -->
+        <div class="column arabic">
+            <h1>مشروع زحل</h1>
+            <p>قنوات عربية مجانية يمكن الوصول إليها علنًا.</p>
+        </div>
+    </div>
+
+    <!-- Instruction row below the columns -->
+    <div class="instruction-row">
+        <p class="arabic-instruction">اضغط أي مفتاح للبدء بالمشاهدة</p>
+        <p class="english-instruction">Press any key to start watching</p>
+    </div>
+
+    <!-- The content is now empty. JavaScript will inject the text based on the variables. -->
+    <p class="version" id="version-display">
+    </p>
 
 
 
