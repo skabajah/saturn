@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="version" content="v27" id="app-version-meta">
   <meta name="author" content="Shadi Kabajah" id="app-author-meta">
-  <meta name="date" content="2025-10-16" id="app-date-meta">
+  <meta name="date" content="2025-10-16 3pm" id="app-date-meta">
   <title>Project Saturn</title>
 
   <style>
@@ -42,16 +42,37 @@
   <p class="version" id="version-display"></p>
 
   <script>
-    // Read from meta tags
+    // === 1. Read meta tags ===
     const version = document.querySelector('meta[name="version"]')?.content || 'v?';
-    const author = document.querySelector('meta[name="author"]')?.content || '';
-    const date = document.querySelector('meta[name="date"]')?.content || '';
+    const author  = document.querySelector('meta[name="author"]')?.content || '';
+    const date    = document.querySelector('meta[name="date"]')?.content || '';
 
-    // Render the footer line
+    // === 2. Display footer text ===
     const versionDisplay = document.getElementById('version-display');
-    if (versionDisplay) {
-      versionDisplay.textContent = `${author} - ${version} - ${date}`;
+    if (versionDisplay) versionDisplay.textContent = `${author} - ${version} - ${date}`;
+
+    // === 3. Redirect setup ===
+    const targetUrl = `${version}.html`; // e.g., v27.html
+
+    function redirectToTarget() {
+      window.location.href = targetUrl;
     }
+
+    // Redirect on click, key press, or swipe
+    document.body.addEventListener('click', redirectToTarget);
+    document.addEventListener('keydown', redirectToTarget);
+
+    let touchStartX = 0, touchStartY = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', e => {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
+    }, { passive: true });
   </script>
 </body>
 </html>
