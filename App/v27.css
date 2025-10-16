@@ -20,7 +20,8 @@ video {
   width: 102%;
   height: 102%;
   /*object-fit: cover;*/
-  object-fit: fill;
+  object-fit: /*fill*/;
+  object-fit: contain;
 
   /*transform: translate(-50%, -50%);*/
 }
