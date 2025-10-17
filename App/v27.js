@@ -230,7 +230,7 @@ function toggleFullscreen() {
 }
 
 // --- Stop playback on exit / visibility change ---
-document.addEventListener('visibilitychange', () => { if (document.hidden) stopAllChannels(); });
+// Only stop channels when the app or page is really closing
 window.addEventListener('beforeunload', stopAllChannels);
 
 // --- Init ---
