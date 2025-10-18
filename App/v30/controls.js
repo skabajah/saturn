@@ -29,7 +29,7 @@ function playCurrentChannel(skipOverlay = false) {
   if (!player) {
     player = videojs(playerEl, {
       autoplay: true,          // let browser autoplay if possible
-      controls: true,          // show controls to help autoplay
+      controls: false,          // show controls to help autoplay
       muted: true,             // start muted to satisfy autoplay policies
       preload: 'auto',
       width: '100%',
