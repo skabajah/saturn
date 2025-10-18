@@ -36,7 +36,7 @@ function playCurrentChannel(skipOverlay = false) {
 
   if (isSafari) {
     player.src = ch.url;
-    player.muted = true;          // start muted for autoplay
+    player.muted = false;          // start muted for autoplay
     player.controls = false;      // keep controls hidden
     player.play().catch(() => {});
 
@@ -53,7 +53,7 @@ function playCurrentChannel(skipOverlay = false) {
         width: '100%',
         height: '100%',
         autoPlay: true,
-        mute: true,                 // start muted for autoplay
+        mute: false,                 // start muted for autoplay
         playback: { crossBrowser: true },
         hideMediaControl: true      // hide Clappr controls
       });
