@@ -6,23 +6,13 @@
   <meta name="date" content="2025-10-16">
   <title>Saturn TV</title>
 
-  <!-- Link external CSS -->
   <link rel="stylesheet" href="main.css">
-
-
-  <!-- Theme Colors -->
-  <meta name="theme-color" content="#000000">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 </head>
 <body>
   <div id="videoWrapper">
-
     <video id="videoPlayer" autoplay playsinline></video>
-        <div id="spinner" class="spinner"></div>
-
+    <div id="spinner" class="spinner"></div>
   </div>
 
   <div id="overlay">
@@ -37,8 +27,56 @@
   </div>
 
   <div id="sidebar"></div>
- 
-  <!-- Link external JS -->
+
+  <script>
+    // --- Platform detection ---
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    let clapprPlayer = null; // Clappr instance
+
+    const player = document.getElementById('videoPlayer');
+    const spinner = document.getElementById('spinner');
+
+    // --- Override playCurrentChannel to support Safari + Clappr ---
+    const originalPlayCurrentChannel = playCurrentChannel;
+    playCurrentChannel = function(skipOverlay = false) {
+      const ch = channels[currentIndex];
+      if (!ch) return;
+
+      spinner.style.display = 'block';
+
+      if (isSafari) {
+        // Native Safari video
+        player.src = ch.url;
+        player.muted = true; // Safari requires muted autoplay
+        player.play().catch(() => {});
+        player.oncanplay = () => spinner.style.display = 'none';
+      } else {
+        // Clappr player for other browsers
+        if (!clapprPlayer) {
+          clapprPlayer = new Clappr.Player({
+            source: ch.url,
+            parentId: '#videoWrapper',
+            width: '100%',
+            height: '100%',
+            autoPlay: true,
+            mute: true,
+            playback: { crossBrowser: true }
+          });
+
+          clapprPlayer.on(Clappr.Events.PLAYER_READY, () => spinner.style.display = 'none');
+          clapprPlayer.on(Clappr.Events.PLAYER_ERROR, () => spinner.style.display = 'none');
+
+        } else {
+          clapprPlayer.load(ch.url);
+        }
+      }
+
+      // Keep all your original overlay/sidebar logic
+      highlightChannel();
+      if (!skipOverlay) showChannelOverlay(ch);
+    };
+  </script>
+
   <script src="controls.js"></script>
 </body>
 </html>

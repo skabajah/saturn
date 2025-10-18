@@ -1,7 +1,7 @@
 // -------------------------
 // Project Saturn
 // skabajah
-// 2025-10-12
+// 2025-10-12 (updated 2025-10-18)
 // v27.js
 // -------------------------
 
@@ -18,7 +18,10 @@ const channelLogo = document.getElementById('channelLogo');
 const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
-const spinner = document.getElementById('spinner'); // ensure you add this div in HTML
+const spinner = document.getElementById('spinner');
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+let clapprPlayer = null; // Clappr instance
 
 // --- Platform check ---
 function isDesktop() {
@@ -40,16 +43,39 @@ function changeChannel(delta) {
   }
 }
 
+// --- Play channel (integrates Safari + Clappr) ---
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
 
   spinner.style.display = 'block';
-  player.src = ch.url;
 
-  // Play and hide spinner when ready
-  player.play().catch(() => {});
-  player.oncanplay = () => spinner.style.display = 'none';
+  if (isSafari) {
+    // Native Safari
+    player.src = ch.url;
+    player.muted = true;
+    player.play().catch(() => {});
+    player.oncanplay = () => spinner.style.display = 'none';
+    player.onerror = () => spinner.style.display = 'none';
+  } else {
+    // Clappr for other browsers
+    if (!clapprPlayer) {
+      clapprPlayer = new Clappr.Player({
+        source: ch.url,
+        parentId: '#videoWrapper',
+        width: '100%',
+        height: '100%',
+        autoPlay: true,
+        mute: true,
+        playback: { crossBrowser: true }
+      });
+
+      clapprPlayer.on(Clappr.Events.PLAYER_READY, () => spinner.style.display = 'none');
+      clapprPlayer.on(Clappr.Events.PLAYER_ERROR, () => spinner.style.display = 'none');
+    } else {
+      clapprPlayer.load(ch.url);
+    }
+  }
 
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
@@ -61,10 +87,11 @@ function setSidebarVisibility(visible) {
   highlightChannel();
 }
 
-// --- Helper functions ---
+// --- Overlay / Sidebar Helpers ---
 function showChannelOverlay(ch) {
   if (!ch) return;
   channelLogo.src = ch.logo;
+
   const match = ch.name.match(/^(\d+)\)\s*(.*)/);
   let chNum = '';
   let chDisplay = '';
@@ -114,9 +141,15 @@ function highlightChannelByDelta(delta) {
   highlightChannel();
 }
 
+// --- Stop all channels ---
 function stopAllChannels() {
-  player.pause();
-  player.currentTime = 0;
+  if (isSafari) {
+    player.pause();
+    player.currentTime = 0;
+  } else if (clapprPlayer) {
+    clapprPlayer.destroy();
+    clapprPlayer = null;
+  }
 }
 
 // --- Keyboard / Remote ---
@@ -224,14 +257,4 @@ function buildSidebar() {
 
 // --- Fullscreen ---
 function toggleFullscreen() {
-  if (!isDesktop()) return;
-  if (!document.fullscreenElement) player.requestFullscreen?.();
-  else document.exitFullscreen?.();
-}
-
-// --- Stop playback on exit / visibility change ---
-// Only stop channels when the app or page is really closing
-window.addEventListener('beforeunload', stopAllChannels);
-
-// --- Init ---
-loadM3U();
+  if (!isDesktop()) return
