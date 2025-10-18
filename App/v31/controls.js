@@ -1,89 +1,90 @@
 // -------------------------
-// Project Saturn Controls (Video.js + HLS.js)
+// Electron event listeners
 // -------------------------
+window.addEventListener('play-channel', e => {
+  currentIndex = e.detail;
+  playCurrentChannel();
+});
+
+window.addEventListener('change-channel', e => {
+  changeChannel(e.detail);
+});
+
+window.addEventListener('stop-playback', () => stopAllChannels());
+
+window.addEventListener('toggle-fullscreen', () => toggleFullscreen());
+
+window.addEventListener('sidebar-visibility', e => setSidebarVisibility(e.detail));
+
+
+// -------------------------
+// Project Saturn Controls (Video.js)
+// v30
+// -------------------------
+
 let channels = [];
 let currentIndex = 0;
 let isSidebarVisible = false;
 let overlayTimer;
 
+const playerEl = document.getElementById('videoPlayer');
 const overlay = document.getElementById('overlay');
 const sidebar = document.getElementById('sidebar');
 const channelLogo = document.getElementById('channelLogo');
 const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
-const spinner = document.getElementById('spinner');
-
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-const player = videojs('my-video', { autoplay: true, controls: false, muted: false });
-let hlsInstance = null;
+ 
+let player = null;
 
 // -------------------------
-// Channel Playback
+// Playback
 // -------------------------
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
-  
-  spinner.style.display = 'block';
-  
-  const url = ch.url;
 
-  if (isSafari) {
-    // Safari native HLS
-    player.src({ src: url, type: 'application/x-mpegURL' });
-    player.play().catch(()=>{});
-    player.one('play', () => spinner.style.display = 'none');
-  } else {
-    // Chrome / Android / Fire TV: HLS.js
-    if (hlsInstance) {
-      hlsInstance.destroy();
-      hlsInstance = null;
-    }
+  // Initialize Video.js player if not yet
+  if (!player) {
+    player = videojs(playerEl, {
+      autoplay: true,          // let browser autoplay if possible
+      controls: true,          // show controls to help autoplay
+      muted: true,             // start muted to satisfy autoplay policies
+      preload: 'auto',
+      width: '100%',
+      height: '100%',
+      playsinline: true
+    });
 
-    if (Hls.isSupported()) {
-      hlsInstance = new Hls();
-      hlsInstance.loadSource(url);
-      hlsInstance.attachMedia(player.tech().el());
+    player.ready(() => {
+      console.log('Video.js ready');
+    });
 
-      hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
-        player.play().catch(()=>{});
-        spinner.style.display='none';
-      });
-
-      hlsInstance.on(Hls.Events.ERROR, (event, data) => {
-        console.error('HLS.js error', data);
-        spinner.style.display='none';
-        alert('Failed to load stream. Check URL / CORS / token.');
-      });
-    } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
-      // fallback
-      player.src({ src: url, type: 'application/x-mpegURL' });
-      player.play().catch(()=>{});
-      player.one('play', () => spinner.style.display='none');
-    } else {
-      alert('HLS not supported in this browser.');
-      spinner.style.display='none';
-    }
+    // Handle errors silently
+    player.on('error', () => {
+      console.error('Video.js error:', player.error());
+    });
   }
+
+  // Load the current channel
+  player.src({
+    src: ch.url,
+    type: 'application/x-mpegURL'
+  });
+
+  // Attempt to play; unmute if browser allows
+  player.play().then(() => {
+    player.muted(false); // unmute if possible
+  }).catch(err => {
+    console.warn('Playback prevented by browser:', err);
+  });
 
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
 }
 
-function changeChannel(delta) {
-  if (isSidebarVisible) {
-    highlightChannelByDelta(delta);
-  } else {
-    currentIndex = (currentIndex + delta + channels.length) % channels.length;
-    playCurrentChannel(true);
-    showChannelOverlay(channels[currentIndex]);
-  }
-}
-
 // -------------------------
-// Sidebar / Overlay
+// Sidebar & Overlay
 // -------------------------
 function setSidebarVisibility(visible) {
   isSidebarVisible = visible;
@@ -119,6 +120,19 @@ function highlightChannel() {
   sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
 }
 
+// -------------------------
+// Channel Navigation
+// -------------------------
+function changeChannel(delta) {
+  if (isSidebarVisible) {
+    highlightChannelByDelta(delta);
+  } else {
+    currentIndex = (currentIndex + delta + channels.length) % channels.length;
+    playCurrentChannel(true);
+    showChannelOverlay(channels[currentIndex]);
+  }
+}
+
 function highlightChannelByDelta(delta) {
   let nextIndex = currentIndex;
   let safety = 0;
@@ -132,16 +146,20 @@ function highlightChannelByDelta(delta) {
 }
 
 // -------------------------
-// Stop / Fullscreen
+// Stop playback
 // -------------------------
 function stopAllChannels() {
-  player.pause();
-  if (hlsInstance) hlsInstance.stopLoad();
-  player.currentTime(0);
+  if (player) {
+    player.pause();
+    // don't reset currentTime; live streams may break
+  }
 }
 
+// -------------------------
+// Fullscreen
+// -------------------------
 function toggleFullscreen() {
-  if (!document.fullscreenElement) player.requestFullscreen?.();
+  if (!document.fullscreenElement) playerEl.requestFullscreen?.();
   else document.exitFullscreen?.();
 }
 
@@ -168,7 +186,7 @@ document.addEventListener('keydown', e => {
 });
 
 // -------------------------
-// Click / Tap / Swipe
+// Click / Tap
 // -------------------------
 document.addEventListener('click', e => {
   const targetChannel = e.target.closest('.channel');
@@ -182,6 +200,9 @@ document.addEventListener('click', e => {
   }
 });
 
+// -------------------------
+// Swipe / Touch
+// -------------------------
 let touchStartX=0, touchStartY=0;
 document.addEventListener('touchstart', e => { touchStartX=e.touches[0].clientX; touchStartY=e.touches[0].clientY; }, { passive: false });
 document.addEventListener('touchend', e => {
@@ -219,7 +240,7 @@ async function loadM3U() {
 }
 
 // -------------------------
-// Sidebar Builder
+// Sidebar builder
 // -------------------------
 function buildSidebar() {
   sidebar.innerHTML='';
@@ -245,7 +266,11 @@ function buildSidebar() {
 }
 
 // -------------------------
-// Stop on exit / Init
+// Stop on exit
 // -------------------------
 window.addEventListener('beforeunload', stopAllChannels);
+
+// -------------------------
+// Init
+// -------------------------
 loadM3U();
