@@ -24,13 +24,12 @@ function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
 
- 
   // Initialize Video.js player if not yet
   if (!player) {
     player = videojs(playerEl, {
-      autoplay: true,
-      controls: false,
-      muted: false,
+      autoplay: true,          // let browser autoplay if possible
+      controls: true,          // show controls to help autoplay
+      muted: true,             // start muted to satisfy autoplay policies
       preload: 'auto',
       width: '100%',
       height: '100%',
@@ -44,9 +43,7 @@ function playCurrentChannel(skipOverlay = false) {
     // Handle errors silently
     player.on('error', () => {
       console.error('Video.js error:', player.error());
-     });
-
- 
+    });
   }
 
   // Load the current channel
@@ -55,9 +52,12 @@ function playCurrentChannel(skipOverlay = false) {
     type: 'application/x-mpegURL'
   });
 
-  player.play().catch(err => {
+  // Attempt to play; unmute if browser allows
+  player.play().then(() => {
+    player.muted(false); // unmute if possible
+  }).catch(err => {
     console.warn('Playback prevented by browser:', err);
-   });
+  });
 
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
@@ -131,7 +131,7 @@ function highlightChannelByDelta(delta) {
 function stopAllChannels() {
   if (player) {
     player.pause();
-    player.currentTime(0);
+    // don't reset currentTime; live streams may break
   }
 }
 
