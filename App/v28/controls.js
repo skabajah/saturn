@@ -1,11 +1,6 @@
 // -------------------------
-// Project Saturn
-// skabajah
-// 2025-10-12 (updated 2025-10-18)
-// v27.js
+// Project Saturn Controls
 // -------------------------
-
-// --- State variables ---
 let channels = [];
 let currentIndex = 0;
 let isSidebarVisible = false;
@@ -21,29 +16,18 @@ const channelChNum = document.getElementById('channelChNum');
 const spinner = document.getElementById('spinner');
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-let clapprPlayer = null; // Clappr instance
+let clapprPlayer = null;
 
-// --- Platform check ---
-function isDesktop() {
-  const ua = navigator.userAgent.toLowerCase();
-  if (ua.includes('android') && ua.includes('firetv')) return false;
-  if (ua.includes('smarttv') || ua.includes('tv')) return false;
-  if (ua.includes('android') && !ua.includes('mobile')) return false;
-  return true;
-}
-
-// --- Core functions ---
 function changeChannel(delta) {
   if (isSidebarVisible) {
     highlightChannelByDelta(delta);
   } else {
     currentIndex = (currentIndex + delta + channels.length) % channels.length;
-    playCurrentChannel(true); // skip overlay
+    playCurrentChannel(true);
     showChannelOverlay(channels[currentIndex]);
   }
 }
 
-// --- Play channel (integrates Safari + Clappr) ---
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
@@ -51,14 +35,17 @@ function playCurrentChannel(skipOverlay = false) {
   spinner.style.display = 'block';
 
   if (isSafari) {
-    // Native Safari
     player.src = ch.url;
-    player.muted = true;
+    player.muted = true;          // start muted for autoplay
+    player.controls = false;      // keep controls hidden
     player.play().catch(() => {});
-    player.oncanplay = () => spinner.style.display = 'none';
-    player.onerror = () => spinner.style.display = 'none';
+
+    // Unmute when playback actually starts
+    player.onplaying = () => {
+      player.muted = false;
+      spinner.style.display = 'none';
+    };
   } else {
-    // Clappr for other browsers
     if (!clapprPlayer) {
       clapprPlayer = new Clappr.Player({
         source: ch.url,
@@ -66,14 +53,20 @@ function playCurrentChannel(skipOverlay = false) {
         width: '100%',
         height: '100%',
         autoPlay: true,
-        mute: true,
-        playback: { crossBrowser: true }
+        mute: true,                 // start muted for autoplay
+        playback: { crossBrowser: true },
+        hideMediaControl: true      // hide Clappr controls
       });
 
-      clapprPlayer.on(Clappr.Events.PLAYER_READY, () => spinner.style.display = 'none');
+      clapprPlayer.on(Clappr.Events.PLAYER_PLAY, () => {
+        clapprPlayer.mute(false);  // unmute when playback starts
+        spinner.style.display = 'none';
+      });
+
       clapprPlayer.on(Clappr.Events.PLAYER_ERROR, () => spinner.style.display = 'none');
     } else {
       clapprPlayer.load(ch.url);
+      clapprPlayer.on(Clappr.Events.PLAYER_PLAY, () => clapprPlayer.mute(false));
     }
   }
 
@@ -87,25 +80,15 @@ function setSidebarVisibility(visible) {
   highlightChannel();
 }
 
-// --- Overlay / Sidebar Helpers ---
 function showChannelOverlay(ch) {
   if (!ch) return;
   channelLogo.src = ch.logo;
-
   const match = ch.name.match(/^(\d+)\)\s*(.*)/);
-  let chNum = '';
-  let chDisplay = '';
-  if (match) {
-    chNum = match[1];
-    chDisplay = match[2];
-  } else {
-    chDisplay = ch.name;
-  }
-
+  let chNum = match ? match[1] : '';
+  let chDisplay = match ? match[2] : ch.name;
   channelGroup.textContent = ch.group;
   channelChNum.textContent = chNum;
   channelName.textContent = chDisplay;
-
   overlay.classList.add('visible');
   clearTimeout(overlayTimer);
   overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
@@ -114,18 +97,14 @@ function showChannelOverlay(ch) {
 function highlightChannel() {
   const items = sidebar.querySelectorAll('.channel');
   items.forEach((item, i) => item.classList.toggle('active', i === currentIndex));
-
   if (!isSidebarVisible) return;
-
   const active = items[currentIndex];
   if (!active) return;
-
   const sidebarHeight = sidebar.clientHeight;
   const center = sidebarHeight / 2 - active.offsetHeight / 2;
   let targetScroll = active.offsetTop - center;
   const maxScroll = sidebar.scrollHeight - sidebarHeight;
-  if (targetScroll < 0) targetScroll = 0;
-  if (targetScroll > maxScroll) targetScroll = maxScroll;
+  targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
   sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
 }
 
@@ -141,23 +120,17 @@ function highlightChannelByDelta(delta) {
   highlightChannel();
 }
 
-// --- Stop all channels ---
 function stopAllChannels() {
-  if (isSafari) {
-    player.pause();
-    player.currentTime = 0;
-  } else if (clapprPlayer) {
-    clapprPlayer.destroy();
-    clapprPlayer = null;
-  }
+  if (isSafari) player.pause();
+  else if (clapprPlayer) clapprPlayer.stop();
+  player.currentTime = 0;
 }
 
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', e => {
   const keysHandled = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter',' ','Escape','Backspace','f','F'];
   if (keysHandled.includes(e.key) || keysHandled.includes(e.keyCode)) e.preventDefault();
-
-  switch(e.key) {
+  switch(e.key){
     case 'ArrowUp': changeChannel(-1); break;
     case 'ArrowDown': changeChannel(1); break;
     case 'ArrowLeft':
@@ -169,7 +142,7 @@ document.addEventListener('keydown', e => {
     case 'Escape':
     case 'Backspace': setSidebarVisibility(false); break;
     case 'f':
-    case 'F': if (isDesktop()) toggleFullscreen(); break;
+    case 'F': toggleFullscreen(); break;
   }
 });
 
@@ -187,16 +160,11 @@ document.addEventListener('click', e => {
 });
 
 // --- Swipe / Touch ---
-let touchStartX = 0, touchStartY = 0;
-document.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: false });
-
+let touchStartX=0, touchStartY=0;
+document.addEventListener('touchstart', e => { touchStartX=e.touches[0].clientX; touchStartY=e.touches[0].clientY; }, { passive: false });
 document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
-
   if (Math.abs(dx) > Math.abs(dy)) {
     if (dx > 50) setSidebarVisibility(true);
     else if (dx < -50) setSidebarVisibility(false);
@@ -211,15 +179,15 @@ async function loadM3U() {
   const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
   const text = await res.text();
   const lines = text.split('\n');
-  for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith('#EXTINF')) {
+  for (let i=0;i<lines.length;i++){
+    if(lines[i].startsWith('#EXTINF')){
       const logoMatch = lines[i].match(/tvg-logo="([^"]+)"/);
       const groupMatch = lines[i].match(/group-title="([^"]+)"/);
       const name = lines[i].split(',')[1]?.trim() || 'Unknown';
       const logo = logoMatch ? logoMatch[1] : '';
       const group = groupMatch ? groupMatch[1] : '';
-      const url = lines[i + 1]?.trim();
-      if (url && url.startsWith('http')) channels.push({ name, logo, url, group });
+      const url = lines[i+1]?.trim();
+      if(url && url.startsWith('http')) channels.push({name, logo, url, group});
     }
   }
   buildSidebar();
@@ -228,33 +196,36 @@ async function loadM3U() {
 
 // --- Sidebar builder ---
 function buildSidebar() {
-  sidebar.innerHTML = '';
-  let lastGroup = '';
-  for (let i = 0; i < channels.length; i++) {
+  sidebar.innerHTML='';
+  let lastGroup='';
+  for(let i=0;i<channels.length;i++){
     const ch = channels[i];
-    if (ch.group !== lastGroup && ch.group) {
+    if(ch.group !== lastGroup && ch.group){
       const groupDiv = document.createElement('div');
       groupDiv.textContent = ch.group;
-      groupDiv.className = 'group-header';
+      groupDiv.className='group-header';
       sidebar.appendChild(groupDiv);
       lastGroup = ch.group;
     }
-
     const div = document.createElement('div');
-    div.className = 'channel';
-    let chNum = '';
-    let displayName = ch.name;
+    div.className='channel';
+    let chNum=''; let displayName = ch.name;
     const match = ch.name.match(/^(\d+)\)\s*/);
-    if (match) {
-      chNum = match[1];
-      displayName = ch.name.replace(/^(\d+\)\s*)/, '');
-    }
-    div.innerHTML = `<img src="${ch.logo}" alt="logo"><span class="ch-num">${chNum}</span><span>${displayName}</span>`;
-    div.onclick = () => { currentIndex = i; playCurrentChannel(); };
+    if(match){ chNum=match[1]; displayName = ch.name.replace(/^(\d+\)\s*)/, ''); }
+    div.innerHTML=`<img src="${ch.logo}" alt="logo"><span class="ch-num">${chNum}</span><span>${displayName}</span>`;
+    div.onclick = ()=>{ currentIndex=i; playCurrentChannel(); };
     sidebar.appendChild(div);
   }
 }
 
 // --- Fullscreen ---
-function toggleFullscreen() {
-  if (!isDesktop()) return
+function toggleFullscreen(){
+  if (!document.fullscreenElement) player.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+
+// --- Stop on exit ---
+window.addEventListener('beforeunload', stopAllChannels);
+
+// --- Init ---
+loadM3U();
