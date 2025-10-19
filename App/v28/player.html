@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Shadi Kabajah">
+  <meta name="date" content="2025-10-18">
+  <title>Saturn TV</title>
+
+  <link rel="stylesheet" href="main.css">
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Clappr -->
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+
+</head>
+<body>
+  <div id="videoWrapper">
+    <video id="videoPlayer" autoplay playsinline unmuted></video>
+    <div id="spinner" class="spinner"></div>
+  </div>
+
+  <div id="overlay">
+    <div class="text">
+      <div class="top-row">
+        <div class="group" id="channelGroup"></div>
+      </div>
+      <div class="ch-num" id="channelChNum"></div>
+      <div class="name" id="channelName"></div>
+    </div>
+    <img id="channelLogo" src="" alt="logo">
+  </div>
+
+  <div id="sidebar"></div>
+
+  <script src="controls.js"></script>
+</body>
+</html>
