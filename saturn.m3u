@@ -16,7 +16,7 @@ https://tv-trtarabi.medya.trt.com.tr/master_720.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/RT_Arabic.jpg" group-title="NEWS",196) RT Arabic
 https://rt-arb.rttv.com/dvr/rtarab/playlist_2500Kb.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/PSC.jpg" group-title="LEVANT",201) PSC
-https://pbc.furrera.ps/palestinehd/tracks-v2a1/mono.m3u8
+https://pbc.furrera.ps/palestinehd/index.m3u8?v=45899b1e
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",211) Jadeed
 https://games1.elahmad.xyz/tv758_www.elahmad.com_aljadeed/tracks-v1a1/mono.m3u8?token=71c13ae3724458900fd4871a8199480f6b20d9f6-ec22f916ab342f5e0e2d0ab2d0eb664e-1760842345-1760831545
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/LBC.jpg" group-title="LEVANT",212) LBC
@@ -44,13 +44,13 @@ https://live.kwikmotion.com/syriatv02live/syriatv02.smil/syriatv02publish/syriat
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Iraq.jpg" group-title="LEVANT",251) MBC Iraq
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-iraq/e38c44b1b43474e1c39cb5b90203691e/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Makan.jpg" group-title="LEVANT",292) Makan
-https://makan.media.kan.org.il/hls/live/2024680/2024680/source1_1.2k/chunklist.m3u8
+https://makan.media.kan.org.il/hls/live/2024680/2024680/master.m3u8?v=45899b1e
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/AlAraby_2.jpg" group-title="GULF",341) AlAraby 2
 https://live.kwikmotion.com/alaraby2live/alaraby2.smil/alaraby2publish/alaraby2_720p/chunks.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",361) MBC 1
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1-na/eec141533c90dd34722c503a296dd0d8/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_2.jpg" group-title="GULF",362) MBC 2
-https://tgn.bozztv.com/eshgtv-trn09/ga-mchannel2/tracks-v1a1/mono.m3u8?nimblesessionid=1265007014
+https://tgn.bozztv.com/eshgtv-trn09/ga-mchannel2/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",364) MBC 4
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_5.jpg" group-title="GULF",365) MBC 5
@@ -90,17 +90,17 @@ https://games1.elahmad.xyz/tv758_www.elahmad.com_tentv/index.m3u8?token=6a3bd78f
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya_Drama.jpg" group-title="DRAMA",524) Roya Drama
 https://playlist.fasttvcdn.com/pl/a2le4pbpa6rpzv147haf4w/drama/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",561) MBC Drama
-https://mbc1-enc.edgenextcdn.net/out/v1/b0b3a0e6750d4408bb86d703d5feffd1/index_25.m3u8
+https://mbc1-enc.edgenextcdn.net/out/v1/b0b3a0e6750d4408bb86d703d5feffd1/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama_Egypt.jpg" group-title="DRAMA",562) MBC Drama Egypt
-https://shls-live-enc.edgenextcdn.net/out/v1/08eca926a78a41339b8010c882410307/index_2.m3u8
+https://shls-live-enc.edgenextcdn.net/out/v1/08eca926a78a41339b8010c882410307/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",661) Aflam
 https://shls-live-enc.edgenextcdn.net/out/v1/0044dd4b001a466c941ad77b04a574a2/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",665) Rotana Aflam
 https://cdn1.iptvcdn.tv/mcnc/ROTANA_AFLAMPLUS/playlist.m3u8?token=demo
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema_KSA.jpg" group-title="MOVIES",666) Rotana Cinema KSA
-https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-ksa/tracks-v1a1/mono.ts.m3u8?nimblesessionid=1265009855&wmsAuthSign=c2VydmVyX3RpbWU9MTAvMTkvMjAyNSAxMjowMTo0MCBBTSZoYXNoX3ZhbHVlPXBBdWVxVGFXRFl3WHp5TWZJekhyL1E9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZzdHJtX2xlbj0zMA==
+https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-ksa/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTAvMTkvMjAyNSAxMjowMTo0MCBBTSZoYXNoX3ZhbHVlPXBBdWVxVGFXRFl3WHp5TWZJekhyL1E9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZzdHJtX2xlbj0zMA==
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema_EG.jpg" group-title="MOVIES",668) Rotana Cinema EG
-https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-egypt/tracks-v1a1/mono.ts.m3u8?nimblesessionid=1265010087&wmsAuthSign=c2VydmVyX3RpbWU9MTAvMTkvMjAyNSAxMjowMTo1MyBBTSZoYXNoX3ZhbHVlPU9MaWJsQ3NBSVk4dzQvYXVRMzAxWFE9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZzdHJtX2xlbj0zMg==
+https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-egypt/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTAvMTkvMjAyNSAxMjowMTo1MyBBTSZoYXNoX3ZhbHVlPU9MaWJsQ3NBSVk4dzQvYXVRMzAxWFE9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZzdHJtX2xlbj0zMg==
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",711) Aghani
 https://streaming-a-1035.cdn.nextologies.com/6zj8y5nemi8a32vyjjbkv0oqx/77pcakd8reik3g8qdqnexlkmq/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",713) MTV One
