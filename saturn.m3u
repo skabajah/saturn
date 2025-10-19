@@ -59,6 +59,8 @@ https://saturn.shadi-kabajah.workers.dev/SBC
 https://saturn.shadi-kabajah.workers.dev/Thaqafeyah
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",371) Abu Dhabi
 https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai.jpg" group-title="GULF",372) Dubai
+https://saturn.shadi-kabajah.workers.dev/Dubai
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai_One.jpg" group-title="GULF",373) Dubai One
 https://saturn.shadi-kabajah.workers.dev/Dubai_One
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mashhad.jpg" group-title="GULF",374) Mashhad
@@ -99,6 +101,8 @@ https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema_KSA
 https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema_EG
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",711) Aghani
 https://saturn.shadi-kabajah.workers.dev/Aghani
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",712) Arabica
+https://saturn.shadi-kabajah.workers.dev/Arabica
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",713) MTV One
 https://saturn.shadi-kabajah.workers.dev/MTV_One
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/M+.jpg" group-title="MUSIC",761) M+
