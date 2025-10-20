@@ -1,117 +1,135 @@
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Jazeera.jpg" group-title="NEWS",141) Al Jazeera
-https://saturn.shadi-kabajah.workers.dev/Al_Jazeera
+https://live-hls-web-aja-fa.getaj.net/AJA/03.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Araby.jpg" group-title="NEWS",142) Al Araby
-https://saturn.shadi-kabajah.workers.dev/Al_Araby
+https://live.kwikmotion.com/alaraby1live/alaraby_abr/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya.jpg" group-title="NEWS",161) Al Arabiya
-https://saturn.shadi-kabajah.workers.dev/Al_Arabiya
+https://live.alarabiya.net/alarabiapublish/alarabiya.smil/alarabiapublish/alarabiya_720p/chunks.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SkyNews_Arabia.jpg" group-title="NEWS",171) SkyNews Arabia
-https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
+https://stream.skynewsarabia.com/hls/sna.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Sharq.jpg" group-title="NEWS",172) Al Sharq
-https://saturn.shadi-kabajah.workers.dev/Al_Sharq
+https://svs.itworkscdn.net/bloomberarlive/bloomberg.smil/playlist_dvr.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNBC_Arabia.jpg" group-title="NEWS",173) CNBC Arabia
-https://saturn.shadi-kabajah.workers.dev/CNBC_Arabia
+https://cnbc-live.akamaized.net/cnbc/master_720p.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",191) TRT
-https://saturn.shadi-kabajah.workers.dev/TRT
+https://tv-trtarabi.medya.trt.com.tr/master_720.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/PSC.jpg" group-title="LEVANT",201) PSC
-https://saturn.shadi-kabajah.workers.dev/PSC
+https://pbc.furrera.ps/palestinehd/index.m3u8?v=45899b1e
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",211) Jadeed
-https://saturn.shadi-kabajah.workers.dev/Jadeed
+https://games1.elahmad.xyz/tv759_www.elahmad.com_aljadeed/tracks-v1a1/mono.m3u8?token=1fb9da8de8a8de3b6920bc7f9e43206d4fa74ed5-9e5b54d53042617c9807daf1bc07fcc5-1760977305-1760966505
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/LBC.jpg" group-title="LEVANT",212) LBC
-https://saturn.shadi-kabajah.workers.dev/LBC
+https://games1.elahmad.xyz/tv759_www.elahmad.com_lbc/tracks-v1a1/mono.m3u8?token=cb037c1a1406fa1c563b7238b4e8507241d3cc49-79ff1248cef554446e4a944375a87895-1760977320-1760966520
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="LEVANT",213) MTV
-https://saturn.shadi-kabajah.workers.dev/MTV
+https://media.mtv.com.lb/v1/broadcast/mtv/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/OTV.jpg" group-title="LEVANT",214) OTV
-https://saturn.shadi-kabajah.workers.dev/OTV
+https://games1.elahmad.xyz/tv759_www.elahmad.com_otv_lebanon/index.m3u8?token=9ab6b07c634a83097da47ffa397b840bfb377f4a-a63ebffd05ce5b89dccb56d6a5b8e1fd-1760977334-1760966534
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",215) Voice of Lebanon
-https://saturn.shadi-kabajah.workers.dev/Voice_of_Lebanon
+https://svs.itworkscdn.net/vdltvlive/vdltv.smil/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",221) Amman
-https://saturn.shadi-kabajah.workers.dev/Amman
+https://ammantv-live.ercdn.net/ammantvhd/ammantvhd_720p.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",222) Jordan
-https://saturn.shadi-kabajah.workers.dev/Jordan
+https://jrtv-live.ercdn.net/jordanhd/jordanhd_720p.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mamlaka.jpg" group-title="LEVANT",223) Mamlaka
-https://saturn.shadi-kabajah.workers.dev/Mamlaka
+https://bcovlive-a.akamaihd.net/4109c7ba30fd4a44ad9afe917c67a8c8/eu-central-1/6415809151001/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",224) Roya
-https://saturn.shadi-kabajah.workers.dev/Roya
+https://royatv-live.daioncdn.net/royatv/royatv_720p.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Lana.jpg" group-title="LEVANT",231) Lana
-https://saturn.shadi-kabajah.workers.dev/Lana
+https://p-ltv.akamaized.net/ltv/ltv.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",232) Syria
-https://saturn.shadi-kabajah.workers.dev/Syria
+https://svs.itworkscdn.net/syriatvlive/syriatv.smil/syriatvpublish/syriatv_720p/chunks_dvr.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria_2.jpg" group-title="LEVANT",233) Syria 2
-https://saturn.shadi-kabajah.workers.dev/Syria_2
+https://live.kwikmotion.com/syriatv02live/syriatv02.smil/syriatv02publish/syriatv02_720p/chunks.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Iraq.jpg" group-title="LEVANT",251) MBC Iraq
-https://saturn.shadi-kabajah.workers.dev/MBC_Iraq
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-iraq/e38c44b1b43474e1c39cb5b90203691e/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Makan.jpg" group-title="LEVANT",292) Makan
-https://saturn.shadi-kabajah.workers.dev/Makan
+https://makan.media.kan.org.il/hls/live/2024680/2024680/master.m3u8?v=45899b1e
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/AlAraby_2.jpg" group-title="GULF",341) AlAraby 2
-https://saturn.shadi-kabajah.workers.dev/AlAraby_2
+https://live.kwikmotion.com/alaraby2live/alaraby2.smil/alaraby2publish/alaraby2_720p/chunks.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",361) MBC 1
-https://saturn.shadi-kabajah.workers.dev/MBC_1
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1-na/eec141533c90dd34722c503a296dd0d8/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_2.jpg" group-title="GULF",362) MBC 2
-https://saturn.shadi-kabajah.workers.dev/MBC_2
+https://tgn.bozztv.com/eshgtv-trn09/ga-mchannel2/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",364) MBC 4
-https://saturn.shadi-kabajah.workers.dev/MBC_4
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_5.jpg" group-title="GULF",365) MBC 5
-https://saturn.shadi-kabajah.workers.dev/MBC_5
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SBC.jpg" group-title="GULF",366) SBC
-https://saturn.shadi-kabajah.workers.dev/SBC
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-sbc/90e09c0c28db26435799b4a14892a167/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Thaqafeyah.jpg" group-title="GULF",367) Thaqafeyah
-https://saturn.shadi-kabajah.workers.dev/Thaqafeyah
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-thaqafeyyah/28c0d2a20dbf1dc049ce15d3973f494b/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",371) Abu Dhabi
-https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
+https://vo-live-media.cdb.cdn.orange.com/Content/Channel/AbuDhabiChannel/HLS/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai_One.jpg" group-title="GULF",373) Dubai One
-https://saturn.shadi-kabajah.workers.dev/Dubai_One
+https://dminnvllta.cdn.mgmlcdn.com/dubaione/smil:dubaione.stream.smil/chunklist_b1800000.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mashhad.jpg" group-title="GULF",374) Mashhad
-https://saturn.shadi-kabajah.workers.dev/Mashhad
+https://fastly.live.brightcove.com/6378439181112/ap-south-1/6313884884001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiaWR2d3RnLmVncmVzcy5qYXYzemwiLCJhY2NvdW50X2lkIjoiNjMxMzg4NDg4NDAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MzEzODg0ODg0MDAxIl0sImp0aSI6IjYzNzg0MzkxODExMTIifQ.EdlNOMQrd1QZ3Y_9mU1f4eKS3spc8eU5sIlXnWLbgmY/playlist-hls.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",461) MBC Masr
-https://saturn.shadi-kabajah.workers.dev/MBC_Masr
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-usa/cd8d40acdab28aac0582faa3bd3983f1/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr_2.jpg" group-title="EGYPT",462) MBC Masr 2
-https://saturn.shadi-kabajah.workers.dev/MBC_Masr_2
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",481) CBC
-https://saturn.shadi-kabajah.workers.dev/CBC
+https://games2.elahmad.xyz/tv759_www.elahmad.com_cbc_tv/tracks-v1a1/mono.m3u8?token=153aeadf4b2a7c37db6df8fa3515e52fb767f543-df5fa4296aaac91de92345f13d15c6de-1760977359-1760966559
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",482) DMC
-https://saturn.shadi-kabajah.workers.dev/DMC
+https://games1.elahmad.xyz/tv759_www.elahmad.com_dmc/index.m3u8?token=93495259f57d2e3beecde1e80bfdc2fc6d67003e-918fb64d2ec02cd05f4692ac3c8aa5bb-1760977373-1760966573
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",483) Hayat
-https://saturn.shadi-kabajah.workers.dev/Hayat
+https://games2.elahmad.xyz/tv759_www.elahmad.com_alhayat_eg/tracks-v1a1/mono.m3u8?token=f9eb9f914161a2816036728f5bc3f4e099f59b17-41f7278f2e6cfa7c1e5de2f2e9a37248-1760977389-1760966589
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",484) Mehwar
-https://saturn.shadi-kabajah.workers.dev/Mehwar
+https://games1.elahmad.xyz/tv759_www.elahmad.com_elmehwar/index.m3u8?token=0b8cbc45dee7a7016003b72f661fc839085ee3c5-b1a65c9611b331620f68446c1adf758d-1760977403-1760966603
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",485) Nahar
-https://saturn.shadi-kabajah.workers.dev/Nahar
+https://games2.elahmad.xyz/tv759_www.elahmad.com_nahar_tv/index.m3u8?token=7a72e24d80e22f5292ebcfbb028bd8e4efed901e-923f0cd841d290d1abc62293e575fdba-1760977418-1760966618
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",486) ON E
-https://saturn.shadi-kabajah.workers.dev/ON_E
+https://games1.elahmad.xyz/tv759_www.elahmad.com_ontv/index.m3u8?token=c67ee1095ffcbfd57b23d70b41f0836afbbdad8c-8ec57d806e20bf85054c306057415423-1760977433-1760966633
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",487) Sada
-https://saturn.shadi-kabajah.workers.dev/Sada
+https://games2.elahmad.xyz/tv759_www.elahmad.com_elbaladtv/index.m3u8?token=faad95437c102f001fd917f00b90683da75e3b17-d8cd02f7063c72a8ae460e93069e873b-1760977448-1760966648
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",488) TEN
-https://saturn.shadi-kabajah.workers.dev/TEN
+https://games1.elahmad.xyz/tv759_www.elahmad.com_tentv/index.m3u8?token=a07ec4cfc07e9969a96a2efc8322bb87dd9b4ad9-9bf9b98e45fae687cce0ba3a1d5e6519-1760977462-1760966662
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya_Drama.jpg" group-title="DRAMA",524) Roya Drama
-https://saturn.shadi-kabajah.workers.dev/Roya_Drama
+https://playlist.fasttvcdn.com/pl/a2le4pbpa6rpzv147haf4w/drama/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",561) MBC Drama
-https://saturn.shadi-kabajah.workers.dev/MBC_Drama
+https://mbc1-enc.edgenextcdn.net/out/v1/b0b3a0e6750d4408bb86d703d5feffd1/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama_Egypt.jpg" group-title="DRAMA",562) MBC Drama Egypt
-https://saturn.shadi-kabajah.workers.dev/MBC_Drama_Egypt
+https://shls-live-enc.edgenextcdn.net/out/v1/08eca926a78a41339b8010c882410307/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC_Drama.jpg" group-title="DRAMA",581) CBC Drama
-https://saturn.shadi-kabajah.workers.dev/CBC_Drama
+https://games2.elahmad.xyz/tv759_www.elahmad.com_cbc_drama/tracks-v1a1/mono.m3u8?token=83d7dfd6f76ccce1a87893427dd83d604c27cab2-741cb203986e2bb947995e14840eab04-1760977494-1760966694
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC_Drama.jpg" group-title="DRAMA",582) DMC Drama
-https://saturn.shadi-kabajah.workers.dev/DMC_Drama
+https://games1.elahmad.xyz/tv759_www.elahmad.com_dmc_drama/tracks-v1a1/mono.m3u8?token=d73a3bf9ddb45941045116416fa957d5d1bd3950-5dfa7b3efb88f8c20c47f0a8a05f9cba-1760977508-1760966708
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_Drama.jpg" group-title="DRAMA",586) ON Drama
-https://saturn.shadi-kabajah.workers.dev/ON_Drama
+https://games1.elahmad.xyz/tv759_www.elahmad.com_on_drama/tracks-v1a1/mono.m3u8?token=5b644c9af0c9a6f0ef6bc9b5505f02cc483b971c-4dc8d555b2fa38c24b90b3dbd4aa1f54-1760977523-1760966723
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",661) Aflam
-https://saturn.shadi-kabajah.workers.dev/Aflam
+https://shls-live-enc.edgenextcdn.net/out/v1/0044dd4b001a466c941ad77b04a574a2/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",665) Rotana Aflam
-https://saturn.shadi-kabajah.workers.dev/Rotana_Aflam
+https://cdn1.iptvcdn.tv/mcnc/ROTANA_AFLAMPLUS/playlist.m3u8?token=demo
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema_KSA.jpg" group-title="MOVIES",666) Rotana Cinema KSA
-https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema_KSA
+https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-ksa/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTAvMjAvMjAyNSAyOjQxOjUyIFBNJmhhc2hfdmFsdWU9Q3NBa0dFOFRSTW53SVE3ekdaUGZUQT09JnZhbGlkbWludXRlcz0xNDQwJnN0cm1fbGVuPTMw
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema_EG.jpg" group-title="MOVIES",668) Rotana Cinema EG
-https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema_EG
+https://tgn.bozztv.com/gin-36bay3/ga-rotanacinema-egypt/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTAvMjAvMjAyNSAyOjQyOjA2IFBNJmhhc2hfdmFsdWU9TldWbDNsanhRN0ZiT2JJU0NzdU5sUT09JnZhbGlkbWludXRlcz0xNDQwJnN0cm1fbGVuPTMy
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",711) Aghani
-https://saturn.shadi-kabajah.workers.dev/Aghani
+https://streaming-a-1035.cdn.nextologies.com/6zj8y5nemi8a32vyjjbkv0oqx/77pcakd8reik3g8qdqnexlkmq/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",712) Arabica
-https://saturn.shadi-kabajah.workers.dev/Arabica
+https://oldkors109.cfpass1.workers.dev/?url=http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",713) MTV One
-https://saturn.shadi-kabajah.workers.dev/MTV_One
+https://media.mtv.com.lb/v1/broadcast/one/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/M+.jpg" group-title="MUSIC",761) M+
-https://saturn.shadi-kabajah.workers.dev/M+
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/m-plus/master.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",762) Panorama FM
-https://saturn.shadi-kabajah.workers.dev/Panorama_FM
+https://d6izdil55uftn.cloudfront.net/out/v1/0a06d1d6377c47edbd48721ed724bd08/index.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nogoum.jpg" group-title="MUSIC",781) Nogoum
-https://saturn.shadi-kabajah.workers.dev/Nogoum
+https://nogoumtv.nrpstream.com/hls/stream.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
+https://amg01420-americastestkitchen-amg01420c1-xumo-us-878.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
+https://amg01420-amg01420c5-xumo-us-3817.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/WUSA9.jpg" group-title="ENG",901) WUSA9
+https://livevideo.tegnadigital.com/wusa/v1/master/f9c1bf9ffd6ac86b6173a7c169ff6e3f4efbd693/WUSA/elvs/live.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBSN.jpg" group-title="ENG",902) CBSN
+https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",903) Bloomberg
+http://dai.google.com/linear/hls/event/PwTJe4aZRvSBjbWY7_VSzA/master.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNN.jpg" group-title="ENG",904) CNN
+https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC_Now.jpg" group-title="ENG",905) NBC Now
+https://xumo-drct-nbcnn-ir8ze.fast.nbcuni.com/live/master.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Jazeera_EN.jpg" group-title="ENG",941) Al Jazeera EN
+https://live-hls-web-aje.getaj.net/AJE/02.m3u8
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT_World.jpg" group-title="ENG",991) TRT World
+https://tv-trtworld.medya.trt.com.tr/master_720.m3u8
