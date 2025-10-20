@@ -113,15 +113,16 @@ async function playCurrentChannel() {
   const ch = channels[currentIndex];
   if (!ch || !player || !video) return;
 
+  showChannelOverlay(ch);
+  highlightChannel();
   spinner.style.display = 'block';
   try {
     await player.load(ch.url);
     await video.play().catch(() => {
-      console.warn('Autoplay prevented, video is muted');
+      // console.warn('Autoplay prevented, video is muted');
     });
-    showChannelOverlay(ch);
-    highlightChannel();
-    console.log('Playing channel:', ch.name, ch.url);
+    
+    // console.log('Playing channel:', ch.name, ch.url);
   } catch (e) {
     console.error('Failed to load channel:', ch.name, e);
   } finally {
