@@ -55,39 +55,50 @@
   <div class="svg"></div>
   <p class="version" id="version-display"></p>
 
-  <script>
-    // === 1. Read meta tags ===
-    const version = document.querySelector('meta[name="version"]')?.content || 'v?';
-    const author  = document.querySelector('meta[name="author"]')?.content || '';
-    const date    = document.querySelector('meta[name="date"]')?.content || '';
+<script>
+  // === Configurable versions ===
+  const chromeVersion  = 'v29';
+  const defaultVersion = 'v27';
 
-    // === 2. Display footer text ===
-    const versionDisplay = document.getElementById('version-display');
-    if (versionDisplay) versionDisplay.textContent = `${author} - ${version} - ${date}`;
+  // === 1. Read meta tags ===
+  const version = document.querySelector('meta[name="version"]')?.content || defaultVersion;
+  const author  = document.querySelector('meta[name="author"]')?.content || '';
+  const date    = document.querySelector('meta[name="date"]')?.content || '';
 
-    // === 3. Redirect setup ===
-    const targetUrl = `${version}/player.html`; // e.g., v27.html
+  // === 2. Display footer text ===
+  const versionDisplay = document.getElementById('version-display');
+  if (versionDisplay) versionDisplay.textContent = `${author} - ${version} - ${date}`;
 
-    function redirectToTarget() {
-      window.location.href = targetUrl;
-    }
+  // === 3. Redirect setup ===
+  let targetUrl = `${defaultVersion}/player.html`; // fallback
 
-    // Redirect on click, key press, or swipe
-    document.body.addEventListener('click', redirectToTarget);
-    document.addEventListener('keydown', redirectToTarget);
+  // Chrome detection (ignores Edge/Opera)
+  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
+  if (isChrome) {
+    targetUrl = `${chromeVersion}/player.html`;
+  }
 
-    let touchStartX = 0, touchStartY = 0;
-    document.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
+  function redirectToTarget() {
+    window.location.href = targetUrl;
+  }
 
-    document.addEventListener('touchend', e => {
-      const diffX = e.changedTouches[0].clientX - touchStartX;
-      const diffY = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
-    }, { passive: true });
-  </script>
+  // Redirect on click, key press, or swipe
+  document.body.addEventListener('click', redirectToTarget);
+  document.addEventListener('keydown', redirectToTarget);
+
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    const diffX = e.changedTouches[0].clientX - touchStartX;
+    const diffY = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
+  }, { passive: true });
+</script>
+
   <script>
     if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')

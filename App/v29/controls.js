@@ -39,18 +39,25 @@ function initPlayer() {
 function unlockAutoplay() {
   if (firstInteraction) return;
   firstInteraction = true;
-  document.removeEventListener('keydown', unlockAutoplay);
-  document.removeEventListener('click', unlockAutoplay);
+
+  // Remove all listeners
+  interactionEvents.forEach(ev => document.removeEventListener(ev, unlockAutoplay));
 
   if (!player || !video) initPlayer();
 
-  // Mute video first to allow autoplay
+  // Play muted first to satisfy autoplay rules
   video.muted = true;
-  playCurrentChannel();
+  playCurrentChannel().then(() => {
+    video.muted = false; // unmute after user interaction
+  });
 }
 
-document.addEventListener('keydown', unlockAutoplay);
-document.addEventListener('click', unlockAutoplay);
+// List of events to consider as "user interaction"
+const interactionEvents = ['keydown', 'click', 'touchstart', 'pointerdown', 'mousedown'];
+
+// Attach listeners
+interactionEvents.forEach(ev => document.addEventListener(ev, unlockAutoplay));
+
 
 // --- Load M3U ---
 async function loadM3U() {
