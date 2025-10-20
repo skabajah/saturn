@@ -200,7 +200,7 @@ document.addEventListener('touchend', e => {
 // M3U Loader
 // -------------------------
 async function loadM3U() {
-  const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
+  const res = await fetch('https://skabajah.github.io/saturn/raw.m3u');
   const text = await res.text();
   const lines = text.split('\n');
   for (let i=0;i<lines.length;i++){
