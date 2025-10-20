@@ -113,6 +113,8 @@ https://saturn.shadi-kabajah.workers.dev/MTV_One
 https://saturn.shadi-kabajah.workers.dev/M+
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",762) Panorama FM
 https://saturn.shadi-kabajah.workers.dev/Panorama_FM
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nogoum.jpg" group-title="MUSIC",781) Nogoum
+https://saturn.shadi-kabajah.workers.dev/Nogoum
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
 https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
