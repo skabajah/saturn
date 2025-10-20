@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Shadi Kabajah">
@@ -16,13 +16,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <!-- Shaka Player -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.9/shaka-player.compiled.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.4.1/shaka-player.compiled.js"></script>
 </head>
 <body>
   <div id="videoWrapper">
     <video id="videoPlayer" autoplay playsinline muted></video>
-    <div id="spinner" class="spinner"></div>
+    <div id="spinner" class="spinner"></div> <!-- Keep spinner for buffering -->
   </div>
 
   <div id="overlay">
@@ -37,27 +36,39 @@
   </div>
 
   <div id="sidebar"></div>
- 
+
   <!-- Link external JS -->
   <script src="controls.js"></script>
-  
+
   <script>
     // Initialize Shaka Player
     document.addEventListener('DOMContentLoaded', () => {
       const video = document.getElementById('videoPlayer');
+      const spinner = document.getElementById('spinner');
 
-      if (shaka.Player.isBrowserSupported()) {
-        const player = new shaka.Player(video);
-
-        player.addEventListener('error', e => {
-          console.error('Shaka Player error', e.detail);
-        });
-
-        // Expose player globally so your controls.js can use it
-        window.shakaPlayer = player;
-      } else {
+      if (!shaka.Player.isBrowserSupported()) {
         console.error('Shaka Player not supported on this browser.');
+        return;
       }
+
+      const player = new shaka.Player(video);
+
+      // Show spinner on buffering
+      player.addEventListener('buffering', e => {
+        spinner.style.display = e.buffering ? 'block' : 'none';
+      });
+
+      // Log Shaka errors
+      player.addEventListener('error', e => {
+        console.error('Shaka Player error', e.detail);
+      });
+
+      // Expose globally for controls.js
+      window.shakaPlayer = player;
+      window.shakaVideo = video;
+
+      // Optional: autoplay catch
+      video.play().catch(() => console.warn('Autoplay blocked, user interaction required.'));
     });
   </script>
 </body>
