@@ -28,7 +28,7 @@ https://svs.itworkscdn.net/vdltvlive/vdltv.smil/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",221) Amman
 https://ammantv-live.ercdn.net/ammantvhd/ammantvhd_720p.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",222) Jordan
-https://Error: Message: invalid argument
+https://jrtv-live.ercdn.net/jordanhd/jordanhd.m3u8?st=7qtVAnsvlRmDe5ux-NOz1g&e=1761040036&P=Browser&C=undefinedBrowser&D=Desktop&CT=%D8%A7%D9%84%D9%82%D9%86%D8%A7%D8%A9%20%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89&CTY=TV%20Channel
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mamlaka.jpg" group-title="LEVANT",223) Mamlaka
 https://bcovlive-a.akamaihd.net/4109c7ba30fd4a44ad9afe917c67a8c8/eu-central-1/6415809151001/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",224) Roya
