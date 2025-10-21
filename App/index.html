@@ -64,7 +64,7 @@
     let browserName = 'Unknown';
     let version = 'v27'; // default
 
-    if (/AFT[BSMT]/.test(ua)) {  // Fire TV first
+    if (/AFT[BSMT]/.test(ua) || /Silk/.test(ua)) {  
       browserName = 'Fire TV'; 
       version = 'v27'; 
     } else if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
