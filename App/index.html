@@ -64,7 +64,10 @@
     let browserName = 'Unknown';
     let version = 'v27'; // default
 
-    if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
+    if (/AFT[BSMT]/.test(ua)) {  // Fire TV first
+      browserName = 'Fire TV'; 
+      version = 'v27'; 
+    } else if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
       browserName = 'Chrome'; 
       version = 'v29'; 
     } else if (/Safari/.test(ua) && !/Chrome/.test(ua)) { 
@@ -73,11 +76,9 @@
     } else if (/Firefox/.test(ua)) { 
       browserName = 'Firefox'; 
       version = 'v27'; 
-    } else if (/AFT[BSMT]/.test(ua)) {  // Fire TV detection
-      browserName = 'Fire TV'; 
-      version = 'v27'; 
     }
 
+ 
     // === Display footers ===
     document.getElementById('footer-right').textContent = `${author} - ${date}`;
     document.getElementById('footer-left').textContent  = `${browserName} - ${version}`;
