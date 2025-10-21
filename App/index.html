@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="version" content="v27" id="app-version-meta">
-    <meta name="author" content="Shadi Kabajah" id="app-author-meta">
-    <meta name="date" content="2025-10-18" id="app-date-meta">
-  
-    <!-- Favicon -->
-    <link rel="icon" href="icons/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-    <link rel="manifest" href="icons/site.webmanifest">
-    
-    <!-- Theme Colors -->
-    <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="UTF-8">
+  <meta name="author" content="Shadi Kabajah" id="app-author-meta">
+  <meta name="date" content="2025-10-18" id="app-date-meta">
 
+  <!-- Favicon -->
+  <link rel="icon" href="icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <title>Project Saturn</title>
 
@@ -38,80 +36,86 @@
       transform: translateZ(0);
       z-index: 10;
     }
-   .version {
+    .footer-left, .footer-right {
       position: fixed;
       bottom: 1%;
       color: #bfbfbf;
       font-family: monospace;
-      z-index: 20;
-      text-align: right;
       font-size: 10px;
-      right: 1%;
-      }
+      z-index: 20;
+    }
+    .footer-left { left: 1%; text-align: left; }
+    .footer-right { right: 1%; text-align: right; }
   </style>
 </head>
 
 <body>
   <div class="svg"></div>
-  <p class="version" id="version-display"></p>
+  <p class="footer-left" id="footer-left"></p>
+  <p class="footer-right" id="footer-right"></p>
 
-<script>
-  // === Configurable versions ===
-  const chromeVersion  = 'v29';
-  const defaultVersion = 'v27';
+  <script>
+    // === Meta info ===
+    const author  = document.querySelector('meta[name="author"]')?.content || '';
+    const date    = document.querySelector('meta[name="date"]')?.content || '';
 
-  // === 1. Read meta tags ===
-  const version = document.querySelector('meta[name="version"]')?.content || defaultVersion;
-  const author  = document.querySelector('meta[name="author"]')?.content || '';
-  const date    = document.querySelector('meta[name="date"]')?.content || '';
+    // === Browser detection ===
+    const ua = navigator.userAgent;
+    let browserName = 'Unknown';
+    let version = 'v27'; // default
 
-  // === 2. Display footer text ===
-  const versionDisplay = document.getElementById('version-display');
-  if (versionDisplay) versionDisplay.textContent = `${author} - ${version} - ${date}`;
+    if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
+      browserName = 'Chrome'; 
+      version = 'v29'; 
+    } else if (/Safari/.test(ua) && !/Chrome/.test(ua)) { 
+      browserName = 'Safari'; 
+      version = 'v30'; 
+    } else if (/Firefox/.test(ua)) { 
+      browserName = 'Firefox'; 
+      version = 'v27'; 
+    } else if (/AFT[BSMT]/.test(ua)) {  // Fire TV detection
+      browserName = 'Fire TV'; 
+      version = 'v27'; 
+    }
 
-  // === 3. Redirect setup ===
-  let targetUrl = `${defaultVersion}/player.html`; // fallback
+    // === Display footers ===
+    document.getElementById('footer-right').textContent = `${author} - ${date}`;
+    document.getElementById('footer-left').textContent  = `${browserName} - ${version}`;
 
-  // Chrome detection (ignores Edge/Opera)
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-  if (isChrome) {
-    targetUrl = `${chromeVersion}/player.html`;
-  }
+    // === Redirect setup ===
+    let targetUrl = 'v27/player.html'; // default
+    if (browserName === 'Chrome') targetUrl = 'v29/player.html';
+    if (browserName === 'Safari') targetUrl = 'v30/player.html';
 
-  function redirectToTarget() {
-    window.location.href = targetUrl;
-  }
+    function redirectToTarget() {
+      window.location.href = targetUrl;
+    }
 
-  // Redirect on click, key press, or swipe
-  document.body.addEventListener('click', redirectToTarget);
-  document.addEventListener('keydown', redirectToTarget);
+    // Redirect on click, key press, or swipe
+    document.body.addEventListener('click', redirectToTarget);
+    document.addEventListener('keydown', redirectToTarget);
 
-  let touchStartX = 0, touchStartY = 0;
-  document.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
+    let touchStartX = 0, touchStartY = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
 
-  document.addEventListener('touchend', e => {
-    const diffX = e.changedTouches[0].clientX - touchStartX;
-    const diffY = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
-  }, { passive: true });
-</script>
-
-   
+    document.addEventListener('touchend', e => {
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > 30 || Math.abs(diffY) > 30) redirectToTarget();
+    }, { passive: true });
+  </script>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C3Z7KR9G7W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-C3Z7KR9G7W');
-</script>
-
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3Z7KR9G7W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C3Z7KR9G7W');
+  </script>
 
 </body>
 </html>
