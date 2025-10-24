@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aljadeed Player</title>
+<style>
+  body { margin: 0; padding: 0; background: #000; color: #fff; font-family: sans-serif; }
+#videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* or any desired height */
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keeps entire video visible */
+}
+
+  select { 
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 5px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<select id="episodeSelect">
+
+
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439049-7eZ24T7330UA641.smil/playlist.m3u8">ep-18</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439066-pD9783p885U0iX5.smil/playlist.m3u8">ep-17</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439078-9oJ4619552EK862.smil/playlist.m3u8">ep-16</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439085-E8PDMJ51272Q428.smil/playlist.m3u8">ep-15</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439093-13PCMK166q6QY7t.smil/playlist.m3u8">ep-14</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439108-qEa794pSU5VbJY5.smil/playlist.m3u8">ep-13</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439116-7EA24U7340VA6y1.smil/playlist.m3u8">ep-11</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439098-X26VFdXBCj56QGm.smil/playlist.m3u8">ep-10</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437784-NcXLuR73393yG4c.smil/playlist.m3u8">ep-9</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437783-Z7j8gE401KFK31N.smil/playlist.m3u8">ep-8</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437782-69S1pN622TOt53W.smil/playlist.m3u8">ep-7</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437781-b3646G0DF2G78J3.smil/playlist.m3u8">ep-6</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437780-X26vEdXACJ56Q6m.smil/playlist.m3u8">ep-5</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437779-6V3137GkmSN35QV.smil/playlist.m3u8">ep-4</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437778-715248Ptv0w5JZ1.smil/playlist.m3u8">ep-3</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437777-3E0NX4Q88B80j9E.smil/playlist.m3u8">ep-2</option>
+<option value="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2437776-6X3137IMOUo3CR9.smil/playlist.m3u8">ep-1</option>
+
+</select>
+
+<div id="videoContainer">
+  <video id="videoPlayer" controls autoplay>
+    <source src="https://clvod.itworkscdn.net/aljadeedvod/smil:itwfcdn/aljadeed/2439049-7eZ24T7330UA641.smil/playlist.m3u8" type="application/x-mpegURL">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
+
+<script>
+const select = document.getElementById('episodeSelect');
+const video = document.getElementById('videoPlayer');
+
+select.addEventListener('change', () => {
+  video.src = select.value;
+  video.play();
+});
+</script>
+
+</body>
+</html>
