@@ -67,13 +67,19 @@
     if (/AFT/.test(ua) || /Silk/.test(ua)) {  
       browserName = 'Fire TV'; 
       version = 'v27'; 
-    } else if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
+    } 
+
+    else if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
       browserName = 'Chrome'; 
-      version = 'v29'; 
-    } else if (/Safari/.test(ua) && !/Chrome/.test(ua)) { 
+      version = 'v27'; 
+    } 
+
+    else if (/Safari/.test(ua) && !/Chrome/.test(ua)) { 
       browserName = 'Safari'; 
       version = 'v30'; 
-    } else if (/Firefox/.test(ua)) { 
+    } 
+
+    else if (/Firefox/.test(ua)) { 
       browserName = 'Firefox'; 
       version = 'v27'; 
     }
@@ -84,9 +90,11 @@
     document.getElementById('footer-left').textContent  = `${browserName} - ${version}`;
 
     // === Redirect setup ===
-    let targetUrl = 'v27/player.html'; // default
-    if (browserName === 'Chrome') targetUrl = 'v27/player.html';
-    if (browserName === 'Safari') targetUrl = 'v30/player.html';
+    let targetUrl = `${version}/player.html`;
+
+    // let targetUrl = 'v27/player.html'; // default
+    // if (browserName === 'Chrome') targetUrl = 'v27/player.html';
+    // if (browserName === 'Safari') targetUrl = 'v30/player.html';
 
     function redirectToTarget() {
       window.location.href = targetUrl;
