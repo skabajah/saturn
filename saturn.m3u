@@ -63,48 +63,54 @@ https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
 https://saturn.shadi-kabajah.workers.dev/Dubai_One
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mashhad.jpg" group-title="GULF",374) Mashhad
 https://saturn.shadi-kabajah.workers.dev/Mashhad
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",461) MBC Masr
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",431) MBC Masr
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr_2.jpg" group-title="EGYPT",462) MBC Masr 2
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr_2.jpg" group-title="EGYPT",432) MBC Masr 2
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr_2
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",481) CBC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",441) CBC
 https://saturn.shadi-kabajah.workers.dev/CBC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",482) DMC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",442) DMC
 https://saturn.shadi-kabajah.workers.dev/DMC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",483) Hayat
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",443) Hayat
 https://saturn.shadi-kabajah.workers.dev/Hayat
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",484) Mehwar
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",444) Mehwar
 https://saturn.shadi-kabajah.workers.dev/Mehwar
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",485) Nahar
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",445) Nahar
 https://saturn.shadi-kabajah.workers.dev/Nahar
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",486) ON E
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",446) ON E
 https://saturn.shadi-kabajah.workers.dev/ON_E
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",487) Sada
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",447) Sada
 https://saturn.shadi-kabajah.workers.dev/Sada
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",488) TEN
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",448) TEN
 https://saturn.shadi-kabajah.workers.dev/TEN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya_Drama.jpg" group-title="DRAMA",524) Roya Drama
 https://saturn.shadi-kabajah.workers.dev/Roya_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",561) MBC Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",531) MBC Drama
 https://saturn.shadi-kabajah.workers.dev/MBC_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama_Egypt.jpg" group-title="DRAMA",562) MBC Drama Egypt
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama_Egypt.jpg" group-title="DRAMA",532) MBC Drama Egypt
 https://saturn.shadi-kabajah.workers.dev/MBC_Drama_Egypt
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC_Drama.jpg" group-title="DRAMA",581) CBC Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC_Drama.jpg" group-title="DRAMA",541) CBC Drama
 https://saturn.shadi-kabajah.workers.dev/CBC_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC_Drama.jpg" group-title="DRAMA",582) DMC Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC_Drama.jpg" group-title="DRAMA",542) DMC Drama
 https://saturn.shadi-kabajah.workers.dev/DMC_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_Drama.jpg" group-title="DRAMA",586) ON Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_Drama.jpg" group-title="DRAMA",546) ON Drama
 https://saturn.shadi-kabajah.workers.dev/ON_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",661) Aflam
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",631) Aflam
 https://saturn.shadi-kabajah.workers.dev/Aflam
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",665) Rotana Aflam
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",635) Rotana Aflam
 https://saturn.shadi-kabajah.workers.dev/Rotana_Aflam
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema.jpg" group-title="MOVIES",666) Rotana Cinema
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema.jpg" group-title="MOVIES",636) Rotana Cinema
 https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",711) Aghani
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",722) Aghani
 https://saturn.shadi-kabajah.workers.dev/Aghani
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",713) MTV One
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",723) MTV One
 https://saturn.shadi-kabajah.workers.dev/MTV_One
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",731) Panorama FM
+https://saturn.shadi-kabajah.workers.dev/Panorama_FM
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/M+.jpg" group-title="MUSIC",735) M+
+https://saturn.shadi-kabajah.workers.dev/M+
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nogoum.jpg" group-title="MUSIC",741) Nogoum
+https://saturn.shadi-kabajah.workers.dev/Nogoum
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
 https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
