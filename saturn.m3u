@@ -95,6 +95,8 @@ https://saturn.shadi-kabajah.workers.dev/CBC_Drama
 https://saturn.shadi-kabajah.workers.dev/DMC_Drama
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_Drama.jpg" group-title="DRAMA",586) ON Drama
 https://saturn.shadi-kabajah.workers.dev/ON_Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",661) Aflam
+https://saturn.shadi-kabajah.workers.dev/Aflam
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",665) Rotana Aflam
 https://saturn.shadi-kabajah.workers.dev/Rotana_Aflam
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema.jpg" group-title="MOVIES",666) Rotana Cinema
@@ -103,10 +105,6 @@ https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema
 https://saturn.shadi-kabajah.workers.dev/Aghani
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",713) MTV One
 https://saturn.shadi-kabajah.workers.dev/MTV_One
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/M+.jpg" group-title="MUSIC",761) M+
-https://saturn.shadi-kabajah.workers.dev/M+
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",762) Panorama FM
-https://saturn.shadi-kabajah.workers.dev/Panorama_FM
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
 https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
