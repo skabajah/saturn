@@ -23,12 +23,10 @@ https://saturn.shadi-kabajah.workers.dev/MTV
 https://saturn.shadi-kabajah.workers.dev/OTV
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",215) Voice of Lebanon
 https://saturn.shadi-kabajah.workers.dev/Voice_of_Lebanon
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",221) Amman
-https://saturn.shadi-kabajah.workers.dev/Amman
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",222) Jordan
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",221) Jordan
 https://saturn.shadi-kabajah.workers.dev/Jordan
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mamlaka.jpg" group-title="LEVANT",223) Mamlaka
-https://saturn.shadi-kabajah.workers.dev/Mamlaka
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",222) Amman
+https://saturn.shadi-kabajah.workers.dev/Amman
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",224) Roya
 https://saturn.shadi-kabajah.workers.dev/Roya
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Lana.jpg" group-title="LEVANT",231) Lana
@@ -45,8 +43,6 @@ https://saturn.shadi-kabajah.workers.dev/Makan
 https://saturn.shadi-kabajah.workers.dev/AlAraby_2
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",361) MBC 1
 https://saturn.shadi-kabajah.workers.dev/MBC_1
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_2.jpg" group-title="GULF",362) MBC 2
-https://saturn.shadi-kabajah.workers.dev/MBC_2
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",364) MBC 4
 https://saturn.shadi-kabajah.workers.dev/MBC_4
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_5.jpg" group-title="GULF",365) MBC 5
