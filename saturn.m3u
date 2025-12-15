@@ -81,6 +81,8 @@ https://saturn.shadi-kabajah.workers.dev/Sada
 https://saturn.shadi-kabajah.workers.dev/TEN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya_Drama.jpg" group-title="DRAMA",524) Roya Drama
 https://saturn.shadi-kabajah.workers.dev/Roya_Drama
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya_Comedy.jpg" group-title="DRAMA",525) Roya Comedy
+https://saturn.shadi-kabajah.workers.dev/Roya_Comedy
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",531) MBC Drama
 https://saturn.shadi-kabajah.workers.dev/MBC_Drama
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama_Egypt.jpg" group-title="DRAMA",532) MBC Drama Egypt
