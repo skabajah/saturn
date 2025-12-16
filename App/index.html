@@ -79,6 +79,11 @@
       version = 'v30'; 
     } 
 
+    else if (/AppleWebKit/.test(ua)) { 
+      browserName = 'MacOS'; 
+      version = 'v27'; 
+    } 
+
     else if (/Firefox/.test(ua)) { 
       browserName = 'Firefox'; 
       version = 'v27'; 
