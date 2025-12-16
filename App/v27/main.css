@@ -32,8 +32,14 @@ html, body {
     height: 100%; 
     object-fit: fill;
     object-position: center; /* add this */
-
 }
+* {
+    outline: none !important;
+}
+*:focus {
+    outline: none !important;
+}
+
 
 
 
