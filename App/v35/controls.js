@@ -47,7 +47,7 @@ function hideMenu() {
 
 function resetMenuTimer() {
   clearTimeout(menuTimer);
-  menuTimer = setTimeout(() => hideMenu(), 4000); // 4s
+  menuTimer = setTimeout(() => hideMenu(), 4000);
 }
 
 // --- Core ---
@@ -68,6 +68,7 @@ function playCurrentChannel(skipOverlay = false) {
 
   player.play().catch(() => {});
   player.oncanplay = () => spinner.style.display = 'none';
+  player.onerror = () => spinner.style.display = 'none';
 
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
@@ -91,23 +92,19 @@ function showChannelOverlay(ch) {
   overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
 }
 
-// --- Highlight + horizontal scroll ---
+// --- Highlight + scroll ---
 function highlightChannel() {
-  const items = menuBar.querySelectorAll('.channel');
-  items.forEach((item, i) => item.classList.toggle('active', i === currentIndex));
+  const items = Array.from(menuBar.querySelectorAll('.channel'));
+  items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
 
   const active = items[currentIndex];
   if (!active) return;
 
-  const barWidth = menuBar.clientWidth;
-  const center = barWidth / 2 - active.offsetWidth / 2;
-  let target = active.offsetLeft - center;
-  const max = menuBar.scrollWidth - barWidth;
-
-  if (target < 0) target = 0;
-  if (target > max) target = max;
-
-  menuBar.scrollTo({ left: target, behavior: 'smooth' });
+  active.scrollIntoView({
+    behavior: 'smooth',
+    inline: 'center',
+    block: 'nearest'
+  });
 }
 
 // --- Keyboard / Remote ---
@@ -116,13 +113,8 @@ document.addEventListener('keydown', e => {
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
-    case 'ArrowLeft':
-      changeChannel(-1);
-      break;
-
-    case 'ArrowRight':
-      changeChannel(1);
-      break;
+    case 'ArrowLeft':  changeChannel(-1); break;
+    case 'ArrowRight': changeChannel(1); break;
 
     case 'ArrowUp':
       showMenu();
@@ -130,8 +122,7 @@ document.addEventListener('keydown', e => {
       break;
 
     case 'ArrowDown':
-      if (isMenuVisible) hideMenu();
-      else showMenu();
+      isMenuVisible ? hideMenu() : showMenu();
       break;
 
     case 'Enter':
@@ -159,9 +150,9 @@ document.addEventListener('click', e => {
   if (!chEl) return;
 
   const items = Array.from(menuBar.querySelectorAll('.channel'));
-  const i = items.indexOf(chEl);
-  if (i >= 0) {
-    currentIndex = i;
+  const idx = items.indexOf(chEl);
+  if (idx >= 0) {
+    currentIndex = idx;
     playCurrentChannel();
   }
 });
@@ -181,8 +172,7 @@ document.addEventListener('touchend', e => {
   const dy = e.changedTouches[0].clientY - startY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    if (dx > 50) changeChannel(-1);
-    else if (dx < -50) changeChannel(1);
+    dx > 50 ? changeChannel(-1) : dx < -50 && changeChannel(1);
   } else {
     showChannelOverlay(channels[currentIndex]);
   }
@@ -202,44 +192,65 @@ async function loadM3U() {
     const name = lines[i].split(',')[1]?.trim() || 'Unknown';
     const url = lines[i + 1]?.trim();
 
-    if (url?.startsWith('http')) channels.push({ name, logo, group, url });
+    if (url?.startsWith('http')) {
+      channels.push({ name, logo, group, url });
+    }
   }
 
   buildMenuBar();
   highlightChannel();
-  showMenu();
   playCurrentChannel();
+  showMenu();
 }
 
-// --- Menu builder (card layout) ---
+// --- Menu builder (GROUP BOXES) ---
 function buildMenuBar() {
   menuBar.innerHTML = '';
 
-  channels.forEach((ch, i) => {
-    const div = document.createElement('div');
-    div.className = 'channel';
-
-    const match = ch.name.match(/^(\d+)\)\s*(.*)/);
-    const num = match ? match[1] : '';
-    const name = match ? match[2] : ch.name;
-    const group = ch.group || '';
-
-    div.innerHTML = `
-      <div class="group">${group}</div>
-      <img src="${ch.logo}" alt="">
-      <div class="bottom">
-        <span class="num">${num}</span>
-        <span class="name">${name}</span>
-      </div>
-    `;
-
-    div.onclick = () => {
-      currentIndex = i;
-      playCurrentChannel();
-    };
-
-    menuBar.appendChild(div);
+  const groups = new Map();
+  channels.forEach((ch, idx) => {
+    const g = (ch.group || 'Other').trim() || 'Other';
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push({ ch, idx });
   });
+
+  for (const [groupName, list] of groups.entries()) {
+    const box = document.createElement('div');
+    box.className = 'group-box';
+
+    const title = document.createElement('div');
+    title.className = 'group-title';
+    title.textContent = groupName;
+
+    const row = document.createElement('div');
+    row.className = 'group-row';
+
+    list.forEach(({ ch, idx }) => {
+      const div = document.createElement('div');
+      div.className = 'channel';
+
+      const match = ch.name.match(/^(\d+)\)\s*(.*)/);
+      const num = match ? match[1] : '';
+      const label = match ? match[2] : ch.name;
+
+      div.innerHTML = `
+        <div class="num">${num}</div>
+        <img src="${ch.logo}" alt="">
+        <div class="name">${label}</div>
+      `;
+
+      div.onclick = () => {
+        currentIndex = idx;
+        playCurrentChannel();
+      };
+
+      row.appendChild(div);
+    });
+
+    box.appendChild(title);
+    box.appendChild(row);
+    menuBar.appendChild(box);
+  }
 }
 
 // --- Fullscreen ---
