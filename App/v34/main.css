@@ -31,8 +31,7 @@ html, body {
   inset: 0;
   width: 100%;
   height: 100%;
-  /*object-fit: fill;*/
-  object-fit: contain;
+  object-fit: fill;
   object-position: center;
 }
 
@@ -42,11 +41,10 @@ html, body {
 }
 
 /* =========================
-   Horizontal Menu (v34) - bottom
+   Menu bar (bottom)
    ========================= */
 #menuBar {
   position: absolute;
-  top: auto;
   bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
@@ -65,66 +63,72 @@ html, body {
 }
 
 #menuBar::-webkit-scrollbar { display: none; }
-
 #menuBar.hidden { display: none; }
 
 /* =========================
-   Channel square cards
+   Channel card (final)
    ========================= */
 .channel {
-  width: 92px;
-  height: 92px;
-  padding: 10px;
+  width: 120px;
+  height: 120px;
+  padding: 8px 10px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-weight: bold;
+  justify-content: space-between;
   border-radius: 14px;
   flex: 0 0 auto;
   background: rgba(255,255,255,0.08);
-  text-align: center;
+  text-align: left;
 }
 
+/* Top: Group */
+.channel .group {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Middle: Logo */
 .channel img {
-  width: 44px;
-  height: 44px;
+  align-self: center;
+  width: 46px;
+  height: 46px;
   object-fit: contain;
   border-radius: 10px;
   border: solid 1px rgba(210,210,210,0.1);
 }
 
-.channel .label {
+/* Bottom row: number + name */
+.channel .bottom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.channel .num {
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.channel .name {
+  font-size: 0.7rem;
+  font-weight: 700;
   line-height: 1.05;
-  max-width: 100%;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-/* optional: hide numbers entirely (JS no longer outputs ch-num) */
-.channel .ch-num { display: none; }
-
+/* Active card */
 .channel.active {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.9);
   color: #000;
-}
-
-/* =========================
-   Group separators (inline)
-   ========================= */
-.group-header {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #bbb;
-  border-left: solid 2px gray;
-  margin: 0 6px;
 }
 
 /* =========================
@@ -158,12 +162,6 @@ html, body {
   min-width: 120px;
 }
 
-#overlay .top-row {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-}
-
 #overlay .group {
   font-size: 0.6rem;
   color: #ccc;
@@ -171,7 +169,6 @@ html, body {
 }
 
 #overlay .ch-num { font-weight: bold; }
-
 #overlay .name { font-size: 0.8rem; }
 
 #overlay img {

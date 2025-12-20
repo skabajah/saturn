@@ -211,29 +211,26 @@ async function loadM3U() {
   playCurrentChannel();
 }
 
-// --- Menu builder ---
+// --- Menu builder (card layout) ---
 function buildMenuBar() {
   menuBar.innerHTML = '';
-  let lastGroup = '';
 
   channels.forEach((ch, i) => {
-    // if (ch.group && ch.group !== lastGroup) {
-    //   const g = document.createElement('div');
-    //   g.className = 'group-header';
-    //   g.textContent = ch.group;
-    //   menuBar.appendChild(g);
-    //   lastGroup = ch.group;
-    // }
-
     const div = document.createElement('div');
     div.className = 'channel';
 
     const match = ch.name.match(/^(\d+)\)\s*(.*)/);
-    const label = match ? match[2] : ch.name;
+    const num = match ? match[1] : '';
+    const name = match ? match[2] : ch.name;
+    const group = ch.group || '';
 
     div.innerHTML = `
+      <div class="group">${group}</div>
       <img src="${ch.logo}" alt="">
-      <span class="label">${label}</span>
+      <div class="bottom">
+        <span class="num">${num}</span>
+        <span class="name">${name}</span>
+      </div>
     `;
 
     div.onclick = () => {
