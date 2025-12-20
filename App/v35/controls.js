@@ -107,14 +107,31 @@ function highlightChannel() {
   });
 }
 
+function ensureMenuVisible() {
+  if (!isMenuVisible) {
+    showMenu();
+    return false; // menu was hidden
+  }
+  return true; // menu already visible
+}
+
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', e => {
   const handled = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Enter',' ','Escape','Backspace','f','F'];
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
-    case 'ArrowLeft':  changeChannel(-1); break;
-    case 'ArrowRight': changeChannel(1); break;
+    // case 'ArrowLeft':  changeChannel(-1); break;
+    // case 'ArrowRight': changeChannel(1); break;
+    case 'ArrowLeft':
+      if (!ensureMenuVisible()) break; // mimic UP first
+      changeChannel(-1);
+      break;
+
+    case 'ArrowRight':
+      if (!ensureMenuVisible()) break; // mimic UP first
+      changeChannel(1);
+      break;
 
     case 'ArrowUp':
       showMenu();
