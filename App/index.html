@@ -62,31 +62,31 @@
     // === Browser detection ===
     const ua = navigator.userAgent;
     let browserName = 'Unknown';
-    let version = 'v27'; // default
+    let version = 'v35'; // default
 
     if (/AFT/.test(ua) || /Silk/.test(ua)) {  
       browserName = 'Fire TV'; 
-      version = 'v27'; 
+      version = 'v35'; 
     } 
 
     else if (/Chrome/.test(ua) && !/Edg|OPR/.test(ua)) { 
       browserName = 'Chrome'; 
-      version = 'v27'; 
+      version = 'v35'; 
     } 
 
     else if (/Safari/.test(ua) && !/Chrome/.test(ua)) { 
       browserName = 'Safari'; 
-      version = 'v30'; 
+      version = 'v35'; 
     } 
 
     else if (/AppleWebKit/.test(ua)) { 
       browserName = 'MacOS'; 
-      version = 'v27'; 
+      version = 'v35'; 
     } 
 
     else if (/Firefox/.test(ua)) { 
       browserName = 'Firefox'; 
-      version = 'v27'; 
+      version = 'v35'; 
     }
 
  
