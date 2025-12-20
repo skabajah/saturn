@@ -132,6 +132,11 @@ html, body {
   object-fit: contain;
   border-radius: 15px;
   border: solid 1px rgba(210,210,210,0.1);
+  filter: grayscale(80%);
+}
+
+.channel.active  img {
+  filter: grayscale(0%);
 }
 
 .channel .name {
