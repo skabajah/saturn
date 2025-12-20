@@ -144,8 +144,10 @@ document.addEventListener('keydown', e => {
 
     case 'Enter':
     case ' ':
+      if (!ensureMenuVisible()) break; // mimic UP first
       playCurrentChannel();
       break;
+
 
     case 'Escape':
     case 'Backspace':
