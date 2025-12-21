@@ -79,7 +79,7 @@ html, body {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.4rem;
   padding: 0.65rem 0.75rem;
   background: rgba(22, 22, 22, 0.3);
   border: solid 1px #ffffff14;
@@ -106,8 +106,8 @@ html, body {
    num top, logo middle, name bottom
    ========================= */
 .channel {
-  width: 120px;
-  height: 100px;
+  width: 7em;
+  height: 5.5em;
   padding: 8px 10px;
   cursor: pointer;
   display: flex;
@@ -121,19 +121,19 @@ html, body {
 
 .channel .num {
   font-size: 0.9rem;
-  font-weight: 900;
+  font-weight: bold;
   line-height: 1;
   color: rgba(255,255,255,0.95);
 }
 
 .channel img {
   align-self: center;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   object-fit: contain;
   border-radius: 15px;
   border: solid 1px rgba(210,210,210,0.1);
-  filter: grayscale(80%);
+  filter: grayscale(85%);
 }
 
 .channel.active  img {
@@ -142,7 +142,7 @@ html, body {
 
 .channel .name {
   font-size: 0.8rem;
-  font-weight: 800;
+  font-weight: normal;
   line-height: 1.05;
   color: rgba(255,255,255,0.95);
   white-space: nowrap;
