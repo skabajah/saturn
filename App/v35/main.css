@@ -80,7 +80,7 @@ html, body {
   display: flex;
   flex-direction: row;
   gap: 0.4rem;
-  padding: 0.65rem 0.75rem;
+  padding: 6px 0; 
   background: rgba(22, 22, 22, 0.3);
   border: solid 1px #ffffff14;
   border-left: solid 6px #ffffff4f;
@@ -88,11 +88,12 @@ html, body {
 }
 
 .group-title {
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
   padding: 0 0 0 1em;
   align-self: anchor-center;
+  width: 4em;
 }
 
 /* Row of channels inside a group box */
@@ -115,7 +116,7 @@ html, body {
   justify-content: space-between;
   border-radius: 14px;
   flex: 0 0 auto;
-  background: #0f0f0f57;
+  background: rgba(0,0,0,0.6);
   text-align: center;
 
   flex-direction:  row;
