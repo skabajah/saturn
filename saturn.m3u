@@ -79,12 +79,8 @@ https://saturn.shadi-kabajah.workers.dev/ON_E
 https://saturn.shadi-kabajah.workers.dev/Sada
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",448) TEN
 https://saturn.shadi-kabajah.workers.dev/TEN
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aflam.jpg" group-title="MOVIES",631) Aflam
-https://saturn.shadi-kabajah.workers.dev/Aflam
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",635) Rotana Aflam
-https://saturn.shadi-kabajah.workers.dev/Rotana_Aflam
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema.jpg" group-title="MOVIES",636) Rotana Cinema
-https://saturn.shadi-kabajah.workers.dev/Rotana_Cinema
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",721) Arabica
+https://saturn.shadi-kabajah.workers.dev/Arabica
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",722) Aghani
 https://saturn.shadi-kabajah.workers.dev/Aghani
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_One.jpg" group-title="MUSIC",723) MTV One
