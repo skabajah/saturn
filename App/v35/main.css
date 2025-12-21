@@ -82,7 +82,8 @@ html, body {
   gap: 0.55rem;
   padding: 0.65rem 0.75rem;
   background: rgba(22, 22, 22, 0.3);
-  /*border: solid 1px rgba(255,255,255,0.10);*/
+  border: solid 1px #ffffff14;
+  border-left: solid 6px #ffffff4f;
   border-radius: 14px;
 }
 
@@ -106,7 +107,7 @@ html, body {
    ========================= */
 .channel {
   width: 120px;
-  height: 110px;
+  height: 100px;
   padding: 8px 10px;
   cursor: pointer;
   display: flex;
@@ -114,7 +115,7 @@ html, body {
   justify-content: space-between;
   border-radius: 14px;
   flex: 0 0 auto;
-  background: rgba(15,15,15,0.5);
+  background: #0f0f0f57;
   text-align: center;
 }
 
@@ -151,7 +152,7 @@ html, body {
 
 /* Active card */
 .channel.active {
-  background: rgba(255,255,255,0.9);
+  background: #bfbfbfc9;
   color: #000;
 }
 
