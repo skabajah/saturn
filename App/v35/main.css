@@ -45,11 +45,11 @@ html, body {
    ========================= */
 #menuBar {
   position: absolute;
-  bottom: 1vh;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%) translateY(0);
   display: flex;
-  gap: 0.9rem;
+  gap: 2rem;
   padding: 0.75rem 1rem;
   padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
   border-radius: 14px;
@@ -78,7 +78,7 @@ html, body {
 .group-box {
   flex: 0 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.4rem;
   padding: 0.65rem 0.75rem;
   background: rgba(22, 22, 22, 0.3);
@@ -88,11 +88,11 @@ html, body {
 }
 
 .group-title {
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: rgba(255,255,255,0.7);
-  line-height: 1;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
   padding: 0 0 0 1em;
+  align-self: anchor-center;
 }
 
 /* Row of channels inside a group box */
@@ -107,7 +107,7 @@ html, body {
    ========================= */
 .channel {
   width: 7em;
-  height: 5.5em;
+  /*height: 5.5em;*/
   padding: 8px 10px;
   cursor: pointer;
   display: flex;
@@ -117,13 +117,19 @@ html, body {
   flex: 0 0 auto;
   background: #0f0f0f57;
   text-align: center;
+
+  flex-direction:  row;
+  justify-content: space-evenly; 
 }
 
 .channel .num {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
   line-height: 1;
   color: rgba(255,255,255,0.95);
+
+  align-self: anchor-center;
+  display: flex;
 }
 
 .channel img {
@@ -150,6 +156,8 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  display: none;
 }
 
 /* Active card */
