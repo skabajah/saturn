@@ -11,8 +11,6 @@ https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
 https://saturn.shadi-kabajah.workers.dev/Al_Sharq
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",191) TRT
 https://saturn.shadi-kabajah.workers.dev/TRT
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/PSC.jpg" group-title="LEVANT",201) PSC
-https://saturn.shadi-kabajah.workers.dev/PSC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",211) Jadeed
 https://saturn.shadi-kabajah.workers.dev/Jadeed
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/LBC.jpg" group-title="LEVANT",212) LBC
@@ -23,8 +21,6 @@ https://saturn.shadi-kabajah.workers.dev/MTV
 https://saturn.shadi-kabajah.workers.dev/OTV
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",215) Voice of Lebanon
 https://saturn.shadi-kabajah.workers.dev/Voice_of_Lebanon
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",221) Jordan
-https://saturn.shadi-kabajah.workers.dev/Jordan
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",222) Amman
 https://saturn.shadi-kabajah.workers.dev/Amman
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",224) Roya
@@ -33,14 +29,8 @@ https://saturn.shadi-kabajah.workers.dev/Roya
 https://saturn.shadi-kabajah.workers.dev/Lana
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",232) Syria
 https://saturn.shadi-kabajah.workers.dev/Syria
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria_2.jpg" group-title="LEVANT",233) Syria 2
-https://saturn.shadi-kabajah.workers.dev/Syria_2
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Iraq.jpg" group-title="LEVANT",251) MBC Iraq
 https://saturn.shadi-kabajah.workers.dev/MBC_Iraq
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Makan.jpg" group-title="LEVANT",292) Makan
-https://saturn.shadi-kabajah.workers.dev/Makan
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/AlAraby_2.jpg" group-title="GULF",341) AlAraby 2
-https://saturn.shadi-kabajah.workers.dev/AlAraby_2
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",361) MBC 1
 https://saturn.shadi-kabajah.workers.dev/MBC_1
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",364) MBC 4
@@ -77,8 +67,6 @@ https://saturn.shadi-kabajah.workers.dev/Nahar
 https://saturn.shadi-kabajah.workers.dev/ON_E
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",447) Sada
 https://saturn.shadi-kabajah.workers.dev/Sada
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TEN.jpg" group-title="EGYPT",448) TEN
-https://saturn.shadi-kabajah.workers.dev/TEN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",721) Arabica
 https://saturn.shadi-kabajah.workers.dev/Arabica
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",722) Aghani
@@ -91,21 +79,13 @@ https://saturn.shadi-kabajah.workers.dev/Panorama_FM
 https://saturn.shadi-kabajah.workers.dev/M+
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nogoum.jpg" group-title="MUSIC",741) Nogoum
 https://saturn.shadi-kabajah.workers.dev/Nogoum
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Test_Kitchen.jpg" group-title="ENG",801) Test Kitchen
-https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Cooks_Country.jpg" group-title="ENG",802) Cooks Country
-https://saturn.shadi-kabajah.workers.dev/Cooks_Country
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC4.jpg" group-title="ENG",901) NBC4
 https://saturn.shadi-kabajah.workers.dev/NBC4
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/WUSA9.jpg" group-title="ENG",902) WUSA9
-https://saturn.shadi-kabajah.workers.dev/WUSA9
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBSN.jpg" group-title="ENG",903) CBSN
-https://saturn.shadi-kabajah.workers.dev/CBSN
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",904) Bloomberg
-https://saturn.shadi-kabajah.workers.dev/Bloomberg
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNN.jpg" group-title="ENG",905) CNN
-https://saturn.shadi-kabajah.workers.dev/CNN
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC_Now.jpg" group-title="ENG",906) NBC Now
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC_Now.jpg" group-title="ENG",902) NBC Now
 https://saturn.shadi-kabajah.workers.dev/NBC_Now
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",905) Bloomberg
+https://saturn.shadi-kabajah.workers.dev/Bloomberg
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNN.jpg" group-title="ENG",906) CNN
+https://saturn.shadi-kabajah.workers.dev/CNN
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Jazeera_EN.jpg" group-title="ENG",941) Al Jazeera EN
 https://saturn.shadi-kabajah.workers.dev/Al_Jazeera_EN
