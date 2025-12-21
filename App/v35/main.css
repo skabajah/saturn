@@ -239,3 +239,11 @@ html, body {
 @media screen and (min-width: 1281px) and (min-height: 1080px) {
   html { font-size: 22px; }
 }
+
+@media screen and (max-width: 500px) {
+  #videoPlayer {
+    object-fit: contain;
+  }
+}
+
+
