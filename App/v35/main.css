@@ -45,7 +45,7 @@ html, body {
    ========================= */
 #menuBar {
   position: absolute;
-  bottom: 0;
+  bottom: 4vh;
   left: 50%;
   transform: translateX(-50%) translateY(0);
   display: flex;
