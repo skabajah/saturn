@@ -98,7 +98,7 @@ html, body {
 /* Row of channels inside a group box */
 .group-row {
   display: flex;
-  gap: 0.6rem;
+  gap: 1em;
 }
 
 /* =========================
@@ -108,7 +108,7 @@ html, body {
 .channel {
   width: 7em;
   /*height: 5.5em;*/
-  padding: 8px 10px;
+  padding: 6px 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
