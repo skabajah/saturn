@@ -44,7 +44,7 @@ html, body {
    Menu bar (bottom) + slide
    ========================= */
 #menuBar {
-  position: absolute;
+  position: fixed;
   bottom: 4vh;
   left: 50%;
   transform: translateX(-50%) translateY(0);
