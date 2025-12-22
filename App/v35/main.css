@@ -92,7 +92,7 @@ html, body {
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
   padding: 0 0 0 1em;
-  align-self: anchor-center;
+  align-self: center;
   width: 4em;
 }
 
