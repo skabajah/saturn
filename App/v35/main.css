@@ -24,7 +24,7 @@ html, body {
   position: fixed;
   width: 102%;
   height: 102%;
-  margin: 1%;
+  margin: -1%;
 }
 
 #videoPlayer {
