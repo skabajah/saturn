@@ -22,8 +22,9 @@ html, body {
    ========================= */
 #videoWrapper {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 102%;
+  height: 102%;
+  margin: 1%;
 }
 
 #videoPlayer {
@@ -252,6 +253,12 @@ html, body {
 }
 
 @media screen and (max-width: 500px) {
+  #videoPlayer {
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-height: 500px) {
   #videoPlayer {
     object-fit: contain;
   }
