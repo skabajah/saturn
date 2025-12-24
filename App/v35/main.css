@@ -42,6 +42,7 @@ html, body {
 #videoPlayer.video-min{
   transform: translate(5vw, 8vh) scale(0.7);
   border-radius: 40px;
+  border: solid 1px #9b9b9b9e; 
 }
 
 
