@@ -37,6 +37,8 @@ function showMenu() {
   isMenuVisible = true;
   menuBar.classList.remove('hidden');
   resetMenuTimer();
+  shrinkPlayerTemporarily();
+
 }
 
 function hideMenu() {
@@ -57,6 +59,7 @@ function changeChannel(delta) {
   playCurrentChannel(true);
   showChannelOverlay(channels[currentIndex]);
   showMenu();
+
 }
 
 function playCurrentChannel(skipOverlay = false) {
@@ -74,6 +77,7 @@ function playCurrentChannel(skipOverlay = false) {
   if (!skipOverlay) showChannelOverlay(ch);
 
   showMenu();
+
 }
 
 // --- Overlay ---
@@ -283,6 +287,13 @@ window.addEventListener('beforeunload', () => {
   player.pause();
   player.currentTime = 0;
 });
+
+//-- Shrink Video 
+function shrinkPlayerTemporarily() {
+  player.classList.add('video-min');
+  setTimeout(() => player.classList.remove('video-min'), 4000);
+}
+
 
 // --- Init ---
 loadM3U();
