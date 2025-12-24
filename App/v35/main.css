@@ -36,11 +36,11 @@ html, body {
   object-position: center;
 }
 .video-min {
-    width: 73%;
-    border-radius: 25px;
-    top: 8%;
-    left: 5%;
-    position: absolute;
+    width: 73% !important;
+    border-radius: 25px  !important;
+    top: 8%  !important;
+    left: 5% !important;
+    /*position: absolute !important;*/
 }
 
 *,
