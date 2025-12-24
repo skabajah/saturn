@@ -291,7 +291,11 @@ window.addEventListener('beforeunload', () => {
 //-- Shrink Video 
 function shrinkPlayerTemporarily() {
   player.classList.add('video-min');
-  setTimeout(() => player.classList.remove('video-min'), 4000);
+
+  clearTimeout(player._shrinkTimer);
+  player._shrinkTimer = setTimeout(() => {
+    player.classList.remove('video-min');
+  }, 4000);
 }
 
 

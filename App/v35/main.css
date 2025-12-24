@@ -34,7 +34,9 @@ html, body {
   height: 100%;
   object-fit: fill;
   object-position: center;
+  transition: transform 0.6s ease-in-out;
 }
+
 .video-min {
     width: 73% !important;
     border-radius: 25px  !important;
