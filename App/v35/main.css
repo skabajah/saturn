@@ -35,6 +35,13 @@ html, body {
   object-fit: fill;
   object-position: center;
 }
+#videoPlayerMin {
+    width: 73%;
+    border-radius: 25px;
+    top: 8%;
+    left: 5%;
+    position: absolute;
+}
 
 *,
 *:focus {
