@@ -38,10 +38,13 @@ html, body {
 }
 
 .video-min {
-    width: 73% !important;
+    width: 70% !important;
+    height: 70% !important;
     border-radius: 25px  !important;
     top: 8%  !important;
     left: 5% !important;
+    transition: transform 0.6s ease-in-out;
+
     /*position: absolute !important;*/
 }
 
