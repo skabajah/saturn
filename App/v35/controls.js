@@ -38,6 +38,7 @@ function showMenu() {
   menuBar.classList.remove('hidden');
   resetMenuTimer();
   shrinkPlayerTemporarily();
+  showChannelOverlay(channels[currentIndex]);
 
 }
 
