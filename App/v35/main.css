@@ -176,6 +176,9 @@ html, body {
 .channel.active {
   background: #bfbfbfc9;
   color: #000;
+  margin: -8px 0;
+  border-radius: 15px;
+  transition: all 0.5s ease;
 }
 
 .channel.active .num,
