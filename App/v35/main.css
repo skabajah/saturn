@@ -37,12 +37,18 @@ html, body {
 
   transform-origin: top left;
   transition: transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
+
+  -webkit-transform-origin: top left;
+  -webkit-transition: -webkit-transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
+
 }
 
 #videoPlayer.video-min{
-  transform: translate(3.5vw, 6vh) scale(0.75); 
   border-radius: 40px;
-  /*border: solid 1px #9b9b9b9e; */
+  transform: translate(3.5vw, 6vh) scale(0.75); 
+
+  -webkit-transform: translate(3.5vw, 6vh) scale(0.75);
+
 }
 
 
