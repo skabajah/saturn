@@ -75,6 +75,8 @@ https://saturn.shadi-kabajah.workers.dev/Nogoum
 https://saturn.shadi-kabajah.workers.dev/NBC4
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC_Now.jpg" group-title="ENG",92) NBC Now
 https://saturn.shadi-kabajah.workers.dev/NBC_Now
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNBC.jpg" group-title="ENG",93) CNBC
+https://saturn.shadi-kabajah.workers.dev/CNBC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Bloomberg.jpg" group-title="ENG",94) Bloomberg
 https://saturn.shadi-kabajah.workers.dev/Bloomberg
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNN.jpg" group-title="ENG",95) CNN
