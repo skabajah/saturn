@@ -9,9 +9,7 @@ https://saturn.shadi-kabajah.workers.dev/Al_Arabiya
 https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Sharq.jpg" group-title="NEWS",15) Al Sharq
 https://saturn.shadi-kabajah.workers.dev/Al_Sharq
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mashhad.jpg" group-title="NEWS",16) Mashhad
-https://saturn.shadi-kabajah.workers.dev/Mashhad
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",17) TRT
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",16) TRT
 https://saturn.shadi-kabajah.workers.dev/TRT
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",21) Jadeed
 https://saturn.shadi-kabajah.workers.dev/Jadeed
