@@ -34,13 +34,13 @@ html, body {
   height:100%;
   object-fit:fill;
   object-position:center;
-
+/*
   transform-origin: top left;
   transition: transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
 
   -webkit-transform-origin: top left;
   -webkit-transition: -webkit-transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
-
+*/
 }
 
 /*
