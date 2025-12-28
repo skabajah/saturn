@@ -306,7 +306,7 @@ html, body {
 /* =========================
    closed captions  
    ========================= */
-video::cue { 
+video::cue, #videoPlayer::cue { 
   visibility: hidden !important; 
 }
 
