@@ -304,4 +304,8 @@ html, body {
 
 
 
+/*closed captions */
+video::cue { 
+  visibility: hidden !important; 
+}
 
