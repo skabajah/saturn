@@ -303,8 +303,9 @@ html, body {
 }
 
 
-
-/*closed captions */
+/* =========================
+   closed captions  
+   ========================= */
 video::cue { 
   visibility: hidden !important; 
 }
