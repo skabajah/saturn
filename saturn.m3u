@@ -39,8 +39,6 @@ https://saturn.shadi-kabajah.workers.dev/SBC
 https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai.jpg" group-title="GULF",35) Dubai
 https://saturn.shadi-kabajah.workers.dev/Dubai
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai_One.jpg" group-title="GULF",36) Dubai One
-https://saturn.shadi-kabajah.workers.dev/Dubai_One
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",41) MBC Masr
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",42) CBC
