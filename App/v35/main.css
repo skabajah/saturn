@@ -43,6 +43,7 @@ html, body {
 
 }
 
+/*
 #videoPlayer.video-min{
   border-radius: 40px;
   transform: translate(3.5vw, 6vh) scale(0.70); 
@@ -51,7 +52,7 @@ html, body {
   -webkit-transform: translate3d(3.5vw, 6vh) scale(0.70);
 
 }
-
+*/ 
 
 *,
 *:focus {
@@ -286,40 +287,15 @@ html, body {
 @media screen and (max-width: 500px) {
   #videoPlayer {
     object-fit: contain;
-  }
+  } 
 }
 
 @media screen and (max-height: 500px) {
   #videoPlayer {
     object-fit: contain;
-  }
+  } 
 }
 
-
-/* default: desktop / normal browsers */
-#videoPlayer.video-min{
-  border-radius: 40px;
-  transform: translate3d(3.5vw, 6vh, 0) scale(0.70);
-  -webkit-transform: translate3d(3.5vw, 6vh, 0) scale(0.70);
-}
-
-/* phones: ignore video-min entirely */
-@media (hover: none) and (pointer: coarse) {
-  #videoPlayer.video-min{
-    transform: none !important;
-    -webkit-transform: none !important;
-    border-radius: 0 !important;
-  }
-}
-
-/* Silk / Fire TV (no hover, coarse pointer, TV resolution) */
-@media (hover: none) and (pointer: coarse) and (min-width: 960px) {
-  #videoPlayer.video-min{
-    transform: none !important;
-    -webkit-transform: none !important;
-    border-radius: 0 !important;
-  }
-}
 
 
 
