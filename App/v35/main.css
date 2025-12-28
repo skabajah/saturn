@@ -284,12 +284,18 @@ html, body {
   html { font-size: 22px; }
 }
 
+/* phone portarait */
 @media screen and (max-width: 500px) {
   #videoPlayer {
     object-fit: contain;
   } 
+  #overlay {
+    top: 8vh;
+    right: 2vh;
+  }
 }
 
+/* phone landcape */
 @media screen and (max-height: 500px) {
   #videoPlayer {
     object-fit: contain;
