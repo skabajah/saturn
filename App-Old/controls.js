@@ -1,13 +1,14 @@
 // -------------------------
 // Project Saturn
 // skabajah
-// 2025-12-20
-// v35.js
+// 2025-12-29
+// v36.js
 // -------------------------
 
 // --- State ---
 let channels = [];
 let currentIndex = 0;
+let currentChannelId = null;
 
 let overlayTimer;
 let isMenuVisible = true;
@@ -22,6 +23,33 @@ const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
 const spinner = document.getElementById('spinner');
+
+// --- Channel ID helpers (from "123) Name") ---
+function parseChannelId(name) {
+  const m = String(name || '').match(/^(\d+)\)\s*/);
+  return m ? Number(m[1]) : null;
+}
+
+function saveChannelId(id) {
+  currentChannelId = id ?? null;
+  if (id == null) localStorage.removeItem('saturn_channel_id');
+  else localStorage.setItem('saturn_channel_id', String(id));
+}
+
+function loadChannelId() {
+  const v = localStorage.getItem('saturn_channel_id');
+  if (v == null) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function setCurrentById(id) {
+  const idx = channels.findIndex(ch => ch.id === Number(id));
+  if (idx < 0) return false;
+  currentIndex = idx;
+  saveChannelId(channels[idx].id);
+  return true;
+}
 
 // --- Platform ---
 function isDesktop() {
@@ -39,7 +67,6 @@ function showMenu() {
   resetMenuTimer();
   shrinkPlayerTemporarily();
   showChannelOverlay(channels[currentIndex]);
-
 }
 
 function hideMenu() {
@@ -53,35 +80,44 @@ function resetMenuTimer() {
   menuTimer = setTimeout(() => hideMenu(), 4000);
 }
 
+function ensureMenuVisible() {
+  if (!isMenuVisible) {
+    showMenu();
+    return false;
+  }
+  return true;
+}
+
 // --- Core ---
 function changeChannel(delta) {
   if (!channels.length) return;
+
   currentIndex = (currentIndex + delta + channels.length) % channels.length;
+  saveChannelId(channels[currentIndex]?.id);
+
   playCurrentChannel(true);
   showChannelOverlay(channels[currentIndex]);
   showMenu();
-
 }
 
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
 
+  saveChannelId(ch.id);
+
   spinner.style.display = 'block';
   player.src = ch.url;
 
   player.play().catch(() => {});
-  player.oncanplay = () => spinner.style.display = 'none';
-  player.onerror = () => spinner.style.display = 'none';
+  player.oncanplay = () => (spinner.style.display = 'none');
+  player.onerror = () => (spinner.style.display = 'none');
 
-  highlightChannel();
+  highlightChannel(); // highlight by channel id
   if (!skipOverlay) showChannelOverlay(ch);
 
   showMenu();
-
 }
-
- 
 
 // --- Overlay ---
 function showChannelOverlay(ch) {
@@ -90,36 +126,28 @@ function showChannelOverlay(ch) {
   channelLogo.src = ch.logo || '';
   channelGroup.textContent = ch.group || '';
 
-  const match = ch.name.match(/^(\d+)\)\s*(.*)/);
+  const match = String(ch.name || '').match(/^(\d+)\)\s*(.*)/);
   channelChNum.textContent = match ? match[1] : '';
-  channelName.textContent = match ? match[2] : ch.name;
+  channelName.textContent = match ? match[2] : (ch.name || '');
 
   overlay.classList.add('visible');
   clearTimeout(overlayTimer);
   overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
 }
 
-// --- Highlight + scroll ---
+// --- Highlight + scroll (BY CHANNEL ID) ---
 function highlightChannel() {
-  const items = Array.from(menuBar.querySelectorAll('.channel'));
-  items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
+  const ch = channels[currentIndex];
+  const id = ch?.id ?? currentChannelId;
+  if (id == null) return;
 
-  const active = items[currentIndex];
+  const items = Array.from(menuBar.querySelectorAll('.channel'));
+  items.forEach(el => el.classList.toggle('active', Number(el.dataset.chid) === Number(id)));
+
+  const active = items.find(el => Number(el.dataset.chid) === Number(id));
   if (!active) return;
 
-  active.scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'nearest'
-  });
-}
-
-function ensureMenuVisible() {
-  if (!isMenuVisible) {
-    showMenu();
-    return false; // menu was hidden
-  }
-  return true; // menu already visible
+  active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
 
 // --- Keyboard / Remote ---
@@ -128,15 +156,13 @@ document.addEventListener('keydown', e => {
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
-    // case 'ArrowLeft':  changeChannel(-1); break;
-    // case 'ArrowRight': changeChannel(1); break;
     case 'ArrowLeft':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       changeChannel(-1);
       break;
 
     case 'ArrowRight':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       changeChannel(1);
       break;
 
@@ -151,10 +177,9 @@ document.addEventListener('keydown', e => {
 
     case 'Enter':
     case ' ':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       playCurrentChannel();
       break;
-
 
     case 'Escape':
     case 'Backspace':
@@ -175,10 +200,10 @@ document.addEventListener('click', e => {
   const chEl = e.target.closest('.channel');
   if (!chEl) return;
 
-  const items = Array.from(menuBar.querySelectorAll('.channel'));
-  const idx = items.indexOf(chEl);
-  if (idx >= 0) {
-    currentIndex = idx;
+  const id = Number(chEl.dataset.chid);
+  if (!Number.isFinite(id)) return;
+
+  if (setCurrentById(id)) {
     playCurrentChannel();
   }
 });
@@ -198,7 +223,8 @@ document.addEventListener('touchend', e => {
   const dy = e.changedTouches[0].clientY - startY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    dx > 50 ? changeChannel(-1) : dx < -50 && changeChannel(1);
+    if (dx > 50) changeChannel(-1);
+    else if (dx < -50) changeChannel(1);
   } else {
     showChannelOverlay(channels[currentIndex]);
   }
@@ -206,6 +232,8 @@ document.addEventListener('touchend', e => {
 
 // --- M3U ---
 async function loadM3U() {
+  channels = [];
+
   const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
   const text = await res.text();
   const lines = text.split('\n');
@@ -218,14 +246,25 @@ async function loadM3U() {
     const name = lines[i].split(',')[1]?.trim() || 'Unknown';
     const url = lines[i + 1]?.trim();
 
-    if (url?.startsWith('http')) {
-      channels.push({ name, logo, group, url });
-    }
+    if (!url?.startsWith('http')) continue;
+
+    const id = parseChannelId(name);
+    channels.push({ id, name, logo, group, url });
   }
 
   buildMenuBar();
-  highlightChannel();
-  // playCurrentChannel();
+
+  const savedId = loadChannelId();
+  if (savedId != null && setCurrentById(savedId)) {
+    highlightChannel();
+    showChannelOverlay(channels[currentIndex]);
+  } else {
+    currentIndex = 0;
+    saveChannelId(channels[0]?.id ?? null);
+    highlightChannel();
+    showChannelOverlay(channels[0]);
+  }
+
   showMenu();
 }
 
@@ -254,10 +293,11 @@ function buildMenuBar() {
     list.forEach(({ ch, idx }) => {
       const div = document.createElement('div');
       div.className = 'channel';
+      div.dataset.chid = ch.id ?? '';
 
-      const match = ch.name.match(/^(\d+)\)\s*(.*)/);
+      const match = String(ch.name || '').match(/^(\d+)\)\s*(.*)/);
       const num = match ? match[1] : '';
-      const label = match ? match[2] : ch.name;
+      const label = match ? match[2] : (ch.name || '');
 
       div.innerHTML = `
         <div class="num">${num}</div>
@@ -267,6 +307,7 @@ function buildMenuBar() {
 
       div.onclick = () => {
         currentIndex = idx;
+        saveChannelId(ch.id);
         playCurrentChannel();
       };
 
@@ -291,7 +332,7 @@ window.addEventListener('beforeunload', () => {
   player.currentTime = 0;
 });
 
-//-- Shrink Video 
+// --- Shrink Video ---
 function shrinkPlayerTemporarily() {
   player.classList.add('video-min');
 
@@ -301,11 +342,8 @@ function shrinkPlayerTemporarily() {
   }, 4000);
 }
 
-
 // --- Init ---
-loadM3U();
-
 window.initPlayer = async () => {
   await loadM3U();
-  playCurrentChannel(); // safe: channels are ready
+  // no autoplay here; playback happens only on Enter/click/etc.
 };
