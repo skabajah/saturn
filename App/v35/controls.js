@@ -82,6 +82,16 @@ function changeChannel(delta) {
 // }
 
 let hls = null;
+function jumpToLiveEdge(v) {
+  try {
+    const s = v.seekable;
+    if (!s || s.length === 0) return;
+
+    const liveEnd = s.end(s.length - 1);
+    const target = Math.max(0, liveEnd - 0.25); // small backoff
+    if (Number.isFinite(target)) v.currentTime = target;
+  } catch {}
+}
 
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
