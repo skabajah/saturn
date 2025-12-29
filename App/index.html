@@ -92,11 +92,11 @@
   /* ===== FOOTER INFO ===== */
   const author = document.querySelector('meta[name="author"]').content;
   const date   = document.querySelector('meta[name="date"]').content;
-  document.getElementById('footer-right').textContent = `${author} - ${date}`;
-  // document.getElementById('footer-left').textContent  = 'v35';
+  document.getElementById('footer-right').textContent = `${author} · ${date}`;
   
   const ua = navigator.userAgent;
   let browserName = 'Unknown';
+  let version = 'v36'; 
 
   if (/AFT|Silk/i.test(ua)) {
     browserName = 'Fire TV';
@@ -110,7 +110,7 @@
     browserName = 'Firefox';
   }
 
-  document.getElementById('footer-left').textContent = `v35 · ${browserName}`;
+  document.getElementById('footer-left').textContent =  `${browserName} · ${version}`;
 
   /* ===== HIDE LANDING ===== */
   function enterApp() {
