@@ -225,7 +225,7 @@ async function loadM3U() {
 
   buildMenuBar();
   highlightChannel();
-  playCurrentChannel();
+  // playCurrentChannel();
   showMenu();
 }
 
@@ -304,3 +304,9 @@ function shrinkPlayerTemporarily() {
 
 // --- Init ---
 loadM3U();
+
+window.initPlayer = async () => {
+  await loadM3U();
+  playCurrentChannel(); // safe: channels are ready
+};
+
