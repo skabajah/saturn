@@ -93,7 +93,24 @@
   const author = document.querySelector('meta[name="author"]').content;
   const date   = document.querySelector('meta[name="date"]').content;
   document.getElementById('footer-right').textContent = `${author} - ${date}`;
-  document.getElementById('footer-left').textContent  = 'v35';
+  // document.getElementById('footer-left').textContent  = 'v35';
+  
+  const ua = navigator.userAgent;
+  let browserName = 'Unknown';
+
+  if (/AFT|Silk/i.test(ua)) {
+    browserName = 'Fire TV';
+  } else if (/Chrome/i.test(ua) && !/Edg|OPR/i.test(ua)) {
+    browserName = 'Chrome';
+  } else if (/Safari/i.test(ua) && !/Chrome/i.test(ua)) {
+    browserName = 'Safari';
+  } else if (/AppleWebKit/i.test(ua)) {
+    browserName = 'MacOS';
+  } else if (/Firefox/i.test(ua)) {
+    browserName = 'Firefox';
+  }
+
+  document.getElementById('footer-left').textContent = `v35 · ${browserName}`;
 
   /* ===== HIDE LANDING ===== */
   function enterApp() {
