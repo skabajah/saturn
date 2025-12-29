@@ -63,48 +63,86 @@ function changeChannel(delta) {
 
 }
 
-function playCurrentChannel(skipOverlay = false) {
-  const ch = channels[currentIndex];
-  if (!ch) return;
-
-  spinner.style.display = 'block';
-  player.src = ch.url;
-
-  player.play().catch(() => {});
-  player.oncanplay = () => spinner.style.display = 'none';
-  player.onerror = () => spinner.style.display = 'none';
-
-  highlightChannel();
-  if (!skipOverlay) showChannelOverlay(ch);
-
-  showMenu();
-
-}
-
 // function playCurrentChannel(skipOverlay = false) {
 //   const ch = channels[currentIndex];
 //   if (!ch) return;
 
 //   spinner.style.display = 'block';
-
-//   player.onloadedmetadata = null;
-//   player.oncanplay = null;
-
 //   player.src = ch.url;
 
-//   player.onloadedmetadata = () => jumpToLiveEdge(player);
-//   player.oncanplay = () => {
-//     jumpToLiveEdge(player);
-//     spinner.style.display = 'none';
-//   };
-
 //   player.play().catch(() => {});
+//   player.oncanplay = () => spinner.style.display = 'none';
 //   player.onerror = () => spinner.style.display = 'none';
 
 //   highlightChannel();
 //   if (!skipOverlay) showChannelOverlay(ch);
+
 //   showMenu();
+
 // }
+
+let hls = null;
+
+function playCurrentChannel(skipOverlay = false) {
+  const ch = channels[currentIndex];
+  if (!ch) return;
+
+  spinner.style.display = 'block';
+
+  // cleanup previous
+  if (hls) {
+    hls.destroy();
+    hls = null;
+  }
+
+  player.onloadedmetadata = null;
+  player.oncanplay = null;
+  player.onerror = null;
+
+  // Safari / native HLS
+  if (player.canPlayType('application/vnd.apple.mpegurl')) {
+    player.src = ch.url;
+
+    player.onloadedmetadata = () => jumpToLiveEdge(player);
+    player.oncanplay = () => {
+      jumpToLiveEdge(player);
+      spinner.style.display = 'none';
+    };
+
+    player.play().catch(() => {});
+  }
+  // Chrome / Firefox
+  else if (window.Hls && Hls.isSupported()) {
+    hls = new Hls({
+      startPosition: -1,            // CRITICAL: live edge
+      liveSyncDurationCount: 3,
+      backBufferLength: 0
+    });
+
+    hls.loadSource(ch.url);
+    hls.attachMedia(player);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      player.play().catch(() => {});
+    });
+
+    hls.on(Hls.Events.LEVEL_UPDATED, () => {
+      jumpToLiveEdge(player);
+      spinner.style.display = 'none';
+    });
+  }
+  else {
+    spinner.style.display = 'none';
+    alert('HLS not supported');
+    return;
+  }
+
+  player.onerror = () => spinner.style.display = 'none';
+
+  highlightChannel();
+  if (!skipOverlay) showChannelOverlay(ch);
+  showMenu();
+}
 
 
 // --- Overlay ---
