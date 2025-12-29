@@ -63,23 +63,49 @@ function changeChannel(delta) {
 
 }
 
+// function playCurrentChannel(skipOverlay = false) {
+//   const ch = channels[currentIndex];
+//   if (!ch) return;
+
+//   spinner.style.display = 'block';
+//   player.src = ch.url;
+
+//   player.play().catch(() => {});
+//   player.oncanplay = () => spinner.style.display = 'none';
+//   player.onerror = () => spinner.style.display = 'none';
+
+//   highlightChannel();
+//   if (!skipOverlay) showChannelOverlay(ch);
+
+//   showMenu();
+
+// }
+
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
 
   spinner.style.display = 'block';
+
+  player.onloadedmetadata = null;
+  player.oncanplay = null;
+
   player.src = ch.url;
 
+  player.onloadedmetadata = () => jumpToLiveEdge(player);
+  player.oncanplay = () => {
+    jumpToLiveEdge(player);
+    spinner.style.display = 'none';
+  };
+
   player.play().catch(() => {});
-  player.oncanplay = () => spinner.style.display = 'none';
   player.onerror = () => spinner.style.display = 'none';
 
   highlightChannel();
   if (!skipOverlay) showChannelOverlay(ch);
-
   showMenu();
-
 }
+
 
 // --- Overlay ---
 function showChannelOverlay(ch) {
