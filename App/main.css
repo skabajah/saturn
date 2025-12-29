@@ -387,7 +387,7 @@ video::cue, #videoPlayer::cue {
     right: 2vh;
   }
    .svg {
-    background: url('square.svg') center center / contain no-repeat;
+    background: url('portrait.svg') center center / contain no-repeat;
   }
 }
 
