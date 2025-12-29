@@ -390,6 +390,9 @@ video::cue, #videoPlayer::cue {
         background: url(portrait.svg);
         background-repeat: no-repeat; 
          }
+   #authGate { 
+    padding: 3em; 
+   }
 }
 
 /* phone landcape */
