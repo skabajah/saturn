@@ -387,8 +387,9 @@ video::cue, #videoPlayer::cue {
     right: 2vh;
   }
    .svg {
-    background: url('portrait.svg') center center / contain no-repeat;
-  }
+        background: url(portrait.svg);
+        background-repeat: no-repeat; 
+         }
 }
 
 /* phone landcape */
