@@ -67,7 +67,7 @@ html, body {
   left: 50%;
   transform: translateX(-50%) translateY(0);
   display: flex;
-  gap: 2rem;
+  gap: 4px;
   padding: 0.75rem 1rem;
   padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)); 
   overflow-x: auto;
@@ -99,9 +99,12 @@ html, body {
   flex-direction: row;
   gap: 0.4rem;
   border-left: solid 2px #ffffff91;
-  margin: 0 2em; 
+  margin-left:2em; 
  }
+ .group-box:last-child { 
+    margin-right: 2em; 
 
+ }
 .group-title {
   font-size: 0.7em;
   font-weight: bold;
