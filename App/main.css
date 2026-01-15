@@ -137,8 +137,8 @@ html, body {
   width: 3em;
   height: 3em;
   object-fit: contain;
-  border-radius: 15px;
-  border: solid 1px rgba(210,210,210,0.1);
+  border-radius: 50%;
+  /*border: solid 1px rgba(210,210,210,0.1);*/
   filter: grayscale(20%);
   opacity: 80%;
 }
