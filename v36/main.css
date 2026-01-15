@@ -64,7 +64,7 @@ html, body {
    ========================= */
 #menuBar {
   position: fixed;
-  bottom: 0;
+  bottom: 4vh;
   left: 50%;
   transform: translateX(-50%) translateY(0);
   display: flex;
@@ -211,7 +211,6 @@ html, body {
   opacity: 0;
   z-index: 100;
   font-size: 1.1rem;
-  display: none;
 }
 
 #overlay.visible { opacity: 1; }
@@ -248,7 +247,7 @@ html, body {
    ========================= */
 .spinner{
   position:fixed;
-  top:2vh;
+  bottom:2vh;
   left:0;
   width:100%;
   height:4px;
