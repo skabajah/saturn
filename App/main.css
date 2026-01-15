@@ -162,14 +162,17 @@ html, body {
 /* Active card */
 .channel.active {
   transition: all 0.5s ease;
-  background: #a2a2a2c9;
-  box-shadow: inset 5px 5px 10px 0px rgb(194 194 194 / 70%);
+  /*background: #a2a2a2c9;*/
+  box-shadow: 
+  /*inset 5px 5px 10px 0px rgb(194 194 194 / 70%);*/
+  inset -20px 0px 20px 20px rgb(194 194 194 / 70%);
   border: 1px solid #c6c6c69c;
 }
 
 .channel.active .num,
 .channel.active .name {
-  color: #000;
+  /*color: #000;*/
+  color: white;
 }
 
 /* =========================
