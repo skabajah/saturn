@@ -189,9 +189,10 @@ html, body {
 .channel.active {
   background: #bfbfbfc9;
   color: #000;
-  margin: -8px 0;
-  border-radius: 15px;
+  /*margin: -8px 0;*/
+  /*border-radius: 15px;*/
   transition: all 0.5s ease;
+  box-shadow: 3px 3px 3px 0px rgb(217 217 217 / 60%);
 }
 
 .channel.active .num,
