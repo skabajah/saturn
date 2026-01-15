@@ -60,8 +60,8 @@ html, body {
   opacity: 1;
   transition: transform 0.35s ease, opacity 0.35s ease;
   -webkit-overflow-scrolling: touch;
-  box-shadow:  0px -20px 20px rgb(0 0 0 / 80%);
-  background: rgb(0 0 0 / 80%);
+  background: rgb(0 0 0 / 90%);
+  box-shadow:  0px -40px 40px rgb(0 0 0 / 90%);
 }
 
 #menuBar::-webkit-scrollbar { display: none; }
