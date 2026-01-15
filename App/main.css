@@ -120,13 +120,14 @@ html, body {
   justify-content: space-evenly; 
   border: solid 1px #ffffff45;
   background: #ffffff1c;
+  box-shadow: inset -20px 0px 20px 20px rgb(194 194 194 / 27%);
 }
 
 .channel .num {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1;
-  color: rgb(222 222 222 / 95%);
+  color: rgb(199 199 199 / 80%);
   align-self: center;
   display: flex;
 }
