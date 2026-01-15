@@ -226,7 +226,7 @@ html, body {
    Spinner (horizontal shimmer)
    ========================= */
 .spinner{
-  position:fixed;
+  position:static;
   top:2vh;
   left:0;
   width:100%;
@@ -242,7 +242,7 @@ html, body {
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg, transparent, rgb(255, 255 ,255, 0.4), transparent);
+  background:linear-gradient(90deg, transparent, rgb(255, 255 ,255, 0.6), transparent);
   animation: slide 2s linear infinite;
 }
 
