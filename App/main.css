@@ -96,11 +96,11 @@ html, body {
  }
 .group-title {
   font-size: 10px;
-  font-weight: normal;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
-  padding: 0 0 0 1em;
+  padding: 0 12px;
   align-self: center;
-  width: 4em;
+  /*width: 4em;*/
 }
 
 /* Row of channels inside a group box */
@@ -138,10 +138,10 @@ html, body {
 }
 
 .channel .num {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 300;
   line-height: 1;
-  color: rgb(199 199 199 / 80%);
+  color: rgb(199 199 199 / 75%);
   align-self: center;
   display: flex;
 }
