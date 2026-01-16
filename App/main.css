@@ -184,8 +184,8 @@ html, body {
 
 .channel.active .num,
 .channel.active .name {
-  /*color: #000;*/
   color: white;
+  opacity: 85%;
 }
 
 /* =========================
