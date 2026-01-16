@@ -90,11 +90,12 @@ html, body {
   gap: 0.4rem;
   margin-left: 2em;
   border: solid 1px #8181813b;
-  padding: 10px 10px 6px 0px;
+  padding: 12px 16px 8px 8px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   margin-bottom: -10px;
   border-bottom: none;
+
   }
 
 
@@ -129,7 +130,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 14px;
+  /*border-radius: 14px;*/
   flex: 0 0 auto;
   text-align: center;
   flex-direction:  row;
@@ -137,6 +138,12 @@ html, body {
   border: solid 1px #ffffff45;
   background: #6a6a6a1c;
   box-shadow: inset -20px 0px 20px 20px rgb(76 76 76 / 50%);
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: none;
+  margin-bottom: -10px;
+
 }
 
 .channel .num {
