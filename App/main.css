@@ -39,6 +39,7 @@ html, body {
 *,
 *:focus {
   outline: none !important;
+
 }
 
 /* =========================
@@ -61,6 +62,7 @@ html, body {
   -webkit-overflow-scrolling: touch;
   background: rgb(0 0 0 / 90%);
   box-shadow:  0px -50px 30px rgb(0 0 0 / 90%);
+  font-family: 'Roboto', sans-serif;
 }
 
 #menuBar::-webkit-scrollbar { display: none; }
@@ -86,14 +88,13 @@ html, body {
   border-top-right-radius: 20px;
   margin-bottom: -10px;
   border-bottom: none;
-
   }
-
 
  .group-box:last-child { 
     margin-right: 2em; 
-
+    /*border-color: red;*/
  }
+
 .group-title {
   font-size: 10px;
   font-weight: 400;
@@ -144,6 +145,7 @@ html, body {
   color: rgb(199 199 199 / 75%);
   align-self: center;
   display: flex;
+  font-family: 'Roboto', sans-serif;
 }
 
 .channel img {
@@ -162,6 +164,7 @@ html, body {
 }
 
 .channel .name {
+/*
   font-size: 0.8rem;
   font-weight: normal;
   line-height: 1.05;
@@ -169,7 +172,7 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  */
   display: none;
 }
 
@@ -192,6 +195,7 @@ html, body {
    Overlay
    ========================= */
 #overlay {
+/*  
   position: absolute;
   top: 4vh;
   right: 4vh;
@@ -205,6 +209,7 @@ html, body {
   opacity: 0;
   z-index: 100;
   font-size: 1.1rem;
+*/
   display: none;
 }
 
