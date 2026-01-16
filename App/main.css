@@ -122,7 +122,8 @@ html, body {
    num top, logo middle, name bottom
    ========================= */
 .channel {
-  width: 7em;
+  width: 8em;
+  height: 5em;
   padding: 6px 0;
   cursor: pointer;
   display: flex;
@@ -149,8 +150,8 @@ html, body {
 
 .channel img {
   align-self: center;
-  width: 3em;
-  height: 3em;
+  width: 4em;
+  height: 4em;
   object-fit: contain;
   border-radius: 50%;
   filter: grayscale(50%);
