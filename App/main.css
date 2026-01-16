@@ -135,7 +135,7 @@ html, body {
   text-align: center;
   flex-direction:  row;
   justify-content: space-evenly; 
-  border: solid 1px #ffffff45;
+  border: solid 1px rgb(112 112 112 / 50%);
   background: #6a6a6a1c;
   box-shadow: inset -20px 0px 20px 20px rgb(76 76 76 / 50%);
 
