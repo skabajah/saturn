@@ -1,18 +1,20 @@
 // -------------------------
 // Project Saturn
 // skabajah
-// 2025-12-29
-// v36.js
+// 2025-12-20
 // -------------------------
 
 // --- State ---
 let channels = [];
 let currentIndex = 0;
-let currentChannelId = null;
 
 let overlayTimer;
 let isMenuVisible = true;
 let menuTimer;
+let isLoading = false;
+
+const switchSound = new Audio('pop.mp3');
+switchSound.preload = 'auto';
 
 // --- Elements ---
 const player = document.getElementById('videoPlayer');
@@ -23,33 +25,6 @@ const channelName = document.getElementById('channelName');
 const channelGroup = document.getElementById('channelGroup');
 const channelChNum = document.getElementById('channelChNum');
 const spinner = document.getElementById('spinner');
-
-// --- Channel ID helpers (from "123) Name") ---
-function parseChannelId(name) {
-  const m = String(name || '').match(/^(\d+)\)\s*/);
-  return m ? Number(m[1]) : null;
-}
-
-function saveChannelId(id) {
-  currentChannelId = id ?? null;
-  if (id == null) localStorage.removeItem('saturn_channel_id');
-  else localStorage.setItem('saturn_channel_id', String(id));
-}
-
-function loadChannelId() {
-  const v = localStorage.getItem('saturn_channel_id');
-  if (v == null) return null;
-  const n = Number(v);
-  return Number.isFinite(n) ? n : null;
-}
-
-function setCurrentById(id) {
-  const idx = channels.findIndex(ch => ch.id === Number(id));
-  if (idx < 0) return false;
-  currentIndex = idx;
-  saveChannelId(channels[idx].id);
-  return true;
-}
 
 // --- Platform ---
 function isDesktop() {
@@ -64,9 +39,10 @@ function isDesktop() {
 function showMenu() {
   isMenuVisible = true;
   menuBar.classList.remove('hidden');
-  resetMenuTimer();
-  shrinkPlayerTemporarily();
-  showChannelOverlay(channels[currentIndex]);
+  // resetMenuTimer();
+  // shrinkPlayerTemporarily();
+  // showChannelOverlay(channels[currentIndex]);
+
 }
 
 function hideMenu() {
@@ -77,77 +53,97 @@ function hideMenu() {
 
 function resetMenuTimer() {
   clearTimeout(menuTimer);
-  menuTimer = setTimeout(() => hideMenu(), 4000);
-}
-
-function ensureMenuVisible() {
-  if (!isMenuVisible) {
-    showMenu();
-    return false;
-  }
-  return true;
+  menuTimer = setTimeout(() => hideMenu(), 5000);
 }
 
 // --- Core ---
 function changeChannel(delta) {
   if (!channels.length) return;
-
   currentIndex = (currentIndex + delta + channels.length) % channels.length;
-  saveChannelId(channels[currentIndex]?.id);
+  
+  // play audio effect
+  switchSound.currentTime = 0; // reset to start
+  switchSound.play().catch(() => {});
+
 
   playCurrentChannel(true);
-  showChannelOverlay(channels[currentIndex]);
+  // showChannelOverlay(channels[currentIndex]);
   showMenu();
 }
+
+
+
 
 function playCurrentChannel(skipOverlay = false) {
   const ch = channels[currentIndex];
   if (!ch) return;
 
-  saveChannelId(ch.id);
-
+  isLoading = true;
   spinner.style.display = 'block';
   player.src = ch.url;
 
   player.play().catch(() => {});
-  player.oncanplay = () => (spinner.style.display = 'none');
-  player.onerror = () => (spinner.style.display = 'none');
 
-  highlightChannel(); // highlight by channel id
-  if (!skipOverlay) showChannelOverlay(ch);
+  player.oncanplay = () => {
+    spinner.style.display = 'none';
+    isLoading = false;
+    showMenu();       // show menu now
+    resetMenuTimer(); // start hide timer
+  };
 
-  showMenu();
+  player.onerror = () => {
+    spinner.style.display = 'none';
+    isLoading = false;
+    showMenu();
+    resetMenuTimer();
+  };
+
+  highlightChannel();
+  // if (!skipOverlay) showChannelOverlay(ch);
+
+  // REMOVE showMenu() from here
 }
+
+
 
 // --- Overlay ---
-function showChannelOverlay(ch) {
-  if (!ch) return;
 
-  channelLogo.src = ch.logo || '';
-  channelGroup.textContent = ch.group || '';
+// function showChannelOverlay(ch) {
+//   if (!ch) return;
 
-  const match = String(ch.name || '').match(/^(\d+)\)\s*(.*)/);
-  channelChNum.textContent = match ? match[1] : '';
-  channelName.textContent = match ? match[2] : (ch.name || '');
+//   channelLogo.src = ch.logo || '';
+//   channelGroup.textContent = ch.group || '';
 
-  overlay.classList.add('visible');
-  clearTimeout(overlayTimer);
-  overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
-}
+//   const match = ch.name.match(/^(\d+)\)\s*(.*)/);
+//   channelChNum.textContent = match ? match[1] : '';
+//   channelName.textContent = match ? match[2] : ch.name;
 
-// --- Highlight + scroll (BY CHANNEL ID) ---
+//   overlay.classList.add('visible');
+//   clearTimeout(overlayTimer);
+//   overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
+// }
+
+// --- Highlight + scroll ---
 function highlightChannel() {
-  const ch = channels[currentIndex];
-  const id = ch?.id ?? currentChannelId;
-  if (id == null) return;
-
   const items = Array.from(menuBar.querySelectorAll('.channel'));
-  items.forEach(el => el.classList.toggle('active', Number(el.dataset.chid) === Number(id)));
+  items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
 
-  const active = items.find(el => Number(el.dataset.chid) === Number(id));
+  const active = items[currentIndex];
   if (!active) return;
 
-  active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  active.scrollIntoView({
+    behavior: 'smooth',
+    inline: 'center',
+    block: 'nearest'
+  });
+}
+
+function ensureMenuVisible() {
+  if (!isMenuVisible) {
+    showMenu();
+    return false; // menu was hidden
+  }
+  return true; // menu already visible
 }
 
 // --- Keyboard / Remote ---
@@ -156,19 +152,21 @@ document.addEventListener('keydown', e => {
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
+    // case 'ArrowLeft':  changeChannel(-1); break;
+    // case 'ArrowRight': changeChannel(1); break;
     case 'ArrowLeft':
-      if (!ensureMenuVisible()) break;
+      if (!ensureMenuVisible()) break; // mimic UP first
       changeChannel(-1);
       break;
 
     case 'ArrowRight':
-      if (!ensureMenuVisible()) break;
+      if (!ensureMenuVisible()) break; // mimic UP first
       changeChannel(1);
       break;
 
     case 'ArrowUp':
       showMenu();
-      showChannelOverlay(channels[currentIndex]);
+      // showChannelOverlay(channels[currentIndex]);
       break;
 
     case 'ArrowDown':
@@ -177,9 +175,10 @@ document.addEventListener('keydown', e => {
 
     case 'Enter':
     case ' ':
-      if (!ensureMenuVisible()) break;
+      if (!ensureMenuVisible()) break; // mimic UP first
       playCurrentChannel();
       break;
+
 
     case 'Escape':
     case 'Backspace':
@@ -200,10 +199,10 @@ document.addEventListener('click', e => {
   const chEl = e.target.closest('.channel');
   if (!chEl) return;
 
-  const id = Number(chEl.dataset.chid);
-  if (!Number.isFinite(id)) return;
-
-  if (setCurrentById(id)) {
+  const items = Array.from(menuBar.querySelectorAll('.channel'));
+  const idx = items.indexOf(chEl);
+  if (idx >= 0) {
+    currentIndex = idx;
     playCurrentChannel();
   }
 });
@@ -223,8 +222,7 @@ document.addEventListener('touchend', e => {
   const dy = e.changedTouches[0].clientY - startY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    if (dx > 50) changeChannel(-1);
-    else if (dx < -50) changeChannel(1);
+    dx > 50 ? changeChannel(-1) : dx < -50 && changeChannel(1);
   } else {
     showChannelOverlay(channels[currentIndex]);
   }
@@ -232,8 +230,6 @@ document.addEventListener('touchend', e => {
 
 // --- M3U ---
 async function loadM3U() {
-  channels = [];
-
   const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
   const text = await res.text();
   const lines = text.split('\n');
@@ -246,25 +242,14 @@ async function loadM3U() {
     const name = lines[i].split(',')[1]?.trim() || 'Unknown';
     const url = lines[i + 1]?.trim();
 
-    if (!url?.startsWith('http')) continue;
-
-    const id = parseChannelId(name);
-    channels.push({ id, name, logo, group, url });
+    if (url?.startsWith('http')) {
+      channels.push({ name, logo, group, url });
+    }
   }
 
   buildMenuBar();
-
-  const savedId = loadChannelId();
-  if (savedId != null && setCurrentById(savedId)) {
-    highlightChannel();
-    showChannelOverlay(channels[currentIndex]);
-  } else {
-    currentIndex = 0;
-    saveChannelId(channels[0]?.id ?? null);
-    highlightChannel();
-    showChannelOverlay(channels[0]);
-  }
-
+  highlightChannel();
+  playCurrentChannel();
   showMenu();
 }
 
@@ -293,11 +278,10 @@ function buildMenuBar() {
     list.forEach(({ ch, idx }) => {
       const div = document.createElement('div');
       div.className = 'channel';
-      div.dataset.chid = ch.id ?? '';
 
-      const match = String(ch.name || '').match(/^(\d+)\)\s*(.*)/);
+      const match = ch.name.match(/^(\d+)\)\s*(.*)/);
       const num = match ? match[1] : '';
-      const label = match ? match[2] : (ch.name || '');
+      const label = match ? match[2] : ch.name;
 
       div.innerHTML = `
         <div class="num">${num}</div>
@@ -307,7 +291,6 @@ function buildMenuBar() {
 
       div.onclick = () => {
         currentIndex = idx;
-        saveChannelId(ch.id);
         playCurrentChannel();
       };
 
@@ -332,18 +315,16 @@ window.addEventListener('beforeunload', () => {
   player.currentTime = 0;
 });
 
-// --- Shrink Video ---
-function shrinkPlayerTemporarily() {
-  player.classList.add('video-min');
+//-- Shrink Video 
+// function shrinkPlayerTemporarily() {
+//   player.classList.add('video-min');
 
-  clearTimeout(player._shrinkTimer);
-  player._shrinkTimer = setTimeout(() => {
-    player.classList.remove('video-min');
-  }, 4000);
-}
+//   clearTimeout(player._shrinkTimer);
+//   player._shrinkTimer = setTimeout(() => {
+//     player.classList.remove('video-min');
+//   }, 4000);
+// }
+
 
 // --- Init ---
-window.initPlayer = async () => {
-  await loadM3U();
-  // no autoplay here; playback happens only on Enter/click/etc.
-};
+loadM3U();
