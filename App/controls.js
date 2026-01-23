@@ -46,6 +46,7 @@ function showMenu() {
 }
 
 function hideMenu() {
+  if (isLoading) return; // prevent hiding while spinner is active
   isMenuVisible = false;
   menuBar.classList.add('hidden');
   clearTimeout(menuTimer);
