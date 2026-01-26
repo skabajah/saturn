@@ -31,7 +31,7 @@ html, body {
   inset:0;
   width:100%;
   height:100%;
-  object-fit:fill;
+  object-fit:contain;
   object-position:center; 
 }
  
@@ -152,7 +152,7 @@ html, body {
   align-self: center;
   width: 4em;
   height: 4em;
-  object-fit: contain;
+  -fit: contain;
   border-radius: 50%;
   filter: grayscale(50%);
   opacity: 50%;
@@ -236,7 +236,7 @@ html, body {
 #overlay img {
   width: 3rem;
   height: 3rem;
-  object-fit: contain;
+  -fit: contain;
   border-radius: 15px;
   border: solid 1px rgba(233,233,233,0.1);
 }
@@ -380,7 +380,7 @@ video::cue, #videoPlayer::cue {
 /* phone portarait */
 @media screen and (max-width: 500px) {
   #videoPlayer {
-    object-fit: contain;
+    -fit: contain;
   } 
   #overlay {
     top: 8vh;
@@ -398,7 +398,7 @@ video::cue, #videoPlayer::cue {
 /* phone landcape */
 @media screen and (max-height: 500px) {
   #videoPlayer {
-    object-fit: contain;
+    -fit: contain;
   } 
  
 } 
