@@ -63,8 +63,8 @@ function changeChannel(delta) {
   currentIndex = (currentIndex + delta + channels.length) % channels.length;
   
   // play audio effect
-  switchSound.currentTime = 0; // reset to start
-  switchSound.play().catch(() => {});
+  // switchSound.currentTime = 0; // reset to start
+  // switchSound.play().catch(() => {});
 
 
   playCurrentChannel(true);
