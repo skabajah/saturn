@@ -15,23 +15,23 @@ https://saturn.shadi-kabajah.workers.dev/TRT
 https://saturn.shadi-kabajah.workers.dev/LBC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="LEVANT",23) MTV
 https://saturn.shadi-kabajah.workers.dev/MTV
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/OTV.jpg" group-title="LEVANT",24) OTV
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/OTV.jpg" group-title="LEVANT",10) OTV
 https://saturn.shadi-kabajah.workers.dev/OTV
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",25) Voice of Lebanon
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",10) Voice of Lebanon
 https://saturn.shadi-kabajah.workers.dev/Voice_of_Lebanon
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",26) Amman
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",10) Amman
 https://saturn.shadi-kabajah.workers.dev/Amman
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",27) Roya
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",10) Roya
 https://saturn.shadi-kabajah.workers.dev/Roya
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Lana.jpg" group-title="LEVANT",28) Lana
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Lana.jpg" group-title="LEVANT",10) Lana
 https://saturn.shadi-kabajah.workers.dev/Lana
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",29) Syria
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",10) Syria
 https://saturn.shadi-kabajah.workers.dev/Syria
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",31) MBC 1
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_1.jpg" group-title="GULF",10) MBC 1
 https://saturn.shadi-kabajah.workers.dev/MBC_1
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",32) MBC 4
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_4.jpg" group-title="GULF",10) MBC 4
 https://saturn.shadi-kabajah.workers.dev/MBC_4
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SBC.jpg" group-title="GULF",33) SBC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SBC.jpg" group-title="GULF",10) SBC
 https://saturn.shadi-kabajah.workers.dev/SBC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",34) Abu Dhabi
 https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
