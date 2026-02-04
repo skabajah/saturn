@@ -33,21 +33,21 @@ https://saturn.shadi-kabajah.workers.dev/MBC_1
 https://saturn.shadi-kabajah.workers.dev/MBC_4
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SBC.jpg" group-title="GULF",10) SBC
 https://saturn.shadi-kabajah.workers.dev/SBC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",34) Abu Dhabi
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",20) Abu Dhabi
 https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai.jpg" group-title="GULF",35) Dubai
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai.jpg" group-title="GULF",20) Dubai
 https://saturn.shadi-kabajah.workers.dev/Dubai
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",41) MBC Masr
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Masr.jpg" group-title="EGYPT",20) MBC Masr
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",42) CBC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",20) CBC
 https://saturn.shadi-kabajah.workers.dev/CBC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",43) DMC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",20) DMC
 https://saturn.shadi-kabajah.workers.dev/DMC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",44) Hayat
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",20) Hayat
 https://saturn.shadi-kabajah.workers.dev/Hayat
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",45) Mehwar
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",20) Mehwar
 https://saturn.shadi-kabajah.workers.dev/Mehwar
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",46) Nahar
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",20) Nahar
 https://saturn.shadi-kabajah.workers.dev/Nahar
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",47) ON E
 https://saturn.shadi-kabajah.workers.dev/ON_E
