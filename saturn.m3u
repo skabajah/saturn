@@ -53,9 +53,7 @@ https://saturn.shadi-kabajah.workers.dev/Mehwar
 https://saturn.shadi-kabajah.workers.dev/Nahar
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",47) ON E
 https://saturn.shadi-kabajah.workers.dev/ON_E
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada.jpg" group-title="EGYPT",48) Sada
-https://saturn.shadi-kabajah.workers.dev/Sada
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Kahera.jpg" group-title="EGYPT",49) Kahera
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Kahera.jpg" group-title="EGYPT",48) Kahera
 https://saturn.shadi-kabajah.workers.dev/Kahera
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Drama.jpg" group-title="DRAMA",51) MBC Drama
 https://saturn.shadi-kabajah.workers.dev/MBC_Drama
@@ -73,8 +71,6 @@ https://saturn.shadi-kabajah.workers.dev/DMC_Drama
 https://saturn.shadi-kabajah.workers.dev/Nahar_Drama
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_Drama.jpg" group-title="DRAMA",58) ON Drama
 https://saturn.shadi-kabajah.workers.dev/ON_Drama
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Sada_Drama.jpg" group-title="DRAMA",59) Sada Drama
-https://saturn.shadi-kabajah.workers.dev/Sada_Drama
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Aflam.jpg" group-title="MOVIES",62) Rotana Aflam
 https://saturn.shadi-kabajah.workers.dev/Rotana_Aflam
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Rotana_Cinema.jpg" group-title="MOVIES",63) Rotana Cinema
