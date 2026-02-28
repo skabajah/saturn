@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Shadi Kabajah">
-  <meta name="date" content="2025-12-20">
+  <meta name="date" content="2026-02-28">
   <title>Project Saturn</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
   <meta name="mobile-web-app-capable" content="yes">
 
   <link rel="stylesheet" href="main.css">
@@ -19,12 +20,44 @@
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="manifest" href="icons/site.webmanifest">
- 
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wdth,wght@75..100,100..900&display=swap" rel="stylesheet">
 
+  <style>
+    body { margin:0; background:black; }
 
+    /* ===== LANDING OVERLAY ===== */
+    #landing {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: black;
+    }
+
+    #landing.hidden {
+      display: none;
+    }
+
+    #landing .svg {
+      position: absolute;
+      inset: 0;
+      background: url('landing.svg') no-repeat center center;
+      background-size: contain;
+    }
+
+    .footer-left, .footer-right {
+      position: fixed;
+      bottom: 1%;
+      font-family: monospace;
+      font-size: 10px;
+      color: #bfbfbf;
+      z-index: 10000;
+    }
+    .footer-left { left: 1%; }
+    .footer-right { right: 1%; }
+  </style>
 </head>
 
 <body>
@@ -32,25 +65,6 @@
 <!-- ===== LANDING ===== -->
 <div id="landing">
   <div class="svg"></div>
-
-  <div id="authGate" class="auth-landing">
-    <label>
-      Email
-      <input id="email" type="email" autocomplete="username" />
-    </label>
-
-    <label>
-      Password
-      <input id="password" type="password" autocomplete="current-password" />
-    </label>
-
-    <button id="login" type="button">Login</button>
-    <button id="signup" type="button">Sign Up</button>
-    <button id="googleLoginBtn" type="button">Continue with Google</button>
-
-    <div class="hint">Authentication required</div>
-  </div>
-
   <div class="footer-left" id="footer-left"></div>
   <div class="footer-right" id="footer-right"></div>
 </div>
@@ -61,133 +75,21 @@
 
   <div id="videoWrapper">
     <video id="videoPlayer" autoplay playsinline></video>
-    <div id="spinner" class="spinner"></div>
   </div>
-
-  <div id="overlay">
-    <div class="text">
-      <div class="top-row">
-        <div class="group" id="channelGroup"></div>
-      </div>
-      <div class="ch-num" id="channelChNum"></div>
-      <div class="name" id="channelName"></div>
-    </div>
-    <img id="channelLogo" src="" alt="">
-  </div>
+  
 </div>
 
-<!-- ===== FIREBASE AUTH (MODULE) ===== -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithPopup,
-    GoogleAuthProvider,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+<script src="controls.js"></script>
 
-  // NOTE: Rotate this key if it was committed publicly.
-  const firebaseConfig = {
-    apiKey: "AIzaSyBQBwgS0AzR4Dg1atEb-pKWy3CdPsRCuPs",
-    authDomain: "saturn-auth.firebaseapp.com",
-    projectId: "saturn-auth",
-    storageBucket: "saturn-auth.firebasestorage.app",
-    messagingSenderId: "987438399440",
-    appId: "1:987438399440:web:b253c08ac8dd181c38c3d5"
-  };
-
-  const fbApp = initializeApp(firebaseConfig);
-  const auth  = getAuth(fbApp);
-  const provider = new GoogleAuthProvider();
-
-  function loadControlsOnce() {
-    if (window.__controlsLoaded) return;
-    window.__controlsLoaded = true;
-
-    const s = document.createElement("script");
-    s.src = "controls.js";
-    s.defer = true;
-    s.onload = () => (window.__controlsReady = true);
-    document.head.appendChild(s);
-  }
-
-  function setHint(msg) {
-    const hint = document.querySelector("#authGate .hint");
-    if (hint) hint.textContent = msg || "Authentication required";
-  }
-
-  function showAuthError(err) {
-    const code = err?.code || "";
-    if (code === "auth/email-already-in-use") return setHint("Email already in use. Click Login.");
-    if (code === "auth/weak-password") return setHint("Weak password. Use 6+ characters.");
-    if (code === "auth/invalid-email") return setHint("Invalid email.");
-    if (code === "auth/wrong-password") return setHint("Wrong password.");
-    if (code === "auth/user-not-found") return setHint("No account found. Click Sign Up.");
-    return setHint(code || "Auth error.");
-  }
-
-  window.enterAppAfterAuth = async () => {
-    if (!auth.currentUser) return false;
-    if (!window.AUTH_TOKEN) window.AUTH_TOKEN = await auth.currentUser.getIdToken();
-    loadControlsOnce();
-    return true;
-  };
-
-  window.doGoogleLogin = () => signInWithPopup(auth, provider);
-
-  async function doEmailLogin() {
-    const email = document.getElementById("email")?.value.trim();
-    const pass  = document.getElementById("password")?.value;
-    setHint("");
-    await signInWithEmailAndPassword(auth, email, pass);
-    window.enterApp?.();
-  }
-
-  async function doEmailSignup() {
-    const email = document.getElementById("email")?.value.trim();
-    const pass  = document.getElementById("password")?.value;
-    setHint("");
-    await createUserWithEmailAndPassword(auth, email, pass);
-    window.enterApp?.();
-  }
-
-  document.getElementById("login")?.addEventListener("click", async (e) => {
-    e.preventDefault(); e.stopPropagation();
-    try { await doEmailLogin(); } catch (err) { showAuthError(err); }
-  });
-
-  document.getElementById("signup")?.addEventListener("click", async (e) => {
-    e.preventDefault(); e.stopPropagation();
-    try { await doEmailSignup(); } catch (err) { showAuthError(err); }
-  });
-
-  onAuthStateChanged(auth, (user) => {
-    const gate = document.getElementById("authGate");
-    if (!gate) return;
-
-    gate.classList.toggle("hidden", !!user);
-
-    if (user) {
-      setHint("");
-      loadControlsOnce();
-    } else {
-      setHint("Authentication required");
-    }
-  });
-</script>
-
-<!-- ===== APP BOOTSTRAP (NON-MODULE) ===== -->
 <script>
   /* ===== FOOTER INFO ===== */
   const author = document.querySelector('meta[name="author"]').content;
   const date   = document.querySelector('meta[name="date"]').content;
   document.getElementById('footer-right').textContent = `${author} · ${date}`;
-
+  
   const ua = navigator.userAgent;
   let browserName = 'Unknown';
-  let version = 'v37';
+  let version = 'v38-l'; 
 
   if (/AFT|Silk/i.test(ua)) {
     browserName = 'Fire TV';
@@ -201,44 +103,32 @@
     browserName = 'Firefox';
   }
 
-  document.getElementById('footer-left').textContent = `${browserName} · ${version}`;
+  document.getElementById('footer-left').textContent =  `${browserName} · ${version}`;
 
-  /* ===== ENTER APP (AUTH-GATED) ===== */
-  async function enterApp() {
-    const ok = await window.enterAppAfterAuth?.();
-    if (!ok) return;
-
+  /* ===== HIDE LANDING ===== */
+  function enterApp() {
     const landing = document.getElementById('landing');
     if (!landing || landing.classList.contains('hidden')) return;
     landing.classList.add('hidden');
 
-    if (typeof initPlayer === 'function') initPlayer();
+    if (typeof initPlayer === 'function') {
+      initPlayer();
+    }
   }
-  window.enterApp = enterApp;
 
-  /* ===== STOP PROPAGATION INSIDE AUTH UI ===== */
-  document.getElementById("authGate")?.addEventListener("click", (e) => e.stopPropagation());
-
-  /* ===== GOOGLE LOGIN BUTTON ===== */
-  document.getElementById("googleLoginBtn")?.addEventListener("click", (e) => {
-    e.preventDefault(); e.stopPropagation();
-    window.doGoogleLogin?.();
-  });
-
-  /* ===== USER GESTURE TO ENTER (ONLY WORKS AFTER AUTH) ===== */
   document.addEventListener('click', enterApp, { passive:true });
   document.addEventListener('keydown', enterApp);
   document.addEventListener('touchend', enterApp, { passive:true });
 </script>
 
 <!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C3Z7KR9G7W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-C3Z7KR9G7W');
-</script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3Z7KR9G7W"></script> -->
+<!-- <script> -->
+  <!-- window.dataLayer = window.dataLayer || []; -->
+  <!-- function gtag(){dataLayer.push(arguments);} -->
+  <!-- gtag('js', new Date()); -->
+  <!-- gtag('config', 'G-C3Z7KR9G7W'); -->
+<!-- </script> -->
 
 </body>
 </html>

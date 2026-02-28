@@ -1,7 +1,8 @@
 /*
 Project Saturn
 skabajah
-2025-12-20
+2026-02-28
+light 
 */
 
 html { font-size: 14px; }
@@ -31,15 +32,13 @@ html, body {
   inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
   object-position:center; 
 }
  
-
 *,
 *:focus {
   outline: none !important;
-
 }
 
 /* =========================
@@ -61,7 +60,7 @@ html, body {
   transition: transform 0.35s ease, opacity 0.35s ease;
   -webkit-overflow-scrolling: touch;
   background: rgb(0 0 0 / 90%);
-  box-shadow:  0px -50px 30px rgb(0 0 0 / 90%);
+  /*box-shadow:  0px -50px 30px rgb(0 0 0 / 90%);*/
   font-family: 'Roboto', sans-serif;
 }
 
@@ -82,18 +81,16 @@ html, body {
   flex-direction: row;
   gap: 0.4rem;
   margin-left: 2em;
-  border: solid 1px #8181813b;
   padding: 12px 16px 8px 8px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   margin-bottom: -10px;
   border-bottom: none;
-  }
+}
 
- .group-box:last-child { 
-    margin-right: 2em; 
-    /*border-color: red;*/
- }
+.group-box:last-child { 
+  margin-right: 2em; 
+}
 
 .group-title {
   font-size: 10px;
@@ -101,7 +98,6 @@ html, body {
   color: rgba(255, 255, 255, 0.6);
   padding: 0 12px;
   align-self: center;
-  /*width: 4em;*/
 }
 
 /* Row of channels inside a group box */
@@ -112,7 +108,6 @@ html, body {
 
 /* =========================
    Channel card (small)
-   num top, logo middle, name bottom
    ========================= */
 .channel {
   width: 8em;
@@ -122,20 +117,16 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /*border-radius: 14px;*/
   flex: 0 0 auto;
   text-align: center;
   flex-direction:  row;
   justify-content: space-evenly; 
-  border: solid 1px rgb(112 112 112 / 50%);
+  border: solid 1px #adadad36;
   background: #6a6a6a1c;
-  box-shadow: inset -20px 0px 20px 20px rgb(76 76 76 / 50%);
-
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   border-bottom: none;
   margin-bottom: -10px;
-
 }
 
 .channel .num {
@@ -152,9 +143,9 @@ html, body {
   align-self: center;
   width: 4em;
   height: 4em;
-  -fit: contain;
+  object-fit: contain;
   border-radius: 50%;
-  filter: grayscale(50%);
+  filter: grayscale(90%);
   opacity: 50%;
 }
 
@@ -164,25 +155,15 @@ html, body {
 }
 
 .channel .name {
-/*
-  font-size: 0.8rem;
-  font-weight: normal;
-  line-height: 1.05;
-  color: rgba(255,255,255,0.95);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  */
   display: none;
 }
 
 /* Active card */
 .channel.active {
   transition: all 0.5s ease;
-  box-shadow: inset -20px 0px 20px 20px rgb(194 194 194 / 70%);
   border: 1px solid rgb(255 255 255 / 50%);
   border-bottom: none;
-
+  background: #ffffff42;
 }
 
 .channel.active .num,
@@ -192,179 +173,94 @@ html, body {
 }
 
 /* =========================
-   Overlay
-   ========================= */
-#overlay {
-/*  
-  position: absolute;
-  top: 4vh;
-  right: 4vh;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  background: rgba(0,0,0,0.6);
-  padding: 0.5rem 1rem;
-  border-radius: 13px;
-  transition: opacity 0.5s ease;
-  opacity: 0;
-  z-index: 100;
-  font-size: 1.1rem;
-*/
-  display: none;
-}
-
-#overlay.visible { opacity: 1; }
-
-#overlay .text {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  border-right: solid 1.5px rgba(238,238,238,0.5);
-  padding-right: 1em;
-  min-width: 100px;
-}
-
-#overlay .group {
-  font-size: 0.6rem;
-  color: #ccc;
-  font-weight: bold;
-}
-
-#overlay .ch-num { font-weight: bold; }
-#overlay .name { font-size: 0.8rem; }
-
-#overlay img {
-  width: 3rem;
-  height: 3rem;
-  -fit: contain;
-  border-radius: 15px;
-  border: solid 1px rgba(233,233,233,0.1);
-}
-
-
-/* =========================
-   Spinner (horizontal shimmer)
-   ========================= */
-.spinner{
-  position:static;
-  top:2vh;
-  left:0;
-  width:100%;
-  height:4px;
-  background:rgba(255,255,255,0.2);
-  overflow:hidden;
-  z-index:9999;
-  display:none;
-  animation: none !important; /* force-kill any old spin */
-}
-
-.spinner::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg, transparent, rgb(255, 255 ,255, 0.6), transparent);
-  animation: slide 2s linear infinite;
-}
-
-@keyframes slide{
-  from{ transform:translateX(100%); }
-  to  { transform:translateX(-100%); }
-}
-
-
-
-
-/* =========================
    closed captions  
    ========================= */
 video::cue, #videoPlayer::cue { 
   visibility: hidden !important; 
 }
 
+/* =========================
+   Landing overlay
+   ========================= */
+body { margin:0; background:black; }
 
-/*landing */
- body { margin:0; background:black; }
+#landing {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: black;
+}
 
-    /* ===== LANDING OVERLAY ===== */
-    #landing {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: black;
-    }
-    #landing.hidden { display:none; }
+#landing.hidden { display:none; }
 
-    .svg {
-      position:absolute;
-      inset:0;
-      background:url('landing.svg') no-repeat center center;
-      background-size:contain;
-    }
+.svg {
+  position:absolute;
+  inset:0;
+  background:url('landing.svg') no-repeat center center;
+  background-size:contain;
+}
 
-    .footer-left, .footer-right {
-      position: fixed;
-      bottom: 1%;
-      font-family: monospace;
-      font-size: 10px;
-      color: #bfbfbf;
-      z-index: 10000;
-    }
-    .footer-left { left: 1%; }
-    .footer-right { right: 1%; }
+.footer-left, .footer-right {
+  position: fixed;
+  bottom: 1%;
+  font-family: monospace;
+  font-size: 10px;
+  color: #bfbfbf;
+  z-index: 10000;
+}
+.footer-left { left: 1%; }
+.footer-right { right: 1%; }
 
-    /* ===== AUTH (INSIDE LANDING) ===== */
-    #authGate{
-      position:absolute;
-      bottom:5%;
-      left:3%;
-      z-index:10001;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      align-items:stretch;
-      min-width: 300px;
-      color:#fff;
-      background:#ffffff1f;
-      padding:2%;
-      border-radius:20px;
-      backdrop-filter: blur(6px);
-    }
-    #authGate.hidden{ display:none; }
+/* ===== AUTH (INSIDE LANDING) ===== */
+#authGate{
+  position:absolute;
+  bottom:5%;
+  left:3%;
+  z-index:10001;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+  min-width: 300px;
+  color:#fff;
+  background:#ffffff1f;
+  padding:2%;
+  border-radius:20px;
+  backdrop-filter: blur(6px);
+}
+#authGate.hidden{ display:none; }
 
-    #authGate label{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      font-size:12px;
-      color:#e6e6e6;
-    }
-    #authGate input{
-      padding:10px 12px;
-      font-size:14px;
-      border-radius:10px;
-      border:1px solid #4f4f4f;
-      background:#111;
-      color:#fff;
-      outline:none;
-    }
-    #authGate button{
-      padding:10px 16px;
-      font-size:14px;
-      border:1px solid #7e7e7e;
-      background:#c9c9c9;
-      color:black;
-      border-radius:8px;
-      cursor:pointer;
-    }
-    #authGate .hint{
-      font-size:11px;
-      color:#bfbfbf;
-      text-align:center;
-      min-height: 14px;
-    }
-
-
-
+#authGate label{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:12px;
+  color:#e6e6e6;
+}
+#authGate input{
+  padding:10px 12px;
+  font-size:14px;
+  border-radius:10px;
+  border:1px solid #4f4f4f;
+  background:#111;
+  color:#fff;
+  outline:none;
+}
+#authGate button{
+  padding:10px 16px;
+  font-size:14px;
+  border:1px solid #7e7e7e;
+  background:#c9c9c9;
+  color:black;
+  border-radius:8px;
+  cursor:pointer;
+}
+#authGate .hint{
+  font-size:11px;
+  color:#bfbfbf;
+  text-align:center;
+  min-height: 14px;
+}
 
 /* =========================
    TV scaling
@@ -377,28 +273,34 @@ video::cue, #videoPlayer::cue {
   html { font-size: 22px; }
 }
 
-/* phone portarait */
+/* phone portrait */
 @media screen and (max-width: 500px) {
   #videoPlayer {
-    -fit: contain;
+    object-fit: contain;
   } 
-  #overlay {
-    top: 8vh;
-    right: 2vh;
+  .svg {
+    background: url(portrait.svg);
+    background-repeat: no-repeat; 
   }
-   .svg {
-        background: url(portrait.svg);
-        background-repeat: no-repeat; 
-         }
-   #authGate { 
+  #authGate { 
     padding: 3em; 
-   }
+  }
 }
 
-/* phone landcape */
+/* phone landscape */
 @media screen and (max-height: 500px) {
   #videoPlayer {
-    -fit: contain;
+    object-fit: contain;
   } 
- 
-} 
+}
+
+/* Pulse animation for menu wrap */
+#menuBar.wrap-pulse {
+  animation: loop 0.3s ease;
+}
+
+@keyframes loop-pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(0.98); }
+  100% { transform: translateX(-50%) scale(1); }
+}

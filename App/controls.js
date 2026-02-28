@@ -1,52 +1,31 @@
 // -------------------------
 // Project Saturn
 // skabajah
-// 2025-12-20
+// 2026-02-28
+// light 
 // -------------------------
 
 // --- State ---
 let channels = [];
 let currentIndex = 0;
-
-let overlayTimer;
+let lastIndex = 0;               // for wrap detection
 let isMenuVisible = true;
 let menuTimer;
 let isLoading = false;
 
-const switchSound = new Audio('pop.mp3');
-switchSound.preload = 'auto';
-
 // --- Elements ---
 const player = document.getElementById('videoPlayer');
-const overlay = document.getElementById('overlay');
 const menuBar = document.getElementById('menuBar');
-const channelLogo = document.getElementById('channelLogo');
-const channelName = document.getElementById('channelName');
-const channelGroup = document.getElementById('channelGroup');
-const channelChNum = document.getElementById('channelChNum');
-const spinner = document.getElementById('spinner');
-
-// --- Platform ---
-function isDesktop() {
-  const ua = navigator.userAgent.toLowerCase();
-  if (ua.includes('android') && ua.includes('firetv')) return false;
-  if (ua.includes('smarttv') || ua.includes('tv')) return false;
-  if (ua.includes('android') && !ua.includes('mobile')) return false;
-  return true;
-}
 
 // --- Menu show/hide + timeout ---
 function showMenu() {
   isMenuVisible = true;
   menuBar.classList.remove('hidden');
-  // resetMenuTimer();
-  // shrinkPlayerTemporarily();
-  // showChannelOverlay(channels[currentIndex]);
-
+  resetMenuTimer();
 }
 
 function hideMenu() {
-  if (isLoading) return; // prevent hiding while spinner is active
+  if (isLoading) return;          // prevent hiding while loading
   isMenuVisible = false;
   menuBar.classList.add('hidden');
   clearTimeout(menuTimer);
@@ -54,77 +33,42 @@ function hideMenu() {
 
 function resetMenuTimer() {
   clearTimeout(menuTimer);
-  menuTimer = setTimeout(() => hideMenu(), 5000);
+  menuTimer = setTimeout(() => hideMenu(), 3500);
 }
 
 // --- Core ---
 function changeChannel(delta) {
   if (!channels.length) return;
   currentIndex = (currentIndex + delta + channels.length) % channels.length;
-  
-  // play audio effect
-  // switchSound.currentTime = 0; // reset to start
-  // switchSound.play().catch(() => {});
-
-
-  playCurrentChannel(true);
-  // showChannelOverlay(channels[currentIndex]);
+  playCurrentChannel();
   showMenu();
 }
 
-
-
-
-function playCurrentChannel(skipOverlay = false) {
+function playCurrentChannel() {
   const ch = channels[currentIndex];
   if (!ch) return;
 
   isLoading = true;
-  spinner.style.display = 'block';
   player.src = ch.url;
 
   player.play().catch(() => {});
 
   player.oncanplay = () => {
-    spinner.style.display = 'none';
     isLoading = false;
-    showMenu();       // show menu now
-    resetMenuTimer(); // start hide timer
+    showMenu();
+    resetMenuTimer();
   };
 
   player.onerror = () => {
-    spinner.style.display = 'none';
     isLoading = false;
     showMenu();
     resetMenuTimer();
   };
 
   highlightChannel();
-  // if (!skipOverlay) showChannelOverlay(ch);
-
-  // REMOVE showMenu() from here
 }
 
-
-
-// --- Overlay ---
-
-// function showChannelOverlay(ch) {
-//   if (!ch) return;
-
-//   channelLogo.src = ch.logo || '';
-//   channelGroup.textContent = ch.group || '';
-
-//   const match = ch.name.match(/^(\d+)\)\s*(.*)/);
-//   channelChNum.textContent = match ? match[1] : '';
-//   channelName.textContent = match ? match[2] : ch.name;
-
-//   overlay.classList.add('visible');
-//   clearTimeout(overlayTimer);
-//   overlayTimer = setTimeout(() => overlay.classList.remove('visible'), 4000);
-// }
-
-// --- Highlight + scroll ---
+// --- Highlight and scroll ---
 function highlightChannel() {
   const items = Array.from(menuBar.querySelectorAll('.channel'));
   items.forEach((el, i) => el.classList.toggle('active', i === currentIndex));
@@ -132,42 +76,67 @@ function highlightChannel() {
   const active = items[currentIndex];
   if (!active) return;
 
-  active.scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'nearest'
-  });
+  // Detect wrap‑around
+  const wrapped = (lastIndex === items.length - 1 && currentIndex === 0) ||
+                  (lastIndex === 0 && currentIndex === items.length - 1);
+  lastIndex = currentIndex;
+
+  if (wrapped) {
+    // Temporarily disable smooth scrolling
+    const originalBehavior = menuBar.style.scrollBehavior;
+    menuBar.style.scrollBehavior = 'auto';
+
+    // Jump instantly to centered position
+    const menuBarWidth = menuBar.offsetWidth;
+    const activeOffsetLeft = active.offsetLeft;
+    const activeWidth = active.offsetWidth;
+    let targetScroll = activeOffsetLeft - (menuBarWidth / 2) + (activeWidth / 2);
+    targetScroll = Math.max(0, Math.min(targetScroll, menuBar.scrollWidth - menuBarWidth));
+    menuBar.scrollLeft = targetScroll;
+
+    // Restore original scroll behavior
+    menuBar.style.scrollBehavior = originalBehavior;
+
+    // Pulse animation to indicate loop
+    menuBar.classList.add('wrap-pulse');
+    setTimeout(() => menuBar.classList.remove('wrap-pulse'), 300);
+  } else {
+    // Normal smooth scroll
+    active.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest'
+    });
+  }
 }
 
+// Helper to show menu if hidden, returns true if it was already visible
 function ensureMenuVisible() {
   if (!isMenuVisible) {
     showMenu();
-    return false; // menu was hidden
+    return false;
   }
-  return true; // menu already visible
+  return true;
 }
 
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', e => {
-  const handled = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Enter',' ','Escape','Backspace','f','F'];
+  const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F'];
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
-    // case 'ArrowLeft':  changeChannel(-1); break;
-    // case 'ArrowRight': changeChannel(1); break;
     case 'ArrowLeft':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       changeChannel(-1);
       break;
 
     case 'ArrowRight':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       changeChannel(1);
       break;
 
     case 'ArrowUp':
       showMenu();
-      // showChannelOverlay(channels[currentIndex]);
       break;
 
     case 'ArrowDown':
@@ -176,10 +145,9 @@ document.addEventListener('keydown', e => {
 
     case 'Enter':
     case ' ':
-      if (!ensureMenuVisible()) break; // mimic UP first
+      if (!ensureMenuVisible()) break;
       playCurrentChannel();
       break;
-
 
     case 'Escape':
     case 'Backspace':
@@ -188,12 +156,13 @@ document.addEventListener('keydown', e => {
 
     case 'f':
     case 'F':
-      if (isDesktop()) toggleFullscreen();
+      // Simple fullscreen check (no UA sniffing)
+      if (document.documentElement.requestFullscreen) toggleFullscreen();
       break;
   }
 });
 
-// --- Click ---
+// --- Click on channel ---
 document.addEventListener('click', e => {
   showMenu();
 
@@ -208,7 +177,7 @@ document.addEventListener('click', e => {
   }
 });
 
-// --- Touch ---
+// --- Touch swipe ---
 let startX = 0, startY = 0;
 
 document.addEventListener('touchstart', e => {
@@ -223,35 +192,42 @@ document.addEventListener('touchend', e => {
   const dy = e.changedTouches[0].clientY - startY;
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    dx > 50 ? changeChannel(-1) : dx < -50 && changeChannel(1);
-  } else {
-    showChannelOverlay(channels[currentIndex]);
+    // Adjust signs if you prefer right swipe → next channel
+    if (dx > 50) changeChannel(-1);   // right swipe = previous
+    else if (dx < -50) changeChannel(1); // left swipe = next
   }
+  // vertical swipe intentionally ignored
 }, { passive: true });
 
-// --- M3U ---
+// --- M3U loading with basic error handling ---
 async function loadM3U() {
-  const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
-  const text = await res.text();
-  const lines = text.split('\n');
+  try {
+    const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    const text = await res.text();
+    const lines = text.split('\n');
 
-  for (let i = 0; i < lines.length; i++) {
-    if (!lines[i].startsWith('#EXTINF')) continue;
+    for (let i = 0; i < lines.length; i++) {
+      if (!lines[i].startsWith('#EXTINF')) continue;
 
-    const logo = lines[i].match(/tvg-logo="([^"]+)"/)?.[1] || '';
-    const group = lines[i].match(/group-title="([^"]+)"/)?.[1] || '';
-    const name = lines[i].split(',')[1]?.trim() || 'Unknown';
-    const url = lines[i + 1]?.trim();
+      const logo = lines[i].match(/tvg-logo="([^"]+)"/)?.[1] || '';
+      const group = lines[i].match(/group-title="([^"]+)"/)?.[1] || '';
+      const name = lines[i].split(',')[1]?.trim() || 'Unknown';
+      const url = lines[i + 1]?.trim();
 
-    if (url?.startsWith('http')) {
-      channels.push({ name, logo, group, url });
+      if (url?.startsWith('http')) {
+        channels.push({ name, logo, group, url });
+      }
     }
-  }
 
-  buildMenuBar();
-  highlightChannel();
-  playCurrentChannel();
-  showMenu();
+    buildMenuBar();
+    highlightChannel();
+    playCurrentChannel();
+    showMenu();
+  } catch (err) {
+    console.error('Failed to load channels:', err);
+    // Optionally show a user‑friendly message
+  }
 }
 
 // --- Menu builder (GROUP BOXES) ---
@@ -304,28 +280,20 @@ function buildMenuBar() {
   }
 }
 
-// --- Fullscreen ---
+// --- Fullscreen toggle ---
 function toggleFullscreen() {
-  if (!document.fullscreenElement) player.requestFullscreen?.();
-  else document.exitFullscreen?.();
+  if (!document.fullscreenElement) {
+    player.requestFullscreen?.();
+  } else {
+    document.exitFullscreen?.();
+  }
 }
 
-// --- Cleanup ---
+// --- Cleanup on page unload ---
 window.addEventListener('beforeunload', () => {
   player.pause();
   player.currentTime = 0;
 });
-
-//-- Shrink Video 
-// function shrinkPlayerTemporarily() {
-//   player.classList.add('video-min');
-
-//   clearTimeout(player._shrinkTimer);
-//   player._shrinkTimer = setTimeout(() => {
-//     player.classList.remove('video-min');
-//   }, 4000);
-// }
-
 
 // --- Init ---
 loadM3U();
