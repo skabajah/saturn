@@ -200,34 +200,29 @@ document.addEventListener('touchend', e => {
 }, { passive: true });
 
 // --- M3U loading with basic error handling ---
+// --- M3U ---
 async function loadM3U() {
-  try {
-    const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
-    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    const text = await res.text();
-    const lines = text.split('\n');
+  const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u');
+  const text = await res.text();
+  const lines = text.split('\n');
 
-    for (let i = 0; i < lines.length; i++) {
-      if (!lines[i].startsWith('#EXTINF')) continue;
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].startsWith('#EXTINF')) continue;
 
-      const logo = lines[i].match(/tvg-logo="([^"]+)"/)?.[1] || '';
-      const group = lines[i].match(/group-title="([^"]+)"/)?.[1] || '';
-      const name = lines[i].split(',')[1]?.trim() || 'Unknown';
-      const url = lines[i + 1]?.trim();
+    const logo = lines[i].match(/tvg-logo="([^"]+)"/)?.[1] || '';
+    const group = lines[i].match(/group-title="([^"]+)"/)?.[1] || '';
+    const name = lines[i].split(',')[1]?.trim() || 'Unknown';
+    const url = lines[i + 1]?.trim();
 
-      if (url?.startsWith('http')) {
-        channels.push({ name, logo, group, url });
-      }
+    if (url?.startsWith('http')) {
+      channels.push({ name, logo, group, url });
     }
-
-    buildMenuBar();
-    highlightChannel();
-    playCurrentChannel();
-    showMenu();
-  } catch (err) {
-    console.error('Failed to load channels:', err);
-    // Optionally show a user‑friendly message
   }
+
+  buildMenuBar();
+  highlightChannel();
+  playCurrentChannel();
+  showMenu();
 }
 
 // --- Menu builder (GROUP BOXES) ---
