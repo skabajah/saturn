@@ -13,8 +13,6 @@ https://saturn.shadi-kabajah.workers.dev/Al_Sharq
 https://saturn.shadi-kabajah.workers.dev/TRT
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",21) Jadeed
 https://saturn.shadi-kabajah.workers.dev/Jadeed
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/LBC.jpg" group-title="LEVANT",22) LBC
-https://saturn.shadi-kabajah.workers.dev/LBC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="LEVANT",23) MTV
 https://saturn.shadi-kabajah.workers.dev/MTV
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/OTV.jpg" group-title="LEVANT",24) OTV
@@ -35,10 +33,6 @@ https://saturn.shadi-kabajah.workers.dev/MBC_1
 https://saturn.shadi-kabajah.workers.dev/MBC_4
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SBC.jpg" group-title="GULF",33) SBC
 https://saturn.shadi-kabajah.workers.dev/SBC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Abu_Dhabi.jpg" group-title="GULF",34) Abu Dhabi
-https://saturn.shadi-kabajah.workers.dev/Abu_Dhabi
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Dubai.jpg" group-title="GULF",35) Dubai
-https://saturn.shadi-kabajah.workers.dev/Dubai
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MBC_Iraq.jpg" group-title="GULF",36) MBC Iraq
 https://saturn.shadi-kabajah.workers.dev/MBC_Iraq
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Araby_2.jpg" group-title="GULF",37) Al Araby 2
@@ -47,18 +41,6 @@ https://saturn.shadi-kabajah.workers.dev/Al_Araby_2
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",42) CBC
 https://saturn.shadi-kabajah.workers.dev/CBC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/DMC.jpg" group-title="EGYPT",43) DMC
-https://saturn.shadi-kabajah.workers.dev/DMC
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Hayat.jpg" group-title="EGYPT",44) Hayat
-https://saturn.shadi-kabajah.workers.dev/Hayat
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Mehwar.jpg" group-title="EGYPT",45) Mehwar
-https://saturn.shadi-kabajah.workers.dev/Mehwar
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nahar.jpg" group-title="EGYPT",46) Nahar
-https://saturn.shadi-kabajah.workers.dev/Nahar
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/ON_E.jpg" group-title="EGYPT",47) ON E
-https://saturn.shadi-kabajah.workers.dev/ON_E
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Kahera.jpg" group-title="EGYPT",48) Kahera
-https://saturn.shadi-kabajah.workers.dev/Kahera
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",71) Arabica
 https://saturn.shadi-kabajah.workers.dev/Arabica
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",72) Aghani
