@@ -11,6 +11,8 @@ https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
 https://saturn.shadi-kabajah.workers.dev/Al_Sharq
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",16) TRT
 https://saturn.shadi-kabajah.workers.dev/TRT
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",20) Jadeed
+https://saturn.shadi-kabajah.workers.dev/Jadeed
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/LBC.jpg" group-title="LEVANT",22) LBC
 https://saturn.shadi-kabajah.workers.dev/LBC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="LEVANT",23) MTV
@@ -65,8 +67,6 @@ https://saturn.shadi-kabajah.workers.dev/Aghani
 https://saturn.shadi-kabajah.workers.dev/MTV_One
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Panorama_FM.jpg" group-title="MUSIC",74) Panorama FM
 https://saturn.shadi-kabajah.workers.dev/Panorama_FM
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/M+.jpg" group-title="MUSIC",75) M+
-https://saturn.shadi-kabajah.workers.dev/M+
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Nogoum.jpg" group-title="MUSIC",76) Nogoum
 https://saturn.shadi-kabajah.workers.dev/Nogoum
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/NBC4.jpg" group-title="ENG",91) NBC4
