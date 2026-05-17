@@ -3,14 +3,20 @@
 https://saturn.shadi-kabajah.workers.dev/Al_Jazeera
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Araby.jpg" group-title="NEWS",12) Al Araby
 https://saturn.shadi-kabajah.workers.dev/Al_Araby
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya.jpg" group-title="NEWS",13) Al Arabiya
-https://saturn.shadi-kabajah.workers.dev/Al_Arabiya
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CNBC_Arabia.jpg" group-title="NEWS",13) CNBC Arabia
+https://saturn.shadi-kabajah.workers.dev/CNBC_Arabia
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/SkyNews_Arabia.jpg" group-title="NEWS",14) SkyNews Arabia
 https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Sharq.jpg" group-title="NEWS",15) Al Sharq
 https://saturn.shadi-kabajah.workers.dev/Al_Sharq
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",16) TRT
 https://saturn.shadi-kabajah.workers.dev/TRT
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya.jpg" group-title="NEWS",17) Al Arabiya
+https://saturn.shadi-kabajah.workers.dev/Al_Arabiya
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya_Business.jpg" group-title="NEWS",18) Al Arabiya Business
+https://saturn.shadi-kabajah.workers.dev/Al_Arabiya_Business
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",20) Voice of Lebanon
+https://saturn.shadi-kabajah.workers.dev/Voice_of_Lebanon
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jadeed.jpg" group-title="LEVANT",21) Jadeed
 https://saturn.shadi-kabajah.workers.dev/Jadeed
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="LEVANT",23) MTV
