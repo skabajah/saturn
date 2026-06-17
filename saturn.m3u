@@ -11,8 +11,6 @@ https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
 https://saturn.shadi-kabajah.workers.dev/Al_Sharq
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/TRT.jpg" group-title="NEWS",16) TRT
 https://saturn.shadi-kabajah.workers.dev/TRT
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya.jpg" group-title="NEWS",17) Al Arabiya
-https://saturn.shadi-kabajah.workers.dev/Al_Arabiya
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Al_Arabiya_Business.jpg" group-title="NEWS",18) Al Arabiya Business
 https://saturn.shadi-kabajah.workers.dev/Al_Arabiya_Business
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Voice_of_Lebanon.jpg" group-title="LEVANT",20) Voice of Lebanon
