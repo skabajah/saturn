@@ -25,8 +25,8 @@ https://saturn.shadi-kabajah.workers.dev/MTV
 https://saturn.shadi-kabajah.workers.dev/OTV
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Amman.jpg" group-title="LEVANT",25) Amman
 https://saturn.shadi-kabajah.workers.dev/Amman
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Roya.jpg" group-title="LEVANT",26) Roya
-https://saturn.shadi-kabajah.workers.dev/Roya
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",26) Jordan
+https://saturn.shadi-kabajah.workers.dev/Jordan
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",28) Syria
 https://saturn.shadi-kabajah.workers.dev/Syria
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria_2.jpg" group-title="LEVANT",29) Syria 2
@@ -45,6 +45,8 @@ https://saturn.shadi-kabajah.workers.dev/Al_Araby_2
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/CBC.jpg" group-title="EGYPT",42) CBC
 https://saturn.shadi-kabajah.workers.dev/CBC
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Koora_City.jpg" group-title="SPORT",61) Koora City
+https://saturn.shadi-kabajah.workers.dev/Koora_City
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Arabica.jpg" group-title="MUSIC",71) Arabica
 https://saturn.shadi-kabajah.workers.dev/Arabica
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Aghani.jpg" group-title="MUSIC",72) Aghani
