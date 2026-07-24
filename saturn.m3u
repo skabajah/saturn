@@ -27,7 +27,7 @@ https://saturn.shadi-kabajah.workers.dev/OTV
 https://saturn.shadi-kabajah.workers.dev/Amman
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Jordan.jpg" group-title="LEVANT",26) Jordan
 https://saturn.shadi-kabajah.workers.dev/Jordan
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Musawa.jpg" group-title="LEVANT",26) Musawa
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Musawa.jpg" group-title="LEVANT",27) Musawa
 https://saturn.shadi-kabajah.workers.dev/Musawa
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Syria.jpg" group-title="LEVANT",28) Syria
 https://saturn.shadi-kabajah.workers.dev/Syria
@@ -69,8 +69,8 @@ https://saturn.shadi-kabajah.workers.dev/Test_Kitchen
 https://saturn.shadi-kabajah.workers.dev/Comedy_Central
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/BBC_America.jpg" group-title="TV",83) BBC America
 https://saturn.shadi-kabajah.workers.dev/BBC_America
-#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV.jpg" group-title="TV",84) MTV
-https://saturn.shadi-kabajah.workers.dev/MTV
+#EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/MTV_US.jpg" group-title="TV",84) MTV US
+https://saturn.shadi-kabajah.workers.dev/MTV_US
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/IFC.jpg" group-title="TV",85) IFC
 https://saturn.shadi-kabajah.workers.dev/IFC
 #EXTINF:-1 tvg-logo="https://skabajah.github.io/saturn/logo/Showtime.jpg" group-title="TV",86) Showtime
