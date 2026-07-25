@@ -1,7 +1,7 @@
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/981819775817957377/VVKcF_Y6_400x400.jpg" group-title="NEWS",11) Al Jazeera
 https://saturn.shadi-kabajah.workers.dev/Al_Jazeera
-#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1949811284368646144/2DmcFszu_400x400.jpg" group-title="NEWS",12) Al Araby
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1961816041568313344/oA00t5PK_400x400.jpg" group-title="NEWS",12) Al Araby
 https://saturn.shadi-kabajah.workers.dev/Al_Araby
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1302532298022232067/F8egvgY__400x400.jpg" group-title="NEWS",13) SkyNews Arabia
 https://saturn.shadi-kabajah.workers.dev/SkyNews_Arabia
@@ -49,7 +49,7 @@ https://saturn.shadi-kabajah.workers.dev/Al_Araby_2
 https://saturn.shadi-kabajah.workers.dev/MBC_Masr
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/2024476434002022400/GruW8y7J_400x400.jpg" group-title="EGYPT",42) CBC
 https://saturn.shadi-kabajah.workers.dev/CBC
-#EXTINF:-1 group-title="MOVIES",51) Aflam
+#EXTINF:-1 tvg-logo="https://shahid.mbc.net/mediaObject/06e1a853-795b-4b01-b1fd-baed5df7969c" group-title="MOVIES",51) Aflam
 https://saturn.shadi-kabajah.workers.dev/Aflam
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/3480384525/94fddc0a43db9d8b75e468c99eaac7ff_400x400.jpeg" group-title="MUSIC",71) Arabica
 https://saturn.shadi-kabajah.workers.dev/Arabica
