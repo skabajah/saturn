@@ -55,7 +55,7 @@ https://saturn.shadi-kabajah.workers.dev/Arabica
 https://saturn.shadi-kabajah.workers.dev/Aghani
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1470833560152162306/Y6TRlbDS_400x400.jpg" group-title="MUSIC",73) MTV One
 https://saturn.shadi-kabajah.workers.dev/MTV_One
-#EXTINF:-1 group-title="MUSIC",74) MFM
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1998702456692178944/55pnXJnV_400x400.jpg" group-title="MUSIC",74) MFM
 https://saturn.shadi-kabajah.workers.dev/MFM
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1439333516727181313/ccZVCu9X_400x400.jpg" group-title="MUSIC",75) Panorama FM
 https://saturn.shadi-kabajah.workers.dev/Panorama_FM
