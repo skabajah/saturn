@@ -77,6 +77,8 @@ https://saturn.shadi-kabajah.workers.dev/Showtime
 https://saturn.shadi-kabajah.workers.dev/Starz
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/2080363434902753280/DYj_IhfU_400x400.jpg" group-title="TV",88) Syfy
 https://saturn.shadi-kabajah.workers.dev/Syfy
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/2079224347252711424/8OXu_43p_400x400.jpg" group-title="TV",88) AMC
+https://saturn.shadi-kabajah.workers.dev/AMC
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1509862024527978496/ILAmTtBj_400x400.jpg" group-title="ENG",91) NBC4
 https://saturn.shadi-kabajah.workers.dev/NBC4
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1776065140263157760/HwdTwNVp_400x400.jpg" group-title="ENG",92) NBC Now
