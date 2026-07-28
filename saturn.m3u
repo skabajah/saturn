@@ -81,3 +81,15 @@ https://saturn.shadi-kabajah.workers.dev/Starz
 https://saturn.shadi-kabajah.workers.dev/Syfy
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/2079224347252711424/8OXu_43p_400x400.jpg" group-title="TV",89) AMC
 https://saturn.shadi-kabajah.workers.dev/AMC
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1509862024527978496/ILAmTtBj_400x400.jpg" group-title="ENG",91) NBC4
+https://saturn.shadi-kabajah.workers.dev/NBC4
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1776065140263157760/HwdTwNVp_400x400.jpg" group-title="ENG",92) NBC Now
+https://saturn.shadi-kabajah.workers.dev/NBC_Now
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1999829242431811587/iTRuu0Me_400x400.jpg" group-title="ENG",93) CNBC
+https://saturn.shadi-kabajah.workers.dev/CNBC
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1016326195221352450/KCcdUN0v_400x400.jpg" group-title="ENG",94) Bloomberg
+https://saturn.shadi-kabajah.workers.dev/Bloomberg
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1529107170448523264/q3VwEx38_400x400.jpg" group-title="ENG",95) BBC News
+https://saturn.shadi-kabajah.workers.dev/BBC_News
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/2043726724177776642/dkMa8Y0U_400x400.jpg" group-title="ENG",97) Al Jazeera EN
+https://saturn.shadi-kabajah.workers.dev/Al_Jazeera_EN
