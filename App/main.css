@@ -66,7 +66,6 @@ html, body {
 #menuBar::-webkit-scrollbar { display: none; }
 
 #menuBar.hidden {
-  /*transform: translateX(-50%) translateY(120%);*/
   opacity: 0;
   pointer-events: none;
 }
@@ -78,14 +77,14 @@ html, body {
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 2rem;
   margin-left: 1rem;
   padding: 1rem;
   border-radius: 0;   
 }
 
 .group-box:last-child { 
-  margin-right: 2em; 
+  padding-right: 4rem; 
 }
 
 .group-title {
