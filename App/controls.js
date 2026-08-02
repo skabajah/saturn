@@ -202,7 +202,9 @@ document.addEventListener('touchend', e => {
 // --- M3U loading with basic error handling ---
 // --- M3U ---
 async function loadM3U() {
-  const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u8');
+  // const res = await fetch('https://skabajah.github.io/saturn/saturn.m3u8');
+  const res = await fetch('https://gist.githubusercontent.com/skabajah/ac96fc383152824c0d1951aab3f4ad0a/raw/saturn.m3u8');
+
   const text = await res.text();
   const lines = text.split('\n');
 
