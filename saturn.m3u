@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/981819775817957377/VVKcF_Y6_400x400.jpg" group-title="1_NEWS",11) Al Jazeera
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1057294709280788480/nKrtTjSc_400x400.jpg" group-title="1_NEWS",11) Al Jazeera
 https://saturn.shadi-kabajah.workers.dev/Al_Jazeera
 #EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1961816041568313344/oA00t5PK_400x400.jpg" group-title="1_NEWS",12) Al Araby
 https://saturn.shadi-kabajah.workers.dev/Al_Araby
