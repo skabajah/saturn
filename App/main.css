@@ -22,9 +22,9 @@ html, body {
    ========================= */
 #videoWrapper {
   position: fixed;
-  width: 102%;
-  height: 102%;
-  margin: -1%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 #videoPlayer{
