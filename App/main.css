@@ -260,16 +260,17 @@ body { margin:0; background:black; }
 /* =========================
    TV scaling
    ========================= */
-@media screen and (max-width: 1280px) and (max-height: 720px) {
+/*@media screen and (max-width: 1280px) and (max-height: 720px) {
   html { font-size: 16px; }
 }
 
 @media screen and (min-width: 1281px) and (min-height: 1080px) {
   html { font-size: 22px; }
-}
+}*/
 
 /* phone portrait */
-@media screen and (max-width: 500px) {
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+/*@media screen and (max-width: 500px) {*/
   #videoPlayer {
     object-fit: contain;
   } 
@@ -277,17 +278,19 @@ body { margin:0; background:black; }
     /*background: url(portrait.svg);*/
     background-repeat: no-repeat; 
   }
+  /*
   #authGate { 
     padding: 3em; 
   }
+  */
 }
 
 /* phone landscape */
-@media screen and (max-height: 500px) {
+/*@media screen and (max-height: 500px) {
   #videoPlayer {
     object-fit: contain;
   } 
-}
+}*/
 
 /* Pulse animation for menu wrap */
 #menuBar.wrap-pulse {
