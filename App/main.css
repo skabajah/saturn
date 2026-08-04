@@ -26,6 +26,7 @@ html, body {
   height: 100%;
   margin: 0;
   object-fit: contain;
+  display: flex;
 }
 
 #videoPlayer{
