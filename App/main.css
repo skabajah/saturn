@@ -48,6 +48,7 @@ html, body {
    Menu bar (bottom) + slide
    ========================= */
 #menuBar {
+  font-family: 'Roboto', sans-serif;
   position: fixed;
   bottom: 40%;
   left: 50%;
@@ -64,7 +65,6 @@ html, body {
   -webkit-overflow-scrolling: touch;
   background: #00000033;
   box-shadow: 0 0 20px 20px #00000033;
-  font-family: 'Roboto', sans-serif;
 }
 
 #menuBar::-webkit-scrollbar { display: none; }
@@ -158,8 +158,8 @@ html, body {
 .channel.active {
   transition: all 0.5s ease;
   background: #ffffff42;
-  transform: scale(1.5);  /* visually 50% bigger */ 
-  margin: 0 2rem;
+  transform: scale(1.4);  /* visually 40% bigger */ 
+  margin: auto 2rem;
 }
 
 .channel.active .num,
