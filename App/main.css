@@ -158,6 +158,7 @@ html, body {
   transition: all 0.5s ease;
   background: #ffffff42;
   transform: scale(1.5);  /* visually 50% bigger */ 
+  margin: 0 2rem;
 }
 
 .channel.active .num,
