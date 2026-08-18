@@ -62,7 +62,8 @@ html, body {
   opacity: 1;
   transition: transform 0.35s ease, opacity 0.35s ease;
   -webkit-overflow-scrolling: touch;
-  background: rgb(0 0 0 / 20%);
+  background: #00000033;
+  box-shadow: 0 0 20px 20px #00000033;
   font-family: 'Roboto', sans-serif;
 }
 
