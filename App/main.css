@@ -64,7 +64,7 @@ html, body {
   transition: transform 0.35s ease, opacity 0.35s ease;
   -webkit-overflow-scrolling: touch;
   background: #00000033;
-  box-shadow: 0 0 20px 20px #00000033;
+  box-shadow: 0 0 10rem 10rem #00000033;
 }
 
 #menuBar::-webkit-scrollbar { display: none; }
