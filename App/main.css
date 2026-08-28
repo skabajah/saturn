@@ -123,6 +123,8 @@ html, body {
   border-radius: 1rem;
   background: #ffffff12;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* Safari support */
+
 }
 
 .channel .num {
