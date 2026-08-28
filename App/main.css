@@ -81,7 +81,7 @@ html, body {
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 0;
   margin-left: 1rem;
   padding: 1rem;
   border-radius: 0;   
@@ -102,15 +102,16 @@ html, body {
 /* Row of channels inside a group box */
 .group-row {
   display: flex;
-  gap: 4rem;
+  gap: 8rem;
+  padding: 0 8rem;
 }
 
 /* =========================
    Channel card (small)
    ========================= */
 .channel {
-  width: 8em;
-  height: 4em;
+  width: 16em;
+  height: 9em;
   padding: 1rem;
   cursor: pointer;
   display: flex; 
@@ -120,7 +121,7 @@ html, body {
   align-self: center;
   justify-content: space-evenly; 
   border: solid 1px #adadad36;
-  border-radius: 1rem;
+  border-radius: 0;
   background: #ffffff12;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px); /* Safari support */
@@ -128,7 +129,7 @@ html, body {
 }
 
 .channel .num {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: 200;
   line-height: 1;
   color: rgb(199 199 199 / 75%);
@@ -143,17 +144,17 @@ html, body {
 
 .channel img {
   align-self: center;
-  width: 4em;
-  height: 4em;
+  width: 8em;
+  height: 8em;
   object-fit: contain;
   border-radius: 50%;
   filter: grayscale(90%);
-  opacity: 50%;
+  opacity: 40%;
 }
 
-.channel.active  img {
+.channel.active img {
   filter: grayscale(0%);
-  opacity: 1; 
+  opacity: 80%; 
 }
 
 
