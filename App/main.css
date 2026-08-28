@@ -117,11 +117,12 @@ html, body {
   flex: 0 0 auto;
   text-align: center;
   flex-direction:  row;
+  align-self: center;
   justify-content: space-evenly; 
   border: solid 1px #adadad36;
-  background: #6a6a6a1c;
   border-radius: 1rem;
-  align-self: center;
+  background: #ffffff12;
+  backdrop-filter: blur(4px);
 }
 
 .channel .num {
