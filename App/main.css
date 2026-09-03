@@ -120,7 +120,7 @@ html, body {
   flex-direction:  row;
   align-self: center;
   justify-content: space-evenly; 
-  border: solid 1px #adadad36;
+  border: solid 1px #e6e6e636;
   border-radius: 0;
   background: #ffffff12;
   backdrop-filter: blur(4px);
