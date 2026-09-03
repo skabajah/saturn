@@ -160,8 +160,8 @@ html, body {
 
 /* Active card */
 .channel.active {
-  transition: all 0.2s ease;
-  background: #ffffff42;
+  /*transition: all 0.2s ease;*/
+  /*background: #ffffff42;*/
   transform: scale(1.4);  /* visually 40% bigger */ 
   margin: auto 2rem;
 }
