@@ -37,7 +37,7 @@ html, body {
   width:100%;
   height:100%;
   object-fit:cover;
-  /*transform: scale(102%);*/
+  transform: scale(1.015);
 }
  
 *,
