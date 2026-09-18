@@ -1,7 +1,7 @@
 /*
 Project Saturn
 skabajah
-2026-08-02
+2026-09-18
 light 
 */
 
@@ -57,11 +57,11 @@ html, body {
 #menuBar {
   font-family: 'Roboto', sans-serif;
   display: flex;
-  gap: 4em;
-  padding: 1rem;
   overflow-x: auto;
   white-space: nowrap;
-  max-width: 100vw;
+  width: 100vw;
+  height: 50vh;
+
   z-index: 60;
   opacity: 1;
   -webkit-overflow-scrolling: touch;
@@ -90,13 +90,11 @@ html, body {
   display: flex;
   flex-direction: row;
   gap: 0;
-  margin-left: 1rem;
-  padding: 1rem;
   border-radius: 0;   
 }
 
 .group-box:last-child { 
-  padding-right: 4rem; 
+  /*padding-right: 4rem; */
 }
 
 .group-title {
@@ -111,7 +109,8 @@ html, body {
 /* Row of channels inside a group box */
 .group-row {
   display: flex;
-  gap: 8rem;
+  gap: 0;
+  padding: 0;
   /*padding: 0 8rem;*/
 }
 
@@ -119,9 +118,10 @@ html, body {
    Channel card (small)
    ========================= */
 .channel {
-  width: 16em;
-  height: 9em;
-  padding: 1rem;
+  width: 26vw;
+  aspect-ratio : 16/9; 
+  height: auto;
+  padding: 0;
   cursor: pointer;
   display: flex; 
   flex: 0 0 auto;
@@ -132,19 +132,19 @@ html, body {
   border: solid 1px #e6e6e636;
   border-radius: 0;
   background: #ffffff12;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* Safari support */
-
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  margin: auto 2vw ;
 }
 
 .channel .num {
-  font-size: 3rem;
+  font-size: 5vw;
   font-weight: 200;
   line-height: 1;
-  color: rgb(199 199 199 / 75%);
   align-self: center;
   display: flex;
   font-family: 'Roboto', sans-serif;
+  color: #8a8a8a;
 }
 
 .channel .name {
@@ -153,8 +153,8 @@ html, body {
 
 .channel img {
   align-self: center;
-  width: 8em;
-  height: 8em;
+  width: 8vw;
+  height: auto;
   object-fit: contain;
   border-radius: 50%;
   filter: grayscale(90%);
@@ -164,13 +164,15 @@ html, body {
 .channel.active img {
   filter: grayscale(0%);
   opacity: 80%; 
+  width: 11vw;
+
 }
 
 
 /* Active card */
 .channel.active { 
   transform: scale(130%);   
-  margin: auto 2rem;
+  margin: auto 6vw;
 }
 
 .channel.active .num,
@@ -280,7 +282,6 @@ body { margin:0; background:black; }
 @media only screen and (max-width: 767px) and (orientation: portrait) {
   
   .svg {
-    /*background: url(portrait.svg);*/
     background-repeat: no-repeat; 
   }
  
