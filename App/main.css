@@ -129,7 +129,7 @@ html, body {
   flex-direction:  row;
   align-self: center;
   justify-content: space-evenly; 
-  border: solid 1px #e6e6e636;
+  border: solid thin #e6e6e636;
   border-radius: 0;
   background: #ffffff12;
   backdrop-filter: blur(8px);
@@ -172,7 +172,7 @@ html, body {
 /* Active card */
 .channel.active { 
   width: 36vw;
-  border:  solid 2px #e6e6e636;
+  /*border:  solid 2px #e6e6e636;*/
 }
 
 .channel.active .num {
@@ -280,10 +280,14 @@ body { margin:0; background:black; }
  
 /* phone portrait */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
+  
   .svg {
     background-repeat: no-repeat; 
   }
+ 
 }
+
+ 
 
 /* Pulse animation for menu wrap */
 #menuBar.wrap-pulse {
