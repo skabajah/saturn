@@ -60,7 +60,7 @@ html, body {
   overflow-x: auto;
   white-space: nowrap;
   width: 100vw;
-  height: 50vh;
+  height: 100vh;
 
   z-index: 60;
   opacity: 1;
@@ -119,7 +119,7 @@ html, body {
    ========================= */
 .channel {
   width: 26vw;
-  aspect-ratio : 16/9; 
+  aspect-ratio : 16 / 12; 
   height: auto;
   padding: 0;
   cursor: pointer;
@@ -134,17 +134,17 @@ html, body {
   background: #ffffff12;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px); /* Safari support */
-  margin: auto 2vw ;
+  margin: 0 2vw ;
 }
 
 .channel .num {
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: 200;
   line-height: 1;
   align-self: center;
   display: flex;
   font-family: 'Roboto', sans-serif;
-  color: #8a8a8a;
+  color: #ffffff4d;
 }
 
 .channel .name {
@@ -164,22 +164,22 @@ html, body {
 .channel.active img {
   filter: grayscale(0%);
   opacity: 80%; 
-  width: 11vw;
+  width: 16vw;
 
 }
 
 
 /* Active card */
 .channel.active { 
-  transform: scale(130%);   
-  margin: auto 6vw;
+  width: 36vw;
+  border:  solid 2px #e6e6e636;
 }
 
-.channel.active .num,
-.channel.active .name {
+.channel.active .num {
   color: white;
   opacity: 85%;
   font-weight: bold;
+  font-size: 6vw;
 }
 
 
@@ -280,14 +280,10 @@ body { margin:0; background:black; }
  
 /* phone portrait */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
-  
   .svg {
     background-repeat: no-repeat; 
   }
- 
 }
-
- 
 
 /* Pulse animation for menu wrap */
 #menuBar.wrap-pulse {
