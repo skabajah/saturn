@@ -159,6 +159,8 @@ html, body {
   border-radius: 50%;
   filter: grayscale(90%);
   opacity: 40%;
+  aspect-ratio:  1/1;
+  background: black;
 }
 
 .channel.active img {
