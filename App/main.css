@@ -17,6 +17,38 @@ html, body {
   font-family: sans-serif;
 }
 
+
+/* ===== LANDING OVERLAY ===== */
+    #landing {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: black;
+    }
+
+    #landing.hidden {
+      display: none;
+    }
+
+    #landing .svg {
+      position: absolute;
+      inset: 0;
+      background: url('landing.svg') no-repeat center center;
+      background-size: contain;
+    }
+
+    .footer-left, .footer-right {
+      position: fixed;
+      bottom: 1%;
+      font-family: monospace;
+      font-size: 10px;
+      color: #bfbfbf;
+      z-index: 10000;
+    }
+    .footer-left { left: 1%; }
+    .footer-right { right: 1%; }
+
+
 /* =========================
    Video
    ========================= */
