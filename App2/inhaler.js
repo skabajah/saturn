@@ -1,7 +1,7 @@
 // =========================================================
 // Project Saturn — Gist Inhaler
-// Fetches the Gist's index.html (which contains inline
-// <style> and inline <script>) and renders it here.
+// Input:  Gist index.html with short <link> and <script src>
+// Output: fully expanded inline <style> + <script> in the DOM
 // =========================================================
 
 (function () {
@@ -19,6 +19,8 @@
 
   // ---------------------------------------------------------
   // [3] FETCH OVERRIDE
+  //     Redirects relative fetches (e.g. "saturn.m3u8")
+  //     to the Gist raw URL.
   // ---------------------------------------------------------
   function installFetchOverride() {
     const nativeFetch = window.fetch.bind(window);
@@ -31,7 +33,28 @@
   }
 
   // ---------------------------------------------------------
-  // [4] INJECT GIST HTML
+  // [4] INJECT CSS
+  //     Fetch main.css, rewrite url() refs to Gist,
+  //     inject as inline <style>.
+  // ---------------------------------------------------------
+  function injectCSS() {
+    return fetch(GIST + 'main.css')
+      .then(r => r.text())
+      .then(css => {
+        const fixed = css.replace(
+          /url\(['"]?(?!https?:|data:)([^'")]+)['"]?\)/g,
+          (_, p) => `url('${GIST}${p}')`
+        );
+        const style = document.createElement('style');
+        style.textContent = fixed;
+        document.head.appendChild(style);
+      });
+  }
+
+  // ---------------------------------------------------------
+  // [5] INJECT HTML
+  //     Fetch Gist index.html, copy <head> links/metas,
+  //     append <body> children, inline all <script src>.
   // ---------------------------------------------------------
   function injectHTML() {
     return fetch(GIST + 'index.html')
@@ -39,7 +62,7 @@
       .then(html => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        // [4a] <head>: copy links/metas we don't already have
+        // [5a] <head>: copy links/metas we don't already have
         doc.head.querySelectorAll('link, meta').forEach(el => {
           const rel  = el.getAttribute('rel');
           const name = el.getAttribute('name');
@@ -49,6 +72,9 @@
             ? document.head.querySelector(`link[rel="${rel}"]`)
             : document.head.querySelector(`meta[name="${name}"]`);
           if (existing) return;
+
+          // Skip stylesheet links — handled by [4]
+          if (rel === 'stylesheet') return;
 
           const clone = el.cloneNode(true);
 
@@ -61,20 +87,13 @@
           document.head.appendChild(clone);
         });
 
-        // [4b] <head>: inline <style> blocks VERBATIM
-        doc.head.querySelectorAll('style').forEach(old => {
-          const s = document.createElement('style');
-          s.textContent = old.textContent;
-          document.head.appendChild(s);
-        });
-
-        // [4c] <body>: append non-script children
+        // [5b] <body>: append non-script children
         Array.from(doc.body.children).forEach(el => {
           if (el.tagName === 'SCRIPT') return;
           document.body.appendChild(el.cloneNode(true));
         });
 
-        // [4d] <body>: re-run inline <script> tags
+        // [5c] <body>: re-run inline <script> tags from Gist HTML
         doc.body.querySelectorAll('script:not([src])').forEach(old => {
           const s = document.createElement('script');
           s.textContent = old.textContent;
@@ -82,7 +101,7 @@
           document.body.appendChild(s);
         });
 
-        // [4e] fetch external <script src> and inline them
+        // [5d] fetch every <script src> and inject as INLINE <script>
         const externalScripts = [
           ...Array.from(doc.body.querySelectorAll('script[src]')),
           ...Array.from(doc.head.querySelectorAll('script[src]'))
@@ -109,18 +128,19 @@
   }
 
   // ---------------------------------------------------------
-  // [5] REVEAL
+  // [6] REVEAL
   // ---------------------------------------------------------
   function reveal() {
     document.documentElement.style.visibility = 'visible';
   }
 
   // ---------------------------------------------------------
-  // [6] RUN
+  // [7] RUN
   // ---------------------------------------------------------
   installFetchOverride();
 
-  injectHTML()
+  injectCSS()
+    .then(injectHTML)
     .then(reveal)
     .catch(err => {
       console.error('[inhaler] failed:', err);
