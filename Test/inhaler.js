@@ -1,5 +1,7 @@
 // =========================================================
-// Project Saturn — Gist Inhaler
+// Project Saturn — Gist Inhaler (simplified)
+// Fetches the Gist's index.html (which contains inline
+// <style> and <script>) and renders it in the current page.
 // =========================================================
 
 (function () {
@@ -17,9 +19,9 @@
 
   // ---------------------------------------------------------
   // [3] FETCH OVERRIDE
-  //     Redirects relative fetches (e.g. "saturn.m3u8")
-  //     to the Gist raw URL. Must be installed BEFORE
-  //     controls.js runs.
+  //     Redirects any relative fetch (e.g. "saturn.m3u8")
+  //     to the Gist raw URL. Installed BEFORE any Gist
+  //     script runs.
   // ---------------------------------------------------------
   function installFetchOverride() {
     const nativeFetch = window.fetch.bind(window);
@@ -32,28 +34,11 @@
   }
 
   // ---------------------------------------------------------
-  // [4] INJECT CSS
-  //     Fetches main.css, rewrites url(...) refs to Gist,
-  //     injects as <style> (bypasses MIME wall).
-  // ---------------------------------------------------------
-  function injectCSS() {
-    return fetch(GIST + 'main.css')
-      .then(r => r.text())
-      .then(css => {
-        const fixed = css.replace(
-          /url\(['"]?(?!https?:|data:)([^'")]+)['"]?\)/g,
-          (_, p) => `url('${GIST}${p}')`
-        );
-        const style = document.createElement('style');
-        style.textContent = fixed;
-        document.head.appendChild(style);
-      });
-  }
-
-  // ---------------------------------------------------------
-  // [5] INJECT HTML
-  //     Fetches index.html, copies <head> links/metas,
-  //     appends <body> children, injects all scripts inline.
+  // [4] INJECT GIST HTML
+  //     - copies <head> links/metas
+  //     - appends <body> children
+  //     - re-runs inline <script> tags
+  //     - fetches any <script src> and inlines them
   // ---------------------------------------------------------
   function injectHTML() {
     return fetch(GIST + 'index.html')
@@ -61,12 +46,11 @@
       .then(html => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        // [5a] Copy <head> links/metas we don't already have
-        doc.head.querySelectorAll('link, meta, style').forEach(el => {
+        // [4a] <head>: copy links/metas we don't already have
+        doc.head.querySelectorAll('link, meta').forEach(el => {
           const rel  = el.getAttribute('rel');
           const name = el.getAttribute('name');
-          const key  = rel || name;
-          if (!key) return;
+          if (!rel && !name) return;
 
           const existing = rel
             ? document.head.querySelector(`link[rel="${rel}"]`)
@@ -75,6 +59,7 @@
 
           const clone = el.cloneNode(true);
 
+          // rewrite relative hrefs to Gist raw URLs
           if (clone.tagName === 'LINK') {
             const href = clone.getAttribute('href');
             if (href && !/^https?:|^\/\//.test(href)) {
@@ -84,13 +69,20 @@
           document.head.appendChild(clone);
         });
 
-        // [5b] Append <body> children (skip scripts — handled below)
+        // [4b] <head>: inline any <style> blocks
+        doc.head.querySelectorAll('style').forEach(old => {
+          const s = document.createElement('style');
+          s.textContent = old.textContent;
+          document.head.appendChild(s);
+        });
+
+        // [4c] <body>: append non-script children
         Array.from(doc.body.children).forEach(el => {
           if (el.tagName === 'SCRIPT') return;
           document.body.appendChild(el.cloneNode(true));
         });
 
-        // [5c] Re-run inline <script> tags from body (already inline, just clone)
+        // [4d] <body>: re-run inline <script> tags
         doc.body.querySelectorAll('script:not([src])').forEach(old => {
           const s = document.createElement('script');
           s.textContent = old.textContent;
@@ -98,7 +90,7 @@
           document.body.appendChild(s);
         });
 
-        // [5d] Load ALL external scripts (body + head) as INLINE scripts
+        // [4e] <body> + <head>: fetch external <script src> and inline
         const externalScripts = [
           ...Array.from(doc.body.querySelectorAll('script[src]')),
           ...Array.from(doc.head.querySelectorAll('script[src]'))
@@ -113,7 +105,7 @@
             .then(r => r.text())
             .then(js => {
               const s = document.createElement('script');
-              s.textContent = js;              // ← inline, no src
+              s.textContent = js;
               if (old.type) s.type = old.type;
               document.body.appendChild(s);
             })
@@ -123,22 +115,20 @@
         }));
       });
   }
- 
 
   // ---------------------------------------------------------
-  // [7] REVEAL PAGE
+  // [5] REVEAL PAGE
   // ---------------------------------------------------------
   function reveal() {
     document.documentElement.style.visibility = 'visible';
   }
 
   // ---------------------------------------------------------
-  // [8] RUN PIPELINE
+  // [6] RUN
   // ---------------------------------------------------------
   installFetchOverride();
 
-  injectCSS()
-    .then(injectHTML)
+  injectHTML()
     .then(reveal)
     .catch(err => {
       console.error('[inhaler] failed:', err);
