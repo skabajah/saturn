@@ -1,7 +1,7 @@
 // =========================================================
-// Project Saturn — Gist Inhaler (simplified)
+// Project Saturn — Gist Inhaler
 // Fetches the Gist's index.html (which contains inline
-// <style> and <script>) and renders it in the current page.
+// <style> and inline <script>) and renders it here.
 // =========================================================
 
 (function () {
@@ -19,9 +19,6 @@
 
   // ---------------------------------------------------------
   // [3] FETCH OVERRIDE
-  //     Redirects any relative fetch (e.g. "saturn.m3u8")
-  //     to the Gist raw URL. Installed BEFORE any Gist
-  //     script runs.
   // ---------------------------------------------------------
   function installFetchOverride() {
     const nativeFetch = window.fetch.bind(window);
@@ -35,10 +32,6 @@
 
   // ---------------------------------------------------------
   // [4] INJECT GIST HTML
-  //     - copies <head> links/metas
-  //     - appends <body> children
-  //     - re-runs inline <script> tags
-  //     - fetches any <script src> and inlines them
   // ---------------------------------------------------------
   function injectHTML() {
     return fetch(GIST + 'index.html')
@@ -59,7 +52,6 @@
 
           const clone = el.cloneNode(true);
 
-          // rewrite relative hrefs to Gist raw URLs
           if (clone.tagName === 'LINK') {
             const href = clone.getAttribute('href');
             if (href && !/^https?:|^\/\//.test(href)) {
@@ -69,7 +61,7 @@
           document.head.appendChild(clone);
         });
 
-        // [4b] <head>: inline any <style> blocks
+        // [4b] <head>: inline <style> blocks VERBATIM
         doc.head.querySelectorAll('style').forEach(old => {
           const s = document.createElement('style');
           s.textContent = old.textContent;
@@ -90,7 +82,7 @@
           document.body.appendChild(s);
         });
 
-        // [4e] <body> + <head>: fetch external <script src> and inline
+        // [4e] fetch external <script src> and inline them
         const externalScripts = [
           ...Array.from(doc.body.querySelectorAll('script[src]')),
           ...Array.from(doc.head.querySelectorAll('script[src]'))
@@ -117,7 +109,7 @@
   }
 
   // ---------------------------------------------------------
-  // [5] REVEAL PAGE
+  // [5] REVEAL
   // ---------------------------------------------------------
   function reveal() {
     document.documentElement.style.visibility = 'visible';
