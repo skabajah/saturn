@@ -53,7 +53,7 @@
   // ---------------------------------------------------------
   // [5] INJECT HTML
   //     Fetches index.html, copies <head> links/metas,
-  //     appends <body> children, re-runs scripts.
+  //     appends <body> children, injects all scripts inline.
   // ---------------------------------------------------------
   function injectHTML() {
     return fetch(GIST + 'index.html')
@@ -90,58 +90,56 @@
           document.body.appendChild(el.cloneNode(true));
         });
 
-        // [5c] Re-run inline <script> tags from body
+        // [5c] Re-run inline <script> tags from body (already inline, just clone)
         doc.body.querySelectorAll('script:not([src])').forEach(old => {
           const s = document.createElement('script');
           s.textContent = old.textContent;
-          document.body.appendChild(s);
-        });
-
-        // [5d] Load external <script src> from body
-        doc.body.querySelectorAll('script[src]').forEach(old => {
-          const s = document.createElement('script');
-          let src = old.getAttribute('src');
-          if (src && !/^https?:|^\/\//.test(src)) {
-            src = GIST + src.replace(/^\.\//, '').replace(/^icons\//, '');
-          }
-          s.src = src;
           if (old.type) s.type = old.type;
           document.body.appendChild(s);
         });
 
-        // [5e] Load external <script src> from head
-        doc.head.querySelectorAll('script[src]').forEach(old => {
-          const s = document.createElement('script');
+        // [5d] Load ALL external scripts (body + head) as INLINE scripts
+        const externalScripts = [
+          ...Array.from(doc.body.querySelectorAll('script[src]')),
+          ...Array.from(doc.head.querySelectorAll('script[src]'))
+        ];
+
+        return Promise.all(externalScripts.map(old => {
           let src = old.getAttribute('src');
           if (src && !/^https?:|^\/\//.test(src)) {
             src = GIST + src.replace(/^\.\//, '').replace(/^icons\//, '');
           }
-          s.src = src;
-          if (old.type) s.type = old.type;
-          document.head.appendChild(s);
-        });
+          return fetch(src)
+            .then(r => r.text())
+            .then(js => {
+              const s = document.createElement('script');
+              s.textContent = js;              // ← inline, no src
+              if (old.type) s.type = old.type;
+              document.body.appendChild(s);
+            })
+            .catch(err => {
+              console.error('[inhaler] failed to inline script:', src, err);
+            });
+        }));
       });
   }
 
   // ---------------------------------------------------------
-  // [6] INJECT controls.js
-  //     Loaded explicitly with full Gist URL.
-  //     Errors are surfaced so failures aren't silent.
+  // [6] INJECT controls.js AS INLINE SCRIPT
   // ---------------------------------------------------------
   function injectControls() {
-    return new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = GIST + 'controls.js';
-      s.onload = () => {
-        console.log('[inhaler] controls.js loaded');
-        resolve();
-      };
-      s.onerror = () => {
-        console.error('[inhaler] controls.js FAILED to load from', s.src);
-        reject(new Error('controls.js failed to load'));
-      };
-      document.body.appendChild(s);
-    });
+    return fetch(GIST + 'controls.js')
+      .then(r => r.text())
+      .then(js => {
+        const s = document.createElement('script');
+        s.textContent = js;                  // ← inline, no src
+        document.body.appendChild(s);
+        console.log('[inhaler] controls.js injected inline');
+      })
+      .catch(err => {
+        console.error('[inhaler] controls.js failed:', err);
+        throw err;
+      });
   }
 
   // ---------------------------------------------------------
@@ -153,11 +151,6 @@
 
   // ---------------------------------------------------------
   // [8] RUN PIPELINE
-  //     1. install fetch override (before controls.js runs)
-  //     2. inject CSS
-  //     3. inject HTML
-  //     4. inject controls.js
-  //     5. reveal page
   // ---------------------------------------------------------
   installFetchOverride();
 
