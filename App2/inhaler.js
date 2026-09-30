@@ -7,21 +7,11 @@
 (function () {
   'use strict';
 
-  // ---------------------------------------------------------
-  // [1] CONFIG
-  // ---------------------------------------------------------
   const GIST = 'https://gist.githubusercontent.com/skabajah/ac96fc383152824c0d1951aab3f4ad0a/raw/';
 
-  // ---------------------------------------------------------
-  // [2] HIDE PAGE UNTIL READY
-  // ---------------------------------------------------------
   document.documentElement.style.visibility = 'hidden';
 
-  // ---------------------------------------------------------
   // [3] FETCH OVERRIDE
-  //     Redirects relative fetches (e.g. "saturn.m3u8")
-  //     to the Gist raw URL.
-  // ---------------------------------------------------------
   function installFetchOverride() {
     const nativeFetch = window.fetch.bind(window);
     window.fetch = function (input, init) {
@@ -32,37 +22,16 @@
     };
   }
 
-  // ---------------------------------------------------------
-  // [4] INJECT CSS
-  //     Fetch main.css, rewrite url() refs to Gist,
-  //     inject as inline <style>.
-  // ---------------------------------------------------------
-  function injectCSS() {
-    return fetch(GIST + 'main.css')
-      .then(r => r.text())
-      .then(css => {
-        const fixed = css.replace(
-          /url\(['"]?(?!https?:|data:)([^'")]+)['"]?\)/g,
-          (_, p) => `url('${GIST}${p}')`
-        );
-        const style = document.createElement('style');
-        style.textContent = fixed;
-        document.head.appendChild(style);
-      });
-  }
-
-  // ---------------------------------------------------------
-  // [5] INJECT HTML
-  //     Fetch Gist index.html, copy <head> links/metas,
-  //     append <body> children, inline all <script src>.
-  // ---------------------------------------------------------
+  // [4] INJECT GIST HTML
   function injectHTML() {
     return fetch(GIST + 'index.html')
       .then(r => r.text())
       .then(html => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        // [5a] <head>: copy links/metas we don't already have
+        // [4a] <head>: process links/metas
+        const headPromises = [];
+
         doc.head.querySelectorAll('link, meta').forEach(el => {
           const rel  = el.getAttribute('rel');
           const name = el.getAttribute('name');
@@ -73,11 +42,31 @@
             : document.head.querySelector(`meta[name="${name}"]`);
           if (existing) return;
 
-          // Skip stylesheet links — handled by [4]
-          if (rel === 'stylesheet') return;
+          // Stylesheet link → fetch CSS, inject as <style>
+          if (rel === 'stylesheet') {
+            const href = el.getAttribute('href');
+            const url = /^https?:|^\/\//.test(href)
+              ? href
+              : GIST + href.replace(/^icons\//, '');
+            headPromises.push(
+              fetch(url)
+                .then(r => r.text())
+                .then(css => {
+                  const fixed = css.replace(
+                    /url\(['"]?(?!https?:|data:)([^'")]+)['"]?\)/g,
+                    (_, p) => `url('${GIST}${p}')`
+                  );
+                  const s = document.createElement('style');
+                  s.textContent = fixed;
+                  document.head.appendChild(s);
+                })
+                .catch(err => console.error('[inhaler] css failed:', url, err))
+            );
+            return;
+          }
 
+          // Other links/metas → copy, rewriting relative hrefs
           const clone = el.cloneNode(true);
-
           if (clone.tagName === 'LINK') {
             const href = clone.getAttribute('href');
             if (href && !/^https?:|^\/\//.test(href)) {
@@ -87,13 +76,13 @@
           document.head.appendChild(clone);
         });
 
-        // [5b] <body>: append non-script children
+        // [4b] <body>: append non-script children
         Array.from(doc.body.children).forEach(el => {
           if (el.tagName === 'SCRIPT') return;
           document.body.appendChild(el.cloneNode(true));
         });
 
-        // [5c] <body>: re-run inline <script> tags from Gist HTML
+        // [4c] <body>: re-run inline <script> tags
         doc.body.querySelectorAll('script:not([src])').forEach(old => {
           const s = document.createElement('script');
           s.textContent = old.textContent;
@@ -101,13 +90,13 @@
           document.body.appendChild(s);
         });
 
-        // [5d] fetch every <script src> and inject as INLINE <script>
+        // [4d] fetch every <script src> and inject as INLINE <script>
         const externalScripts = [
           ...Array.from(doc.body.querySelectorAll('script[src]')),
           ...Array.from(doc.head.querySelectorAll('script[src]'))
         ];
 
-        return Promise.all(externalScripts.map(old => {
+        const scriptPromises = externalScripts.map(old => {
           let src = old.getAttribute('src');
           if (src && !/^https?:|^\/\//.test(src)) {
             src = GIST + src.replace(/^\.\//, '').replace(/^icons\//, '');
@@ -123,24 +112,21 @@
             .catch(err => {
               console.error('[inhaler] failed to inline script:', src, err);
             });
-        }));
+        });
+
+        return Promise.all([...headPromises, ...scriptPromises]);
       });
   }
 
-  // ---------------------------------------------------------
-  // [6] REVEAL
-  // ---------------------------------------------------------
+  // [5] REVEAL
   function reveal() {
     document.documentElement.style.visibility = 'visible';
   }
 
-  // ---------------------------------------------------------
-  // [7] RUN
-  // ---------------------------------------------------------
+  // [6] RUN
   installFetchOverride();
 
-  injectCSS()
-    .then(injectHTML)
+  injectHTML()
     .then(reveal)
     .catch(err => {
       console.error('[inhaler] failed:', err);
