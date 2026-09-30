@@ -123,24 +123,7 @@
         }));
       });
   }
-
-  // ---------------------------------------------------------
-  // [6] INJECT controls.js AS INLINE SCRIPT
-  // ---------------------------------------------------------
-  function injectControls() {
-    return fetch(GIST + 'controls.js')
-      .then(r => r.text())
-      .then(js => {
-        const s = document.createElement('script');
-        s.textContent = js;                  // ← inline, no src
-        document.body.appendChild(s);
-        console.log('[inhaler] controls.js injected inline');
-      })
-      .catch(err => {
-        console.error('[inhaler] controls.js failed:', err);
-        throw err;
-      });
-  }
+ 
 
   // ---------------------------------------------------------
   // [7] REVEAL PAGE
@@ -156,7 +139,6 @@
 
   injectCSS()
     .then(injectHTML)
-    .then(injectControls)
     .then(reveal)
     .catch(err => {
       console.error('[inhaler] failed:', err);
