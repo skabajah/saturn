@@ -188,19 +188,17 @@ html, body {
   width: 8vw;
   height: auto;
   object-fit: contain;
-  /*border-radius: 50%;*/
-  clip-path: circle(48%);
   filter: grayscale(90%);
   opacity: 40%;
   aspect-ratio:  1/1;
   background: black;
+  clip-path: circle(48%);
 }
 
 .channel.active img {
   filter: grayscale(0%);
   opacity: 80%; 
   width: 16vw;
-
 }
 
 
