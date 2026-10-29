@@ -192,8 +192,14 @@ html, body {
   opacity: 40%;
   aspect-ratio:  1/1;
   /*background: black;*/
-  background: #5e5e5e;
   clip-path: circle(50%);
+
+  background: #969696b5;
+  clip-path: circle(50%);
+  border: thin solid #e6e6e636;
+  border-radius: 50%;
+
+
 }
 
 .channel.active img {
