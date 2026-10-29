@@ -191,7 +191,8 @@ html, body {
   filter: grayscale(90%);
   opacity: 40%;
   aspect-ratio:  1/1;
-  background: black;
+  /*background: black;*/
+  background: #5e5e5e;
   clip-path: circle(50%);
 }
 
