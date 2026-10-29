@@ -194,8 +194,9 @@ html, body {
   /*background: black;*/
   clip-path: circle(50%);
 
-  background-color:  transparent;
-  background:  rgba(255, 255, 255, 20%); 
+  background-color:  transparent !important;
+  background: transparent !important;
+  /*background:  rgba(255, 255, 255, 20%); */
   clip-path: circle(50%);
   border: thin solid #e6e6e636;
   border-radius: 50%;
