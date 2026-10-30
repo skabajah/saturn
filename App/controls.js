@@ -257,11 +257,20 @@ function buildMenuBar() {
       const num = match ? match[1] : '';
       const label = match ? match[2] : ch.name;
 
+      // div.innerHTML = `
+      //   <div class="num">${num}</div>
+      //   <img src="${ch.logo}" alt="">
+      //   <div class="name">${label}</div>
+      // `;
+      
       div.innerHTML = `
         <div class="num">${num}</div>
-        <img src="${ch.logo}" alt="">
+        <div class="frame" style="--logo: url('${ch.logo}')">
+          <img src="${ch.logo}" alt="">
+        </div>
         <div class="name">${label}</div>
       `;
+
 
       div.onclick = () => {
         currentIndex = idx;
