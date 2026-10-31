@@ -227,7 +227,6 @@ html, body {
   transform: scale(60%);
   filter: grayscale(90%);
   opacity: 40%;
-  border-radius: 10px;
 }
 
 .channel.active img {
