@@ -219,6 +219,7 @@ html, body {
   border-radius: 50%;
   width: 8vw;
   height: 8vw;
+  filter: saturate(0.1) brightness(0.5);
 }
 
 .frame::before {
@@ -237,6 +238,8 @@ html, body {
 .channel.active .frame {
   width: 16vw;
   height: 16vw;
+  filter: saturate(1) brightness(1);
+
 }
 
 .channel img {
