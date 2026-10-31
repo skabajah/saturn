@@ -225,8 +225,8 @@ html, body {
   height: 100%;
   object-fit: contain;
   transform: scale(60%);
-  filter: grayscale(90%);
-  opacity: 40%;
+  /*filter: grayscale(90%);*/
+  /*opacity: 40%;*/
 }
 
 .channel.active img {
