@@ -205,7 +205,7 @@ html, body {
   background-image: var(--logo);
   background-size: cover;
   background-position: center;
-  filter: blur(20px) saturate(30%);
+  filter: blur(1vw) saturate(30%);
   transform: scale(1.2) rotate(180deg);
   z-index: 0;
   opacity: 80%;
