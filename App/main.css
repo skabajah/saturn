@@ -216,7 +216,7 @@ html, body {
   transform: scale(1.2) rotate(180deg);
   z-index: 0;
   opacity: 80%;
-  animation: spin 20s linear infinite;  
+  animation: spin 60s linear infinite;  
 
 }
 
