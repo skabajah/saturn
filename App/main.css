@@ -150,7 +150,7 @@ html, body {
    Channel card (small)
    ========================= */
 
-@keyframes a {
+@keyframes spin {
   to { transform: rotate(1turn); }
 }
 
