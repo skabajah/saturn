@@ -151,7 +151,7 @@ html, body {
    ========================= */
 
 @keyframes a {
-  to { transform: rotate(1turn) scale(2); }
+  to { transform: rotate(1turn); }
 }
 
 
@@ -202,7 +202,6 @@ html, body {
   width: 8vw;
   height: 8vw;
   filter: saturate(0.1) brightness(0.5);
-  animation: a 5s linear infinite;
 
 }
 
@@ -217,6 +216,8 @@ html, body {
   transform: scale(1.2) rotate(180deg);
   z-index: 0;
   opacity: 80%;
+  animation: spin 8s linear infinite;  
+  
 }
 
 .channel.active .frame {
