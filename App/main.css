@@ -149,6 +149,12 @@ html, body {
 /* =========================
    Channel card (small)
    ========================= */
+
+@keyframes a {
+  to { transform: rotate(1turn) scale(2); }
+}
+
+
 .channel {
   width: 26vw;
   aspect-ratio : 16 / 12; 
@@ -196,6 +202,8 @@ html, body {
   width: 8vw;
   height: 8vw;
   filter: saturate(0.1) brightness(0.5);
+  animation: a 5s linear infinite;
+
 }
 
 .frame::before {
