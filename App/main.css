@@ -216,7 +216,7 @@ html, body {
   filter: blur(1vw) saturate(30%);
   z-index: 0;
   opacity: 80%;
-  animation: spin 60s linear infinite;  
+  animation: spin 30s linear infinite;  
 
 }
 
