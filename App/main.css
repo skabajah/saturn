@@ -151,8 +151,8 @@ html, body {
    ========================= */
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from { transform: scale(1.2) rotate(0deg);   }
+  to   { transform: scale(1.2) rotate(360deg); }
 }
 
 
@@ -214,8 +214,6 @@ html, body {
   background-size: cover;
   background-position: center;
   filter: blur(1vw) saturate(30%);
-  /*transform: scale(1.2) rotate(180deg);*/
-  transform: scale(1.2)  ;
   z-index: 0;
   opacity: 80%;
   animation: spin 60s linear infinite;  
