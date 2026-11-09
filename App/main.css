@@ -151,7 +151,8 @@ html, body {
    ========================= */
 
 @keyframes spin {
-  to { transform: rotate(1turn); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 
