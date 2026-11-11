@@ -220,7 +220,7 @@ html, body {
   border-radius: 50%;
   width: 8vw;
   height: 8vw;
-  filter: saturate(0.1) brightness(0.5);
+  /*filter: saturate(0.1) brightness(0.5);*/
 
 }
 
