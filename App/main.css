@@ -232,7 +232,7 @@ html, body {
   background-image: var(--logo);
   background-size: cover;
   background-position: center;
-  filter: blur(1vw) saturate(30%) brightness(0.5) opacity(0.8);
+  filter: blur(1vw) saturate(50%) brightness(80%) opacity(80%);
   z-index: -1;
   animation: spin 30s linear infinite;
 }
