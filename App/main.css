@@ -8,9 +8,9 @@ light
 /*animations */
 
 @keyframes loop-pulse {
-  0% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(0.98); }
-  100% { transform: translateX(-50%) scale(1); }
+  0%   { transform: translateX(-50%) scale(1)   ; }
+  50%  { transform: translateX(-50%) scale(0.98); }
+  100% { transform: translateX(-50%) scale(1)   ; }
 }
 
 @keyframes spin {
