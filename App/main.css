@@ -131,7 +131,7 @@ html, body {
 
 /* Pulse animation for menu wrap */
 #menuBar.wrap-pulse {
-  animation: loop-pulse 0.3s ease;
+  /*animation: loop-pulse 0.3s ease;*/
 }
 
 
