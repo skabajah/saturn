@@ -5,6 +5,21 @@ skabajah
 light 
 */
 
+/*animations */
+
+@keyframes loop-pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(0.98); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes spin {
+  from { transform: scale(1.2) rotate(0deg);   }
+  to   { transform: scale(1.2) rotate(360deg); }
+}
+
+
+/*main */
 html { font-size: 14px; }
 
 html, body {
@@ -19,34 +34,34 @@ html, body {
 
 
 /* ===== LANDING OVERLAY ===== */
-    #landing {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: black;
-    }
+#landing {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: black;
+}
 
-    #landing.hidden {
-      display: none;
-    }
+#landing.hidden {
+  display: none;
+}
 
-    #landing .svg {
-      position: absolute;
-      inset: 0;
-      background: url('landing.svg') no-repeat center center;
-      background-size: contain;
-    }
+#landing .svg {
+  position: absolute;
+  inset: 0;
+  background: url('landing.svg') no-repeat center center;
+  background-size: contain;
+} 
 
-    .footer-left, .footer-right {
-      position: fixed;
-      bottom: 1%;
-      font-family: monospace;
-      font-size: 10px;
-      color: #bfbfbf;
-      z-index: 10000;
-    }
-    .footer-left { left: 1%; }
-    .footer-right { right: 1%; }
+.footer-left, .footer-right {
+  position: fixed;
+  bottom: 1%;
+  font-family: monospace;
+  font-size: 10px;
+  color: #bfbfbf;
+  z-index: 1000;
+}
+.footer-left { left: 1%; }
+.footer-right { right: 1%; }
 
 
 /* =========================
@@ -94,7 +109,7 @@ html, body {
   width: 100vw;
   height: 100vh;
 
-  z-index: 60;
+  z-index: 100;
   opacity: 1;
   -webkit-overflow-scrolling: touch;
   background: #00000040;
@@ -113,6 +128,13 @@ html, body {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Pulse animation for menu wrap */
+#menuBar.wrap-pulse {
+  animation: loop-pulse 0.3s ease;
+}
+
+
 
 /* =========================
    Group box (big)
@@ -150,10 +172,6 @@ html, body {
    Channel card (small)
    ========================= */
 
-@keyframes spin {
-  from { transform: scale(1.2) rotate(0deg);   }
-  to   { transform: scale(1.2) rotate(360deg); }
-}
 
 
 .channel {
@@ -214,7 +232,7 @@ html, body {
   background-size: cover;
   background-position: center;
   filter: blur(1vw) saturate(30%);
-  z-index: 0;
+  z-index: 200;
   opacity: 80%;
   animation: spin 30s linear infinite;  
 
@@ -229,7 +247,7 @@ html, body {
 
 .channel img {
   position: relative;
-  z-index: 1;
+  z-index: 300;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -267,38 +285,9 @@ video::cue, #videoPlayer::cue {
 }
 
 /* =========================
-   Landing overlay
+   Auth Gate  
    ========================= */
-body { margin:0; background:black; }
-
-#landing {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: black;
-}
-
-#landing.hidden { display:none; }
-
-.svg {
-  position:absolute;
-  inset:0;
-  background:url('landing.svg') no-repeat center center;
-  background-size:contain;
-}
-
-.footer-left, .footer-right {
-  position: fixed;
-  bottom: 1%;
-  font-family: monospace;
-  font-size: 10px;
-  color: #bfbfbf;
-  z-index: 10000;
-}
-.footer-left { left: 1%; }
-.footer-right { right: 1%; }
-
-/* ===== AUTH (INSIDE LANDING) ===== */
+/*
 #authGate{
   position:absolute;
   bottom:5%;
@@ -315,7 +304,9 @@ body { margin:0; background:black; }
   border-radius:20px;
   backdrop-filter: blur(6px);
 }
-#authGate.hidden{ display:none; }
+#authGate.hidden{ 
+  display:none; 
+}
 
 #authGate label{
   display:flex;
@@ -348,29 +339,20 @@ body { margin:0; background:black; }
   text-align:center;
   min-height: 14px;
 }
+*/ 
 
 /* =========================
    TV scaling
    ========================= */
  
 /* phone portrait */
+/*
 @media only screen and (max-width: 767px) and (orientation: portrait) {
-  
   .svg {
     background-repeat: no-repeat; 
   }
- 
 }
+*/
 
  
 
-/* Pulse animation for menu wrap */
-#menuBar.wrap-pulse {
-  animation: loop 0.3s ease;
-}
-
-@keyframes loop-pulse {
-  0% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(0.98); }
-  100% { transform: translateX(-50%) scale(1); }
-}
