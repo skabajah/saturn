@@ -1,7 +1,5 @@
 # <img src="https://skabajah.github.io/saturn/App/icons/saturn.svg" height="40" style="vertical-align: middle; pointer-events: none;"> Project Saturn
 
-# 🪐 Project Saturn
-
 [Saturn App](https://skabajah.github.io/saturn/App/)
 
 A lightweight, touch-friendly video player web app for browsers and Fire TV.
