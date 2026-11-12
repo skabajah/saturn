@@ -59,17 +59,44 @@ Grab the installer for your machine:
 #### How to fix the Mac Error  
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
 
-First, navigate to the folder where you downloaded the `.zip` file and extract it. For example:
-```
+#### Step 1: Navigate to the download folder and extract the `.zip`
+
+For example:
+
+```bash
 cd ~/Desktop
 unzip -q mac-arm64.zip
 cd mac-arm64
 ```
+####  Step 2: Remove the quarantine attribute
 
-Then, run the following commands: 
-```
+```bash
 xattr -cr Saturn.app
-open Saturn.app
+```
+
+> **What this does:** `xattr -cr` recursively clears all extended attributes (including the `com.apple.quarantine` flag) from the app bundle. This tells Gatekeeper the app didn't come from the internet, so it won't be blocked.
+
+####  Step 3: Copy the app into `/Applications`
+
+```bash
+cp -R Saturn.app /Applications/
+```
+
+> **Why:** Installing to `/Applications` is the standard macOS location, makes the app discoverable via Spotlight and Launchpad, and keeps it out of your Downloads/Desktop folder (which you may clean up later).
+
+####  Step 4: Launch the app
+
+```bash
+open /Applications/Saturn.app
+```
+
+####  Step 5: Remove the setup files
+
+Once the app launches successfully, delete the extracted folder and the original `.zip`:
+
+```bash
+cd ~/Desktop
+rm -rf mac-arm64 mac-arm64.zip
 ```
 
 ---
