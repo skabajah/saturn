@@ -45,8 +45,8 @@ Grab the installer for your machine from the [`files/`](./files/) folder:
 | Platform | File | Direct Link |
 |----------|------|-------------|
 | **Mac (Apple Silicon)** | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](https://github.com/skabajah/saturn/raw/refs/heads/main/files/Saturn-0.1.0-Mac-AppleSilicon.dmg.zip) |
-| **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](./files/Saturn-0.1.0-Mac-Intel.dmg.zip) |
-| **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](./files/Saturn%20Setup%200.1.0.exe.zip) |
+| **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](https://github.com/skabajah/saturn/raw/refs/heads/main/files/Saturn-0.1.0-Mac-Intel.dmg.zip) |
+| **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](https://github.com/skabajah/saturn/raw/refs/heads/main/files/Saturn%20Setup%200.1.0.exe.zip) |
 
 ---
 
