@@ -69,7 +69,9 @@ Grab the installer for your machine:
 4. Remove the extracted folder and the original `.zip` once the app is in place.
 
 #### How to fix the Mac Error  
+
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
+
 
 ##### Option 1 — Built-in allow (macOS 14 Sonoma and earlier)
 
@@ -79,7 +81,7 @@ Grab the installer for your machine:
 
 ##### Option 2 — Terminal `xattr` method (macOS 15 Sequoia and later, or if Option 1 fails)
 
-###### Step 1: Navigate to the download folder and extract the `.zip`
+1. Navigate to the download folder and extract the `.zip`
 
 For example:
 
