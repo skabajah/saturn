@@ -40,31 +40,29 @@ Installable on Chrome and Edge for a native-like experience.
 
 ## Download & Install
 
-Grab the installer for your machine from the [`files/`](./files/) folder:
+Grab the installer for your machine:
 
 | Platform | Architecture | File | Direct Link |
 |----------|--------------|------|-------------|
-| **Mac** (Apple Silicon / M-Series) | `arm64` | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](https://www.dropbox.com/scl/fi/5zd5frtbvji2x76nh50nw/Saturn-0.1.0-Mac-AppleSilicon.dmg?rlkey=cvjjcvu2dwj5own46tfn6e1hu&st=ukl5mmaq&dl=1) |
-| **Mac** (Intel) | `x64` | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](https://www.dropbox.com/scl/fi/n0wxl7czchvdpvkg1w0je/Saturn-0.1.0-Mac-Intel.dmg?rlkey=4esr43m96o6rlxl808giut0u5&st=e75684e2&dl=1) |
-| **Windows** | `x64` | `Saturn Setup 0.1.0.exe` | [Download](https://www.dropbox.com/scl/fi/x54dc3fjhk7y6i3fg4082/Saturn-Setup-0.1.0.exe?rlkey=a2fgexzti70glj6rrqmxp22f2&st=dr9y8gbf&dl=1) |
-
+| **Mac** (Apple Silicon / M-Series) | `arm64` | `mac-arm64.zip` | [Download](https://www.dropbox.com/scl/fi/fz7jb7abhnxm1j6ksbyyx/mac-arm64.zip?rlkey=vchyk5euvjjq00z3am8d7qufi&st=i4dp8lcq&dl=1) |
+| **Mac** (Intel) | `x64` | `mac-intel.zip` | [Download](https://www.dropbox.com/scl/fi/mve5vohv7hwjro9qnz2ux/mac-intel.zip?rlkey=rxzl1jt47qlzgthn82wwi3c1t&st=r8dy3w3r&dl=1) |
+| **Windows** | `x64` | `windows-setup.zip` | [Download](https://www.dropbox.com/scl/fi/ftb2arsz7wk2dka7j48bs/windows-setup.zip?rlkey=rarziyck4pzgx90lidr49ad4l&st=vhj2g8bc&dl=1) |
 ---
 
 ### Installing on macOS
 
-1. Download the correct `.dmg` for your Mac:
-   - **Apple Silicon** → `Saturn-0.1.0-Mac-AppleSilicon.dmg`
-   - **Intel** → `Saturn-0.1.0-Mac-Intel.dmg`
-2. Double-click the `.dmg` to mount it.
+1. Download the correct file for your Mac:
+2. Double-click the `.zip` to mount it.
 3. Drag **Saturn** into your `Applications` folder.
 4. Eject the disk image.
 
-**First Launch (required):**
-Because Saturn is unsigned, macOS will block it on first open.
-1. Click **Done** on the warning.
-2. Open **System Settings → Privacy & Security**.
-3. Scroll to **Security** and click **Open Anyway**.
-4. Enter your Mac password.
+#### How to fix the Mac Error  
+*(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
+```
+cd pathfolder
+xattr -cr Saturn.app
+open Saturn.app
+```
 
 *(Or run this once in Terminal: `xattr -cr /Applications/Saturn.app`)*
 
