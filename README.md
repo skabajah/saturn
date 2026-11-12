@@ -7,7 +7,7 @@ A lightweight, touch-friendly video player app for macOS, Windows, and Fire TV.
 ## Features
 
 - Full-screen cinematic landing screen
-- Auto-detects browser (Chrome, Safari, Firefox, Fire TV)
+- Auto-detects your platform and display environment
 - Built-in video player with autoplay
 - Remote-control friendly (Fire TV optimized)
 - PWA-ready with icons and manifest
@@ -29,9 +29,9 @@ Grab the installer for your machine:
 ### Installing on macOS
 
 1. Download the correct file for your Mac:
-2. Double-click the `.zip` to mount it.
+2. Double-click the `.zip` to extract it.
 3. Drag **Saturn** into your `Applications` folder.
-4. Eject the disk image.
+4. Remove the extracted folder and the original `.zip` once the app is in place.
 
 #### How to fix the Mac Error  
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
@@ -80,10 +80,11 @@ rm -rf mac-arm64 mac-arm64.zip
 
 ### Installing on Windows
 
-1. Download `Saturn.exe`.
-2. Double-click the `.exe`.
+1. Download `windows-setup.zip` and extract it.
+2. Double-click the `Saturn.exe` file.
 3. If SmartScreen appears (*"Windows protected your PC"*), click **More info** → **Run anyway**.
 4. Follow the installer prompts.
+5. Delete the extracted setup files once installation is complete.
 
 ---
 
