@@ -64,6 +64,7 @@ First, navigate to the folder where you downloaded the `.zip` file and extract i
 cd pathfolder
 ```
 
+Then, run the following commands: 
 ```
 xattr -cr Saturn.app
 open Saturn.app
