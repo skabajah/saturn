@@ -58,8 +58,13 @@ Grab the installer for your machine:
 
 #### How to fix the Mac Error  
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
+
+First, navigate to the folder where you downloaded the `.zip` file and extract it:
 ```
 cd pathfolder
+```
+
+```
 xattr -cr Saturn.app
 open Saturn.app
 ```
