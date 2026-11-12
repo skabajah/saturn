@@ -91,7 +91,7 @@ unzip -q mac-arm64.zip
 cd mac-arm64
 ```
 
-###### Step 2: Remove the quarantine attribute
+2. Remove the quarantine attribute
 
 ```
 xattr -cr Saturn.app
@@ -99,7 +99,7 @@ xattr -cr Saturn.app
 
 > **What this does:** `xattr -cr` recursively clears all extended attributes (including the `com.apple.quarantine` flag) from the app bundle. This tells Gatekeeper the app didn't come from the internet, so it won't be blocked.
 
-###### Step 3: Copy the app into `/Applications`
+3. Copy the app into `/Applications`
 
 ```
 cp -R Saturn.app /Applications/
@@ -107,13 +107,13 @@ cp -R Saturn.app /Applications/
 
 > **Why:** Installing to `/Applications` is the standard macOS location, makes the app discoverable via Spotlight and Launchpad, and keeps it out of your Downloads/Desktop folder (which you may clean up later).
 
-###### Step 4: Launch the app
+4. Launch the app
 
 ```
 open /Applications/Saturn.app
 ```
 
-###### Step 5: Remove the setup files
+5. Remove the setup files
 
 Once the app launches successfully, delete the extracted folder and the original `.zip`:
 
