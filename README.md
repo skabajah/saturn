@@ -24,6 +24,7 @@ Grab the installer for your machine:
 | **Mac** (Intel) | `x64` | `mac-intel.zip` | [Download](https://www.dropbox.com/scl/fi/mve5vohv7hwjro9qnz2ux/mac-intel.zip?rlkey=rxzl1jt47qlzgthn82wwi3c1t&st=r8dy3w3r&dl=1) |
 | **Windows** | `x64` | `windows-setup.zip` | [Download](https://www.dropbox.com/scl/fi/ftb2arsz7wk2dka7j48bs/windows-setup.zip?rlkey=rarziyck4pzgx90lidr49ad4l&st=vhj2g8bc&dl=1) |
 | **Web** | `any` | — | [Try it](https://skabajah.github.io/saturn/App/) |
+
 ---
 
 ### Installing on macOS
