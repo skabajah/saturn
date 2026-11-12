@@ -3,7 +3,7 @@
 A lightweight, touch-friendly video player app for macOS, Windows, and Fire TV.
 
 > **Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). 
-Note this is an early demo, not the full standalone app.
+> Note this is an early demo, not the full standalone app.
 
 ## Features
 
