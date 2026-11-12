@@ -64,13 +64,11 @@ xattr -cr Saturn.app
 open Saturn.app
 ```
 
-*(Or run this once in Terminal: `xattr -cr /Applications/Saturn.app`)*
-
 ---
 
 ### Installing on Windows
 
-1. Download `Saturn Setup 0.1.0.exe`.
+1. Download `Saturn.exe`.
 2. Double-click the `.exe`.
 3. If SmartScreen appears (*"Windows protected your PC"*), click **More info** → **Run anyway**.
 4. Follow the installer prompts.
