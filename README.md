@@ -17,14 +17,6 @@ A lightweight, touch-friendly video player app for macOS, Windows, and Fire TV.
 ## Download & Install
 
 Grab the installer for your machine:
-<!-- 
-| Platform | Architecture | File | Direct Link |
-|----------|--------------|------|-------------|
-| **Mac** (Apple Silicon / M-Series) | `arm64` | `mac-arm64.zip` | [Download](https://www.dropbox.com/scl/fi/fz7jb7abhnxm1j6ksbyyx/mac-arm64.zip?rlkey=vchyk5euvjjq00z3am8d7qufi&st=i4dp8lcq&dl=1) |
-| **Mac** (Intel) | `x64` | `mac-intel.zip` | [Download](https://www.dropbox.com/scl/fi/mve5vohv7hwjro9qnz2ux/mac-intel.zip?rlkey=rxzl1jt47qlzgthn82wwi3c1t&st=r8dy3w3r&dl=1) |
-| **Windows** | `x64` | `windows-setup.zip` | [Download](https://www.dropbox.com/scl/fi/ftb2arsz7wk2dka7j48bs/windows-setup.zip?rlkey=rarziyck4pzgx90lidr49ad4l&st=vhj2g8bc&dl=1) |
-| **Web** | `any` | — | [Try it](https://skabajah.github.io/saturn/App/) |
- -->
 
 <table>
   <thead>
