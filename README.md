@@ -2,7 +2,7 @@
 
 [Saturn App](https://skabajah.github.io/saturn/App/)
 
-A lightweight, touch-friendly video player web app for browsers and Fire TV.
+A lightweight, touch-friendly video player app for macOS, Windows, and Fire TV.
 
 ## Features
 
@@ -12,29 +12,6 @@ A lightweight, touch-friendly video player web app for browsers and Fire TV.
 - Remote-control friendly (Fire TV optimized)
 - PWA-ready with icons and manifest
 - Google Analytics integrated
-
-## Quick Start
-
-Open `index.html` in your browser, or serve locally with Python.
-
-Click or tap anywhere to enter the app and start the player.
-
-## Structure
-
-- `index.html` – Main entry point
-- `icons/` – Favicons and PWA assets
-- `App/` – CSS and JavaScript (hosted externally)
-- `landing.svg` – Splash screen graphic
-
-## Customization
-
-- **Video source**: Edit `controls.js` or add a `<source>` tag
-- **Splash screen**: Replace `landing.svg`
-- **Browser detection**: Modify the `userAgent` logic in `index.html`
-
-## PWA Ready
-
-Installable on Chrome and Edge for a native-like experience.
 
 ---
 
@@ -63,14 +40,14 @@ Grab the installer for your machine:
 
 For example:
 
-```bash
+```
 cd ~/Desktop
 unzip -q mac-arm64.zip
 cd mac-arm64
 ```
 ####  Step 2: Remove the quarantine attribute
 
-```bash
+```
 xattr -cr Saturn.app
 ```
 
@@ -78,7 +55,7 @@ xattr -cr Saturn.app
 
 ####  Step 3: Copy the app into `/Applications`
 
-```bash
+```
 cp -R Saturn.app /Applications/
 ```
 
@@ -86,7 +63,7 @@ cp -R Saturn.app /Applications/
 
 ####  Step 4: Launch the app
 
-```bash
+```
 open /Applications/Saturn.app
 ```
 
@@ -94,7 +71,7 @@ open /Applications/Saturn.app
 
 Once the app launches successfully, delete the extracted folder and the original `.zip`:
 
-```bash
+```
 cd ~/Desktop
 rm -rf mac-arm64 mac-arm64.zip
 ```
