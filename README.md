@@ -75,7 +75,7 @@ Grab the installer for your machine:
 
 1. Try to open the app once (it will be blocked).
 2. Go to **System Settings → Privacy & Security** and click **Open Anyway**.
-   *(Alternatively: right-click the app → **Open** → **Open**.)*
+   *(Alternatively: right-click the app → **Open**.)*
 
 ##### Option 2 — Terminal `xattr` method (macOS 15 Sequoia and later, or if Option 1 fails)
 
