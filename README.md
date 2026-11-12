@@ -59,9 +59,9 @@ Grab the installer for your machine:
 #### How to fix the Mac Error  
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
 
-First, navigate to the folder where you downloaded the `.zip` file and extract it:
+First, navigate to the folder where you downloaded the `.zip` file and extract it. For example:
 ```
-cd pathfolder
+cd ~/Desktop/mac-arm64/
 ```
 
 Then, run the following commands: 
