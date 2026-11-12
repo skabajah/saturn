@@ -61,7 +61,9 @@ Grab the installer for your machine:
 
 First, navigate to the folder where you downloaded the `.zip` file and extract it. For example:
 ```
-cd ~/Desktop/mac-arm64/
+cd ~/Desktop
+unzip -q mac-arm64.zip
+cd mac-arm64
 ```
 
 Then, run the following commands: 
