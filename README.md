@@ -69,15 +69,15 @@ Grab the installer for your machine:
 #### How to fix the Mac Error  
 *(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).*
 
-**Option 1 — Built-in allow (macOS 14 Sonoma and earlier)**
+##### Option 1 — Built-in allow (macOS 14 Sonoma and earlier)
 
 1. Try to open the app once (it will be blocked).
 2. Go to **System Settings → Privacy & Security** and click **Open Anyway**.
    *(Alternatively: right-click the app → **Open** → **Open**.)*
 
-**Option 2 — Terminal `xattr` method (macOS 15 Sequoia and later, or if Option 1 fails)**
+##### Option 2 — Terminal `xattr` method (macOS 15 Sequoia and later, or if Option 1 fails)
 
-#### Step 1: Navigate to the download folder and extract the `.zip`
+###### Step 1: Navigate to the download folder and extract the `.zip`
 
 For example:
 
