@@ -44,13 +44,13 @@ Grab the installer for your machine from the [`files/`](./files/) folder:
 
 | Platform | File | Direct Link |
 |----------|------|-------------|
-| 🍎 **Mac (Apple Silicon)** | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](./files/Saturn-0.1.0-Mac-AppleSilicon.dmg) |
-| 🍎 **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](./files/Saturn-0.1.0-Mac-Intel.dmg) |
-| 🪟 **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](./files/Saturn%20Setup%200.1.0.exe) |
+| **Mac (Apple Silicon)** | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](./files/Saturn-0.1.0-Mac-AppleSilicon.dmg) |
+| **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](./files/Saturn-0.1.0-Mac-Intel.dmg) |
+| **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](./files/Saturn%20Setup%200.1.0.exe) |
 
 ---
 
-### 🍎 Installing on macOS
+### Installing on macOS
 
 1. Download the correct `.dmg` for your Mac:
    - **Apple Silicon** → `Saturn-0.1.0-Mac-AppleSilicon.dmg`
@@ -70,7 +70,7 @@ Because Saturn is unsigned, macOS will block it on first open.
 
 ---
 
-### 🪟 Installing on Windows
+### Installing on Windows
 
 1. Download `Saturn Setup 0.1.0.exe`.
 2. Double-click the `.exe`.
