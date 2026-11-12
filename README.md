@@ -44,9 +44,9 @@ Grab the installer for your machine from the [`files/`](./files/) folder:
 
 | Platform | File | Direct Link |
 |----------|------|-------------|
-| **Mac (Apple Silicon)** | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](https://www.dropbox.com/scl/fi/5zd5frtbvji2x76nh50nw/Saturn-0.1.0-Mac-AppleSilicon.dmg?rlkey=cvjjcvu2dwj5own46tfn6e1hu&st=ukl5mmaq&dl=0) |
-| **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](https://www.dropbox.com/scl/fi/n0wxl7czchvdpvkg1w0je/Saturn-0.1.0-Mac-Intel.dmg?rlkey=4esr43m96o6rlxl808giut0u5&st=e75684e2&dl=0) |
-| **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](https://www.dropbox.com/scl/fi/x54dc3fjhk7y6i3fg4082/Saturn-Setup-0.1.0.exe?rlkey=a2fgexzti70glj6rrqmxp22f2&st=dr9y8gbf&dl=0) |
+| **Mac (Apple Silicon)** | `Saturn-0.1.0-Mac-AppleSilicon.dmg` | [Download](https://www.dropbox.com/scl/fi/5zd5frtbvji2x76nh50nw/Saturn-0.1.0-Mac-AppleSilicon.dmg?rlkey=cvjjcvu2dwj5own46tfn6e1hu&st=ukl5mmaq&dl=1) |
+| **Mac (Intel)** | `Saturn-0.1.0-Mac-Intel.dmg` | [Download](https://www.dropbox.com/scl/fi/n0wxl7czchvdpvkg1w0je/Saturn-0.1.0-Mac-Intel.dmg?rlkey=4esr43m96o6rlxl808giut0u5&st=e75684e2&dl=1) |
+| **Windows** (x64) | `Saturn Setup 0.1.0.exe` | [Download](https://www.dropbox.com/scl/fi/x54dc3fjhk7y6i3fg4082/Saturn-Setup-0.1.0.exe?rlkey=a2fgexzti70glj6rrqmxp22f2&st=dr9y8gbf&dl=1) |
 
 ---
 
