@@ -1,9 +1,8 @@
-<style>.ar{direction:rtl}</style>
-
 # <img src="https://skabajah.github.io/saturn/App/icons/saturn.svg" height="40" style="vertical-align: middle; pointer-events: none;"> Project Saturn
 
 [https://skabajah.github.io/saturn/](https://skabajah.github.io/saturn/)
 
+<style>.ar{direction:rtl}</style>
 
 > A lightweight, touch-friendly live TV player for macOS, Windows, and Fire TV. 
 > Stream publicly accessible Arabic channels with ease.
