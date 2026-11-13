@@ -2,7 +2,6 @@
 
 [https://skabajah.github.io/saturn/](https://skabajah.github.io/saturn/)
 
-<style>.ar{direction:rtl}</style>
 
 > A lightweight, touch-friendly live TV player for macOS, Windows, and Fire TV. 
 > Stream publicly accessible Arabic channels with ease.
