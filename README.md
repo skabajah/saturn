@@ -3,8 +3,9 @@
 [https://skabajah.github.io/saturn/](https://skabajah.github.io/saturn/)
 
 
-A lightweight, touch-friendly video player app for macOS, Windows, and Fire TV.
-
+A lightweight, touch-friendly live TV player for macOS, Windows, and Fire TV. 
+<br>
+Stream publicly accessible Arabic channels with ease.
 
 ## Features
 
