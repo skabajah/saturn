@@ -29,11 +29,9 @@ Please note this is an **early demo** — not the full standalone app — and **
 For a better experience, download the standalone app for Mac or Windows below.
 
 
-**جرب النسخة التجريبية على الويب: [هنا](https://skabajah.github.io/saturn/App/).**
+**النسخة التجريبية على الويب: [هنا](https://skabajah.github.io/saturn/App/)**
 <br>
-يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح
-<br>
-للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه
+يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح, للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه
 
 ---
 
