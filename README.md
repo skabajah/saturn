@@ -33,6 +33,7 @@ For a better experience, download the standalone app for Mac or Windows below.
 <br>
 يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح، للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه.
 </div>
+
 ---
 
 ## Download & Install
