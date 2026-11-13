@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Saturn</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #24292f;
+      --muted: #57606a;
+      --border: #d0d7de;
+      --link: #0969da;
+      --code-bg: rgba(175, 184, 193, 0.2);
+      --pre-bg: #f6f8fa;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --text: #c9d1d9;
+        --muted: #8b949e;
+        --border: #30363d;
+        --link: #58a6ff;
+        --code-bg: rgba(110, 118, 129, 0.4);
+        --pre-bg: #161b22;
+      }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2, h3, h4, h5 {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3em;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h1 img {
+      height: 40px;
+      pointer-events: none;
+    }
+    blockquote {
+      border-left: 0.25em solid var(--border);
+      color: var(--muted);
+      margin: 0;
+      padding: 0 1em;
+    }
+    code {
+      background-color: var(--code-bg);
+      padding: 0.2em 0.4em;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 85%;
+    }
+    pre {
+      background-color: var(--pre-bg);
+      padding: 16px;
+      border-radius: 6px;
+      overflow: auto;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 13px;
+      text-align: left;
+    }
+    th {
+      background-color: var(--pre-bg);
+      font-weight: 600;
+    }
+    .ar {
+      direction: rtl;
+      text-align: right;
+    }
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>
+    <img src="https://skabajah.github.io/saturn/App/icons/saturn.svg" alt="Saturn Icon">
+    Project Saturn
+  </h1>
+
+  <p><a href="https://skabajah.github.io/saturn/">https://skabajah.github.io/saturn/</a></p>
+
+  <blockquote>
+    <p>A lightweight, touch-friendly live TV player for macOS, Windows, and Fire TV.<br>
+    Stream publicly accessible Arabic channels with ease.</p>
+    <p class="ar">مشغل تلفزيون مباشر خفيف الوزن وسهل الاستخدام، لبث القنوات العربية المتاحة للعامة بكل سهولة</p>
+  </blockquote>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Full-screen cinematic landing screen</li>
+    <li>Auto-detects your platform and display environment</li>
+    <li>Built-in video player with autoplay</li>
+    <li>Remote-control friendly (Fire TV optimized)</li>
+    <li>PWA-ready with icons and manifest</li>
+    <li>Google Analytics integrated</li>
+  </ul>
+
+  <hr>
+
+  <h3>Web</h3>
+  <p>
+    <strong>Try the demo:</strong> A web version of Saturn is available <a href="https://skabajah.github.io/saturn/App/">here</a>.<br>
+    Please note this is an <strong>early demo</strong> — not the full standalone app — and <strong>not all channels will function properly</strong>.<br>
+    For a better experience, download the standalone app for Mac or Windows below.
+  </p>
+
+  <div class="ar">
+    <p>
+      <strong>النسخة التجريبية على الويب: <a href="https://skabajah.github.io/saturn/App/">هنا</a></strong><br>
+      يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح، للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه.
+    </p>
+  </div>
+
+  <hr>
+
+  <h2>Download &amp; Install</h2>
+  <p>Grab the installer for your machine:<br>
+  <span class="ar">حمل التطبيق</span></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Architecture</th>
+        <th>File</th>
+        <th>Direct Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Web</strong></td>
+        <td><code>any</code></td>
+        <td>—</td>
+        <td><a href="https://skabajah.github.io/saturn/App/">Try it</a></td>
+      </tr>
+      <tr>
+        <td><strong>Mac</strong> (Apple Silicon / M-Series)</td>
+        <td><code>arm64</code></td>
+        <td><code>mac-arm64.zip</code></td>
+        <td><a href="https://www.dropbox.com/scl/fi/fz7jb7abhnxm1j6ksbyyx/mac-arm64.zip?rlkey=vchyk5euvjjq00z3am8d7qufi&st=i4dp8lcq&dl=1">Download</a></td>
+      </tr>
+      <tr>
+        <td><strong>Mac</strong> (Intel)</td>
+        <td><code>x64</code></td>
+        <td><code>mac-intel.zip</code></td>
+        <td><a href="https://www.dropbox.com/scl/fi/mve5vohv7hwjro9qnz2ux/mac-intel.zip?rlkey=rxzl1jt47qlzgthn82wwi3c1t&st=r8dy3w3r&dl=1">Download</a></td>
+      </tr>
+      <tr>
+        <td><strong>Windows</strong></td>
+        <td><code>x64</code></td>
+        <td><code>windows-setup.zip</code></td>
+        <td><a href="https://www.dropbox.com/scl/fi/ftb2arsz7wk2dka7j48bs/windows-setup.zip?rlkey=rarziyck4pzgx90lidr49ad4l&st=vhj2g8bc&dl=1">Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>Installing on macOS</h3>
+  <ol>
+    <li>Download the correct file for your Mac.</li>
+    <li>Double-click the <code>.zip</code> to extract it.</li>
+    <li>Drag <strong>Saturn</strong> into your <code>Applications</code> folder.</li>
+    <li>Remove the extracted folder and the original <code>.zip</code> once the app is in place.</li>
+  </ol>
+
+  <h4>How to fix the Mac Error</h4>
+  <p><em>(Because the app is not signed by Apple, macOS will block it unless you bypass Gatekeeper first).</em></p>
+
+  <h5>Option 1 — Built-in allow (macOS 14 Sonoma and earlier)</h5>
+  <ol>
+    <li>Try to open the app once (it will be blocked).</li>
+    <li>Go to <strong>System Settings → Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>. <em>(Alternatively: right-click the app → <strong>Open</strong>.)</em></li>
+  </ol>
+
+  <h5>Option 2 — Terminal <code>xattr</code> method (macOS 15 Sequoia and later, or if Option 1 fails)</h5>
+  <ol>
+    <li>Navigate to the download folder and extract the <code>.zip</code>:
+      <pre><code>cd ~/Desktop
+unzip -q mac-arm64.zip
+cd mac-arm64</code></pre>
+    </li>
+    <li>Remove the quarantine attribute:
+      <pre><code>xattr -cr Saturn.app</code></pre>
+      <blockquote>
+        <p><strong>What this does:</strong> <code>xattr -cr</code> recursively clears all extended attributes (including the <code>com.apple.quarantine</code> flag) from the app bundle. This tells Gatekeeper the app didn't come from the internet, so it won't be blocked.</p>
+      </blockquote>
+    </li>
+    <li>Copy the app into <code>/Applications</code>:
+      <pre><code>cp -R Saturn.app /Applications/</code></pre>
+      <blockquote>
+        <p><strong>Why:</strong> Installing to <code>/Applications</code> is the standard macOS location, makes the app discoverable via Spotlight and Launchpad, and keeps it out of your Downloads/Desktop folder (which you may clean up later).</p>
+      </blockquote>
+    </li>
+    <li>Launch the app:
+      <pre><code>open /Applications/Saturn.app</code></pre>
+    </li>
+    <li>Remove the setup files:
+      <pre><code>cd ~/Desktop
+rm -rf mac-arm64 mac-arm64.zip</code></pre>
+    </li>
+  </ol>
+
+  <hr>
+
+  <h3>Installing on Windows</h3>
+  <ol>
+    <li>Download <code>windows-setup.zip</code> and extract it.</li>
+    <li>Double-click the <code>Saturn.exe</code> file.</li>
+    <li>If SmartScreen appears (<em>"Windows protected your PC"</em>), click <strong>More info</strong> → <strong>Run anyway</strong>.</li>
+    <li>Follow the installer prompts.</li>
+    <li>Delete the extracted setup files once installation is complete.</li>
+  </ol>
+
+  <hr>
+
+  <h2>License</h2>
+  <p>All Rights Reserved © Shadi Kabajah</p>
+
+</body>
+</html>
