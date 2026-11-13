@@ -63,7 +63,9 @@ Grab the installer for your machine:
 ### Web
 
 **Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). 
+<br>
 Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
+<br>
 For a better experience, download the standalone app for Mac or Windows below.
 
 ---
