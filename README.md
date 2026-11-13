@@ -22,7 +22,7 @@
 
 ### Web
 
-**Try the demo:** A web version of Saturn is available at [Web](https://skabajah.github.io/saturn/App/). 
+**Try the demo:** A web version of Saturn is available [here](https://skabajah.github.io/saturn/App/). 
 <br>
 Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
 <br>
