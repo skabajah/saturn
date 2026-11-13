@@ -6,7 +6,7 @@
 > A lightweight, touch-friendly live TV player for macOS, Windows, and Fire TV. 
 > Stream publicly accessible Arabic channels with ease.
 > <br>
-> مشغل تلفزيون مباشر خفيف الوزن وسهل الاستخدام، لبث القنوات العربية المتاحة للعامة بكل سهولة.
+> مشغل تلفزيون مباشر خفيف الوزن وسهل الاستخدام، لبث القنوات العربية المتاحة للعامة بكل سهولة
 
 
 ## Features
@@ -23,6 +23,7 @@
 ## Download & Install
 
 Grab the installer for your machine:
+حمل التطبيق الآن
 
 <table>
   <thead>
