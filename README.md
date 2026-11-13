@@ -23,7 +23,8 @@
 ## Download & Install
 
 Grab the installer for your machine:
-حمل التطبيق الآن
+<br>
+حمل التطبيق
 
 <table>
   <thead>
@@ -72,6 +73,7 @@ Please note this is an **early demo** — not the full standalone app — and **
 <br>
 For a better experience, download the standalone app for Mac or Windows below.
 
+<br>
 
 **جرب النسخة التجريبية على الويب: [هنا](https://skabajah.github.io/saturn/App/).**
 **يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح.**
