@@ -58,6 +58,11 @@ Grab the installer for your machine:
   </tbody>
 </table>
 
+---
+
+### Web
+
+**Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
 
 ---
 
@@ -131,12 +136,6 @@ rm -rf mac-arm64 mac-arm64.zip
 3. If SmartScreen appears (*"Windows protected your PC"*), click **More info** → **Run anyway**.
 4. Follow the installer prompts.
 5. Delete the extracted setup files once installation is complete.
-
----
-
-### Web
-
-**Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
 
 ---
 
