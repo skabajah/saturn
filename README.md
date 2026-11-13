@@ -20,6 +20,23 @@
 
 ---
 
+### Web
+
+**Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). 
+<br>
+Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
+<br>
+For a better experience, download the standalone app for Mac or Windows below.
+
+<br>
+
+**جرب النسخة التجريبية على الويب: [هنا](https://skabajah.github.io/saturn/App/).**
+**يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح.**
+**للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه.**
+
+
+---
+
 ## Download & Install
 
 Grab the installer for your machine:
@@ -36,6 +53,12 @@ Grab the installer for your machine:
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><strong>Web</strong></td>
+      <td><code>any</code></td>
+      <td>—</td>
+      <td><a href="https://skabajah.github.io/saturn/App/">Try it</a></td>
+    </tr>
     <tr>
       <td><strong>Mac</strong> (Apple Silicon / M-Series)</td>
       <td><code>arm64</code></td>
@@ -54,31 +77,8 @@ Grab the installer for your machine:
       <td><code>windows-setup.zip</code></td>
       <td><a href="https://www.dropbox.com/scl/fi/ftb2arsz7wk2dka7j48bs/windows-setup.zip?rlkey=rarziyck4pzgx90lidr49ad4l&st=vhj2g8bc&dl=1">Download</a></td>
     </tr>
-    <tr>
-      <td><strong>Web</strong></td>
-      <td><code>any</code></td>
-      <td>—</td>
-      <td><a href="https://skabajah.github.io/saturn/App/">Try it</a></td>
-    </tr>
   </tbody>
 </table>
-
----
-
-### Web
-
-**Try the demo:** A web version of Saturn is available at [skabajah.github.io/saturn/App](https://skabajah.github.io/saturn/App/). 
-<br>
-Please note this is an **early demo** — not the full standalone app — and **not all channels will function properly**.
-<br>
-For a better experience, download the standalone app for Mac or Windows below.
-
-<br>
-
-**جرب النسخة التجريبية على الويب: [هنا](https://skabajah.github.io/saturn/App/).**
-**يرجى ملاحظة أن هذه نسخة تجريبية مبكرة — وليست التطبيق الكامل — وقد لا تعمل جميع القنوات بشكل صحيح.**
-**للحصول على تجربة أفضل، قم بتحميل التطبيق المستقل لأجهزة ماك أو ويندوز أدناه.**
-
 
 ---
 
