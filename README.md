@@ -1,3 +1,5 @@
+<style>.ar{direction:rtl}</style>
+
 # <img src="https://skabajah.github.io/saturn/App/icons/saturn.svg" height="40" style="vertical-align: middle; pointer-events: none;"> Project Saturn
 
 [https://skabajah.github.io/saturn/](https://skabajah.github.io/saturn/)
