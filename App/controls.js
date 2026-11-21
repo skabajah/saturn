@@ -296,5 +296,10 @@ window.addEventListener('beforeunload', () => {
   player.currentTime = 0;
 });
 
+// close demo notice 
+document.querySelector('#notice .notice-right').addEventListener('click', function () {
+    document.getElementById('notice').classList.add('hidden');
+  });
+
 // --- Init ---
 loadM3U();
