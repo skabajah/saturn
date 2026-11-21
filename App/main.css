@@ -69,6 +69,7 @@ html, body {
     position: fixed;
     z-index: 800;
     color: white;
+    font-weight: lighter;
     font-size: 2rem;
     padding: 2vh 5vw;
     background: #00000040;
