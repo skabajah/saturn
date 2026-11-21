@@ -64,6 +64,18 @@ html, body {
 .footer-right { right: 1%; }
 
 
+/* ===== Notice ==== */
+#notice {
+    position: fixed;
+    z-index: 999;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    background: #00000040;
+}
+
+
+
 /* =========================
    Video
    ========================= */
