@@ -298,7 +298,8 @@ window.addEventListener('beforeunload', () => {
 
 // close demo notice 
 document.querySelector('#notice .notice-right').addEventListener('click', function () {
-    document.getElementById('notice').classList.add('hidden');
+    // document.getElementById('notice').classList.add('hidden');
+    document.getElementById('notice').style.visibility = 'hidden';
   });
 
 // --- Init ---
