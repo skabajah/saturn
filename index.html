@@ -216,29 +216,33 @@
     <li>Go to <strong>System Settings → Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>. <em>(Alternatively: right-click the app → <strong>Open</strong>.)</em></li>
   </ol>
 
+
   <h5>Option 2 — Terminal <code>xattr</code> method (macOS 15 Sequoia and later, or if Option 1 fails)</h5>
   <ol>
-    <li>Navigate to the download folder and extract the <code>.zip</code>:
-      <pre><code>cd ~/Desktop
-unzip -q mac-arm64.zip
-cd mac-arm64</code></pre>
+    <li>Navigate to the download folder and extract the <code>.zip</code> file. 
     </li>
+
     <li>Remove the quarantine attribute:
-      <pre><code>xattr -cr Saturn.app</code></pre>
+
+    <pre><code>cd ~/Desktop/mac-arm64/
+xattr -cr Saturn.app</code></pre>
+
       <blockquote>
         <p><strong>What this does:</strong> <code>xattr -cr</code> recursively clears all extended attributes (including the <code>com.apple.quarantine</code> flag) from the app bundle. This tells Gatekeeper the app didn't come from the internet, so it won't be blocked.</p>
       </blockquote>
     </li>
-    <li>Copy the app into <code>/Applications</code>:
-      <pre><code>cp -R Saturn.app /Applications/</code></pre>
+
+    <li>Copy the app into <code>/Applications</code> folder. 
       <blockquote>
         <p><strong>Why:</strong> Installing to <code>/Applications</code> is the standard macOS location, makes the app discoverable via Spotlight and Launchpad, and keeps it out of your Downloads/Desktop folder (which you may clean up later).</p>
       </blockquote>
     </li>
-    <li>Launch the app:
+
+    <li>Launch the app with double click or in terminal:
       <pre><code>open /Applications/Saturn.app</code></pre>
     </li>
-    <li>Remove the setup files:
+    
+    <li>Remove the setup files manually or in terminal:
       <pre><code>cd ~/Desktop
 rm -rf mac-arm64 mac-arm64.zip</code></pre>
     </li>
