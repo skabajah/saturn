@@ -121,7 +121,9 @@ function ensureMenuVisible() {
 
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', e => {
-  const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F'];
+  // const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F'];
+  const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F', 'F5', 'PageUp', 'PageDown'];
+
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
@@ -160,6 +162,7 @@ document.addEventListener('keydown', e => {
 
     case 'f':
     case 'F':
+    case 'F5':
       // Simple fullscreen check (no UA sniffing)
       if (document.documentElement.requestFullscreen) toggleFullscreen();
       break;
