@@ -126,11 +126,15 @@ document.addEventListener('keydown', e => {
 
   switch (e.key) {
     case 'ArrowLeft':
+    case 'PageUp':          //  clicker "previous"
+
       if (!ensureMenuVisible()) break;
       changeChannel(-1);
       break;
 
     case 'ArrowRight':
+    case 'PageDown':        //  clicker "next"
+
       if (!ensureMenuVisible()) break;
       changeChannel(1);
       break;
