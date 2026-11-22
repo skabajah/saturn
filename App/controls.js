@@ -290,8 +290,9 @@ function buildMenuBar() {
 
 // --- Fullscreen toggle ---
 function toggleFullscreen() {
+  const app = document.getElementById('app');
   if (!document.fullscreenElement) {
-    player.requestFullscreen?.();
+    app.requestFullscreen?.();
   } else {
     document.exitFullscreen?.();
   }
