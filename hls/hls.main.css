@@ -75,7 +75,8 @@ html, body {
 #landing .svg {
   position: absolute;
   inset: 0;
-  background: url('landing.svg') no-repeat center center;
+  /*background: url('landing.svg') no-repeat center center;*/
+  background: url('https://skabajah.github.io/saturn/hls/landing.svg') no-repeat center center;
   background-size: contain;
 } 
 
