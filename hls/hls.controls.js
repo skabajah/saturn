@@ -55,6 +55,8 @@ function playCurrentChannel() {
   const ch = channels[currentIndex];
   if (!ch) return;
 
+  localStorage.setItem('saturn_last_channel_index', String(currentIndex));
+  
   isLoading = true;
 
   // Tear down any previous HLS instance so audio/video doesn't overlap
