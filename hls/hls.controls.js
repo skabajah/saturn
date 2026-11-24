@@ -260,6 +260,12 @@ async function loadM3U() {
   } catch (err) {
     console.error('Failed to load M3U:', err);
   }
+  
+  const saved = Number(localStorage.getItem('saturn_last_channel_index'));
+  if (Number.isInteger(saved) && saved >= 0 && saved < channels.length) {
+    currentIndex = saved;
+    lastIndex = saved;
+  }
 
   buildMenuBar();
   highlightChannel();
