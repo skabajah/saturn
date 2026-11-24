@@ -111,6 +111,7 @@ html, body {
 .notice-right { 
   text-align: right;
   width: 10vw;
+  cursor: pointer;
 }
 
 
