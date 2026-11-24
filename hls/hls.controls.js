@@ -158,7 +158,6 @@ function ensureMenuVisible() {
 // --- Keyboard / Remote ---
 document.addEventListener('keydown', e => {
   const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F', 'F5', 'PageUp', 'PageDown'];
-  // const handled = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Enter', ' ', 'Escape', 'Backspace', 'f', 'F'];
   if (handled.includes(e.key)) e.preventDefault();
 
   switch (e.key) {
