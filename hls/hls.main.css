@@ -337,6 +337,6 @@ video::cue, #videoPlayer::cue {
 }
 
 /*hide cursor on maximise */
-#app:fullscreen {
+#app:fullscreen *  {
   cursor: none;
 }
