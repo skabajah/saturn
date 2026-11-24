@@ -269,7 +269,7 @@ async function loadM3U() {
 
   buildMenuBar();
   highlightChannel();
-  // playCurrentChannel();
+  playCurrentChannel();
   showMenu();
 }
 
