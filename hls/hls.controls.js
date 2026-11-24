@@ -330,12 +330,14 @@ function toggleFullscreen() {
   const app = document.getElementById('app');
   if (!document.fullscreenElement) {
     app.requestFullscreen?.();
-    document.body.style.cursor = 'none';
   } else {
     document.exitFullscreen?.();
-    document.body.style.cursor = 'default';
   }
 }
+
+document.addEventListener('fullscreenchange', () => {
+  document.body.style.cursor = document.fullscreenElement ? 'none' : 'default';
+});
 
 // --- Cleanup on page unload ---
 window.addEventListener('beforeunload', () => {
