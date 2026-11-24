@@ -1,4 +1,10 @@
-// -------------------------
+/*
+ * Copyright (c) 2026 Shadi Kabajah. All Rights Reserved.
+ * This code is proprietary and confidential. Unauthorized copying, 
+ * modification, or distribution is strictly prohibited.
+ */
+
+ // -------------------------
 // Project Saturn
 // skabajah
 // 2026-02-28
