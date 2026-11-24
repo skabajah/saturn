@@ -335,4 +335,8 @@ html, body {
 video::cue, #videoPlayer::cue { 
   visibility: hidden !important; 
 }
- 
+
+/*hide cursor on maximise */
+#app:fullscreen {
+  cursor: none;
+}
