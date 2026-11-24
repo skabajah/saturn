@@ -89,10 +89,6 @@
     const landing = document.getElementById('landing');
     if (!landing || landing.classList.contains('hidden')) return;
     landing.classList.add('hidden');
-
-    if (typeof initPlayer === 'function') {
-      initPlayer();
-    }
   }
 
   document.addEventListener('click', enterApp, { passive:true });
