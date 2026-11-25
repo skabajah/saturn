@@ -298,6 +298,10 @@ function buildMenuBar() {
       const div = document.createElement('div');
       div.className = 'channel';
 
+      if (ch.logo) {
+        div.style.setProperty('--logo', `url(${ch.logo})`);
+      }
+      
       const match = ch.name.match(/^(\d+)\)\s*(.*)/);
       const num = match ? match[1] : '';
       const label = match ? match[2] : ch.name;
