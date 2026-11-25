@@ -315,7 +315,7 @@ html, body {
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
-  filter: blur(4vw);
+  filter: blur(3vw);
   animation: spin 30s linear infinite;
   z-index: -1;
 }
