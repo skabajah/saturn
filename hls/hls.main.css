@@ -261,11 +261,7 @@ html, body {
 .frame::before {
   content: "";
   position: absolute;
-  inset: 0;
-  /*background-image: var(--logo);*/
-  /*background-size: cover;*/
-  /*background-position: center;*/
-  /*filter: blur(1vw) saturate(50%) brightness(80%) opacity(80%);*/
+  inset: 0; 
   background: #00000050;
 }
 
@@ -322,6 +318,7 @@ html, body {
   background-position: center;
   filter: blur(4vw);
   animation: spin 30s linear infinite;
+  z-index: -1;
 }
 
 
