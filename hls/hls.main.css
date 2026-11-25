@@ -311,7 +311,7 @@ html, body {
   position: absolute;
   inset: 0;
   background-image: var(--logo);
-  background-size: unset;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
