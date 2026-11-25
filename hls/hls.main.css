@@ -243,6 +243,7 @@ html, body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px); /* Safari support */
   margin: 0 2vw ;
+  overflow: hidden;
 }
 
 .channel .num {
