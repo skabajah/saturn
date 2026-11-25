@@ -312,8 +312,8 @@ html, body {
   inset: 0;
   background-image: var(--logo);
   background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
+  background-position-x: left;
+  background-position-y: bottom;
   filter: blur(4vw);
   animation: spin 30s linear infinite;
   z-index: -1;
