@@ -264,10 +264,7 @@ html, body {
   inset: 0; 
   background: #00000050;
 }
-
-/*.channel.active .frame::before {
-  animation: spin 30s linear infinite;
-}*/
+ 
 
 
 /* crisp icon — inactive = gray + dim */
@@ -315,7 +312,8 @@ html, body {
   inset: 0;
   background-image: var(--logo);
   background-size: cover;
-  background-position: center;
+  background-position-x: center;
+  background-position-y: center;
   filter: blur(4vw);
   animation: spin 30s linear infinite;
   z-index: -1;
