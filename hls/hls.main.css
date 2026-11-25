@@ -320,7 +320,7 @@ html, body {
   background-image: var(--logo);
   background-size: cover;
   background-position: center;
-  filter: blur(1vw) saturate(50%) brightness(80%) opacity(80%);
+  filter: blur(3vw);
   animation: spin 30s linear infinite;
 }
 
