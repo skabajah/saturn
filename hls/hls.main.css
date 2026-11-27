@@ -299,7 +299,7 @@ html, body {
 
 .channel.active .num {
   color: white;
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 5.5vw;
 }
 
