@@ -299,7 +299,6 @@ html, body {
 
 .channel.active .num {
   color: white;
-  opacity: 95%;
   font-weight: bold;
   font-size: 5.5vw;
 }
